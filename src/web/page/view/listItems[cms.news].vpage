@@ -1,0 +1,74 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:20-->
+
+##定义一个指向cms.news的实体对象
+#set($entity = $tool.getEntity('cms.news'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="4028818d27b49c5b0127b4a5128e0028" fieldUri="cms.news.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按序号排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> 序号</b>#if ('cms.news.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b49c5b0127b4a6196f002a" fieldUri="cms.news.title" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按标题排序" ><b> 标题</b>#if ('cms.news.title' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b49c5b0127b4a636fa002c" fieldUri="cms.news.addtime" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按发布时间排序" ><b> 发布时间</b>#if ('cms.news.addtime' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b49c5b0127b4a68dd4002e" fieldUri="cms.news.author" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按作者排序" ><b> 作者</b>#if ('cms.news.author' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b4b9d40127b4bc48e10027" fieldUri="cms.news.creator" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按录入员排序" ><b> 录入员</b>#if ('cms.news.creator' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b4b9d40127b4bf05ed0029" fieldUri="cms.news.type" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按新闻类型排序" ><b> 新闻类型</b>#if ('cms.news.type' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b4b9d40127b4c05b7b002b" fieldUri="cms.news.content" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按内容排序" ><b> 内容</b>#if ('cms.news.content' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028818d27b99e6c0127b9a42b88001d" fieldUri="cms.news.files" orderAsc="${jsoQuery.orderAsc}"  style="color:#888888" title="不支持排序" ><b> 附件</b>#if ('cms.news.files' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028d9e428386c9601283872ad53001d" fieldUri="cms.news.pic" orderAsc="${jsoQuery.orderAsc}"  style="color:#888888" title="不支持排序" ><b> 滚动图片</b>#if ('cms.news.pic' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="4028d9e428386c9601283873eefb001f" fieldUri="cms.news.flag" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按图片显示标识排序" ><b> 图片显示标识</b>#if ('cms.news.flag' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('title').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿	$!bean.get('addtime').dateFormat('yyyy年MM月dd日')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('author').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('creator').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('type').title&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('content').format('%s')&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">#foreach ($file in $!bean.get('files').files)
+#set($fileUrl = $file.servletPath)
+	<a href="$fileUrl">${file.title}[${file.fileSize}]</a><br>
+#end&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">#foreach ($file in $!bean.get('pic').files)
+#set($fileUrl = $file.servletPath)
+<a target="_blank" href="$fileUrl">
+	<img src="$fileUrl"  alt="${file.title}[${file.fileSize}字节][${file.imageWidth}*${file.imageHeight}像素]"
+			width="300"		 height="300"  border=0>
+		</a><br>
+#end&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('flag').title&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

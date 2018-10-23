@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<status>200</status>
+	</body>
+</response>

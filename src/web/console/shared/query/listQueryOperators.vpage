@@ -1,0 +1,10 @@
+﻿#set($field=$catalog.fromId($param.selectedFieldId))
+<select name="OPLIST" style="width:60pt;" onchange="onQueryOperatorSelect(this)">
+	<option value="">--------</option>
+#foreach ($style in $field.fieldType.queryerStyles)
+	<option value="$style.name" isUnaryExpr=$style.isUnaryExpr()>$tool.encodeXml($style.title, false)</option>
+#end
+</select>
+<script defer>
+	initializeQueryOperators($("#${param.fieldsCtrlId}")[0].operatorArea,$("#${param.fieldsCtrlId}")[0].editorArea, '${param.selectedFieldId}');
+</script>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="公用模块"/>
+		<property name="version" value="1"/>
+		<property name="order" value="3000"/>
+		<property name="hidden" value="true"/>
+		<property name="dependsOn">
+			<list>
+				<value>catalog</value>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,8 @@
+﻿<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#saveAs("showQuery.vpage")
+\#usingLayout("${D}{pageroot}/layout.vpage")
+\#set(${D}query = ${D}catalog.fromUri(${D}param.uri))
+\#set(${D}entity = ${D}query.entity)
+\#set(${D}page = ${D}auth.getGrantedPageByTypeAndRes(${D}auth.userName, "listItems",${D}entity.id))
+#set($QUERY_MODE = true)
+#layoutWidgets("showEntity")

@@ -1,0 +1,21 @@
+#set($menuxml = $navigatorTool.getMenuXml(${widget.props.tree}))
+
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/menu/skins/dhtmlxmenu_dhx_blue.css">
+<script src="/console/shared/plugins/dhtmlx/menu/dhtmlxmenu.js"></script>
+
+<div id="menuObj_$widget.name"></div>
+
+<script type="text/javascript">
+
+	#if(${widget.props.tree} == "")
+		$('#menuobj_$widget.name').html("没有设置菜单");
+	#else
+	if($('#menuObj_$widget.name').html() == ''){
+
+		var menu = new dhtmlXMenuObject("menuObj_$widget.name");
+		menu.setIconsPath("/console/shared/plugins/dhtmlx/menu/imgs/");
+		menu.setSkin('dhx_blue');
+	    menu.loadXMLString("$menuxml");
+	}
+	#end
+</script>

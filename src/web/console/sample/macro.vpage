@@ -1,0 +1,4 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示宏macro的用法')
+<p>可以在vpage页面使用在/WEB-INF/macro.xml中定义的指令，如：</p>
+#cell('hello!')

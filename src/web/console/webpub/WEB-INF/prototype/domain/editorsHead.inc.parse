@@ -1,0 +1,7 @@
+#saveAs("editorsHead.inc")
+
+#foreach($type in $typeManager.fieldTypes)
+#if($typeManager.hasFile($type, 'editorHead.vsp'))
+#parse($typeManager.getFilePath($type, 'editorHead.vsp'))
+#end
+#end

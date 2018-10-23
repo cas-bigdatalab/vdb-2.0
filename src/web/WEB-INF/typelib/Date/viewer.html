@@ -1,0 +1,5 @@
+﻿#if($field.viewerStyle=="DateTimeLabel")
+	${D}!bean.get('${field.name}').dateFormat("yyyy年MM月dd日 HH:mm:ss")
+#else
+	${D}!bean.get('${field.name}').dateFormat('yyyy年MM月dd日')
+#end

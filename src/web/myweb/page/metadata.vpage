@@ -1,0 +1,60 @@
+﻿#usingLayout("${pageroot}/layout.vpage")
+<script type="text/javascript" src="http://rsr.csdb.cn/querymetadata.jsp?site=$domain.name&width=30"></script>
+<link href="js/csssearch.css" type=text/css rel=stylesheet>
+<table width="970" style="margin-top:-15px;padding-top:0px" margin="0" padding="0" border="0" align="center" cellpadding="0" cellspacing="0" class="table1px_1" id="wk50">
+      <tr>
+        <td height="35" background="images/shy_75.jpg"><table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="30" height="35"></td>
+              <td class="wenz9" background="images/shy_77.jpg">找数据库</td>
+              <td width="20" ><img src="images/shy_76.jpg" width="20" height="35"></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td valign="top" class="dongtai_lb3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td valign="top" class="dongtai_lb2"><table width="74%" border="0" align="center" cellpadding="0" cellspacing="0" class="black12" style="margin:30px">
+                  <tr>
+                    <td height="38" valign="top">
+							<DIV class="tagContent selectTag" id=tagContent0>
+							<form action="http://rsr.csdb.cn/rsl01MetaSiteAction.do" method="post" name="queryFrm" target="_blank">
+								<table border="0" cellpadding="0" cellspacing="0"  align="center">
+							      <tr>
+							        <td height="28" colspan="3">&nbsp;
+							        </td>
+							      </tr>
+							      <tr>
+							        <td valign="top"><select name="condition.searchType" style="height:22px;">
+							        			<option value="1" checked>任意字段</option>
+							            	<option value="2">名称</option>
+							            	<option value="3">关键词</option>
+							            	<option value="4">简介</option>
+							            	<option value="5">责任者</option>
+							            </select>&nbsp;&nbsp;</td>
+							        <td valign="top">
+							            <input name="condition.inputTextValue" type="text" id="condition.inputTextValue" size="25" />
+							            <input name="condition.interfaceType" type="hidden" id="condition.interfaceType" value="1" />
+							            <input name="condition.grp" type="hidden" id="condition.grp" value="0" />
+							            <input name="condition.owneruri" id="condition.owneruri" type="hidden" value="$domain.name"/>
+							        </td>
+							        <td width="97" valign="top">&nbsp;<input type="image" src="images/R2search_b.jpg" alt="检索"  name="submeta" onClick="return dataQuery(this);"/></td>
+							      </tr>
+							      <tr height="10">
+							      	<td></td>
+							      </tr>
+							     </table>
+							     
+							</form>
+							</DIV>
+					</td>
+                  </tr>
+                  <tr>
+                   <td align="left" valign="top" class="l6"><br><span class="Letter">提 示：</span><br><br>
+                              您可以通过在上方的检索条件输入区域选择检索项并输入检索词的方式，查找您所需要的数据库。可选择的检索项包括：数据库名称、关键词、责任者、简介或这全部四项（任意字段）。 </td>
+                          </tr>
+                </table></td>
+            </tr>
+          </table></td>
+      </tr>
+</table>

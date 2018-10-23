@@ -1,0 +1,130 @@
+﻿<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+##定义两个变量分别标记页面类型的中英文名称
+## 页面类型 ： listItems(前台列表页面) showItem（前台细览页面） listEditItems（编辑列表页面） addItem（添加记录页面） updateItem（修改记录页面）
+#set($pageNames=["listItems","showItem","listEditItems","addItem","updateItem"])
+#set($pageTitles=["前台列表页面","前台细览页面","编辑列表页面","添加记录页面","修改记录页面"])
+#set($size = 0)
+#set ($gid = $auth.getGroupByCode(${param.gid}).get("GROUPID"))
+<form method="post" action="DoGrantGroup.action?gid=$gid">
+	<table align="center" border="1" width="100%" border="1" cellpadding="6" class="table1 dataset">
+		<tr class="bg0">
+			<td width="26%" align="right">
+				用户组名 
+			</td>
+			<td width="66%">
+				$auth.getGroupByCode(${param.gid}).get("GROUPNAME")(${param.gid})
+				<input name="gid" type="hidden" value="$gid">
+			</td>
+		</tr>
+		<tr class="bg0">
+			<td width="26%" align="right">
+				用户组描述
+			</td>
+			<td width="66%">
+				$auth.getGroupByCode(${param.gid}).get("DESCRIPTION")
+			</td>
+		</tr>
+		<tr class="bg0">
+			<td width="26%" align="right">
+				模块级角色
+			</td>
+			<td width="66%">
+				#foreach ($role in $auth.getRolesByResourceClassType("module"))
+				<input name="module" type="checkbox" value="${role.getName()}"
+					#if ($auth.groupIsGranted("$gid", $role.getName(), "module", "all")) checked #end style="zoom:85%">
+					${role.getTitle()}
+				#end
+			</td>
+		</tr>
+		
+		## 所有数据集名称
+		#foreach ($dataset in $domain.ex.getView("editDataSets").items)
+			<tr>
+				<td colspan="2" align="center" class="bg2">
+					<b>${dataset.title}</b>
+				</td>
+			</tr>
+			
+			## 所有数据集中表的名称
+			#foreach ($entity in $dataset.entities)
+				<tr class="bg0" background="#000">
+					<td width="26%" align="right" style="padding-left:20px;">
+						<b>${entity.title}</b>
+					</td>
+					<td width="66%" align="left">
+						<b>页面</b>
+					</td>
+				</tr>
+				## 录入、查看、编辑
+				#foreach($i in [0..4])
+					<tr class="bg0" background="#000">
+						<td width="26%" align="right" style="padding-left:20px;">
+							$pageTitles.get($i)
+						</td>
+						<td>
+							&nbsp;<select name="${entity.id}_$pageNames.get($i)_select" >
+								<option value="empty">默认$pageTitles.get($i)</option>
+								#foreach ($page in $pagesTool.getPageByType("$pageNames.get($i)",${entity.uri}))
+									#if (!$page.default)
+									<option value="${page.name}" #if ($auth.groupIsGranted("$gid", "$pageNames.get($i)", $entity.id, $page.name)) selected #end>
+										${page.title}
+									</option>
+									#end
+								#end
+							</select>
+						</td>
+					</tr>
+				#end
+			#end
+			
+			
+			## 所有数据集中查询名称
+				#foreach ($query in $dataset.queries)
+				<tr class="bg0" background="#000">
+					<td width="26%" align="right" style="padding-left:20px;">
+						<b>${query.title}</b>
+					</td>
+					<td width="66%" align="left">
+						<b>页面</b>
+					</td>
+				</tr>
+				## 录入、查看、编辑
+				#foreach($i in [0..4])
+					<tr class="bg0" background="#000">
+						<td width="26%" align="right" style="padding-left:20px;">
+							$pageTitles.get($i)
+						</td>
+						<td>
+							&nbsp;<select name="${query.id}_$pageNames.get($i)_select" >
+								<option value="empty">默认$pageTitles.get($i)</option>
+								#foreach ($page in $pagesTool.getPageByType("$pageNames.get($i)",${query.entity.uri}))
+									#if (!$page.default)
+									<option value="${page.name}" #if ($auth.groupIsGranted("$gid", "$pageNames.get($i)", $query.id, $page.name)) selected #end>
+										${page.title}
+									</option>
+									#end
+								#end
+							</select>
+						</td>
+					</tr>
+				#end
+			#end
+		#end
+		
+		<tr>
+			<td width="35%" colspan="2">
+				<p align="center">
+					<input type="submit" value="保存角色分配" name="B1" class="btn_mouseout">
+					<input type="reset" value="重新填写" name="B2" class="btn_mouseout">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="35%" colspan="2"  style="border-left:1px solid white;border-right:1px solid white;border-bottom:1px solid white">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+</form>

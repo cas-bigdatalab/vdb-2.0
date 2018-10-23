@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="数据编辑"/>
+		<property name="version" value="1"/>
+		<property name="order" value="2000"/>
+		<property name="dependsOn">
+			<list>
+				<value>catalog</value>
+			</list>
+		</property>
+		<property name="description" value="具有数据录入权限的用户可以通过VisualDB提供的数据管理界面，向数据库中添加数据记录、修改已有数据记录、删除数据记录。VisualDB数据管理界面按照目录管理中配置的本地域基本属性配置、数据集模型编辑视图配置、实体编辑视图配置、字段编辑风格属性配置等生成。"/>
+	</bean>
+</beans>

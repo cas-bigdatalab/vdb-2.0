@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>滑动条--by 快乐笛子</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="myJSFrame.js"></script>
+  <style type="text/css">	
+	body {font-size:14px}
+	.box { padding:10px}
+	.slidebox { height:24px; width:213px; overflow:hidden; position:relative;}
+	.lineBox { padding:0 6px;}
+	.slidebox .line {background:url(bg.gif) repeat-x left bottom; width:100%; height:24px; cursor:pointer}
+	.slidebox .cursor { position:absolute; z-index:20; top:0px; left:0px; height:21px; width:11px;  overflow:hidden; background:url(cursor.gif) no-repeat; cursor:pointer; filter:alpha(opacity=90); opacity:0.9}
+  </style>
+  <script type="text/javascript" src="slidebar.js"></script>
+ </head>
+
+ <body>
+ <h1>滑动条</h1>
+<div class="box">
+<table border=0 cellpadding=5 >
+<tr>
+<td>
+	<script type="text/javascript">
+		var t = new SlideBar();	
+		t.maxValue = "100";
+		t.onmoving = function(){
+			$("abc").value = this.title = this.value;
+		};
+		t.write();
+	</script>
+	
+	<br />
+
+<input type="text" id="abc" size="4" style="padding:2px" />
+<br />
+</td>
+</tr>
+</table>
+</div>
+ </body>
+</html>

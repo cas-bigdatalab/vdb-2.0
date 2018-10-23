@@ -1,0 +1,6 @@
+﻿#set($uri="${param.name}")
+#if (${catalog.fromUri(${uri})})
+false
+#else
+true
+#end

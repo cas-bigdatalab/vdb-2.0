@@ -1,0 +1,23 @@
+#set($lines = 0)
+
+#if($widget.props.lines)
+	#set($lines = $formater.parseInt($widget.props.lines))
+#end
+
+#if($lines != $widget.props.lines)
+	#set($lines = 0)
+#end
+
+#if($lines < 0)
+	#set($lines = 0)
+#end
+#set($site = $domain.name)
+#set($seqid=$calendar.time)
+#set($sid=$seq.id)
+<div id="copyright_out_${seqid}${sid}"></div>
+<script type="text/javascript">
+	jQuery.getScript("http://rsr.csdb.cn/copyright.jsp?site=$site&n=$lines", function()
+	{		
+		$('#copyright_out_${seqid}${sid}').html(showWidget_copyright());
+	});
+</script>

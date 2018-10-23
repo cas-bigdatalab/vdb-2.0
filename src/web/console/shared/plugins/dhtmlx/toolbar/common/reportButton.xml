@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="browse" text="立即抽取" />
+	<item type="button" id="cloud" text="显示云图" />
+</toolbar>

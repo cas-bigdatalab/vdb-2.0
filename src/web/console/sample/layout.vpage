@@ -1,0 +1,11 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>二次开发演示页面</title>
+</head>
+<div style="height:20pt;"><h1>$!title</h1></div>
+【<a href="index.vpage">返回首页</a>】
+【<a href="source.vpage?page=$request.servletPath">查看本页源码</a>】
+<div style="height:20pt;"></div>
+$body
+</html>

@@ -1,0 +1,567 @@
+.dhtmlxcolorpicker {
+	BACKGROUND: #e6e5e5; COLOR: #000
+}
+.dhtmlxcolorpicker .cs_ContentTable {
+	MARGIN: 8px
+}
+.dhtmlxcolorpicker .cs_SelectorDiv {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 256px; BORDER-BOTTOM: gray 1px solid; POSITION: relative; HEIGHT: 256px
+}
+.dhtmlxcolorpicker .cs_SelectorDiv_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 210px; BORDER-BOTTOM: gray 1px solid; POSITION: relative; HEIGHT: 120px
+}
+.dhtmlxcolorpicker .cs_SelectorVer {
+	OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 100%; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker .cs_SelectorHor {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker .cs_LumSelect {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; MARGIN-LEFT: 13px; BORDER-LEFT: gray 1px solid; WIDTH: 15px; MARGIN-RIGHT: 10px; BORDER-BOTTOM: gray 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker .cs_LumSelect_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; MARGIN-LEFT: 6px; BORDER-LEFT: gray 1px solid; WIDTH: 12px; BORDER-BOTTOM: gray 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker .cs_LumSelectLine {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker .cs_LumSelectArrow {
+	BACKGROUND: url(imgs/slide.gif) no-repeat; OVERFLOW: hidden; WIDTH: 13px; POSITION: absolute; HEIGHT: 9px
+}
+.dhtmlxcolorpicker .cs_LumElement {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; OVERFLOW: hidden; WIDTH: 100%; HEIGHT: 4px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker .cs_ColorArea {
+	FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_ColorArea_Mini {
+	FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_ColorArea TD {
+	HEIGHT: 25px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker .cs_ColorArea_Mini TD {
+	HEIGHT: 18px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker .cs_EndColor {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 72px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 69px
+}
+.dhtmlxcolorpicker .cs_EndColor_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 30px
+}
+.dhtmlxcolorpicker .cs_Hex {
+	FONT-SIZE: 12px; WIDTH: 55px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_Hex_Mini {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 45px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker .cs_Hex_MiniX {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 45px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker .cs_Hex_MiniX {
+	HEIGHT: 11px
+}
+.dhtmlxcolorpicker .cs_Input {
+	FONT-SIZE: 12px; WIDTH: 26px; FONT-FAMILY: Arial; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker .cs_Input_Mini {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 22px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker .cs_Input_MiniX {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 22px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker .cs_Input_MiniX {
+	HEIGHT: 11px
+}
+.commonInputStyle {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_ButtonOk {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_ButtonOk_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_ButtonCancel {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_ButtonCancel_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Mini {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Mini_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Hover {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Mini {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_CustomColorAdd_Mini_Hover {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_CustomColors {
+	MARGIN-TOP: 8px; WIDTH: 76px; HEIGHT: 38px
+}
+.dhtmlxcolorpicker .cs_CustomColors_Mini {
+	MARGIN-TOP: 6px; WIDTH: 100%; HEIGHT: 18px
+}
+.dhtmlxcolorpicker .cs_CustomColor {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 14px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 14px
+}
+.dhtmlxcolorpicker .cs_CustomColor_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 18px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 18px
+}
+.dhtmlxcolorpicker .cs_ButtonOk {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_ButtonOk_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_ButtonCancel {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_ButtonCancel_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker .cs_colorInput {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker .cs_colorBox {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; LEFT: 0px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker .cs_ButtonsPanel {
+	BACKGROUND: url(imgs/cp_buttons_panel.gif); HEIGHT: 37px
+}
+.dhtmlxcolorpicker_dhx_black {
+	BACKGROUND: #000
+}
+.dhtmlxcolorpicker_dhx_black .cs_ContentTable {
+	MARGIN: 8px
+}
+.dhtmlxcolorpicker_dhx_black .cs_SelectorDiv {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 256px; BORDER-BOTTOM: gray 1px solid; POSITION: relative; HEIGHT: 256px
+}
+.dhtmlxcolorpicker_dhx_black .cs_SelectorDiv_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 210px; BORDER-BOTTOM: gray 1px solid; POSITION: relative; HEIGHT: 120px
+}
+.dhtmlxcolorpicker_dhx_black .cs_SelectorVer {
+	OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 100%; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_black .cs_SelectorHor {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_black .cs_LumSelect {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; MARGIN-LEFT: 13px; BORDER-LEFT: gray 1px solid; WIDTH: 15px; MARGIN-RIGHT: 10px; BORDER-BOTTOM: gray 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_black .cs_LumSelect_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; MARGIN-LEFT: 6px; BORDER-LEFT: gray 1px solid; WIDTH: 12px; BORDER-BOTTOM: gray 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_black .cs_LumSelectLine {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_black .cs_LumSelectArrow {
+	BACKGROUND: url(img/__dhxCP_skin_Black/slide.gif) no-repeat; OVERFLOW: hidden; WIDTH: 13px; POSITION: absolute; HEIGHT: 9px
+}
+.dhtmlxcolorpicker_dhx_black .cs_LumElement {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0px; BORDER-BOTTOM-WIDTH: 0px; OVERFLOW: hidden; WIDTH: 100%; HEIGHT: 4px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ColorArea {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #ffffff; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_ColorArea_Mini {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #ffffff; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_ColorArea TD {
+	HEIGHT: 25px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_black .cs_ColorArea_Mini TD {
+	HEIGHT: 18px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_black .cs_EndColor {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 72px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 69px
+}
+.dhtmlxcolorpicker_dhx_black .cs_EndColor_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 30px
+}
+.dhtmlxcolorpicker_dhx_black .cs_Hex {
+	FONT-SIZE: 12px; WIDTH: 55px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_Hex_Mini {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 45px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_black .cs_Hex_MiniX {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 45px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_black .cs_Hex_MiniX {
+	HEIGHT: 11px
+}
+.dhtmlxcolorpicker_dhx_black .cs_Input {
+	FONT-SIZE: 12px; WIDTH: 26px; FONT-FAMILY: Arial; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_black .cs_Input_Mini {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 22px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_black .cs_Input_MiniX {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 22px; PADDING-TOP: 0px; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_black .cs_Input_MiniX {
+	HEIGHT: 11px
+}
+.commonInputStyle {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonOk {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonOk_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonCancel {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonCancel_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Mini {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Mini_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Hover {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Mini {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColorAdd_Mini_Hover {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColors {
+	MARGIN-TOP: 8px; WIDTH: 76px; HEIGHT: 38px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColors_Mini {
+	MARGIN-TOP: 6px; WIDTH: 100%; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColor {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 14px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 14px
+}
+.dhtmlxcolorpicker_dhx_black .cs_CustomColor_Mini {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 18px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonOk {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonOk_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonCancel {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonCancel_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_black .cs_colorInput {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_black .cs_colorBox {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; LEFT: 0px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_black .cs_ButtonsPanel {
+	BACKGROUND: url(imgs/__dhxCP_skin_Black/cp_buttons_panel.png); HEIGHT: 37px
+}
+.dhtmlxcolorpicker_dhx_blue {
+	BACKGROUND: #d3e2e5
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ContentTable {
+	MARGIN: 8px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_SelectorDiv {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; OVERFLOW: hidden; BORDER-LEFT: gray 1px solid; WIDTH: 256px; BORDER-BOTTOM: gray 1px solid; POSITION: relative; HEIGHT: 256px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_SelectorDiv_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; BORDER-TOP: #adc6cb 1px solid; OVERFLOW: hidden; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 210px; BORDER-BOTTOM: #adc6cb 1px solid; POSITION: relative; HEIGHT: 120px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_SelectorVer {
+	OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 100%; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_blue .cs_SelectorHor {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_blue .cs_LumSelect {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; MARGIN-LEFT: 13px; BORDER-LEFT: gray 1px solid; WIDTH: 15px; MARGIN-RIGHT: 10px; BORDER-BOTTOM: gray 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_blue .cs_LumSelect_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; BORDER-TOP: #adc6cb 1px solid; MARGIN-LEFT: 6px; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 12px; BORDER-BOTTOM: #adc6cb 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_blue .cs_LumSelectLine {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_blue .cs_LumSelectArrow {
+	BACKGROUND: url(imgs/__dhxCP_skin_Blue/slide.gif) no-repeat; OVERFLOW: hidden; WIDTH: 13px; POSITION: absolute; HEIGHT: 9px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_LumElement {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0px; BORDER-BOTTOM-WIDTH: 0px; OVERFLOW: hidden; WIDTH: 100%; HEIGHT: 4px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ColorArea {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #02609e; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ColorArea_Mini {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #02609e; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ColorArea TD {
+	HEIGHT: 25px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ColorArea_Mini TD {
+	HEIGHT: 18px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_blue .cs_EndColor {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 72px; BORDER-BOTTOM: gray 1px solid; HEIGHT: 69px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_EndColor_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; BORDER-TOP: #adc6cb 1px solid; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 100px; BORDER-BOTTOM: #adc6cb 1px solid; HEIGHT: 30px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Hex {
+	FONT-SIZE: 12px; WIDTH: 55px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Hex_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #adc6cb 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 45px; PADDING-TOP: 0px; BORDER-BOTTOM: #adc6cb 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Hex_MiniX {
+	BORDER-RIGHT: #adc6cb 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #adc6cb 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 45px; PADDING-TOP: 0px; BORDER-BOTTOM: #adc6cb 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Hex_MiniX {
+	HEIGHT: 11px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Input {
+	FONT-SIZE: 12px; WIDTH: 26px; FONT-FAMILY: Arial; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Input_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #adc6cb 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #adc6cb 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Input_MiniX {
+	BORDER-RIGHT: #adc6cb 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #adc6cb 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #adc6cb 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_blue .cs_Input_MiniX {
+	HEIGHT: 11px
+}
+.commonInputStyle {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonOk {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonOk_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonCancel {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonCancel_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Mini {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Mini_Hover {
+	BORDER-RIGHT: white 1px outset; BORDER-TOP: white 1px outset; BACKGROUND: #d4cfc9; BORDER-LEFT: white 1px outset; BORDER-BOTTOM: white 1px outset; HEIGHT: 22px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Hover {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Mini {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColorAdd_Mini_Hover {
+	MARGIN-TOP: 6px; FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColors {
+	MARGIN-TOP: 8px; WIDTH: 76px; HEIGHT: 38px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColors_Mini {
+	MARGIN-TOP: 6px; WIDTH: 100%; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColor {
+	BORDER-RIGHT: #adc6cb 1px solid; BORDER-TOP: #adc6cb 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 14px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: #adc6cb 1px solid; HEIGHT: 14px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_CustomColor_Mini {
+	BORDER-RIGHT: #adc6cb 1px solid; BORDER-TOP: #adc6cb 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: #adc6cb 1px solid; WIDTH: 18px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: #adc6cb 1px solid; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonOk {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonOk_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonCancel {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonCancel_Hover {
+	MARGIN-TOP: 3px; FONT-SIZE: 12px; FLOAT: right; WIDTH: 70px; MARGIN-RIGHT: 7px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_blue .cs_colorInput {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_colorBox {
+	BORDER-RIGHT: blue 1px solid; BORDER-TOP: blue 1px solid; LEFT: 0px; BORDER-LEFT: blue 1px solid; BORDER-BOTTOM: blue 1px solid; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_ButtonsPanel {
+	BACKGROUND: url(imgs/__dhxCP_skin_Blue/cp_buttons_panel.png); HEIGHT: 37px
+}
+.dhtmlxcolorpicker_dhx_skyblue {
+	BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/bg_head.gif) #c3d4eb repeat-x
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ContentTable {
+	MARGIN: 20px 8px 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_SelectorDiv {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; OVERFLOW: hidden; BORDER-LEFT: #fff 1px solid; WIDTH: 256px; BORDER-BOTTOM: #fff 1px solid; POSITION: relative; HEIGHT: 256px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_SelectorDiv_Mini {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; OVERFLOW: hidden; BORDER-LEFT: #fff 1px solid; WIDTH: 210px; BORDER-BOTTOM: #fff 1px solid; POSITION: relative; HEIGHT: 120px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_SelectorVer {
+	OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 100%; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_SelectorHor {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_LumSelect {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; MARGIN-LEFT: 13px; BORDER-LEFT: #fff 1px solid; WIDTH: 15px; MARGIN-RIGHT: 10px; BORDER-BOTTOM: #fff 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_LumSelect_Mini {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; MARGIN-LEFT: 6px; BORDER-LEFT: #fff 1px solid; WIDTH: 12px; BORDER-BOTTOM: #fff 1px solid; POSITION: relative
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_LumSelectLine {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: white
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_LumSelectArrow {
+	BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/slide.gif) no-repeat; OVERFLOW: hidden; WIDTH: 13px; POSITION: absolute; HEIGHT: 9px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_LumElement {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 0px; BORDER-BOTTOM-WIDTH: 0px; OVERFLOW: hidden; WIDTH: 100%; HEIGHT: 4px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ColorArea {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #02609e; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ColorArea_Mini {
+	FONT-SIZE: 12px; WIDTH: 100%; COLOR: #02609e; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ColorArea TD {
+	HEIGHT: 25px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ColorArea_Mini TD {
+	HEIGHT: 18px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_EndColor {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BORDER-LEFT: #fff 1px solid; WIDTH: 72px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 69px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_EndColor_Mini {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; BORDER-LEFT: #fff 1px solid; WIDTH: 100px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 30px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Hex {
+	FONT-SIZE: 12px; WIDTH: 55px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Hex_Mini {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 45px; PADDING-TOP: 0px; BORDER-BOTTOM: #fff 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Hex_MiniX {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 45px; PADDING-TOP: 0px; BORDER-BOTTOM: #fff 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Hex_MiniX {
+	HEIGHT: 11px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Input {
+	FONT-SIZE: 12px; WIDTH: 26px; FONT-FAMILY: Arial; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Input_Mini {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #fff 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Input_MiniX {
+	BORDER-RIGHT: #fff 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fff 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #fff 1px solid; WIDTH: 22px; PADDING-TOP: 0px; BORDER-BOTTOM: #fff 1px solid; FONT-FAMILY: Arial; HEIGHT: 15px; TEXT-ALIGN: right
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_Input_MiniX {
+	HEIGHT: 11px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColorAdd {
+	MARGIN-TOP: 8px; FONT-SIZE: 12px; WIDTH: 145px; FONT-FAMILY: Arial
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColorAdd_Mini {
+	BORDER-TOP-WIDTH: 0px; MARGIN-TOP: 6px; PADDING-LEFT: 20px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_add.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 100%; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColorAdd_Mini_Hover {
+	BORDER-TOP-WIDTH: 0px; MARGIN-TOP: 6px; PADDING-LEFT: 20px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_add.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 100%; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColorAdd_Mini_Hover {
+	BACKGROUND-POSITION: left bottom
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColors {
+	MARGIN-TOP: 8px; WIDTH: 76px; HEIGHT: 38px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColors_Mini {
+	MARGIN-TOP: 6px; WIDTH: 100%; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColor {
+	BORDER-RIGHT: #fff 1px solid; BORDER-TOP: #fff 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: #fff 1px solid; WIDTH: 14px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: #fff 1px solid; HEIGHT: 14px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColor_Mini {
+	BORDER-RIGHT: #a4bed4 1px solid; BORDER-TOP: #a4bed4 1px solid; FLOAT: left; MARGIN-BOTTOM: 3px; OVERFLOW: hidden; BORDER-LEFT: #a4bed4 1px solid; WIDTH: 18px; CURSOR: pointer; MARGIN-RIGHT: 3px; BORDER-BOTTOM: #a4bed4 1px solid; HEIGHT: 18px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonOk {
+	BORDER-TOP-WIDTH: 0px; PADDING-LEFT: 17px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_select.gif); FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 3px 6px 0px 0px; WIDTH: 70px; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonOk_Hover {
+	BORDER-TOP-WIDTH: 0px; PADDING-LEFT: 17px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_select.gif); FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 3px 6px 0px 0px; WIDTH: 70px; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonOk_Hover {
+	BACKGROUND-POSITION: left bottom
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonCancel {
+	BORDER-TOP-WIDTH: 0px; PADDING-LEFT: 17px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_cancel.gif); FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 3px 7px 0px 0px; WIDTH: 72px; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonCancel_Hover {
+	BORDER-TOP-WIDTH: 0px; PADDING-LEFT: 17px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BACKGROUND: url(imgs/__dhxCP_skin_SkyBlue/but_cancel.gif); FLOAT: right; BORDER-BOTTOM-WIDTH: 0px; MARGIN: 3px 7px 0px 0px; WIDTH: 72px; FONT-FAMILY: Tahoma; HEIGHT: 21px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonCancel_Hover {
+	BACKGROUND-POSITION: left bottom
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_colorInput {
+	LEFT: 0px; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_blue .cs_colorBox {
+	BORDER-RIGHT: blue 1px solid; BORDER-TOP: blue 1px solid; LEFT: 0px; BORDER-LEFT: blue 1px solid; BORDER-BOTTOM: blue 1px solid; POSITION: absolute; TOP: 0px
+}
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonsPanel {
+	MARGIN-BOTTOM: 8px
+}

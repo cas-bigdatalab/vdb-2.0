@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<tree id="0">
+	<item text="页面设置" id="directory@$setup" >
+		<item text="网站首页" id="customize.vpage?layoutName=index" ></item>
+		<item text="数据实体显示页面" id="customize.vpage?layoutName=showEntity" ></item>
+		<item text="数据显示页面" id="customize.vpage?layoutName=showItem" ></item>
+	</item>
+	<item text="组件管理" id="listWidgets.vpage?widgetlib=editor" ></item>
+	<item text="banner区管理" id="topManager.vpage?picType=top" ></item>
+	<item text="背景图片管理" id="bgManager.vpage?picType=bg" ></item>
+	<item text="网站发布" id="publish.vpage" ></item>
+	<item text="索引库维护" id="manageIndex.vpage" ></item>
+</tree> 

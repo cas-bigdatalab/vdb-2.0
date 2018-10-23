@@ -1,0 +1,12 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示invoke的用法')
+#invoke("vdb.mydb.sample.SampleAction")
+<p>此处调用了vdb.mydb.sample.SampleAction，调用之后可以获取环境变量now的值：</p>
+<p>now is ${now}</p>
+<p>所有的Action应该实现vdb.mydb.vtl.VdbAction接口，该接口定义如下：</p>
+<pre>
+	public interface VdbAction
+	{
+		void doAction(VdbActionContext vc) throws Exception;
+	}
+</pre>

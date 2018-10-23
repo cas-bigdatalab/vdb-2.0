@@ -1,0 +1,3 @@
+﻿#set($id = $request.getSession().getId())
+$id
+$session.setAttribute("FileUpload.Progress.$id","0")

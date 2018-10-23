@@ -1,0 +1,22 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_columnName" value="${meta.columnName}"><input type="text" size="35" value="${meta.columnName}" disabled></td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="HtmlEdit" checked>HTML编辑框
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑框尺寸</td>
+      <td width="80%" style="padding-left:12px;">
+      	宽度：<input type="text" size="6" name="P_editorWidth" value="$!{field.editorWidth}">
+      	高度：<input type="text" size="6" name="P_editorHeight" value="$!{field.editorHeight}">
+      </td>
+    </tr>
+</table>
+<script $ifDefer>
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+</script>

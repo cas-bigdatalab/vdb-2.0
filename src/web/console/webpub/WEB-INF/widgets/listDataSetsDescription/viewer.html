@@ -1,0 +1,8 @@
+#selectView($view, $domain, 'listDataSets')
+<ul>
+#foreach($dataset in $view.items)
+<li>
+	&nbsp;&nbsp;&nbsp;&nbsp;$dataset.description
+</li>
+#end
+</ul>

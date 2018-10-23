@@ -1,0 +1,19 @@
+<li>
+	<label for="p_ASearchDisplay">是否显示高级查询:</label>
+	<label style="width:65px;"> <input   type="radio"   name="p_searchDisplay" onclick="javascript:$('#expand_li').show();"  #if($widget.props.searchDisplay=="true") checked #end   value="true">是   </label>
+	<label style="width:65px;"> <input   type="radio"   name="p_searchDisplay" onclick="javascript:$('#expand_li').hide();"	#if($widget.props.searchDisplay!="true") checked #end	 value="false">否</label>
+</li>
+
+
+<li id="expand_li" #if($widget.props.searchDisplay!="true") style="display:none" #end>
+	<label for="p_expand">高级查询是否展开:</label>
+	<label style="width:65px;"> <input   type="radio"   name="p_expand"  #if($widget.props.expand=="true") checked #end   value="true">是   </label>
+	<label style="width:65px;"> <input   type="radio"   name="p_expand"	#if($widget.props.expand!="true") checked #end	 value="false">否</label>
+</li>
+
+
+<li>
+	<label for="p_ASearchDisplay">是否显示全表查询:</label>
+	<label style="width:65px;"> <input   type="radio"   name="p_searchTotalDisplay"  #if($widget.props.searchTotalDisplay=="true") checked #end   value="true">是   </label>
+	<label style="width:65px;"> <input   type="radio"   name="p_searchTotalDisplay"	#if($widget.props.searchTotalDisplay!="true") checked #end	 value="false">否</label>
+</li>

@@ -1,0 +1,66 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:23-->
+#set($entity = $tool.getEntity('ygzx.one2one'))
+#set($seqid1=$seq.id)
+<table width="98%" border="0" height="1" align="center">
+<tr>
+	<td>
+	<div class="search_big_div" style="align:center;">
+    	<div class="title_div" style="align:center;">
+    		--一对一基金--
+        </div>
+        <div style="width:90%" align="left"></div>
+    	</div>
+	</td>
+</tr>
+<tr>
+	<td>
+				<div class="search02_title_div">高级搜索<a href="#" id="toggleQuery" onclick="toggleQueryImg('queryFormImg${seqid1}');$('#QueryForm${seqid1}')[0].jsoQueryForm.toggle();"><img id="queryFormImg${seqid1}" src="images/ico_jiaohao02.jpg" height="13" width="13" style="margin-left:5px;"></a></div>
+		<!--查询表单-->
+		<div class="search02_contents_div">
+		<div id="QueryForm${seqid1}" class="QueryForm" style="display:none;background:url(../images/contents_bg.jpg) #fff repeat-x 50% top;">
+		</div>
+		</div>
+				<div style="height:20"></div>
+		<!--查询结果显示-->
+		<div id="DataGrid${seqid1}" class="DataGrid"></div> 
+	</td>
+</tr>
+</table>
+<script DEFER>
+	//定义一个查询对象
+	var jsoQuery = new Query('ygzx.one2one');
+	jsoQuery.pageSize = 20;
+	var eb = new ExprBuilder();
+	#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "listItems", $entity.id))
+	
+	#if($page.pageSize&&$page.pageSize>0)
+		jsoQuery.pageSize = $page.pageSize;
+	#end
+
+	#if ($page.orderFields&&$page.orderFields.size()>0)
+		jsoQuery.orderField="$page.orderFields.get(0).fieldUri";
+		#if ($page.orderFields.get(0).order)
+		jsoQuery.orderAsc = "$page.orderFields.get(0).order";
+		#end
+	#end
+	
+	//定义一个数据网格
+	var jsoDataGrid = new DataGrid(jsoQuery, $('#DataGrid${seqid1}')[0]);
+	jsoDataGrid.refresh();
+	
+	//定义一个查询框
+	var jsoQueryForm = new QueryForm(jsoQuery, 'ygzx.one2one', $('#QueryForm${seqid1}')[0], new function()
+		{
+			this.onsubmit = function()
+			{
+				jsoDataGrid.queryFlag=true;
+				jsoDataGrid.refresh();
+			}
+		}
+	);
+	
+	</script>
+<!--如果gotoPage变量不为空-->
+#if(!$param.gotoPage)
+$loggerTool.logAccess(null,null,$entity,'showEntity',null,null,false)
+#end

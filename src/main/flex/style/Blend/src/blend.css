@@ -1,0 +1,390 @@
+/* CSS file */
+
+/* Global
+{
+	color: #FFFFFF;
+	themeColor: #000000;
+} */
+
+ Application
+{
+	color: #FFFFFF;
+	backgroundColor: #000000;
+	backgroundImage: Embed(source="images/theme3.jpg");
+	backgroundSize: auto;
+	paddingTop: 0;
+} 
+
+Accordion
+{
+	downSkin: Embed(source="blendSkin.swf", symbol="DropDownMS_ClosedDOWN");
+    overSkin: Embed(source="blendSkin.swf", symbol="DropDownMS_ClosedOVER");
+    upSkin: Embed(source="blendSkin.swf", symbol="DropDownMS_ClosedUP");
+    color: #00CCCC;
+    textRollOverColor: #ffffff;
+    textSelectedColor: #ffffff;
+    fontFamily: Arial;
+    fontSize: 11;
+    fontWeight: normal;
+	headerStyleName: accordionHeader;
+} 
+
+Alert
+{
+	paddingTop: 10;
+	paddingBottom: 10;
+	borderAlpha: 0.0;
+	backgroundAlpha: 0.0;
+	backgroundColor: #FFFFFF;
+	titleStyleName: Embed(source="blendSkin.swf", symbol="alertTitle");
+    fill-colors: #8F0F0F, #470808, #000000;
+    border-skin: ClassReference("tabNavborderBG");
+	headerHeight: 10;
+	controlBarStyleName: alertControlBar;
+	
+} 
+
+Button
+{
+	color: #ffffff;
+	textRollOverColor: #000000;
+	paddingLeft: 10;
+	
+}
+
+ButtonBar
+{
+	firstButtonStyleName: buttonBarFirstButton;
+	buttonStyleName: buttonBarButton;
+	lastButtonStyleName: buttonBarLastButton;
+	color: #E0E0E0;
+	
+}
+
+CheckBox
+{
+}
+
+ComboBox
+{
+	color: #FFFFFF;
+	useRollOver: true;
+	dropdownStyleName: comboBoxDropdown;
+	themeColor: #FFFFFF;
+	textRollOverColor: #DCDCDC;
+	textSelectedColor: #9A9A9A;
+	
+}
+
+CursorManager
+{
+	busyCursorSkin: Embed(source="blendSkin.swf", symbol="CursorManager_busyCursor");
+}
+
+ColorPicker
+{
+	focusAlpha: 0;
+	
+}
+
+ControlBar
+{
+	paddingLeft: 25;
+	paddingRight: 25;
+    fill-colors: #8F0F0F, #470808, #000000;
+    border-skin: ClassReference("titleWindowborderBG");
+}
+
+DataGrid
+{
+	color: #000000;
+	selectionColor: #606060;
+	alternatingItemColors:#cccccc, #B10101;
+	rollOverColor: #590000;
+	textSelectedColor: #DCDCDC;
+	fontWeight: normal;
+	textRollOverColor: #CECECE;
+	headerStyleName: dataGridHeader;
+	textAlign: center;
+}
+
+DateChooser
+{
+	color: #981010;
+	todayStyleName: dateChooserToday;
+	disabledColor: #414141;
+	selectionColor: #7C7C7C;
+	rollOverColor: #E7E7E7;
+	todayColor: #BB9090;
+	headerStyleName: dateChooserHeader;
+	fontFamily: Arial;
+	weekDayStyleName: dateChooserWeekDay;
+	backgroundColor: #ADADAD;
+	cornerRadius: 11;
+	borderColor: #BD0000;
+	
+}
+
+HRule
+{
+	shadowColor: #222222;
+}
+
+VRule
+{
+	shadowColor: #222222;
+}
+
+HScrollBar
+{
+	
+}
+
+VScrollBar
+{
+	
+}
+
+Label
+{
+	color: #FFFFFF;
+}
+
+LinkButton
+{
+	textRollOverColor: #CBCBCB;
+	textSelectedColor: #B4B4B4;
+	
+}
+
+List
+{
+	color: #000000;
+	backgroundColor: #cccccc;
+}
+
+TileList
+{
+	backgroundColor: #cccccc;
+}
+
+MenuBar
+{
+	color: #F1F1F1;
+
+}
+
+HorizontalList
+{
+	backgroundColor: #cccccc;
+}
+
+Panel
+{
+	cornerRadius: 18;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+	controlBarStyleName: panelControlBar;
+	roundedBottomCorners: true;
+	backgroundAlpha: 0.0;
+	borderAlpha: 0.0;
+}
+
+ProgressBar
+{
+	
+}
+
+RadioButton
+{
+}
+
+NumericStepper
+{
+	
+}
+
+PopUpButton
+{
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #DFDFDF;
+	horizontalGap: 7;
+	
+}
+
+HSlider
+{
+	thumbSkin: Embed(source="blendSkin.swf", symbol="Slider_thumbSkin");
+}
+
+VSlider
+{
+	thumbSkin: Embed(source="blendSkin.swf", symbol="Slider_thumbSkin");
+}
+
+ TabNavigator
+{
+	borderStyle: none;
+    backgroundAlpha: 0;
+    backgroundColor: #283346;
+    fill-colors: #8F0F0F, #470808, #000000;
+	tabStyleName: "myTabs";
+	selectedTabTextStyleName: "myTabs";
+}  
+
+TabBar
+{
+	firstTabStyleName: tabBarFirstTab;
+	tabStyleName: tabBarTab;
+	lastTabStyleName: tabBarLastTab;
+	
+}
+
+TextInput
+{
+	paddingLeft: 7;
+	paddingTop: 2;
+	color: #991010;
+	
+}
+
+TextArea
+{
+	paddingLeft: 7;
+	paddingRight: 7;
+	paddingTop: 2;
+	color: #991010;
+}
+
+TitleWindow
+{
+	cornerRadius: 18;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+	paddingBottom: 5;
+    fill-colors: #000000, #470808, #350606;
+	controlBarStyleName: panelControlBar;
+    border-skin: ClassReference("titleWindowborderBG");
+	roundedBottomCorners: true;
+	backgroundAlpha: 0.0;
+	borderAlpha: 0.0;
+}
+
+Tree
+{
+	rollOverColor: #878787;
+	selectionColor: #DF0000;
+	paddingLeft: 5;
+	paddingTop: 5;
+	paddingBottom: 2;
+	
+}
+
+.myTabs {
+	color: #ffffff;
+	borderColor: #666666;
+	textRollOverColor: #CCCCCC;
+	upSkin: Embed(source="blendSkin.swf", symbol="tabs_selected");
+	overSkin: Embed(source="blendSkin.swf", symbol="tabs_selected");
+	downSkin: Embed(source="blendSkin.swf", symbol="tabs_selected");
+	disabledSkin: Embed(source="blendSkin.swf", symbol="tabs_selected");
+ 	selectedUpSkin: Embed(source="blendSkin.swf", symbol="tabs_unselected");
+	selectedOverSkin: Embed(source="blendSkin.swf", symbol="tabs_unselected");
+	selectedDownSkin: Embed(source="blendSkin.swf", symbol="tabs_unselected");
+	selectedDisabledSkin: Embed(source="blendSkin.swf", symbol="tabs_unselected"); 
+}
+
+
+.alertControlBar
+{
+	backgroundAlpha: 0.0;
+	color: #FFFFFF;
+	paddingTop: 25;
+	fontWeight: bold;
+}
+.dateChooserToday
+{
+	fontFamily: Arial;
+	fontWeight: bold;
+}
+@font-face
+{
+	fontFamily: "Arial Black";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Arial Black");
+}
+.dateChooserHeader
+{
+	fontFamily: Arial;
+	fontWeight: bold;
+}
+/* @font-face
+{
+	fontFamily: Cambria;
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Cambria");
+}
+@font-face
+{
+	fontFamily: "Angsana New";
+	fontWeight: normal;
+	fontStyle: normal;
+	src: local("Angsana New");
+} */
+.dateChooserWeekDay
+{
+	fontFamily: Arial;
+}
+.comboBoxDropdown
+{
+	cornerRadius: 5;
+	backgroundColor: #616161;
+	borderStyle: solid;
+	borderColor: #B7BABC;
+	rollOverColor: #363636;
+	selectionColor: #980000;
+}
+.accordionHeader
+{
+}
+.buttonBarFirstButton
+{
+	textRollOverColor: #C4C4C4;
+	textSelectedColor: #868686;
+}
+.buttonBarButton
+{
+	textRollOverColor: #CCCCCC;
+	textSelectedColor: #9A9A9A;
+}
+.buttonBarLastButton
+{
+	textRollOverColor: #CFCFCF;
+	textSelectedColor: #8E8E8E;
+}
+.tabBarFirstTab
+{
+	textRollOverColor: #E9E9E9;
+	textSelectedColor: #BCBCBC;
+}
+.tabBarTab
+{
+	textRollOverColor: #E1E1E1;
+	textSelectedColor: #B3B2B2;
+}
+.tabBarLastTab
+{
+	textRollOverColor: #DDDDDD;
+	textSelectedColor: #A9A9A9;
+}
+.dataGridHeader
+{
+	color: #FFFFFF;
+	fontWeight: bold;
+	textAlign: center;
+} 

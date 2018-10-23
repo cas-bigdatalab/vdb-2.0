@@ -1,0 +1,102 @@
+#usingLayout('/console/catalog/template1.vpage')
+#set($title="数据集属性")
+
+#if (!$param.dsid)
+	#set($isNew = true)
+#else
+	#set($meta = ${catalog.fromId(${param.dsid})})
+	#set($isNew = false)
+#end
+
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+<link rel="stylesheet" type="text/css" href="/console/catalog/js/style.css">
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<script language="javascript">
+
+	$.validator.addMethod("trim_name", function(value,element,param) {
+		$("#name").val($.trim($("#name").val()));
+		return true;
+	});
+	$(function()
+	{
+		$("#form1").validate({
+			submitHandler: function(form){
+				form.submit();
+			},
+			rules: {
+				name: {
+					required:true,
+					trim_name: "",
+					remote:{
+							url: "uriCheck.vpage",
+							cache: true
+					}
+				}
+			},
+			messages: {
+				name: "不能为空！或者uri已经存在"
+			}
+		});	
+	});
+	function trim_name()
+	{
+		$("#name").val($.trim($("#name").val()));
+		$("#form1").validate();
+	}
+</script>
+<form id="form1" name="form1" action="doUpdateDataSet.vpage?isNew=$!{isNew}&dsid=$!{meta.id}" method="post">
+
+	#if (!$isNew)
+		<p align="right">
+		<a href="doExportXml.action?dsid=$!{meta.id}">导出XML&gt;&gt;&gt;</a>
+		</p>
+	#end
+
+	 <table width="90%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td  class="table_bg" style="border-top:#91c0fe 1px solid;">name</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">
+				#if ($!{isNew})
+					<div style="float:left"><input type="text" id="name" name="name" size="10" value="" > </div>				
+				#else
+					<input type="text" name="P_uri" size="20" value="$!{meta.uri}" readonly class="disabled">
+				#end
+			</td>
+		</tr>
+
+		<tr>
+			<td  class="table_bg">标题</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="text" name="P_title" size="35" value="$!{meta.title}" >
+			</td>
+		</tr>
+
+	#if (!$isNew)
+		<tr>
+			<td  class="table_bg">元数据项注册ID</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">$!{meta.id}</td>
+		</tr>
+
+		<tr>
+			<td  class="table_bg">元数据项注册时间</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">$!{meta.lastModified}</td>
+		</tr>
+	#end
+
+		<tr>
+			<td  class="table_bg">描述信息</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><br>
+				<input  type="hidden" name="P_description" id="P_description" value="#xml($!{meta.description})"/>
+				<iframe frameborder="0" width=550 height=500 scrolling="no" src="/console/shared/plugins/fckeditor/editor/fckeditor.html?InstanceName=P_description&amp;Toolbar=Default" id="P_description___Frame"> </iframe>
+			</td>
+		</tr>
+	</table>
+
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+</div>
+</form>

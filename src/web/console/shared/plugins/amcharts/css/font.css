@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/*
+ * 一些标记的字体重定义
+ * @module	font
+ * @desc	使这些标记在不同的浏览器内显示一致
+ */
+
+/* 将所有标记的字体默认为16px */
+html * { font-size: 100.01% }
+
+/* 字体优先考虑Mac平台，随后是跨平台的serif字体 */
+body{
+	font-size: 75.00%;
+	font-family:'lucida grande',taho,verdana,'trebuchet ms',sans-serif;
+}
+ 
+/* hx系列 */
+h1, h2, h3, h4, h5, h6{ font-weight: bold; }
+h1{ font-size: 200%; }
+h2{ font-size: 166.67%; }
+h3{ font-size: 150%; }
+h4{ font-size: 133.33%; }
+h5{ font-size: 116.67%; }
+h6{
+	font-size: 116.67%;
+	font-style: italic;
+}
+
+/* 着重标记 */
+cite, blackquote, em, i{ font-style: italic; }
+strong, b{ font-weight: bold; }
+
+/* 预格式标记 */
+pre, code{
+	font-family: monospace;
+	font-size: 1.1em;
+}
+
+/* 缩写标记 */
+acronym, abbr{
+	border-bottom: .1em dashed #c00;
+	cursor: help;
+	letter-spacing: .07em;
+}
+
+.gray{
+	color: gray;
+}
+
+.red{
+	color: red;
+}
+
+.green{
+	color: green;
+}

@@ -1,0 +1,51 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#set($entity = ${catalog.fromUri($page.entityUri)})
+#saveAs("view/${page.name}.vpage")
+
+${comment}定义一个指向$entity.uri的实体对象
+\#set(${D}entity = ${D}tool.getEntity('$entity.uri'))
+
+#set($fields=$page.viewFields)
+\#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+\#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      #foreach ($viewField in $fields)
+					#set($field = ${catalog.fromUri($viewField.fieldUri)})
+					<td align="center" class="contents02_table_bg" fieldId="${field.id}" fieldUri="${field.uri}" orderAsc="${jsoQuery.orderAsc}" #if($field.fieldType.sortable) onclick="setOrderBy(this)" style="cursor:hand" title="按${field.title}排序" #else style="color:#888888" title="不支持排序" #end><b>#if ($field == $entity.identifier.field)<img src="/console/shared/images/key.gif" align="absbottom">#end ${field.title}</b>\#if ('$field.uri' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">\#end</td>
+			  #end
+		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		\#foreach ($bean in $pageViewer.beans)
+		\#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+			#foreach ($viewField in $fields)
+				#set($field = ${catalog.fromUri($viewField.fieldUri)})
+			    <td  style="padding-left:6px;align:left">$canvas.view($field)&nbsp;&nbsp;</td>
+			#end
+				<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		\#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	\#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		\#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	\#end
+\#end

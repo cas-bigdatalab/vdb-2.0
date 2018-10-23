@@ -1,0 +1,29 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($datasetUri = $param.uri)
+#set($dataset = $tool.getDataSet($datasetUri))
+#if(!$dataset )
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<entities> 
+			#foreach($entity in $dataset.entities)	
+				<entity>
+			    	<name>$!entity.name</name>
+			    	<uri>$!entity.uri</uri>
+					<recordCount>$!indicatorTool.getEntityRecordCount($entity.uri)</recordCount>
+					<lastModify>$!formater.formatDate($!logsTool.getEntityLastModificationTime($entity),"yyyy-MM-dd hh:mm:ss")</lastModify>
+				</entity>
+			#end
+		</entities>
+	</body>
+</response>
+#end
+#end

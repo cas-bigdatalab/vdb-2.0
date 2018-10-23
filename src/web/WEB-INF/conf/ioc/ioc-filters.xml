@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="requestEncoding" class="org.springframework.web.filter.CharacterEncodingFilter">
+		<property name="encoding" value="UTF-8"/>
+		<property name="forceEncoding" value="true"/>
+	</bean>
+
+	<bean id="csdbHostFilter" class="vdb.mydb.jsp.ip.IpFilter">
+	</bean>
+
+	<bean id="requestContextInjection" class="vdb.mydb.jsp.RequestContextInjection">
+		<property name="contextInjections" ref="contextInjections"/>
+	</bean>
+
+	<bean id="urlMapping" class="vdb.mydb.jsp.UrlMappingFilter"/>
+	
+	<bean id="registerFilter" class="vdb.mydb.jsp.RegisterFilter">
+		<property name="urlList">
+			<list>
+				<value>http://dsns.csdb.cn/autoRegister.action</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id ="vdbFilterChainProxy" class ="org.springframework.security.util.FilterChainProxy">
+		<property name="stripQueryStringFromUrls" value="false"/>
+		<property name="matcher">
+			<bean class ="org.springframework.security.util.RegexUrlPathMatcher"/>
+		</property>
+		<property name ="filterChainMap">
+			<map>
+				<entry key="/service">
+					<list>
+						<ref bean="csdbHostFilter"/>
+						<ref bean="requestEncoding"/>
+						<ref bean="springSecurityFilterChain"/>
+						<ref bean="urlMapping"/>
+					</list>
+				</entry>
+				<entry key="/.*\.jsp">
+					<list>
+						<ref bean="requestContextInjection"/>
+						<ref bean="requestEncoding"/>
+						<ref bean="springSecurityFilterChain"/>
+						<ref bean="urlMapping"/>
+					</list>
+				</entry>
+				<entry key="/.*">
+					<list>
+						<ref bean="requestEncoding"/>
+						<ref bean="springSecurityFilterChain"/>
+						<ref bean="urlMapping"/>
+						<ref bean="registerFilter"/>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>

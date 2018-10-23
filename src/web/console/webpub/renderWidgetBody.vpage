@@ -1,0 +1,115 @@
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#if($param.widget)
+	#set($widgetName = $param.widget)
+#end
+
+#if(!$isViewMode)
+	#set($cursorMove = "cursor:move;")
+#end
+
+#if($param.layout)
+	#set($layout = $param.layout)
+#end
+
+#if(!${column})
+	#set($column = 1)
+#end
+
+#remove("widget")
+#set($widget = $widgetFactory.getWidget($widgetName))
+#if($widget)
+#set($displayHeader = ($widget.props.headerDisplay != "false"))
+
+<dd id='${widget.name}Body' class='basebat' #if(!$isViewMode) style="cursor:move;" #end>
+#if($displayHeader)
+#set($widgetWidth = $widgetWidth - 8)
+<table class="table_all table_${layout}_${column} table_${layout}_${column}_$num" cellSpacing="0" cellPadding="0" #if(!$isViewMode) width="$widgetWidth" #end>
+              <tr>
+                <td  class="caption_all caption_${layout}_${column} caption_${layout}_${column}_$num" 	valign="top" >
+					#if(!$widget.properties.get("caption"))
+						$widget.title
+					#else
+						$widget.properties.get("caption")
+					#end
+					<span style="valign:middle;text-align:right;width:100%;float:right;margin-top:-15px" width="100%">
+					#if(!$isViewMode)
+						#if(!$widget.readOnly)
+							<a href="#" onclick="updateWidget('$widget.name',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));" style="font-weight:normal;font-size:12px;">修改</a>	
+						#end
+						#set($flag = true)
+						#if($widget.name=='showItem'||$widget.name=='showEntity')
+						   	#set($flag = false)
+						#end
+						
+						#if($flag)
+						<a href='#' onclick="removeWidget(document.getElementById('$widget.name'));"  style="font-weight:normal;font-size:12px;">删除</a>
+						#end
+						&nbsp;
+						<script>
+							if(document.getElementById('select_$widget.name') != null)
+								document.getElementById('select_$widget.name').checked = true;
+						</script>
+					#end
+					</span>
+				</td>
+              </tr>
+              <tr>
+                <td align="left" valign="top" class="content_all content_${layout}_${column} content_${layout}_${column}_$num" 	valign="top">
+#else
+#if(!$isViewMode)
+<dt class='basebat' $!cursorMove">
+	<span style='float:left;'>
+		#if(!$widget.properties.get("caption"))
+			$widget.title
+		#else
+			$widget.properties.get("caption")
+		#end
+	</span>
+	<span style='float:right;'>
+			#if(!$widget.readOnly)
+				<a href='#' onclick="updateWidget('$widget.name',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));">修改</a>	
+			#end
+			#set($flag = true)
+			#if($widget.name=='showItem'||$widget.name=='showEntity')
+			   	#set($flag = false)
+			#end
+			
+			#if($flag)
+			<a href='#' onclick="removeWidget(this.parentNode.parentNode.parentNode);">删除</a>
+			#end
+			&nbsp;
+	</span>
+
+	<script>
+		if(document.getElementById('select_$widget.name') != null)
+			document.getElementById('select_$widget.name').checked = true;
+	</script>
+</dt>
+#end
+#end
+		<div style="width:100%;" id="${widget.name}BodyInner">
+			
+			#if($isViewMode)
+			#set($flag = true)
+			#else 
+			#set($flag = false)
+			#end
+			#if($widget.asyc) 
+				<script>loadWidgetBody('$widget.name',$flag);</script>
+			#else
+				#parse("/console/webpub/WEB-INF/widgets/$widget.name/viewer.html")
+			#end
+		</div>
+#if($displayHeader)
+				</td>
+              </tr>
+              <tr>
+              <td class="bottom_${layout}_${column} bottom_${layout}_${column}_$num">
+              </td>
+              </tr>
+            </table>
+#end
+</dd>
+#end

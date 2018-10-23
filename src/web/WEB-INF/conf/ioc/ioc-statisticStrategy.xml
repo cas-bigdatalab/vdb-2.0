@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+
+	<bean id="mysqlAccumulator" class="vdb.report.resstat.dbstats.accumulator.impl.MysqlAccumulator"></bean>
+	<bean id="oracleAccumulator" class="vdb.report.resstat.dbstats.accumulator.impl.OracleAccumulator"></bean>
+	<bean id="mssqlAccumulator" class="vdb.report.resstat.dbstats.accumulator.impl.MssqlAccumulator"></bean>
+	<bean id="postgresqlAccumulator" class="vdb.report.resstat.dbstats.accumulator.impl.PostgresqlAccumulator"></bean>
+	<bean id="derbyAccumulator" class="vdb.report.resstat.dbstats.accumulator.impl.DerbyAccumulator"></bean>
+	
+	<bean id="stupidStatisticStrategy" class="vdb.report.resstat.dbstats.strategy.impl.StupidStatisticStrategy">
+		<property name="fetchSize" value="50" />
+	</bean>
+	<bean id="sqlStatisticStrategy" class="vdb.report.resstat.dbstats.strategy.impl.SqlStatisticStrategy">
+		<property name="accumulatorMap">
+			<map>
+				<entry key="mysql" value-ref="mysqlAccumulator"></entry>
+				<entry key="oracle" value-ref="oracleAccumulator"></entry>
+				<entry key="mssql" value-ref="mssqlAccumulator"></entry>
+				<entry key="postgresql" value-ref="postgresqlAccumulator"></entry>
+				<entry key="derby" value-ref="derbyAccumulator"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="statisticStrategyManager" class="vdb.report.resstat.dbstats.strategy.StatisticStrategyManager">
+		<property name="statisticStrategy" ref="sqlStatisticStrategy" />
+	</bean>
+</beans>

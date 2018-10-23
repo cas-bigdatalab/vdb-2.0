@@ -1,0 +1,7 @@
+﻿#set($entity=${catalog.fromUri(${param.entityUri})})
+﻿#set($ds=$entity.getDataSet())
+#if ($chartsTool.checkChartName(${param.uri},${ds}))
+0
+#else
+1
+#end

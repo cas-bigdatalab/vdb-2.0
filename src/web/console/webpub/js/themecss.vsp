@@ -1,0 +1,3 @@
+#set($themeres="/themes/${param.themeName}/res")
+#set($theme = $themeTool.theme)
+#parse("/console/webpub/WEB-INF/themes/${param.themeName}/res/js/css.css")

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+
+	<!--系统日志，如登录等 -->
+	<bean id="domainLogsDataSourceDetail" class="vdb.mydb.jdbc.DataSourceDetail">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url"
+			value="jdbc:hsqldb:${domain.realRootPath}/extdb/logs;shutdown=true" />
+		<property name="userName" value="sa" />
+		<property name="password" value="" />
+		<property name="scriptFile" value="${extdb.scriptsPath}/logs.script" />
+		<property name="firstTable" value="USERLOG" />
+	</bean>
+
+	<!--数据集所属的文件类型表-->
+	<bean id="dataSetFilesDataSourceDetail" class="vdb.mydb.jdbc.DataSourceDetail">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:${dataset.rootPath}/files/files;shutdown=true" />
+		<property name="userName" value="sa" />
+		<property name="password" value="" />
+		<property name="scriptFile" value="${extdb.scriptsPath}/dsFiles.script" />
+		<property name="firstTable" value="VDB_FILES" />
+	</bean>
+
+	<!--数据集、数据字段访问日志-->
+	<bean id="dataSetLogsDataSourceDetail" class="vdb.mydb.jdbc.DataSourceDetail">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" value="jdbc:derby:${dataset.rootPath}/logs;create=true" />
+		<property name="userName" value="sa" />
+		<property name="password" value="" />
+		<property name="scriptFile" value="${extdb.scriptsPath}/dsLogs.script" />
+		<property name="firstTable" value="LOGRECORDS" />
+	</bean>
+
+	<!--统计分析报告-->
+	<bean id="dataSetReportDataSourceDetail" class="vdb.mydb.jdbc.DataSourceDetail">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url" value="jdbc:derby:${dataset.rootPath}/reports;create=true" />
+		<property name="userName" value="sa" />
+		<property name="password" value="" />
+		<property name="scriptFile" value="${extdb.scriptsPath}/dsReports.script" />
+		<property name="firstTable" value="VDB_DQ_DATASET" />
+	</bean>
+
+	<!--索引库-->
+	<bean id="indexer" class="vdb.mydb.index.jdbc.JdbcIndexer">
+		<property name="dataSource">
+			<bean class="vdb.mydb.jdbc.DataSourceDetail">
+				<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+				<property name="url" value="jdbc:derby:${domain.realRootPath}/index/jdbc;create=true" />
+				<property name="userName" value="sa" />
+				<property name="password" value="" />
+				<property name="scriptFile" value="${extdb.scriptsPath}/index.script" />
+				<property name="firstTable" value="INDEX_TAB" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!--文件存储-->
+	<bean id="fileManager" class="vdb.mydb.files.impl.JdbcFileManager" />
+
+	
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="网站发布平台"/>
+		<property name="version" value="1"/>
+		<property name="order" value="4000"/>
+		<property name="dependsOn">
+			<list>
+				<value>catalog</value>
+			</list>
+		</property>
+		<property name="description" value="网站发布模块集中管理网站前台展示及发布的全过程。它是VisualDB2.0新增模块，包括页面设置、组件管理、网站发布、索引库维护四个子模块。页面设置子模块通过可视化的方式便于用户设置网站的风格及布局，同时众多常用的可拖动组件又为用户灵活设置网站内容带来了极大的便利。组件管理子模块使用户通过编辑、删除、复制等功能实现了对组件的基本设置和管理，同时其开放接口又使用户可以灵活定制和扩展自己的个性风格和组件。"/>
+	</bean>
+</beans>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean class="vdb.mydb.context.ApplicationContextExporter">
+		<property name="alias">
+			<map>
+				<entry key="widgetFactory" value="$widgetFactory" />
+			</map>
+		</property>
+		<property name="depends">
+			<list>
+				<ref bean="vdbPublisher" />
+				<ref bean="widgetFactory" />
+			</list>
+		</property>
+	</bean>
+</beans>

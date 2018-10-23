@@ -1,0 +1,8 @@
+<li>
+	<label for="p_fold">是否折叠显示:</label>
+	 <select name="p_fold">
+		 <option value="all"#if($widget.props.fold=="all") selected#end>全展开</option>
+		 <option value="none"#if($widget.props.fold=="none") selected#end>全收缩</option>
+		 <option value="first"#if($widget.props.fold=="first") selected#end>展开第一个</option>
+	 </select>
+</li>

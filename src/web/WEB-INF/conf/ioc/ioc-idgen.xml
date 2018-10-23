@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="idGenerators" class="vdb.mydb.types.IdGenerators">
+		<property name="generators">
+			<list>
+				<bean class="vdb.mydb.typelib.idgen.AutoIncrement">
+					<property name="name" value="autoinc"/>
+					<property name="title" value="自动增长"/>
+				</bean>
+				<bean class="vdb.mydb.typelib.idgen.UidGenerator">
+					<property name="name" value="uid"/>
+					<property name="title" value="自动生成16位ID"/>
+				</bean>
+				<bean class="vdb.mydb.typelib.idgen.GuidGenerator">
+					<property name="name" value="guid"/>
+					<property name="title" value="自动生成32位ID"/>
+				</bean>
+			</list>
+		</property>
+	</bean>		
+</beans>

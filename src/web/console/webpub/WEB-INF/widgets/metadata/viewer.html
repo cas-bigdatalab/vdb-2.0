@@ -1,0 +1,23 @@
+#set($lines = 0)
+#if($widget.props.lines)
+	#set($lines = $formater.parseInt($widget.props.lines))
+#end
+
+#if($lines != $widget.props.lines)
+	#set($lines = 0)
+#end
+
+#if($lines < 0)
+	#set($lines = 0)
+#end
+#set($seqid=$calendar.time)
+#set($site = $domain.name)
+#set($sid=$seq.id)
+<div id="metadata_out_${seqid}${sid}" style="line-height:25px;padding-bottom:1px;padding-right:6px;"></div>
+<script type="text/javascript">
+	jQuery.getScript("http://rsr.csdb.cn/metadata.jsp?site=$site&n=$lines", function()
+	{		
+		$('#metadata_out_${seqid}${sid}').html(showWidget_metadata());
+	});
+</script>
+

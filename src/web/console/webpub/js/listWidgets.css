@@ -1,0 +1,16 @@
+*{font-size:11px;font-family:Arial, Helvetica, sans-serif;}
+body{text-align:center;}
+fieldset{border:1px #dedede solid; width:90%; margin:0 auto; padding:8px; text-align:left;}
+legend{padding:4px;}
+fieldset label{float:left; width:180px; text-align:left;padding:0 10px;}
+fieldset ol{list-style:none; margin:0; padding:0;}
+fieldset ol li{clear:both; line-height:20px;}
+fieldset ol li fieldset{width:280px;}
+input{behavior:url(input.htc); }  <!--border:1px #ccc solid; background:#fff; width:160px;}-->
+label input{width:14px;height:14px;border:0;}
+input:hover{border:1px #f60 solid;background:#f5f5f5;}
+em{color:#ff0000;}
+.imgbg {
+background:url(../images/widgetbg.gif); PADDING-BOTTOM: 8px; MARGIN: 0px; PADDING-LEFT: 10px; WIDTH: 71px;HEIGHT:63px; 
+PADDING-RIGHT: 0px; PADDING-TOP: 3px
+}

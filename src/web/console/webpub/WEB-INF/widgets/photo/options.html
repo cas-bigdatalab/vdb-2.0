@@ -1,0 +1,19 @@
+#set($select = $daTool.initSelect("p_type",$daTool.execute("cms", "select * from newstype"),"type","type","全部类型","${widget.props.type}"))
+
+<li>
+	<label for="p_type">选择栏目</label>
+	${select}
+</li>
+<li>
+	<label for="p_count">图片数量</label>
+	<input type="text" name="p_count" id="p_count" value="${widget.props.count}" onchange="check();" onblur="check();"/>
+</li>
+<script>
+function check()
+{
+	if(document.getElementById('p_count').value==""||document.getElementById('p_count').value<1)
+	{
+		document.getElementById('p_count').value = '4';
+	}
+}
+</script>

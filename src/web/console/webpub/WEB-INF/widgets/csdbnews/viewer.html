@@ -1,0 +1,26 @@
+#set($lines = 0)
+#if($widget.props.lines)
+	#set($lines = $formater.parseInt($widget.props.lines))
+#end
+
+#if($lines != $widget.props.lines)
+	#set($lines = 0)
+#end
+#set($lmid = "1001")
+#if($widget.props.lmid)
+	#set($lmid = $widget.props.lmid)
+#end
+
+#if($lines < 0)
+	#set($lines = 0)
+#end
+
+#set($seqid=$calendar.time)
+#set($sid=$seq.id)
+<div id="csdbnews_out_${seqid}${sid}" style="line-height:25px"></div>
+<script type="text/javascript">
+	jQuery.getScript("http://widget.csdb.cn/csdbnews.jsp?lmid=$lmid&n=$lines", function()
+	{		
+		$('#csdbnews_out_${seqid}${sid}').html(showWidget_csdbnews());
+	});
+</script>

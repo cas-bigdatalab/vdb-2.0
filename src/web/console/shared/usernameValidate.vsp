@@ -1,0 +1,9 @@
+﻿#if($param.username && $param.username != "")
+	#if($auth.getUser($param.username))
+false
+	#else
+true
+	#end
+#else
+	非法操作
+#end

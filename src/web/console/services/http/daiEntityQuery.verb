@@ -1,0 +1,29 @@
+#if(!$param.uri || !$param.cql)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($beans = $daTool.query($param.uri,$param.cql))
+#set($count = $beans.size())
+#set($beanList = $beans.list(1,$count))
+#if(!$beanList)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<record>
+			<items>
+				#foreach($bean in $beanList)
+					<item>
+					$bean.entity.uri/$bean.id.title
+					</item>
+				#end
+			</items>
+		</record>	
+	</body>
+</response>
+#end
+#end

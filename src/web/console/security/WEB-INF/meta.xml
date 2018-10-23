@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="安全中心"/>
+		<property name="version" value="1"/>
+		<property name="order" value="5000"/>
+		<property name="dependsOn">
+			<list>
+				<value>catalog</value>
+			</list>
+		</property>
+		<property name="description" value="安全中心为数据库系统管理员提供比较方便的用户管理的功能。系统引入了“用户组”的概念，用户可以属于某个或者某些用户组。系统管理员利用安全中心管理工具，可以新增用户组、管理用户组内的用户、修改用户组信息、对用户组进行授权，同时也可以新增用户、设置用户所在的用户组、修改用户密码、对用户进行授权、查看当前用户的访问记录和操作日志等。"/>
+	</bean>
+</beans>

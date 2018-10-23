@@ -1,0 +1,1 @@
+$chartsTool.initSelect(${param.uri},${param.name})

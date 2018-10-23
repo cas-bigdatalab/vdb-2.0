@@ -1,0 +1,109 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="属性列表")
+
+#set($meta = ${catalog.fromId(${param.id})})
+#set($dataset = ${catalog.fromId(${param.dsid})})
+
+<p align="right">
+<a href="updateField.vpage?tid=${meta.id}">添加新的属性&gt;&gt;&gt;</a>
+<a href="uml.vpage?tid=${meta.id}&type=entity">导出对象类图&gt;&gt;&gt;</a>
+<a href="updateFields.vpage?tid=${meta.id}&dsid=${dataset.id}">批量描述属性&gt;&gt;&gt;</a>
+</p>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:#91c0fe 1px solid;border-left:#91c0fe 1px solid;;background:#fff;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;" >
+	<tr >
+		<td class="table01_bg">属性标题</td>
+		<td class="table01_bg">属性uri</td>
+		<td class="table01_bg">属性类型</td>
+		<td class="table01_bg">注册时间</td>
+		<td class="table01_bg">操作</td>
+	</tr>
+
+#if ($dataset.ex.jdbcSource)<!-- 如果数据库连接正确 -->
+#set($flag=0)
+#foreach($field in $meta.fields)
+#set($flag=$flag + 1)
+	<!--判断实体属性是否能与数据库中的字段对应，如不能对应，是添加”中横线“标志-->
+	<!--如果数据库中的表字段被删除，会显示“中横线”标志；集合类型、文件类型等一般都没有对应的数据库表字段，不会显示为“中横线”标志-->
+	<!--引用类型在数据库中有对应的外键字段-->
+	<tr #if($flag % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;"  #if($field.columnName and !$field.ex.jdbcColumn) style="text-decoration: line-through" #end>
+		<td>${field.title}</td>
+		<td>${field.uri}</td>
+		<td>${field.fieldType.title}</td>
+		<td>${field.lastModified}</td>
+		<td style="text-align:center;"><a href="updateField.vpage?id=${field.id}">修改</a> <a href="#" onclick="javascript:deleteAttribute('${field.id}', '${field.title}')">删除</a></td>
+	</tr>
+#end
+
+<!--未描述的列-->
+#foreach ($column in $meta.ex.untitledColumns)
+#set($flag=$flag + 1)
+	<tr #if($flag % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+		<td colspan="5"><font color="red"><i>${column.columnName}</i></font> ${column.typeName}(${column.columnSize})
+		<a href="updateField.vpage?tid=${meta.id}&cn=$formater.encodeUrl(${column.columnName})&type=column">描述成列属性</a>
+		</td>
+	</tr>
+#end
+
+<!--未描述的引用-->
+#foreach ($role in $meta.ex.untitledReferences)
+#set($flag=$flag + 1)
+	<tr #if($flag % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+		<td colspan="5"><font color="red"><i>通过外键字段${role.columnName}与<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>之间的关联</i></font>
+		<a href="updateField.vpage?tid=${meta.id}&role=${role.id}&type=reference&cn=$formater.encodeUrl(${role.columnName})">描述成引用属性</a>
+		</td>
+	</tr>
+#end
+
+<!--未描述的集合-->
+#foreach ($role in $meta.ex.untitledCollections)
+#set($flag=$flag + 1)
+	<tr #if($flag % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+		<td colspan="5">
+	#if ($role.isManyToMany())
+		<font color="red"><i>通过关系表${role.relation.assocTableName}中的${role.columnName}与<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>之间的关联</i></font>
+		<a href="updateField.vpage?tid=${meta.id}&role=${role.id}&type=collection&cn=$formater.encodeUrl(${role.columnName})">描述成集合属性</a>
+	#else
+		<font color="red"><i>通过<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>中的${role.peer.columnName}与之关联</i></font>
+		<a href="updateField.vpage?tid=${meta.id}&role=${role.id}&type=collection&cn=$formater.encodeUrl(${role.peer.columnName})">描述成集合属性</a>
+	#end
+		</td>
+	</tr>
+#end
+
+#else<!-- 如果数据库连接不正确,仅显示属性列表  -->
+	#foreach ($field in $meta.fields)
+	#set($flag=$flag + 1)
+	<tr #if($flag % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+		<td>${field.title}</td>
+		<td>${field.uri}</td>
+		<td>${field.fieldType.title}</td>
+		<td>${field.lastModified}</td>
+		<td align="center"><a href="updateField.vpage?id=${field.id}">修改</a> <a href="#" onclick="javascript:deleteAttribute('${field.id}', '${field.title}')">删除</a></td>
+	</tr>
+	#end
+#end
+</table>
+<script>
+	function deleteAttribute(id, title)
+	{
+		var fatherId="FieldList@${meta.id}@${dataset.id}";
+		var tempId="Field@"+id;
+		
+		if(confirm("你真的要删除属性“"+ title + "”吗?"))
+		{
+			location.href = "doDeleteField.vpage?mid=" + id + "&tid=${meta.id}&dsid=${dataset.id}";
+		}
+	}
+</script>
+<script language="javascript"> 
+var rows = document.getElementsByTagName('tr'); 
+for (var i=0;i<rows.length;i++){ 
+	rows[i].onmouseover = function(){ //鼠标在行上面的时候 
+	this.className += 'altrow'; 
+} 
+rows[i].onmouseout = function(){ //鼠标离开时 
+	this.className = this.className.replace('altrow',''); 
+} 
+} 
+</script> 

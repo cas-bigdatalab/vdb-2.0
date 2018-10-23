@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<pool-config>
+		<pools>
+			<max-wait>1000</max-wait>
+			<connect-timeout>60000</connect-timeout>
+		</pools>
+	</pool-config>
+</root>

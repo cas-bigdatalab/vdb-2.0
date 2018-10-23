@@ -1,0 +1,88 @@
+﻿<table cellspacing="0" width="100%" border="0" id="table9">
+	<tr>
+		<td align="left"><span class="pageCount">总记录数：$pageViewer.recordCount | 当前：
+		${pageViewer.beginning}--$pageViewer.end 条 | 总页数：$pageViewer.pageCount </span></td>
+		<td valign="bottom" align="right">
+		<table cellspacing="0" border="0" id="table10">
+			<tr>
+				<td>
+				<table cellspacing="2" cellpadding="0" border="0" id="table11">
+					<tr>
+						<td>
+						#######################首页
+						#if($pageViewer.currentPage > 1)
+						<a class="list" title="首页" href="?keywords=$keywords&uri=$uri&expr=$expr&gotoPage=1"><img alt="首页" src="/console/shared/images/firstPage.gif" border="0"></a> 
+						#else
+						<img alt="首页" src="/console/shared/images/firstPageDisabled.gif" border="0"> 
+						#end
+						</td>
+
+						<td>
+						#if($pageViewer.currentPage > 1)
+						#set($cp =$pageViewer.currentPage - 1 )
+						<a class="list" title="上一页" href="?keywords=$keywords&uri=$uri&expr=$expr&gotoPage=$cp"><img alt="上一页" src="/console/shared/images/prevPage.gif" border="0"></a> 
+						#else
+						<img alt="上一页" src="/console/shared/images/prevPageDisabled.gif" border="0"> 
+						#end
+						</td>
+
+						#######################数字页
+		
+						#set($p0 = $pageViewer.currentPage - 2)				
+						#set($p1 = $pageViewer.currentPage + 2)
+						
+						#if($p1 > $pageViewer.pageCount)
+							#set($p0 = $p0 - $p1 + $pageViewer.pageCount)
+						#end
+						
+						#if($p0 < 1)
+							#set($p1 = $p1 + 1 - $p0)
+						#end
+						
+						#if($p0 < 1)
+							#set($p0 = 1)
+						#end
+						
+						#if($p1 > $pageViewer.pageCount)
+							#set($p1 = $pageViewer.pageCount)
+						#end
+						
+						#foreach($p in [$p0..$p1])
+						<td>
+						<span class="pageNumber">
+						#if($p == $pageViewer.currentPage)
+						$p
+						#else
+						<a class="list" title="跳转第$p页"   href="?keywords=$keywords&uri=$uri&expr=$expr&gotoPage=$p">$p</a>
+						#end
+						</span>
+						</td>
+						#end
+						
+						#######################尾页
+						<td>
+						#if($pageViewer.currentPage < $pageViewer.pageCount)
+						#set($cp =$pageViewer.currentPage + 1 )
+						<a class="list" title="下一页"  href="?keywords=$keywords&uri=$uri&expr=$expr&gotoPage=$cp" ><img alt="下一页" src="/console/shared/images/nextPage.gif" border="0"></a> 
+						#else
+						<img alt="下一页" src="/console/shared/images/nextPageDisabled.gif" border="0"> 
+						#end
+						</td>
+
+						<td>
+						#if($pageViewer.currentPage < $pageViewer.pageCount)
+						<a class="list" title="尾页"  href="?keywords=$keywords&uri=$uri&expr=$expr&gotoPage=$pageViewer.pageCount"><img alt="尾页" src="/console/shared/images/lastPage.gif" border="0"></a> 
+						#else
+						<img alt="尾页" src="/console/shared/images/lastPageDisabled.gif" border="0"> 
+						#end
+						</td>
+					</tr>
+				</table>
+				</td>
+				<td>
+				<input onclick="javascript:location.href='?keywords=$keywords&uri=$uri&expr=$expr&gotoPage='+document.getElementById('goto').value;" type="button" value="GO&gt;"><input id="goto" onmouseover="this.select();" size="4" value="$pageViewer.currentPage" name="T1"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>

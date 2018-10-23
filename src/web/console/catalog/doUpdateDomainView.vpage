@@ -1,0 +1,12 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateDomainView")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改视图信息")
+
+修改域模块视图成功！<br/>
+<div style="margin-top:10px;">
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateDomainView.vpage"><img src="/console/shared/images/goto.gif" border="none"/>返回接着修改</a><br/>
+		<a href="/console/webpub/publish.vpage"><img src="/console/shared/images/goto.gif" border="none"/>网站发布 </a>
+	</div>
+</div>

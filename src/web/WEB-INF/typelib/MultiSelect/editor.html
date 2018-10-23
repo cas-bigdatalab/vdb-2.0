@@ -1,0 +1,13 @@
+<div id="E_$field.id">	
+	#set($editorName='E_'+$seq.id)
+	\#set(${D}field = ${D}{catalog.fromUri('$field.uri')})
+	\#set(${D}dataValue = ";"+${data.value}+";")
+	<span id="$editorName">
+	\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+		\#set(${D}entryKey = ";" + ${entry.key} + ";")
+		<input type="checkbox" name="${field.name}" value="${entry.key}" \#if(${D}dataValue.indexOf(${D}entryKey)>=0) checked="checked" \#end   \#if ($dc.readonly)readonly  disabled \#end> ${entry.value}
+	\#end
+	</span>
+	<input type="hidden" name="fieldName" value="${field.name}" />
+	<input type="hidden" name="style" value="${field.editorStyle}"/>
+</div>

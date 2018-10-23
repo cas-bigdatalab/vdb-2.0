@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{ height:100%; width:100%;}
+body{ font-family:"宋体"; font-size:12px; color: #000; margin:0px; padding:0px; height:100%; background: #FFF url(../images/c-01.jpg) repeat-x top;}
+div{ margin:0px; padding:0px;}
+img{ margin:0px; padding:0px; border:0px;}
+ul{ margin:0px; padding:0px; list-style-type:none;}
+li{ margin:0px; padding:0px; list-style-type:none;}
+.clear{ clear:both;}
+.left{ float:left;}
+
+
+.edit_div{text-align:center;height:100%; width:100%; padding-top:15px; background:url(../images/c-021.jpg) no-repeat bottom right; padding:1px;}  
+.table_div{width:90%; margin:0 auto; height:100%;}
+.edit_tips_div{ margin-top:30px; font-family:"宋体"; font-size:15px; color:#F00; font-weight:bold;}
+.edit_tips_div img{ margin-right:5px;}
+.edit_tips_table{ margin-top:30px;}
+.edit_tips_table td{padding:5px; font-size:14px;}
+.edit_ico_03{height:17px; width:41px; padding-top:4px; padding-left:13px; background:url(../images/ico03_bg.jpg) no-repeat; color:#FFF;}
+.edit_ico_03 a{color:#FFF; text-decoration: none;}					
+.edit_ico_03 a:hover{color:#FFF; text-decoration: none; font-weight:bold;}
+.upload_div {width:auto; float:left; margin-right:5px;}
+.edit_ico_04{height:18px; width:41px; padding-top:4px; padding-left:13px; background:url(../images/ico04_bg.jpg) no-repeat; float:left; margin-right:5px; margin-top:-5px; color:#000}
+.edit_ico_04 a{text-decoration: none; color:#000}					
+.edit_ico_04 a:hover{text-decoration: none; font-weight:bold; color:#000}
+.right_ico_div{text-align:center; 
+	color:#FFF;
+	margin: 0 auto;
+	}
+
+.left_ico a{height:26px;
+	padding-left:15px;
+	padding-right:15px;
+	background:url(../images/ico_bg.jpg) repeat-x;
+	border:#005bc4 1px solid;
+	line-height:26px;
+	float:left;
+	margin-right:5px;
+	color:#FFF;
+	text-decoration:none;
+	}
+.left_ico a:hover,a:active{
+	background:url(../images/ico02_bg.jpg) repeat-x;
+	border:#0e48ae 1px solid;
+	color:#FFF;
+	text-decoration:none;
+	}

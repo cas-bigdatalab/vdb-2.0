@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+
+	<bean class="vdb.mydb.context.VdbPropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/conf/vdb.properties</value>
+			</list>
+		</property>
+		<property name="extendedProperties">
+			<map>
+				<entry key="app.rootPath">
+					<bean class="vdb.mydb.context.ServletContextRealPath"/>
+				</entry>
+				<entry key="domain.realRootPath">
+					<ref bean="domainRealRootPath"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+			<!-- 
+				<entry key="vdb.mydb.context.ServletContextFile">
+					<bean class="vdb.mydb.context.ServletContextFileEditor"/>
+				</entry>
+				 -->
+				<entry key="java.io.File">
+					<bean class="vdb.mydb.context.FileEditor"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

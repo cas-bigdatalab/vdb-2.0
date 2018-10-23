@@ -1,0 +1,96 @@
+﻿#invoke("vdb.mydb.jsp.action.editor.DoGetColumnData")
+<HTML>
+<HEAD>
+	<script language="JavaScript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+	<SCRIPT LANGUAGE="Javascript" SRC="/console/shared/plugins/amcharts/js/FusionCharts.js"></SCRIPT>
+	<SCRIPT LANGUAGE="Javascript" SRC="/console/shared/plugins/amcharts/js/currentCharts.js"></SCRIPT>
+	<SCRIPT type="text/javascript" src="/console/shared/plugins/amcharts/js/swfobject.js"></SCRIPT>
+	<link rel="StyleSheet" href="/console/shared/plugins/amcharts/css/style.css" type="text/css" />
+	<link rel="StyleSheetFie" href="/console/shared/plugins/amcharts/css/styleFie.css" type="text/css" />
+</HEAD>
+<BODY>
+	<div  id="chart1div" style="border: #B5CDE4 1px solid;"></div><br>
+	#if ($isNum)
+	<div  style="border: #B5CDE4 1px solid;height:30px;line-height:30px"  align="center"> count: $count | sum: $txts.get(0) | avg: $txts.get(1) | max: $txts.get(2) | min: $txts.get(3) </div>
+	#end
+	#set($entityUri=$param.entity)
+	#set($fieldUri=$param.field)
+	#if($field.typeName == "String" && $field.meta().get("editorStyle") == "PassEdit")
+		<script>
+			alert("该类型不支持分组统计");
+			parent.dhxWins.window("w1").close();
+		</script>
+	#end
+	#set($whereFilter=$param.whereFilter)
+	<script>
+		var so = new SWFObject('/console/shared/plugins/amcharts/FusionCharts/amline.swf', "amline", "100%",#if ($isNum)"90%" #else "100%" #end, "8", "#FFFFFF");
+		so.addVariable("settings_file", encodeURIComponent("/console/shared/plugins/amcharts/FusionChartsXML/amcolumn_Line.xml"));
+		var piedata = "$pieData";
+		so.addVariable("chart_data", encodeURIComponent(piedata));
+		so.addVariable("preloader_color", "#999999");
+		so.write("chart1div");
+		function showSave(){
+			document.getElementById("save").style.display='block';
+			document.getElementById("show").style.display='none';
+		}
+		function checkUri()
+			{
+				var name=document.getElementById("name").value;
+				if(name == "")
+				{
+					alert("分组统计名称不能为空");
+					return;
+				}
+				jQuery.ajax({
+				        type: "POST",
+						url:"groupUriValidate.vpage",
+						data:{uri:name,entityUri:'$entityUri'},
+						success:function(responseText)
+						{  
+							if(responseText.match(/1/))
+							{
+						  		if(window.confirm("分组统计名称已存在，是否覆盖？")){
+						  			var form1 = document.getElementById("form1");
+									form1.submit();
+						  		}
+						  		
+						  	}
+						  	else
+							{
+						  		var form1 = document.getElementById("form1");
+								form1.submit();
+						  	}
+			     		}
+				});
+			 }	
+	</script>
+	<div  id="show" style="display:block">
+	<input  type="button" id="show" name="show" value="保存当前分组统计" onclick="showSave()">
+	</div>
+	<div  id="save" style="display:none">
+		<form id="form1" action="saveChart.vpage" method="post">
+		<table>
+			<tr>
+			<td>
+			分组统计名称：<input type="text" id="name" name="name" >
+			</td>
+			</tr>
+			<tr>
+			<td>
+			分组统计标题：<input type="text" id="title" name="title">
+			</td>
+			</tr>
+			<input type="hidden" id="entityUri" name="entityUri" value=${entityUri}>
+			<input type="hidden" id="fieldUri" name="fieldUri" value=${fieldUri}>
+			<input type="hidden" id="whereFilter" name="whereFilter" value="${whereFilter}">
+			<input type="hidden" id="viewType" name="viewType" value="line">
+			<tr>
+			<td>
+			<input  type="button" onclick="checkUri();" id="saveBt" name="saveBt" value="确定">
+			</td>
+			</tr>
+		</table>	
+		</from>
+	</div>
+</BODY>
+</HTML>

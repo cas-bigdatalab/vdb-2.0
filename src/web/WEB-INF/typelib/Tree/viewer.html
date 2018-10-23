@@ -1,0 +1,5 @@
+${D}!bean.get('${field.name}').title
+
+##foreach ($entry in $field.typeDriver.options.entrySet()) 
+##${entry.key} ${entry.value}
+##end

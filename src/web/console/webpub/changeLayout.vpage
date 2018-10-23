@@ -1,0 +1,7 @@
+﻿$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#set($cols = $widgetTool.getLayoutPatternManager().getLayoutPattern($param.layout).columns)
+#foreach ($column in $cols.keySet())
+	$cols.get($column);
+#end

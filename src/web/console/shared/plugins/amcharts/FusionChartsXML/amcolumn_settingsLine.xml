@@ -1,0 +1,87 @@
+<settings>
+	<font>Tahoma</font>
+	<hide_bullets_count>18</hide_bullets_count>
+	<background>
+		<alpha>90</alpha>
+		<border_alpha>16</border_alpha>
+	</background>
+	<plot_area>
+		<margins>
+			<left>50</left>
+			<right>15</right>
+			<top>50</top>
+			<bottom>70</bottom>
+		</margins>
+	</plot_area>
+	<grid>
+		<x>
+			<alpha>10</alpha>
+			<approx_count>9</approx_count>
+		</x>
+		<y_left>
+			<alpha>10</alpha>
+			<fill_color>000000</fill_color>
+		</y_left>
+	</grid>
+	<axes>
+		<x>
+			<width>1</width>
+			<color>0D8ECF</color>
+		</x>
+		<y_left>
+			<width>1</width>
+			<color>0D8ECF</color>
+		</y_left>
+	</axes>
+	<indicator>
+		<color>6699FF</color>
+		<line_alpha>56</line_alpha>
+		<selection_color>0D8ECF</selection_color>
+		<selection_alpha>49</selection_alpha>
+	</indicator>
+	<balloon>
+		<border_alpha>100</border_alpha>
+	</balloon>
+	<legend>
+		<x>5</x>
+		<y>25</y>
+	</legend>
+	<zoom_out_button>
+		<text_color_hover>FF0F00</text_color_hover>
+	</zoom_out_button>
+	<help>
+		<button>
+			<color>FCD202</color>
+			<text_color>000000</text_color>
+			<text_color_hover>FF0F00</text_color_hover>
+		</button>
+		<balloon>
+			<color>FCD202</color>
+			<text_color>000000</text_color>
+		</balloon>
+	</help>
+	<graphs>
+		<graph gid="0">
+			<title>第一次</title>
+		</graph>
+		<graph gid="1">
+			<title>第二次</title>
+		</graph>
+		<graph gid="2">
+			<title>第三次</title>
+		</graph>
+		<graph gid="3">
+			<title>第四次</title>
+		</graph>
+		<graph gid="4">
+			<title>第五次</title>
+		</graph>
+	</graphs>
+	<labels>
+		<label lid="0">
+			<y>25</y>
+			<text_size>13</text_size>
+			<align>center</align>
+		</label>
+	</labels>
+</settings>

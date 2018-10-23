@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="layoutPatternManager" class="vdb.mydb.widget.LayoutPatternManager">
+		<property name="layoutPatterns">
+			<list>
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l112" />
+					<property name="title" value="1:1:2" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>238</value>
+							</entry>
+							<entry key="column2">
+								<value>238</value>
+							</entry>
+							<entry key="column3">
+								<value>478</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l121" />
+					<property name="title" value="1:2:1" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>238</value>
+							</entry>
+							<entry key="column2">
+								<value>478</value>
+							</entry>
+							<entry key="column3">
+								<value>238</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l211" />
+					<property name="title" value="2:1:1" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>478</value>
+							</entry>
+							<entry key="column2">
+								<value>238</value>
+							</entry>
+							<entry key="column3">
+								<value>238</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l13" />
+					<property name="title" value="1:3" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>238</value>
+							</entry>
+							<entry key="column2">
+								<value>722</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l31" />
+					<property name="title" value="3:1" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>722</value>
+							</entry>
+							<entry key="column2">
+								<value>238</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+				
+				<bean class="vdb.mydb.widget.LayoutPattern">
+					<property name="name" value="l1" />
+					<property name="title" value="1" />
+					<property name="columns">
+						<map>
+							<entry key="column1">
+								<value>960</value>
+							</entry>
+						</map>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

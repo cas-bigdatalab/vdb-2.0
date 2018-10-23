@@ -1,0 +1,3 @@
+﻿#foreach ($dataSet in $domain.dataSets)
+*$dataSet.title&$dataSet.id
+#end

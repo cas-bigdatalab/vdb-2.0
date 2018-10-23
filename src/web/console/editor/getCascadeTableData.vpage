@@ -1,0 +1,2 @@
+﻿#invoke("vdb.mydb.jsp.action.editor.DoGetCascadeTableData")
+${data}

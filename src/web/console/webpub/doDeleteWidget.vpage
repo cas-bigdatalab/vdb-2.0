@@ -1,0 +1,2 @@
+#invoke("vdb.mydb.widget.vsp.DoDeleteWidget")
+删除成功

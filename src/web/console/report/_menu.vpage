@@ -1,0 +1,17 @@
+#set($domain = ${domain})
+#set($view = $domain.ex.getView("editDataSets").items)
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="0" >
+<item text='vReports' id='directory@'>
+#foreach($ds in $view)
+	#set($dsid = $ds.uri + "-" + $ds.title)
+	<item text='$ds.title' id='libraryName@$dsid'>
+	#set($tables = $ds.entities)
+	#foreach($obj in $tables)
+		#set($tid = $obj.id + "-" + $ds.uri + "-" + $obj.title + "-"+$ds.title)
+		<item text='$obj.title' id='tableId@$tid'/>
+	#end
+	</item>
+#end
+</item>
+</tree>

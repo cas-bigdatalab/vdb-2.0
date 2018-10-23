@@ -1,0 +1,16 @@
+<div id="E_$field.id">	
+	#set($editorName='E_'+$seq.id)
+	
+	<span id="$editorName" class="filesCtrl"></span>
+	<script language=javascript DEFER>
+	#if($field.editorStyle == 'FilesEdit')
+		var filesCtrl$editorName = new JsoFilesCtrl(thisBeanForm, new Object('${field.id}', '${field.name}', '${field.title}', '$!{field.hint}'), $('#$editorName', ${jsoFormBinder})[0], "files", "${field.entity.dataSet.id}");
+	#else
+		var filesCtrl$editorName = new JsoFilesCtrl(thisBeanForm, new Object('${field.id}', '${field.name}', '${field.title}', '$!{field.hint}'), $('#$editorName', ${jsoFormBinder})[0], "localfiles", "${field.entity.dataSet.id}");
+	#end
+	\#foreach ($file in ${D}bean.get('${field.name}').files)
+		eval("filesCtrl"+"$editorName"+".add('${field.entity.dataSet.uri}', '${file.id}', '${file.title}', '${file.servletPath}', '${file.extension}', ${file.fileSize});");
+	\#end
+		eval("filesCtrl"+"$editorName"+".refresh();");
+	</script>
+</div>

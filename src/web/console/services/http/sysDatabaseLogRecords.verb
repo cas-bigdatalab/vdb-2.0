@@ -1,0 +1,37 @@
+#if(!$param.uri || !$param.date)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($dataset = $manager.catalog.fromUri($param.uri))
+#if(!$dataset)	
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<logs>
+			#set($logRecords = $logRecordsProviderTool.getDataAccessLogByDateAndDS($dataset,$param.date))
+			#if($logRecords)
+			#foreach($log in $logRecords)
+			<log>
+				<id>$!{log.id}</id>
+				<userName>$!{log.user}</userName>
+				<ip>$!{log.ip}</ip>
+				<opTime>$!{log.opTime}</opTime>
+				<dataset>$!{log.dataset}</dataset>
+				<entity>$!{log.entity}</entity>
+				<operation>$!{log.operation}</operation>
+				<param1>$!{log.param1}</param1>
+				<param2>$!{log.param2}</param2>
+				<param3>$!{log.param3}</param3>
+			</log>
+			#end
+			#end
+		</logs>
+	</body>
+</response>
+#end
+#end

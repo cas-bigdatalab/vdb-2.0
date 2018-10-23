@@ -1,0 +1,87 @@
+﻿<script type="text/javascript" src="/console/shared/js/jquery.progressbar.min.js"></script>
+<link type="text/css" rel="Stylesheet" href="/console/shared/js/progressbar.css"/>
+#usingLayout('/console/catalog/template1.vpage')
+#set($title="在线更新")
+#if($appctx.versionService.repositoryAvaliable)
+	#set($errors = $appctx.versionService.checkSyncConditions())
+	#if($errors.size() > 0)
+		无法正常升级，错误如下：
+		<div align="left">
+		#foreach($error in $errors)
+			<li>$error</li>
+		#end
+		</div>
+	#else
+		#set($localVersion = $versionService.localVersion)
+		#set($remoteVersion = $versionService.remoteVersion)
+		#if($localVersion.revision >= $remoteVersion.revision)
+			本地安装版本为2.0.$versionService.localVersion.revision，已经为最新发布版本，不需要再进行更新。
+		#else
+			VDB的最新发行版本为2.0.$versionService.remoteVersion.revision，本地安装版本为2.0.$versionService.localVersion.revision，是否准备在线更新？
+			<br>
+			<button id="btnUpdateOnline" onclick="doUpdateOnline();">在线更新！</button>
+		#end
+	#end
+#else
+	无法连接至版本服务器！无法更新，请检查网络连接。
+#end
+
+<div id="updateArea" style="display:none">
+<br>
+<span class="progressBar" height="20px" id="spaceused1"></span>
+<div id="updatePrompt" style="height: 40px"></div>
+</div>
+<script>
+	$('#spaceused1').progressBar(0,
+		{
+			boxImage		: '/console/shared/images/progressbar.gif',
+			barImage		: 
+			{
+				0:  '/console/shared/images/progressbg_red.gif',
+				30: '/console/shared/images/progressbg_orange.gif',
+				70: '/console/shared/images/progressbg_green.gif'
+			}
+		}
+	);
+
+	function doUpdateOnline()
+	{
+		$("#updateArea").show();
+		$("#updatePrompt").text("");
+		$("#btnUpdateOnline").attr("disabled",true);
+		var handle = setInterval("showProgress()", 50);
+		jQuery.ajax(
+		{
+			type: "POST",
+			url: "doUpdateOnline.vsp",
+			success: function(data)
+			{
+				alert(data);
+				clearInterval(handle);
+				$('#updateArea').hide();
+	 		}
+		});
+	}
+	
+	function showProgress()
+	{
+		jQuery.ajax(
+		{
+			type: "POST",
+			url: "showUpdateProgress.vsp",
+			data: {seq: new Date().getTime()},
+			success:function(data)
+				{
+				 	var result = data.split("|");
+				 	
+				 	var pos = parseInt(result[0]);
+				 	var max = parseInt(result[1]);
+				 	var prompt = result[2];
+				 	
+				 	var percentage = (max == 0 ? 0 : pos * 100.0 / max);
+	  				$('#spaceused1').progressBar(percentage);
+	  				$('#updatePrompt').text(prompt);
+		 		}
+		});
+	}
+</script>

@@ -1,0 +1,62 @@
+﻿<!-- 查看历史 -->
+
+#set($eid = $param.eid)
+#set($id = $param.id)
+#set($visitPage = $param.visitPage)
+#set($visitPageSize = '10')
+
+#invoke("vdb.log.servlet.VisitLogAction")
+
+<div align="center" width="80%">
+	#if($visitPageViewer.recordCount==0)
+		该记录未被查看
+	#else
+	<fieldset class='query' style="padding:10px; margin:10px;align="center";width:90%;">
+	<legend><a style="cursor:default" onclick= $("#visitLogDetail").toggle();>&gt;&gt;&nbsp;该记录被查看$visitPageViewer.recordCount次</a></legend><br>
+	<p/>
+	<!-- 查看记录列表详细信息，将随着visitLogCount的点击而展开/合上 -->
+	<div id="visitLogDetail" style="display:block"> 
+		#if ($visitPageViewer.records.size() == 0)
+			<center>
+			  <div style="width:100%" align="left"> <br>
+			    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+			  </div>
+			</center>
+		#else
+			#foreach ($record in $visitPageViewer.records)
+				#if($record.USER_NAME=="")
+					#set($username = '匿名用户')
+				#else
+					#set($username = $record.USER_NAME)
+				#end
+					
+				<div align='left'><font color='blue'><li>
+	 			<I>$username</I> 于 <I>$record.OP_TIME</I> 于 <I>$record.IP</I>查看了该记录<br>
+	 			</li></font></div>
+			#end
+			
+			#if ($visitPageViewer.pageCount > 1)
+				<br>
+				<center>
+				    <div style="width:100%">
+				      <div align="right">${visitPageViewer.footerBar1}</div>
+				    </div>
+				    <div style="width:100%">
+				      <div align="right">${visitPageViewer.footerBar2}</div>
+				    </div>
+				</center>
+			#end
+		#end
+	</div>
+	</fieldset>
+	#end
+</div>
+
+<script defer>
+	function gotoVisit(page){
+		loadHTML1("/console/editor/logOfVisit.vpage",
+			"eid=$eid&id=$id&visitPage=" + page,
+			$("#innerVisitLogFrame")[0]);
+		$("#innerVisitLogFrame").show();
+	}
+</script>

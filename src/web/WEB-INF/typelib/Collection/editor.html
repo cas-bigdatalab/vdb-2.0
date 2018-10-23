@@ -1,0 +1,83 @@
+<div id="E_$field.id">	
+	#set($editorName='E_'+$seq.id)
+	
+	#set ($entityUri = ${field.relationKey.target.uri})
+	#set ($fieldUri = $field.uri)
+	#set ($fk = $field.relationKey)
+	#set ($keyField = ${field.relationKey.target.identifier.field.uri})
+	#set ($thisTableId = ${field.entity.id})
+	#set ($seqid0 = $seq.id)
+	
+	##表格方式
+	#if($field.editorStyle == 'CollectionEditor') 
+		#if($data.isManyToMany())
+				<img src='/console/shared/images/link.gif' border=0 align=absbottom>
+				<a href="#" onclick="chooseMany2ManyForUpdate('$entityUri','$fieldUri','${bean.id.jdbcObject}','${field.relationKey.target.title}','jsoDataGrid${seqid0}','tableModel','${field.entity.uri}','${field.name}');">添加${field.title}
+			</a>
+		#else
+				<img src='/console/shared/images/link.gif' border=0 align=absbottom>
+				<a href="#"  onclick="chooseOne2ManyForUpdate('$entityUri','$thisTableId','${fk.peer.id}','${bean.id.jdbcObject}','$field.foreignKey.target.title','jsoDataGrid${seqid0}','tableModel');">添加${field.title}
+			</a>
+		#end
+			<fieldset class="fieldset2">
+			<legend>关联记录：${field.relationKey.target.title}</legend> 
+			<div>
+			<a onclick="QueryForm${seqid0}.jsoQueryForm.popup()"><img src='/console/shared/images/chaxun.gif' style="cursor:pointer" border=0 align=absbottom></a>   
+			<div id="QueryForm${seqid0}" class="QueryForm"></div> 
+			<div id="ref_selected${seqid0}" class="DataGrid"></div>
+			</div>
+			</fieldset>
+			
+			<script defer>
+				//定义一个查询对象
+				var jsoQuery${seqid0} = new CollectionQuery('${fieldUri}', '${bean.id.jdbcObject}');
+				jsoQuery${seqid0}.pageSize = ${domain.defaultPageSize};
+				//定义一个数据网格
+				var jsoDataGrid${seqid0} = new DataGrid(jsoQuery${seqid0}, $('#ref_selected${seqid0}')[0]);
+		#if($data.isManyToMany())				
+				jsoDataGrid${seqid0}.urlDoQuery = '/console/editor/many2manySelectedForUpdate.vpage?thisTableUri=$entityUri&thisFieldUri=$fieldUri&thisId=${bean.id.jdbcObject}&seqid=${seqid0}';
+		#else	
+				jsoDataGrid${seqid0}.urlDoQuery = '/console/editor/one2manySelectedForUpdate.vpage?thisTableUri=$entityUri&thisFieldUri=$fieldUri&thisId=${bean.id.jdbcObject}&seqid=${seqid0}';
+		#end			
+				jsoDataGrid${seqid0}.refresh();
+				
+				//定义一个查询框
+				var jsoQueryForm${seqid0} = new QueryForm(jsoQuery${seqid0}, '${fk.target.uri}', $('#QueryForm${seqid0}')[0],new function()
+				{
+					this.onsubmit = function()
+					{
+						jsoDataGrid${seqid0}.refresh();
+					}
+				});
+			</script>
+	##标题格式
+	#else
+		#if($field.seprecateStyle == 'br')
+			<div>
+		#else
+			<span>
+		#end
+		
+	#if($data.isManyToMany())
+		<a href="#" title="添加新的关联信息" onclick="chooseMany2ManyForUpdate('$entityUri','$fieldUri','${bean.id.jdbcObject}','${field.relationKey.target.title}','collection_${seqid0}','titleModel','${field.entity.uri}','${field.name}','${field.seprecateStyle}')"><img src='/console/shared/images/add.gif' border=0 align=absbottom></a>
+	#else
+		<a href="#" title="添加新的关联信息" onclick="chooseOne2ManyForUpdate('$entityUri','$thisTableId','${fk.peer.id}','${bean.id.jdbcObject}','$field.foreignKey.target.title','collection_${seqid0}','titleModel','${field.entity.uri}','${field.uri}','${field.name}','${field.seprecateStyle}');"><img src='/console/shared/images/add.gif' border=0 align=absbottom></a>
+	#end
+		#if($field.seprecateStyle == 'br')
+			<div>
+		#else
+			<span>
+		#end
+		
+		<span id="collection_${seqid0}" name="collection_${seqid0}">
+		</span>
+	
+		<script defer>
+		#if($data.isManyToMany())		
+			loadHTML1("/console/editor/many2manySelectedForTitle.vpage","thisEntityUri=${field.entity.uri}&thisFieldUri=$fieldUri&fieldname=${field.name}&thatEntityUri=$entityUri&thisId=${bean.id.jdbcObject}&title=${field.relationKey.target.title}&div=collection_${seqid0}&seqid=${seqid0}&sep=${field.seprecateStyle}",$("#collection_${seqid0}")[0]);
+		#else
+			loadHTML1("/console/editor/one2manySelectedForTitle.vpage","thisEntityUri=${field.entity.uri}&thisFieldUri=$fieldUri&fieldname=${field.name}&thatEntityUri=$entityUri&thisId=${bean.id.jdbcObject}&title=${field.relationKey.target.title}&div=collection_${seqid0}&seqid=${seqid0}&sep=${field.seprecateStyle}",$("#collection_${seqid0}")[0]);
+		#end
+		</script>
+	#end	
+</div>

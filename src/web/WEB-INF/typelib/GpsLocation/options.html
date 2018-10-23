@@ -1,0 +1,76 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">经度列</td>
+      <td width="80%" style="padding-left:12px;">
+      <div id="fieldList1">
+      		<select size="1" name="P_lonColumn" style="width:70pt;">
+      			#foreach($fieldI in ${entity.fields})
+      					<option value="${fieldI.name}" #if(${field.lonColumn}==${fieldI.name}) selected #end>${fieldI.name}</option>
+      			#end
+      			<!-- 未描述列 -->
+      			#foreach ($column in ${entity.ex.untitledColumns})	
+      					<option value="${column.columnName}"  #if(${field.lonColumn}==${column.columnName}) selected #end>${column.columnName}</option>
+      			#end
+      		</select>
+      	</div></td>
+    </tr>
+    <tr>
+      <td class="table_bg">纬度列</td>
+      <td width="80%" style="padding-left:12px;">
+	      <div id="fieldList2">
+		      <select size="1" name="P_latColumn" style="width:70pt;">
+		      			#foreach($fieldI in ${entity.fields})
+		      					<option value="${fieldI.name}" #if(${field.latColumn}==${fieldI.name}) selected #end>${fieldI.name}</option>
+		      			#end
+		      			<!-- 未描述列 -->
+		      			#foreach ($column in ${entity.ex.untitledColumns})	
+		      					<option value="${column.columnName}" #if(${field.latColumn}==${column.columnName}) selected #end>${column.columnName}</option>
+		      			#end
+		      </select>
+	      </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">海拔列</td>
+      <td width="80%" style="padding-left:12px;">
+	      <div id="fieldList3">
+		      <select size="1" name="P_altColumn" style="width:70pt;">
+		            	#foreach($fieldI in ${entity.fields})
+		      					<option value="${fieldI.name}" #if(${field.altColumn}==${fieldI.name}) selected #end>${fieldI.name}</option>
+		      			#end
+		      			<!-- 未描述列 -->
+		      			#foreach ($column in ${entity.ex.untitledColumns})	
+		      					<option value="${column.columnName}"  #if(${field.altColumn}==${column.columnName}) selected #end>${column.columnName}</option>
+		      			#end
+		      </select>
+	     </div>
+     </td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="GpsEdit" checked>标准格式
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="GpsLabel" checked>标准格式
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan="2" class="table_bg" style="text-align:center"><font color="red">注意：GPS位置类型的经度列，纬度列和海拔列请选择类型为实数类型的字段(设置缺省值时，请用,隔开)</font>
+      </td>
+    </tr>
+</table>
+<script $ifDefer>	
+	//选中编辑风格
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+	loadHTML("listJdbcFields.jsp", "dsid=${entity.dataSet.id}&table=${entity.tableName}&name=P_lonColumn&selected=${field.lonColumn}", document.all.fieldList1);
+	loadHTML("listJdbcFields.jsp", "dsid=${entity.dataSet.id}&table=${entity.tableName}&name=P_latColumn&selected=${field.latColumn}", document.all.fieldList2);
+	loadHTML("listJdbcFields.jsp", "dsid=${entity.dataSet.id}&table=${entity.tableName}&name=P_altColumn&selected=${field.altColumn}", document.all.fieldList3);
+
+</script>    
+  

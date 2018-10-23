@@ -1,0 +1,30 @@
+<div id="E_$field.id">	
+	#set($editorName='E_'+$seq.id)
+	\#set(${D}field = ${D}{catalog.fromUri('$field.uri')})
+<input type="hidden" id="${field.name}" name="${field.name}" \#foreach ($entry in ${D}field.typeDriver.options.entrySet()) \#if(${data.value} == ${entry.key}) value="${entry.key}"  \#end 	\#end> 
+<div id="treeboxbox_tree_$field.id" style="width:${field.editorWidth};height:${field.editorHeight};background-color:#f5f5f5;border:1px solid Silver; padding-top:5px"></div>
+<script>
+	#set($fid = $field.id)
+	tree_$fid=new C("treeboxbox_tree_$fid","100%","100%",0);
+	tree_${fid}.setSkin('dhx_skyblue');
+	tree_${fid}.enableCheckBoxes(1);
+	tree_${fid}.setImagePath("/console/shared/plugins/dhtmlx/tree/imgs/csh_vista/");
+	tree_${fid}.attachEvent("onCheck",treeOnClick${fid});
+	//dhxLayout2UATree.enableCheckBoxes(1);
+	tree_${fid}.enableRadioButtons(true);
+	tree_${fid}.enableSingleRadioMode(true);
+	dhtmlxAjax.get("/console/editor/tree.vpage?fid=${field.id}&val=${data.value}", menuhandle${fid});
+	setTimeout("tree_${fid}.Jo(0);", 600);
+	function menuhandle${fid}(loader) 
+	{
+		var str = loader.ai.responseText;
+	    str = str.replace(/(^\s*)|(\s*$)/g, "");
+		tree_${fid}.loadXMLString(str);
+	}
+	function treeOnClick${fid}(id) 
+	{
+		document.getElementById("${field.name}").value=tree_${fid}.mv();
+	}
+</script> 
+
+</div>

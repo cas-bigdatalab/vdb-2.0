@@ -1,0 +1,1 @@
+this is a custom page, and current time is: <%=new java.util.Date()%>

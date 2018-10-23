@@ -1,0 +1,21 @@
+﻿#set($eid = $param.eid)
+#set($id = $param.id)
+
+&nbsp;
+<!-- 查看历史 -->
+<p/>
+<div id="visitLogFrame" >
+	<div id="innerVisitLogFrame"></div>
+</div>
+<!-- 修改历史 -->
+<p/>
+<div id="modifyLogFrame" >
+	<div id="innerModifyLogFrame"></div>
+</div>
+<p/>
+&nbsp;
+	
+<script defer>
+	loadHTML1("/console/editor/logOfVisit.vpage", "eid=$eid&id=$id", $("#innerVisitLogFrame")[0]);
+	loadHTML1("/console/editor/logOfModify.vpage", "eid=$eid&id=$id", $("#innerModifyLogFrame")[0]);
+</script>

@@ -1,0 +1,50 @@
+﻿<html>
+<head>
+<link rel="stylesheet" type="text/css" href="js/style.css">
+<link rel="stylesheet" type="text/css" href="/console/shared/js/css.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body class="body1" style="font-size:10.5pt" topmargin=0 LEFTMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<div class="right_top_div" style="width:100%">
+<div class="right_top_left_div" align="left">
+       <img src="images/ico_01.gif" height="14" width="20" /> <font style="color:#ffffff;font-size:12px">&nbsp;您的当前位置：</font>
+	  <font style="color:#fffd4d;font-size:12px"><strong>首页 -> 网站发布</strong></font>
+</div>
+</div>
+<table width="95%" height="100%" border="0" align="center">
+  <tr>
+    <td align="center"><table width="660" border="0" height="100%">
+        <tr>
+          <td valign="top"><table align="center" width="100%" border="0" height="100%">
+              <tr>
+                <td align="center" valign="middle"><table border="0" width="451" HEIGHT="234" cellspacing="0" cellpadding="0" bgcolor="#DCE7F2" BACKGROUND="images/cd027.jpg">
+                    <tr>
+                      <td HEIGHT="36"></td>
+                    </tr>
+                    <tr>
+                      <td VALIGN="TOP" HEIGHT="17"><p class="title4" align="center" style="letter-spacing:4pt;">
+                          $title
+                      </td>
+                    </tr>
+                    <tr>
+                      <td VALIGN="MIDDLE" HEIGHT="71%">
+                      	<table align="center" width="400" border="0" height="100%">
+                          <tr>
+                            <td valign="middle" id="MainArea">$body
+                            <br>
+                            </td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td>　</td>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.typelib.FieldType">
+		<property name="fieldClass" value="vdb.mydb.typelib.type.VdbRefType"/>
+		<property name="advanced" value="true"/>
+		<property name="sortable" value="true"/>
+		<property name="order" value="11000"/>
+		<property name="title" value="引用类型"/>
+		<property name="defaultQueryerStyleName" value="eq"/>
+		<property name="queryerStyles">
+			<list>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="eq"/>
+					<property name="title" value="是(=)"/>
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="ne"/>
+					<property name="title" value="不是(!=)"/>
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="isNull"/>
+					<property name="title" value="为空"/>
+					<property name="unaryExpr" value="true"/>
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="notNull"/>
+					<property name="title" value="不为空"/>
+					<property name="unaryExpr" value="true"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

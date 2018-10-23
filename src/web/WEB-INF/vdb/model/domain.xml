@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gbk"?>
+<domain>
+	<version>1.2.1</version>
+	<version>1.2.1</version>
+	<lastModified>2008-08-12 10:27:44</lastModified>
+	<id>1f62836e1c020c57011c020c57700000</id>
+	<chemLibPath>../public/lib</chemLibPath>
+	<display>false</display>
+	<serverUrl>http://localhost:8080</serverUrl>
+	<keyWords>阳光助学群</keyWords>
+	<name>cn.csdb.soil</name>
+	<title>阳光助学群</title>
+	<description>阳光助学群成立于2007年，现有群友350人，来自各个国家和地区，长期资助西部困难师生400人，建校3所，设立奖学金数个，发起西部教师培训项目，并完成了其他一系列慈善助学专项。我们的目标：做口碑最好的慈善组织。</description>
+	<defaultPageSize>20</defaultPageSize>
+	<serviceUri>http://localhost:8080</serviceUri>
+	<theme>fresh</theme>
+</domain>
+

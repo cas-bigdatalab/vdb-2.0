@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean class="vdb.mydb.jsp.UrlMappings">
+		<!--the property `handlers` represents a list of page redirectors, each redirector's `name` is REQUIRED
+			to let other UrlMappers to know where to insert another redirectors-->
+		<property name="handlers">
+			<list>
+				<!-- short cut to published file -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1000"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.UrlForward">
+							<property name="pattern" value="/!(.*)" />
+							<property name="target" value="${webpub.rootPath}/$1" />
+						</bean>
+					</property>
+				</bean>
+				<!-- widgets -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1001"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.UrlForward">
+							<property name="pattern" value="/widgets/([^/]*)/res/(.*)" />
+							<property name="target" value="/console/webpub/WEB-INF/widgets/$1/res/$2" />
+						</bean>
+					</property>
+				</bean>
+				<!-- themes -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1002"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.UrlForward">
+							<property name="pattern" value="/themes/(.*)/res/(.*)" />
+							<property name="target" value="/console/webpub/WEB-INF/themes/$1/res/$2" />
+						</bean>
+					</property>
+				</bean>
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1003"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.UrlForward">
+							<property name="pattern" value="/themes/(.*)/logo.jpg" />
+							<property name="target" value="/console/webpub/WEB-INF/themes/$1/logo.jpg" />
+						</bean>
+					</property>
+				</bean>
+				<!-- typelib -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1004"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.UrlForward">
+							<property name="pattern" value="/typelib/([^/]*)/res/(.*)" />
+							<property name="target" value="/WEB-INF/typelib/$1/res/$2" />
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

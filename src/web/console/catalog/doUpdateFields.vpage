@@ -1,0 +1,16 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateFields")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="批量描述属性")
+
+<script>
+top.refreshItem('FieldList@${param.tid}@${param.dsid}');
+</script>
+
+批量描述属性成功！<br/>
+<div style="margin-top:10px;">	
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateFields.vpage?tid=${param.tid}&dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>返回批量描述</a><br/>
+		<a href="listFields.vpage?id=${param.tid}&dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>返回属性列表</a>
+	</div>
+</div>

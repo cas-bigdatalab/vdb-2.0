@@ -1,0 +1,15 @@
+﻿<script>
+#if ($param.sdef)
+	eval('parent.parent.set'+'$param.type'+'Sdef("$param.div","$param.sdef");');
+#end
+function transfer(evalUrl,type)
+{
+	var href=location.href;
+	var div="$param.div";
+	if(href.indexOf("?")>0)
+	{
+		href=href.substring(0,href.indexOf("?"));
+	}
+	location.href = evalUrl + "?var sdef = parent.getSdef(); " + "location.href='" + href + "?sdef=' + sdef + '&div=" + div + "&type=" + type + "';";
+}
+</script>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+
+	<http auto-config="true" access-denied-page="/console/shared/login.vpage?error=2" session-fixation-protection = "none">
+		<intercept-url pattern="/console/*/WEB-INF/**" access="ROLE_SUPERMAN" />
+		<intercept-url pattern="/console/*/images/**" filters="none" />
+		<intercept-url pattern="/console/shared/**" filters="none" />
+		<intercept-url pattern="/console/catalog/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/console/sqlview/**" access="ROLE_ADMIN,ROLE_DATA_MANAGER" />
+		<intercept-url pattern="/console/report/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/console/security/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/console/services/**" access="ROLE_ADMIN,ROLE_SERVICE" />
+		<intercept-url pattern="/console/webpub/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/console/editor/**" access="ROLE_ADMIN,ROLE_DATA_MANAGER" />
+		<intercept-url pattern="/**" filters="none" />
+		<anonymous granted-authority="ROLE_ANONYMOUS" />
+		<form-login login-page="/console/shared/login.vpage" authentication-failure-url="/console/shared/login.vpage?error=3" />
+		<logout logout-success-url="/console/shared/login.vpage" />
+	</http>
+
+	<!--dao方式设置用户权限-->
+	<authentication-provider user-service-ref='userDetailsService'>
+		<password-encoder hash="md5">
+			<salt-source user-property="username" />
+		</password-encoder>
+	</authentication-provider>
+
+</beans:beans>

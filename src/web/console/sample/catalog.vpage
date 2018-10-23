@@ -1,0 +1,15 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示目录对象的引用')
+
+#set($entity = $tool.getEntity('cn.csdb.vdb.bookstore.book'))
+
+${entity.title}($entity.uri)<br>
+字段列表
+<ul>
+#foreach($field in $entity.fields)
+	<li>字段：${field.title}($field.name)<br>
+	类型：${field.typeDef.title}($field.typeName)
+	</li>
+	<br>
+#end
+</ul>

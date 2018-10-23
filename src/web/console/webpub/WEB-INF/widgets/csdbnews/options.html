@@ -1,0 +1,17 @@
+<li>
+#set($lmids =   ["1001","1002","1004","1005","1006","1007","1008","1009","1010","1012","1013","1015","1017","1018","1019","1021","1022","1023","1024"])   
+#set($lmnames = ["新闻资讯","服务公告","委托查询服务","数据加工/分析处理服务","技术服务","存储服务","培训服务","培训日程","在线培训","标准规范","软件工具","服务案例","专利和软件著录权","论文产出","其他","项目简介","项目历史","组织结构","联系我们"])   
+
+<label for="p_lmid">选择栏目</label>
+<select name="p_lmid">
+ #foreach($item in $lmids)   
+    #set($temp=$velocityCount) 
+	#set($loopvalue = $temp - 1 ) 
+   <option value="$item" #if($item==$widget.props.lmid) selected #end>$lmnames[$loopvalue]</option>
+ #end   
+</select>
+</li>
+<li>
+<label for="p_lines">显示数量</label>
+<input type="text" name="p_lines" value="$!{widget.props.lines}" />
+</li>

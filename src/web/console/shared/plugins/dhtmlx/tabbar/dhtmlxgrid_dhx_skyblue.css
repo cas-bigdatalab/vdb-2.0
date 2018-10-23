@@ -1,0 +1,63 @@
+DIV.gridbox_dhx_skyblue .xhdr {
+	BACKGROUND-IMAGE: url(../imgs/sky_blue_grid.gif)
+}
+DIV.gridbox_dhx_skyblue TABLE.hdr TR {
+	BACKGROUND-POSITION: 0px -1px; BACKGROUND-IMAGE: url(../imgs/sky_blue_grid.gif)
+}
+UNKNOWN {
+	BACKGROUND-POSITION: 0px -1px; BACKGROUND-IMAGE: url(../imgs/sky_blue_grid.gif)
+}
+DIV.gridbox_dhx_skyblue TABLE.obj TR TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BORDER-BOTTOM-WIDTH: 0px; FONT-FAMILY: Tahoma; BORDER-RIGHT-WIDTH: 0px
+}
+DIV.gridbox_dhx_skyblue TABLE.hdr TD DIV.hdrcell {
+	PADDING-LEFT: 10px; WIDTH: auto
+}
+DIV.gridbox_dhx_skyblue TABLE.hdr TD {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 11px; BORDER-LEFT-COLOR: #fdfdfd; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #a4bed4; VERTICAL-ALIGN: top; COLOR: black; BORDER-TOP-COLOR: #fdfdfd; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: transparent; TEXT-ALIGN: left; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #a4bed4
+}
+DIV.gridbox_dhx_skyblue {
+	BORDER-RIGHT: #a4bed4 1px solid; BORDER-TOP: #a4bed4 1px solid; BORDER-LEFT: #a4bed4 1px solid; BORDER-BOTTOM: #a4bed4 1px solid
+}
+DIV.gridbox TABLE.obj TR TD {
+	PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+DIV.gridbox TABLE.row20px.obj TR TD {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.gridbox TABLE.obj TR TD.editable {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.gridbox TABLE.obj TR TD.editable DIV.treegrid_cell {
+	PADDING-LEFT: 4px; PADDING-TOP: 1px
+}
+DIV.gridbox_dhx_skyblue TABLE.obj TR.rowselected {
+	BACKGROUND-COLOR: #fff1cc
+}
+DIV.gridbox_dhx_skyblue TABLE.obj TR.rowselected TD {
+	BACKGROUND-POSITION: 0px 0px; BACKGROUND-IMAGE: url(../imgs/sky_blue_sel2.png); BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #fff1cc
+}
+DIV.gridbox_dhx_skyblue TABLE.row20px.obj TR.rowselected TD {
+	BACKGROUND-POSITION: 0px 0px; BACKGROUND-IMAGE: url(../imgs/sky_blue_sel.png); BACKGROUND-REPEAT: repeat-x
+}
+DIV.gridbox_dhx_skyblue TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #fff1cc
+}
+DIV.gridbox_dhx_skyblue .odd_dhx_skyblue {
+	BACKGROUND-COLOR: #e3efff
+}
+.dhx_combo_select {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+.gridbox_dhx_skyblue .dhx_combo_edit {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+.gridbox_dhx_skyblue .dhx_textarea {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+.gridbox_dhx_skyblue .dhx_combo_edit {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px
+}
+.gridbox_dhx_skyblue .dhx_sub_row {
+	BACKGROUND-COLOR: transparent
+}

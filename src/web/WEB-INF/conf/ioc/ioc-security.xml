@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+
+	<!-- 授权信息库 -->
+	<bean id="authSource" class="vdb.mydb.jdbc.LocalHsqlDataSource">
+		<property name="databasePath" value="${domain.rootPath}/extdb/user" />
+	</bean>
+
+	<!-- 授权信息服务 -->
+	<bean id="authorizationService" class="vdb.mydb.security.jdbc.JdbcAuthorizationService">
+		<property name="dataSource" ref="authSource"/>
+	</bean>
+	
+	<!-- 用户信息库 -->
+	<alias name="authSource" alias="userSource"/>
+	<!--
+	<bean id="userSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">	
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/jzuser?useUnicode=true&amp;characterEncoding=utf8&amp;connectionCollation=utf8_unicode_ci"/>
+		<property name="username" value="root"/>
+		<property name="password" value="123456"/>
+	</bean>
+	-->
+
+	<!-- 用户信息服务 -->
+	<bean id="userDetailsService" class="vdb.mydb.security.jdbc.JdbcUserDetailsService">
+		<property name="dataSource" ref="userSource"/>
+		<property name="authorizationService" ref="authorizationService" />
+		<property name="sqlGetUserNames" value="select USERID from VDB_USERS" />
+		<property name="sqlGetLikeUserNames" value="select USERID from VDB_USERS where USERID like ?" />
+		<property name="sqlGetUserByName" value="select * from VDB_USERS where USERID=?" />
+		<property name="columnUserName" value="USERID" />
+		<property name="columnPassword" value="PASSWORD" />	
+	</bean>
+	
+	<bean id="roleService" class="vdb.mydb.security.impl.BasicRoleService">
+		<!-- 角色列表 -->
+		<property name="roles">
+			<list>
+				<bean class="vdb.mydb.security.impl.BasicRole">
+					<property name="name" value="ROLE_ADMIN" />
+					<property name="title" value="系统管理员" />
+					<property name="resourceClassType" value="module" />
+					<property name="operations">
+						<list>
+							<value>create</value>
+							<value>update</value>
+							<value>delete</value>
+							<value>view</value>
+							<value>audit</value>
+						</list>
+					</property>
+				</bean>
+				<bean class="vdb.mydb.security.impl.BasicRole">
+					<property name="name" value="ROLE_DATA_MANAGER" />
+					<property name="title" value="数据管理员" />
+					<property name="resourceClassType" value="module" />
+				</bean>
+				<bean class="vdb.mydb.security.impl.BasicRole">
+					<property name="name" value="ROLE_SERVICE" />
+					<property name="title" value="Web Service用户" />
+					<property name="resourceClassType" value="module" />
+					<property name="operations">
+						<list>
+							<value>get</value>
+							<value>view</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="securityManager" class="vdb.mydb.security.VdbSecurityManager">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="authorizationService" ref="authorizationService" />
+		<property name="roleService" ref="roleService" />
+	</bean>
+
+</beans>

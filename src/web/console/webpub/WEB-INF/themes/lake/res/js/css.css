@@ -1,0 +1,452 @@
+/* ================================================================ 
+This copyright notice must be kept untouched in the stylesheet at 
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.stunicholls.com/menu/pro_drop_2.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+
+#nav {
+	padding:0; margin:0; list-style:none; height:36px; 
+	background:#fff url(three_0.gif) repeat-x; position:relative; 
+	z-index:500; font-family:arial, verdana, sans-serif;}
+
+#nav li.top {display:block; float:left; height:36px;}
+
+#nav li a.top_link {
+	display:block; 
+	float:left; height:36px; line-height:33px; 
+	color:#fff; /*font color old value is #ccc*/
+	text-decoration:none; 
+	font-size:14px;/*top font-size old value is 12*/ 
+	font-weight:bold; padding:0 3px 0 3px; /* old value is :0 0 0 12*/ */
+	cursor:pointer;
+	background: url(${themeres}/images/three_0.gif);}
+
+#nav li a.top_link span {
+	float:left; display:block; 
+	padding:0 12px 0 12px; 
+	height:35px; 
+	background: url(${themeres}/images/three_0.gif) right top no-repeat;}
+
+#nav li a.top_link span.down {
+	float:left; 
+	display:block; 
+	padding:0 20px 0 4px; 
+	height:35px; 
+	background: url(${themeres}/images/three_0a.gif) no-repeat right top;}
+
+#nav li:hover a.top_link {
+	color:#ffff00; /*old value is #fff*/
+	}
+
+
+/* Default list styling */
+
+#nav li:hover {position:relative; z-index:200;}
+
+/* the ul with child nodes  */
+#nav li:hover ul.sub
+{
+	left:0px;/*left position old value is 1*/ 
+	top:33px; /*distance between top and sub menu*/
+	background: #2b6eb9; 
+	padding:3px; border:1px solid #5c731e; 
+	white-space:nowrap; 
+	width:120px; /*sub menu width old value is 90*/
+	_width:120px;/*didnt set atribute _width in pre version*/
+	height:auto; z-index:300;}
+#nav li:hover ul.sub li
+{
+	display:block; 
+	height:20px; 
+	position:relative; 
+	float:left; 
+	width:120px; /*sub menu width old value is 90*/
+	_width:120px;/*didnt set atribute _width in pre version*/
+	font-weight:normal;}
+#nav li:hover ul.sub li a
+{
+	
+	display:block; 
+	font-size:12px;/* fist sub menu front-size*/ 
+	height:18px; 
+	width:120px; /*sub menu width old value is 88*/
+	_width:120px;/*didnt set atribute _width in pre version*/
+	line-height:18px; 
+	text-indent:5px; 
+	color:#fff; 
+	text-decoration:none;
+	/*border:1px solid #427500;*/}
+#nav li ul.sub li a.fly
+{
+	background:#2b6eb9 
+	color:#fff; 
+	url(${themeres}/images/arrow.gif) 100px 6px no-repeat;
+	/*old value is url(${themeres}/images/arrow.gif) 80px 6px no-repeat*/
+	}
+#nav li:hover ul.sub li a:hover 
+{
+	color:#ffff00;
+	background:#90BBDB;/*old value is #6a812c*/
+	border-color:#fff;
+	}
+#nav li:hover ul.sub li a.fly:hover
+{
+	color:#ffff000;
+	background:#90BBDB  url(${themeres}/images/arrow_over.gif) 100px 6px no-repeat;
+	 /*old value is #6a812c url(${themeres}/images/arrow_over.gif) 80px 6px no-repeat*/
+	}
+
+
+/* the ul without child nodes  */
+#nav li:hover li:hover ul,
+#nav li:hover li:hover li:hover ul,
+#nav li:hover li:hover li:hover li:hover ul,
+#nav li:hover li:hover li:hover li:hover li:hover ul
+{
+	left:123px; /*sub ul position TBC old value is 90px*/
+	top:-4px; background: #2b6eb9; /*old value is #bbd37e*/
+	padding:3px; border:1px solid #5c731e; 
+	white-space:nowrap; 
+	width:120px; /*old value is 90*/
+	z-index:400; 
+	height:auto;}
+
+#nav ul, 
+#nav li:hover ul ul,
+#nav li:hover li:hover ul ul,
+#nav li:hover li:hover li:hover ul ul,
+#nav li:hover li:hover li:hover li:hover ul ul
+{position:absolute; left:-9999px; top:-9999px; width:0; height:0; margin:0; padding:0; list-style:none;}
+
+#nav li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover li:hover li:hover a.fly
+{
+	background:#90BBDB url(${themeres}/images/arrow_over.gif) 100px 6px no-repeat; 
+	color:#ffff00; 
+	border-color:#fff;} 
+
+#nav li:hover li:hover li a.fly,
+#nav li:hover li:hover li:hover li a.fly,
+#nav li:hover li:hover li:hover li:hover li a.fly
+{
+	background:#90BBDB url(${themeres}/images/arrow.gif) 100px 6px no-repeat;
+	color:#ffff00;/*#000*/ 
+	border-color:#bbd37e;
+	} 
+
+/******************************************/
+
+
+
+#right{
+	
+}
+
+/********infront of below is new***********/
+div.domaintitle
+{
+	font-size: 24pt;
+	font-family: 黑体;
+	color: #eee;
+}
+div.domainsubtitle
+{
+	font-size: 12pt;
+	font-family: Arial;
+	color: #eee;
+}
+hr.domainfooter
+{
+	color: #fff;
+	height: 2px;
+	margin: auto;
+}
+div.domainfooter
+{
+	font-size: 12px;
+	font-family: Arial;
+	color: #000;
+}
+span.vdblink
+{
+	color: #000;
+}
+li.item
+{
+	padding-top:4pt;
+	padding-left:4pt;
+}
+html,body,dl,dt,dd {
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	background: url(/themes/${theme.name}/res/images/bg.jpg) repeat-x center top #F3F3F3;
+	background-position: center 0px;
+	text-align: center;
+	font: normal normal normal 12px/1.5em Simsun, Arial, "Arial Unicode MS", Mingliu, Helvetica;
+	color: #777;
+	width: 972px;
+	word-break: break-all;
+	margin-left: auto;
+	margin-right: auto;
+}
+.bg
+{
+	background: url(/page/images/bg.jpg) repeat-x center top #F3F3F3;
+}
+.top {
+	/*background: url(${themeres}/images/top.jpg) ;*/
+}
+a:hover {text-decoration: none;color: #C20909;}
+a {text-decoration: none;color: #000;}
+#guide
+{
+	margin: 10px 0;
+	font: bold 3em/1.5em Verdana;
+	color: #000000
+}
+#guide span {
+	background-color: #FFFFFF;
+	width: 250px;
+	height: 25px;
+	position: absolute;
+}
+#wrap {
+	padding: 0 0px 0 0px;
+	border:1px solid #e7e7e7;
+	overflow: hidden;
+	zoom: 1;
+	width: 100%;
+	background:white;
+	filter: alpha(opacity=100); /* IE */ ;
+	-moz-opacity:1;/* Moz + FF */;
+	opacity:1;
+}
+#left {
+	width: 200px;
+	margin-right: 10px;
+	float: left;
+	min-height: 100px
+}
+#center {
+	width: 600px;
+	margin-right: 10px;
+	float: left;
+	min-height: 100px
+}
+#right {
+	width: 200px;
+	margin-right: 10px;
+	float: left;
+	min-height: 100px
+}
+#left object,#right object,#left embed,#right embed {
+	width: 188px;
+	height: 160px
+}
+#center object,#center embed {
+	width: 588px;
+	height: 460px
+}
+#look {
+	height: 500px;
+	clear: both;
+	border: solid 1px #000
+}
+.baseball {
+	border: solid 1px #eee;
+	margin-bottom: 5px;
+	background: #FFF;
+	width: 100%;
+	overflow: hidden;
+}
+.baseball dt {
+	padding: 0 5px;
+	font-size: 13px;
+	background: #69C;
+	color: #FFF7B7;
+	height: 25px;
+	line-height: 25px;
+	background:url(${themeres}/images/shy_33.jpg) repeat-x left top #69C;
+}
+.baseball dt span {
+	float: left;
+	padding-left:20px;
+	color: #FFF7B7; font-size: 14px;font-weight: bold;
+}
+
+.baseball dt span a {
+	font-size: 12px;font-weight: normal ;
+}
+
+.baseball dd {
+	padding: 5px;
+}
+
+.baseball {
+	padding: 0 0px;
+	overflow: hidden;
+	zoom: 1;
+	width: 100%;
+
+}
+
+.table_l112_1,.table_l112_2,.table_l121_1,.table_l121_3,.table_l211_2,.table_l211_3,.table_l13_1,.table_l131_2
+{
+	border:0px;
+	border: 0px solid #8bd1f1;
+	margin-top: 10px;
+	width:230;
+	cellpadding:0;
+	cellspacing:0;
+}
+
+.table_l112_3,.table_l121_2,.table_l211_1
+{
+	border: 0px solid #8bd1f1;
+	margin-top: 10px;
+	width:470;
+	cellpadding:0;
+	cellspacing:0;
+}
+
+.table_l121_2_1
+{
+	border: 0px solid #8bd1f1;
+}
+
+.caption_l112_1,.caption_l112_2,.caption_l121_1,.caption_l121_3,.caption_l211_2,.caption_l211_3,.caption_l13_1,.caption_l131_2
+{
+	height:26;
+	background:url("${themeres}/images/shy_33.jpg");
+	color: white; 
+	font-size: 14px;
+	font-weight: bold;
+	text-align:center;
+	padding-top:5px;
+
+}
+
+.caption_l112_3,.caption_l121_2,.caption_l211_1
+{
+	height:33px;
+	background:url("${themeres}/images/shy_301.jpg");
+	color: #196b8a; 
+	font-size: 14px;
+	font-weight: bold;
+	padding-top:8px;
+	padding-left:22px;
+}
+
+.caption_l121_2_1
+{
+	height:33px;
+	padding-top:14px;
+	background:url("${themeres}/images/shy_21.jpg");
+}
+
+
+.content_l112_1,.content_l112_2,.content_l121_1,.content_l121_3,.content_l211_2,.content_l211_3,.content_l13_1,.content_l131_2
+{
+	bgcolor:#eaf6fb;
+	background:#eaf6fb;
+}
+
+.content_l112_3,.content_l121_2,.content_l211_1
+{
+	padding:5;
+	bgcolor:#eaf6fb;
+	background:#eaf6fb;
+}
+
+
+.table_l121_1_1
+{
+	border:0px;
+}
+
+.caption_l121_1_1
+{
+	height:49px;
+	padding-top:18px;
+	color: #ffffff;
+	background:url("${themeres}/images/shy_421.jpg");
+}
+
+.content_l121_1_1
+{
+	padding-top:18px;
+	background:url("${themeres}/images/shy_422.jpg") repeat-y ;
+}
+
+.bottom_l121_1_1
+{
+	background:url("${themeres}/images/shy_423.jpg");
+	height:16px;
+}
+
+.caption_l121_3_1
+{
+	height:33px;
+	padding-top:8px;
+	color: #ffffff;
+	background:url("${themeres}/images/shy_121.jpg");
+}
+
+.content_l121_3_1
+{
+	padding-top:8px;
+	background:url("${themeres}/images/shy_122.jpg") repeat-y ;
+}
+
+.bottom_l121_3_1
+{
+	background:url("${themeres}/images/shy_123.jpg");
+	height:16px;
+}
+
+
+.caption_l121_3_2
+{
+	height:40px;
+	color: #196b8a; 
+	background:url("${themeres}/images/shy_332.jpg");
+}
+.caption_l121_3_4
+{
+	height:40px;
+	color: #196b8a; 
+	background:url("${themeres}/images/shy_331.jpg");
+}
+
+.wenz12 {color: #1e8bb9;}
+.wenz13 {color: #535353;}
+#bottom .wenzi16{color: #90BBDB;font-family: "宋体";font-size: 12px;}
+#bottom a.wenzi16:hover{color: #FFFF00;font-size: 12px;}
+/*.wenzi16{color: #90BBDB;font-family: "宋体";}*/
+
+.wenzi1{font-weight: bold;color: #BC0000;}
+
+
+.wenzi8{color: #FFF;}
+a.wenzi8:hover{color: #FFFF00;}
+.Navigation {font-size: 14px;font-weight: bold;color: #FFF;padding: 0 20px 0 20px;}
+a.Navigation:hover {color: #FFFF00;}
+#bottom_di{background: #FFF url(${themeres}/images/bottom_03.gif) repeat-x top;}
+.bottom_zi{color: #545454;line-height: 20px; padding:11px 0 0 0;font-size: 12px;}
+.top_yj_l{background: url(${themeres}/images/top_04.jpg) no-repeat;width: 224px; height:36px;}
+/*.top_yj_l{background: url(${themeres}/images/top_04.jpg) no-repeat;width: 224px; height:36px;}
+*/
+.top_yj_r{background: url(${themeres}/images/top_06.gif) repeat-x;width: 746px;}
+/*.top_yj_r{background: url(${themeres}/images/top_06.gif) repeat-x;width: 746px;}
+*/
+.zxjzinput_1 {border:0px;width:137px;height:22px;font-size:12px;padding:5px 2px 0 7px;margin:0px;background: url(${themeres}/images/top_09.gif) no-repeat;color: #3C3C3C;}

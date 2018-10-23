@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="460" height="308" title="webdav文件存储位置" fontSize="14" showCloseButton="true" close="close();" backgroundColor="#DEE8EF" borderColor="#6C8EF0">
+<mx:Metadata>
+	[Event(name="savewebdav")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+	import mx.managers.PopUpManager;
+	public function close():void
+	{
+		PopUpManager.removePopUp(this);
+	}
+	public function save():void
+	{
+		this.dispatchEvent(new Event("savewebdav"));
+	}
+	]]>
+</mx:Script>
+	<mx:Label text="名称 :"  y="27" x="67" fontSize="14"/>  
+	<mx:TextInput id="webdavName" width="150" x="148" y="27" height="27"/> 
+	<mx:Label text="路径 :"  y="69" x="67" fontSize="14"/>  
+	<mx:TextInput id="path" width="150" x="148" y="69" height="27"/>   
+	<mx:Label text="用户名 :"  y="113" x="53" fontSize="14"/>  
+	<mx:TextInput id="username" width="150" x="148" y="113" height="27"/>  
+		<mx:Label text="密码 :" x="67" y="153" fontSize="14"/>  
+	<mx:TextInput id="password" width="150" x="148" y="153" height="27"/>  
+	<mx:Button label="取消" click="close();" x="249.5" y="217" width="66"/>  
+	<mx:Button label="保存" click="save();" x="130.5" y="217" width="67"/> 
+</mx:TitleWindow>

@@ -1,0 +1,50 @@
+<!--created by VdbPublisher at 2010-05-12 22:50:45-->
+#set($entity = $tool.getEntity('cms.news'))
+#set($bean = $tool.getBean('cms.news', $param.id))
+#usingLayout("/page/layout.vpage")
+#set($title = $bean.title.value)
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<div style="height: 30pt;">
+<br>
+<strong>
+当前位置：
+<a href="/">首页</a>
+>
+<a href="/page/showEntity.vpage?uri=cms.news&type=$formater.encode2($!bean.get('type').title,'utf-8')">$!bean.get('type').title</a>
+</strong>
+</div>
+
+<table align="center" width="90%" border="0" cellpadding="6" >
+	<tr >
+		<td align="center" style="color:#000000;font-size:20px;font-weight:bold;line-height:28px;">$!bean.get('title').format('%s')</td>
+	</tr>
+	
+	<tr >
+		<td align="center" style="border-bottom:1px dashed #D1D1D1;color:#888888;font-size:12px;font-style:normal;">$!bean.get('addtime').dateFormat('yyyy-MM-dd hh:mm:ss')</td>
+	
+	</tr>
+	
+	<tr >
+		<td align="center">&nbsp; </td>
+	</tr>
+		
+		<!--<tr class="bg0">-->
+	<tr>
+		<td align="left" valign="top" width="70%" style="line-height:20px;font-size:12px;">$!bean.get('content').format('%s')</td>
+	</tr>
+	#if ($!bean.get('files').files.size()>0)
+		<tr >
+			<td align="left" >
+			<br>
+			附件下载：
+			</div>
+			<div style="padding-left:30px;height: 15pt;">
+				﻿#foreach ($file in $!bean.get('files').files)
+					<a href="$file.servletPath">${file.title}[${file.fileSize}]</a><br>
+				#end
+			</div>
+			</td>
+		</tr>
+	#end
+	</table>
+$loggerTool.logAccess(null,null,$entity,'showItem',null,$param.id,false)

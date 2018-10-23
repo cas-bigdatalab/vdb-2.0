@@ -1,0 +1,38 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_columnName" value="${meta.columnName}"><input type="text" size="35" value="${meta.columnName}" disabled></td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="FilesEdit" #if($!{field.editorStyle} !="LocalFilesEdit") checked #end>文件控件 &nbsp;&nbsp;&nbsp;&nbsp;
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="LocalFilesEdit" #if($!{field.editorStyle} =="LocalFilesEdit")checked #end>本地文件
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="FilesLabel" onclick="$('#imageSize').hide()"
+      		#if($!{field.viewerStyle}==''||${field.viewerStyle}=='FilesLabel'||
+      		(${field.viewerStyle}!='FilesLabel'&&${field.viewerStyle}!='ImagesLabel'&&${field.viewerStyle}!='MoviesLabel')) checked #end>附件列表
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="ImagesLabel" onclick="$('#imageSize').show()"
+      	#if(${field.viewerStyle}=='ImagesLabel') checked #end>图片列表
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="MoviesLabel" onclick="$('#imageSize').hide()"
+      	#if(${field.viewerStyle}=='MoviesLabel') checked #end>视频列表
+      </td>
+    </tr>
+    <tr id="imageSize" #if(${field.viewerStyle}!='ImagesLabel') style="display:none;" #end>
+      <td class="table_bg">图片大小</td>
+      <td width="80%" style="padding-left:12px;">
+      	宽度：<input type="text" name="P_imageWidth" size="4" #if(${field.imageWidth}) value="$!{field.imageWidth}" #else value="100" #end>px
+      	高度：<input type="text" name="P_imageHeight" size="4" #if(${field.imageHeight}) value="$!{field.imageHeight}" #else value="100" #end>px
+      </td>
+    </tr>
+</table>
+<script $ifDefer>
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+	checkRadioOptions(form1.elements("P_imageWidth"), "$!{field.imageWidth}");
+	checkRadioOptions(form1.elements("P_imageHeight"), "$!{field.imageHeight}");
+</script>

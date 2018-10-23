@@ -1,0 +1,42 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示条件查询的用法')
+
+#set($query = $tool.createQuery('cn.csdb.vdb.bookstore.book'))
+#nul($query.where($query.and($query.lt('price', 100), $query.notNull('title'))))
+#nul($query.orderBy($query.asc('title')))
+
+##设定查询结果的操作菜单，二次开发可以自定义
+##单项菜单
+#define($itemMenu)
+	<a href='/showBean(cn.csdb.vdb.bookstore.book).vpage?id=${id}' target='_blank'>详细</a>
+#end
+
+##所有项菜单
+#define($gridMenu)
+#end
+
+#set($pageIndex = 1)
+#set($pageSize = 20)
+
+####################################################################
+<p>
+查询实体：$query.entity.uri</p>
+<p>
+查询条件：$tool.encodeXml($query.where().toString(), true)</p>
+<p>
+查询排序：$query.orderBy()</p>
+<p>
+SQL语句：$tool.encodeXml($query.toStringSql().toString(), true)</p>
+<p>
+SQL参数：$query.toStringSql().getParameters().toString()</p>
+<p>
+当前查询页：$pageIndex</p>
+<p>
+每页记录数：$pageSize</p>
+####################################################################
+
+##创建PageViewer对象
+#set($pageViewer = $pager.create($query, $pageIndex, $pageSize))
+
+##显示PageViewer对象
+#parse("${pageroot}/listBeans[cn.csdb.vdb.bookstore.book].vpage")

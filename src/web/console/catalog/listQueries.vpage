@@ -1,0 +1,54 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="自定义查询列表")
+
+#set($dataSet = ${catalog.fromId(${param.dsid})})
+
+#if (!$dataSet.getJdbcSource())
+	#usingLayout('/console/catalog/invalidRepository.vpage')
+#end
+
+<p align="right">
+	<a href="updateQuery.vpage?dsid=${param.dsid}">新建自定义查询>></a>
+</p>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:#91c0fe 1px solid;border-left:#91c0fe 1px solid;background:#fff;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;" >
+<tr>
+		<td class="table01_bg">标题</td>
+		<td class="table01_bg">实体URI</td>
+		<td class="table01_bg">注册时间</td>
+		<td class="table01_bg">操作</td>
+</tr>
+#foreach ($query in $dataSet.queries)
+	<tr #if($velocityCount % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+		<td>${query.title}</td>
+		<td>$!{query.entity.uri}</td>
+		<td>${query.lastModified}</td>
+		<td style="text-align:center;">
+			<a href="updateQuery.vpage?id=${query.id}">修改</a>
+			<a href="#" onclick="javascript:deleteTable('${query.id}', '${query.title}')">注销</a>
+		</td>
+	</tr>
+#end
+</table>
+<script>
+	function deleteTable(id, title)
+	{
+		var parentId="QueryList@${param.dsid}";
+		var tempId="Query@"+id;
+		if(confirm("你真的要注销查询“"+ title + "”吗?"))
+		{
+			location.href = "doDeleteQuery.vpage?mid=" + id + "&dsid=${param.dsid}";
+		}
+	}
+</script>
+<script language="javascript"> 
+var rows = document.getElementsByTagName('tr'); 
+for (var i=0;i<rows.length;i++){ 
+	rows[i].onmouseover = function(){ //鼠标在行上面的时候 
+	this.className += 'altrow'; 
+} 
+rows[i].onmouseout = function(){ //鼠标离开时 
+	this.className = this.className.replace('altrow',''); 
+} 
+} 
+</script> 

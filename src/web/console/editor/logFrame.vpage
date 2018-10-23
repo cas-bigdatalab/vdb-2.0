@@ -1,0 +1,68 @@
+﻿<!-- BEGIN 访问日志查询结果外框，可拖动 -->
+<div id="visitLogDiv">
+	<!-- 可拖动的操纵柄 -->
+	<div id="visitLogLayer_handle"  height="40px" style="cursor:move;"
+		align="right">
+		<!-- 关闭按钮 -->
+		<img src="/console/shared/images/close.gif" align="right" id="visitClose"
+			style="cursor:default">
+	</div>
+	<!-- 查询结果的真正内容 -->
+	<div id="visitLogInnerDiv"> 
+	</div>
+</div>
+<!-- END 访问日志查询结果外框，可拖动 -->
+
+<style type="text/css">
+	#visitLogDiv 
+	{
+		position: absolute;
+		left:150px;
+		top:150px;
+		width:700px;
+		background-color:#fcfbf3;
+		border: 1px solid #000;
+		z-index: 50;
+		filter:progid:dximagetransform.microsoft.shadow(color=#378702,direction=135,strength=6);
+	}
+	
+	#visitLogLayer_handle
+	{
+		background-color:#cae1b9;
+		padding:2px;
+		text-align:center;
+		font-weight:bold;
+		color: #FFFFFF;
+		vertical-align:middle;
+		height:18px;
+	}
+</style>
+
+
+<script DEFER>
+    function visitLog(eid,id){
+    	loadHTML1("/console/editor/log.vpage", "eid=" + eid + "&id=" + id, $("#visitLogInnerDiv")[0]);
+    	$("#visitLogDiv").show();
+	}   
+        
+        
+ 	$(document).ready(function()
+	{
+		$('#visitLogDiv').Draggable(
+				{
+					zIndex: 	20,
+					ghosting:	false,
+					opacity: 	0.7,
+					handle:	'#visitLogLayer_handle'
+				}
+			);	
+					
+		$("#visitLogDiv").hide();
+		
+		$('#visitClose').click(function()
+			{
+				$("#visitLogDiv").hide();
+		});
+		
+	});
+</script>

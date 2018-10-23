@@ -1,0 +1,14 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<url>${request.scheme}://${request.serverName}:${request.serverPort}/page/showItem.vpage?id=$!param.uri</url>
+	</body>
+</response>
+#end

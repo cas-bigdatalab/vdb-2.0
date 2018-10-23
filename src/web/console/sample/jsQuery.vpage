@@ -1,0 +1,60 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示javascript查询控件的用法')
+<script language="javascript" src="/console/shared/js/viewer.js"></script>
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/jsoCtrl.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/check.js"></script>
+<script language="javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/js/style.css">
+<table border="1" width="100%" id="table1" height="104">
+	<tr>
+		<td bgcolor="#F0F0FF">
+		<p><a onclick="QueryForm0.jsoQueryForm.popup()">&gt;&gt;查询</a> </p>
+		<div id="QueryForm0" class="QueryForm">
+		</div>
+		<div id="DataGrid0" class="DataGrid">
+		</div>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFC1">
+		<p></p>
+		<div id="DataGrid1" class="DataGrid">
+		</div>
+		</td>
+	</tr>
+</table>
+<script>
+	//定义一个查询对象
+	var jsoQuery0 = new Query('cn.csdb.paperdb.book');
+	jsoQuery0.pageSize = 20;
+	
+	//定义一个数据网格
+	var jsoDataGrid0 = new DataGrid(jsoQuery0, DataGrid0);
+	jsoDataGrid0.urlDoQuery = '/sample/customQuery.vpage';
+	jsoDataGrid0.refresh();
+	
+	//定义一个查询框
+	var jsoQueryForm0 = new QueryForm(jsoQuery0, 'cn.csdb.paperdb.book', $('#QueryForm0')[0], function()
+		{
+			this.onsubmit = function()
+			{
+				jsoDataGrid0.refresh();
+			}
+		}
+	);
+	
+	//定义一个查询对象
+	var jsoQuery1 = new Query('cn.csdb.paperdb.book');
+	jsoQuery1.pageSize = 20;
+	
+	//定义一个数据网格
+	var jsoDataGrid1 = new DataGrid(jsoQuery1, DataGrid1);
+	jsoDataGrid1.urlDoQuery = '/sample/queryFromSql.vpage';
+	jsoDataGrid1.refresh();
+</script>

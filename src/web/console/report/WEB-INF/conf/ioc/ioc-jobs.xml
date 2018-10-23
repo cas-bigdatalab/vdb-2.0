@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<bean id="accessStatsJobTrigger"
+					class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="jobDetail">
+						<bean
+							class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+							<property name="targetObject">
+								<bean
+									class="vdb.report.access.job.AccessStatsJob" />
+							</property>
+							<property name="targetMethod"
+								value="execute" />
+						</bean>
+					</property>
+					<!--每天00:10启动-->
+					<property name="cronExpression"
+						value="0 10 0 * * ?" />
+				</bean>
+
+				<bean id="dbStatsJobTrigger"
+					class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="jobDetail">
+						<bean
+							class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+							<property name="targetObject">
+								<bean
+									class="vdb.report.resstat.dbstats.job.DbStatsJob" />
+							</property>
+							<property name="targetMethod"
+								value="execute" />
+						</bean>
+					</property>
+					<!--每天00:20启动-->
+					<property name="cronExpression"
+						value="0 20 0 * * ?" />
+				</bean>
+				
+				<bean id="fileStatsJobTrigger"
+					class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="jobDetail">
+						<bean
+							class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+							<property name="targetObject">
+								<bean
+									class="vdb.report.resstat.filestats.job.FileStatsJob" />
+							</property>
+							<property name="targetMethod"
+								value="execute" />
+						</bean>
+					</property>
+					<!--每天00:30启动-->
+					<property name="cronExpression"
+						value="0 30 0 * * ?" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+</beans>

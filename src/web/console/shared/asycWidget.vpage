@@ -1,0 +1,6 @@
+﻿$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#set($widget = $widgetTool.widgetFactory.getWidget($param.widget))
+#set($isViewMode = $param.isViewMode)
+#parse("/console/webpub/WEB-INF/widgets/$param.widget/viewer.html")

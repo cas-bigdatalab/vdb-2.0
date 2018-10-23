@@ -1,0 +1,11 @@
+#macro(layoutWidgets $layoutName)
+#set($layoutName = "$layoutName")
+#set($isViewMode = true)
+#parse("/console/webpub/layoutWidgets.vpage")
+#end
+
+#macro(renderWidget $widgetName $mode)
+#set($widgetName = "$widgetName")
+#set($isViewMode = $mode)
+#parse("/console/webpub/renderWidget.vpage")
+#end

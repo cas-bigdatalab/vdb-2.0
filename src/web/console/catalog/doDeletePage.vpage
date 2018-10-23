@@ -1,0 +1,5 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoDeletePage")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="删除页面")
+
+删除页面成功！

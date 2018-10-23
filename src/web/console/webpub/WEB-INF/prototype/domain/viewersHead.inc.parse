@@ -1,0 +1,7 @@
+#saveAs("viewersHead.inc")
+
+#foreach($type in $typeManager.fieldTypes)
+#if($typeManager.hasFile($type, 'viewerHead.vsp'))
+#parse($typeManager.getFilePath($type, 'viewerHead.vsp'))
+#end
+#end

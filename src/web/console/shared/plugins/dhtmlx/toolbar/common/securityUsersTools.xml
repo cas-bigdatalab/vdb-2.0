@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="listUser" img="gioup_ico01.gif"  text="所有用户列表" />
+	<item type="button"	id="usersAddUser" img="gioup_ico02.gif"  text="添加用户" />
+	<item type="button"	id="usersSetUser" img="gioup_ico03.gif"  text="用户分组" />
+	<item type="button"	id="usersUpdate" img="gioup_ico04.gif"  text="修改密码" />
+	<item type="button"	id="usersDelete" img="gioup_ico05.gif"  text="删除" />
+	<item type="button"	id="usersAuthorization" img="gioup_ico06.gif"  text="授权" />
+	<item type="button"	id="usersRecord" img="gioup_ico07.gif"  text="记录" />
+</toolbar>

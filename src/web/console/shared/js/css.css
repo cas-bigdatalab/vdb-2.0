@@ -1,0 +1,320 @@
+
+a{
+	TEXT-DECORATION:none;
+	color: #F75555;
+}
+
+ul{ margin:0px; padding:0px; list-style-type:none;}
+li{ margin:0px; padding:0px; list-style-type:none;}
+
+.leftnav {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #213607;
+}
+.gray {
+	font-size: 12px;
+	color: #A4A4A4;
+}
+.green01 {
+	font-size: 12px;
+	color: #81c110;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.leftnav A:link {
+	color: #213607;
+}
+.leftnav A:visited {
+	color: #213607;
+}
+.leftnav A:hover {
+	color: #2F4E0A;
+}
+
+.tietl {
+	font-family: "宋体";
+	font-size: 16px;
+	font-weight: bold;
+	color: #669900;
+}
+.red2 {
+	color: #FF9900;
+	font-size: 13px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.red {
+	color: #FF9900;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+}
+.red A:link {
+	color: #FF9900;
+	font-size: 12px;
+	text-decoration: none;
+}
+.red A:visited {
+	color: #FF9900;
+	font-size: 12px;
+	text-decoration: none;
+}
+.red A:hover{
+	color: #FF6600;
+	font-size: 12px;
+	text-decoration: none;
+}
+.green {
+	color: #699B28;
+	font-size: 12px;
+	text-decoration: none;
+}
+.green A:link {
+	color: #679A24;
+	font-size: 12px;
+	text-decoration: none;
+}
+.green A:visited {
+	color: #699B28;
+	font-size: 12px;
+	text-decoration: none;
+}
+.green A:hover{
+	color: #FF6600;
+	font-size: 12px;
+	text-decoration: none;
+}
+.white {
+	color: #FFFFFF;
+	font-size: 12px;
+	text-decoration: none;
+}
+.white A:link {
+	color: #FFFFFF;
+	font-size: 12px;
+	text-decoration: none;
+}
+.white A:visited {
+	color: #FFFFFF;
+	font-size: 12px;
+	text-decoration: none;
+}
+.white A:hover{
+	color: #FFFF66;
+	font-size: 12px;
+	text-decoration: none;
+}
+.mytable0 {
+	font-family: "宋体";
+	font-size: 14px;
+	color: #FFFFFF;
+	background-repeat: repeat-x;
+	background-position: bottom;
+	text-align: center;
+	line-height: 21px;
+	font-weight: bold;
+}
+.mytable1 {
+	font-family: "宋体";
+	font-size: 13px;
+	color: #666666;
+	background-repeat: repeat-x;
+	background-position: bottom;
+	text-align: center;
+	line-height: 21px;
+}
+
+.txt01 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	line-height: 16px;
+}
+.txt01 A:link {
+	color: #008000;
+	text-decoration: none;
+}
+.txt01 A:visited {
+	color: #666666;
+}
+.txt01 A:hover{
+	color: #FF6600;
+}
+
+
+/*   top*css   */
+.top_div{width:100%;
+	height:80px;
+	margin:0 auto;
+	background:url(../images/top_mid_bg.jpg) repeat-x;
+}	
+.top_left_div{height:80px;
+	width:403px;
+	float:left;
+	background:url(../images/top_left_bg.jpg) top left no-repeat;
+	padding-top:40px;
+	padding-left:86px;
+}
+.title_left_title_div{ font-size:16px;
+	font-family: "黑体";
+	color:#FFF;
+}
+.top_right_div{height:80px;
+	width:350px;
+	float:right;
+}
+
+.foot_top{height:10px;
+	background:#428BEA;
+}
+
+.foot_div{
+	height:27px;
+	width:100%;
+	background:url(../images/foot_bg.jpg) repeat-x;
+	text-align:center;
+	padding-top:10px;
+	color: #FFFFFF;
+}
+
+.left_title_bg_div{height:46px;
+	background: url(../images/left_title_bg.jpg) repeat-x;
+	}
+.left_title_div{height:46px;
+	width:180px;
+	background: url(../images/left_title.jpg) no-repeat;
+	line-height:28px;
+	padding-left:80px;
+	font-size:16px;
+	color:#FFF;
+	font-weight:bold;
+	}
+.right_div{	height:100%;
+	background:#438aeb;
+	background:url(../images/right_bg.jpg) top repeat-x;
+	padding-right:2px;
+	}
+.right_01_div{
+	border:#2665cb 0px solid;
+	height:100%;
+	}
+.right_bottom_div{ height:100%;
+	padding:2px;
+	background:url(../images/right_bottoom_bg.jpg) no-repeat bottom right;
+	margin:2px;
+	}
+.right_bottom01_div{padding-top:15px;
+	padding-left:20px;
+	padding-right:50px;
+	margin:0 auto;
+	}
+
+.right_title{height:54px;
+	text-align:center;
+	color:#000;
+	font-size:16px;
+	font-weight: bold;
+	align:center;
+	width:100%;
+	margin-left:300px;
+	}
+.right_titleleft{height:54px;
+	background: url(../images/right_title_bg.jpg) no-repeat right;
+	width:143px;
+	float:left;
+	}
+.right_titlemid{ height:54px;
+	padding-top:23px;
+	padding-left:5px;
+	padding-right:5px;
+	background:url(../images/right_titlemid_bg.jpg) repeat-x top;
+	float:left;
+	}
+.right_titleright{ height:54px; width:151px;
+	background: url(../images/right_titleleft_bg.jpg) no-repeat left;
+	float:left;
+	margin-left:-5px;
+	}
+.right_table{
+	width:100%;
+	margin-top:0;
+	padding-top:0px;
+	}
+.right_table tr td{ 
+	height:32px;
+	border-bottom:#91c0fe 1px solid;
+	border-right:#91c0fe 1px solid;
+	font-size:12px;
+	}
+.right_table tr td input { 
+	border:#91c0fe 0px solid;
+	border-bottom: #959595 1px solid;
+	}
+input[type="radio"]{border:0;}
+.right_top_div{background:url(../images/position_bg.jpg) repeat-x;
+	height:22px;
+	} 
+.right_top_left_div{background: url(../images/position_left.jpg) left no-repeat;
+	height:19px;
+	padding-top:3px;
+	padding-left:12px;
+	}
+.right_top_left_div ul li{float: left;
+	line-height:17px;
+	color:#FFF;
+	}
+.input_padding{padding-left:10px;}
+.table_bg{background:#C5E2F9 url(../images/right_table_bg.jpg) repeat-x;
+	text-align:right;
+	padding-right:10px;
+	font-weight:bold;
+	color:#5D6267;
+	border-left:#91c0fe 1px solid;
+	}
+.table01_bg{background:#C5E2F9 url(../images/right_table_bg.jpg) repeat-x top;
+	text-align:center;
+	font-size:12px;
+	font-weight:bold;
+	}
+.right_ico_div{text-align:center; 
+	color:#FFF;
+	width:200px; 
+	margin: 0 auto;
+	}
+
+.left_ico a{height:26px;
+	padding-left:15px;
+	padding-right:15px;
+	background:url(../images/ico_bg.jpg) repeat-x;
+	border:#005bc4 1px solid;
+	margin-top:20px;
+	line-height:26px;
+	float:left;
+	margin-right:5px;
+	color:#FFF;
+	text-decoration:none;
+	}
+.left_ico a:hover,a:active{
+	background:url(../images/ico02_bg.jpg) repeat-x;
+	border:#0e48ae 1px solid;
+	color:#FFF;
+	text-decoration:none;
+	}
+.excerpt_div{
+	height:25px;
+	background:url(../images/excerpt_bg.jpg) repeat-x top;
+	margin:1px;
+	padding-top:3px;
+	padding-left:12px;
+	padding-bottom:3px;
+	}
+.excerpt_ico01{
+	height:20px; 
+	background: url(../images/excerpt_ico_bg.jpg) repeat-x;
+	padding-left:2px;
+	padding-right:2px;
+	font-size:12px;
+}
+html{ height:100%; width:100%;}
+body{ font-family:"宋体"; font-size:12px; color: #000; margin:0px; padding:0px; height:100%;}

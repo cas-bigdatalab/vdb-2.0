@@ -1,0 +1,53 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:22-->
+
+##定义一个指向cms.dbinfo的实体对象
+#set($entity = $tool.getEntity('cms.dbinfo'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2b14188c012b141eba8f0025" fieldUri="cms.dbinfo.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按Id排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> Id</b>#if ('cms.dbinfo.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2b14188c012b141f57ca0027" fieldUri="cms.dbinfo.detail" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按描述排序" ><b> 描述</b>#if ('cms.dbinfo.detail' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2b14188c012b142073780029" fieldUri="cms.dbinfo.pic" orderAsc="${jsoQuery.orderAsc}"  style="color:#888888" title="不支持排序" ><b> 图片</b>#if ('cms.dbinfo.pic' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('detail').format('%s')&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">#foreach ($file in $!bean.get('pic').files)
+#set($fileUrl = $file.servletPath)
+<a target="_blank" href="$fileUrl">
+	<img src="$fileUrl"  alt="${file.title}[${file.fileSize}字节][${file.imageWidth}*${file.imageHeight}像素]"
+			width="200"		 height="200"  border=0>
+		</a><br>
+#end&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

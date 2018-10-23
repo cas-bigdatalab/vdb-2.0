@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/console/js/style.css">
+
+<style type="text/css">
+<!--
+.style1 {font-size: 18px}
+.style2 {font-size: 24px}
+-->
+</style>
+
+</head>
+<body class="body1" background="/console/shared/images/wall4.gif">
+<table border="0" width="100%" id="table2" height="100%">
+	<tr>
+		<td align="right" valign="bottom">
+		<table border="0" width="615" id="table3" height="135">
+			<tr>
+				<td>
+				<img border="0" src="/console/shared/images/oracle.gif" width="155" height="45">
+				<img border="0" src="/console/shared/images/mysql.gif" width="122" height="64">
+				<img border="0" src="/console/shared/images/sqlserver.gif" width="153" height="53">
+				<img border="0" src="/console/shared/images/derby.bmp" width="146" height="53">&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td height="84">
+				<img border="0" src="/console/shared/images/access.gif" width="146" height="57">
+				<img border="0" src="/console/shared/images/hsql.gif" width="146" height="57">
+				<img border="0" src="/console/shared/images/sqlite.gif" width="146" height="57">
+				<img border="0" src="/console/shared/images/postgresql.jpg" width="146" height="53"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

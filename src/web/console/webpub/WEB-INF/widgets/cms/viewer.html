@@ -1,0 +1,20 @@
+#set($query = $tool.createQuery('cms.news'))
+#nul($query.orderBy('cms.news.addtime','desc'))
+#nul($query.where($query.eq('type', ${widget.props.type})))
+#set($pageIndex = 1)
+#set($pageViewer = $tool.createPageViewer($query, $pageIndex, ${widget.props.count}))
+#if(${widget.props.marquee}=="true")
+<MARQUEE onmouseover=this.stop() onmouseout=this.start() direction=up height=150 scrollamount="10" scrolldelay="500">
+#end
+<div style="line-height:18px;padding:0 6 0 6">
+#foreach ($bean in $pageViewer.beans)
+	#set ($id = $bean.getId().jdbcObject)
+	<li class="item"><a href='${engine.webpub}/showItem.vpage?id=cms.news/${id}' target='_blank'>$!bean.get('title').format('%s')($!{bean.get('addtime').dateFormat('yyyy-MM-dd')})</a></li>
+#end
+</div>
+#if(${widget.props.marquee}=="true")
+</MARQUEE>
+#end
+<p align="right" style="padding:0 6 6 0">
+<a href="/page/showEntity.vpage?uri=cms.news&type=$formater.encode2(${widget.props.type},'utf-8')" style="text-decoration: none;">	 更多 &gt;&gt;&gt;</a>
+</p>

@@ -1,0 +1,2 @@
+﻿#invoke("vdb.webpub.vsp.DoGetPublishLogger")
+$progress.pos|$progress.max|$progress.elapse|$progress.leftTime|$progress.prompt

@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="gbk"?>
+<dataset>
+	<version>1.2.1</version>
+	<version>1.2.1</version>
+	<uri>cms</uri>
+	<title>内容管理系统</title>
+	<description />
+	<id>1f628d0627b369f80127b378bc44001e</id>
+	<lastModified>2010-03-31 17:06:26</lastModified>
+	<repository>
+		<id>1f628d0627b369f80127b37b5676001f</id>
+		<lastModified>2010-03-31 17:09:17</lastModified>
+		<databaseName>$dsRoot/data/db</databaseName>
+		<productVersion />
+		<loginTimeout>60</loginTimeout>
+		<userName>vdbcms</userName>
+		<localFilePath>$dsRoot</localFilePath>
+		<productName>derby</productName>
+		<userPass>vdbcms</userPass>
+	</repository>
+	<entity>
+		<id>4028818d27b49c5b0127b4a4ca3b0025</id>
+		<lastModified>2010-03-31 22:34:10</lastModified>
+		<tableName>NEWS</tableName>
+		<description />
+		<order>desc</order>
+		<name>news</name>
+		<title>文稿库</title>
+		<titleField>cms.news.title</titleField>
+		<editorField>cms.news.creator</editorField>
+		<orderField>cms.news.addtime</orderField>
+		<timeStampField>cms.news.addtime</timeStampField>
+		<identifier>
+			<id>4028818d27b49c5b0127b4a4ca3b0026</id>
+			<lastModified>2010-03-31 22:34:10</lastModified>
+			<field>cms.news.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>19</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>序号</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>4028818d27b49c5b0127b4a5128e0028</id>
+			<lastModified>2010-03-31 22:34:29</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>title</name>
+			<columnName>TITLE</columnName>
+			<viewerPattern />
+			<hint />
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>标题</title>
+			<editorWidth>300</editorWidth>
+			<editorStyle>StringEdit</editorStyle>
+			<id>4028818d27b49c5b0127b4a6196f002a</id>
+			<lastModified>2010-03-31 22:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>4028818d27b49c5b0127b4a636fa002c</id>
+			<lastModified>2010-03-31 22:35:44</lastModified>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>addtime</name>
+			<columnName>ADDTIME</columnName>
+			<hint />
+			<viewerStyle>DateLabel</viewerStyle>
+			<title>发布时间</title>
+			<editorStyle>DateCtrl</editorStyle>
+			<type>Date</type>
+		</field>
+		<field>
+			<id>4028818d27b49c5b0127b4a68dd4002e</id>
+			<lastModified>2010-03-31 22:36:06</lastModified>
+			<expr />
+			<viewerPattern />
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>author</name>
+			<columnName>AUTHOR</columnName>
+			<hint />
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>作者</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<type>String</type>
+		</field>
+		<field>
+			<viewerPattern />
+			<id>4028818d27b4b9d40127b4bc48e10027</id>
+			<lastModified>2010-03-31 22:59:50</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>creator</name>
+			<columnName>CREATOR</columnName>
+			<hint />
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>录入员</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<type>String</type>
+		</field>
+		<field>
+			<id>4028818d27b4b9d40127b4bf05ed0029</id>
+			<lastModified>2010-03-31 23:02:50</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>type</name>
+			<columnName>TYPE</columnName>
+			<hint />
+			<options>select type,type from newstype</options>
+			<optionStyle>sql</optionStyle>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<title>新闻类型</title>
+			<editorWidth />
+			<editorStyle>EnumSelectEdit</editorStyle>
+			<type>Enum</type>
+		</field>
+		<field>
+			<id>4028818d27b4b9d40127b4c05b7b002b</id>
+			<lastModified>2010-03-31 23:04:17</lastModified>
+			<size>32700</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>content</name>
+			<columnName>CONTENT</columnName>
+			<hint />
+			<editorHeight>500</editorHeight>
+			<title>内容</title>
+			<editorWidth>600</editorWidth>
+			<editorStyle>HtmlEdit</editorStyle>
+			<type>RichText</type>
+		</field>
+		<field>
+			<id>4028818d27b99e6c0127b9a42b88001d</id>
+			<lastModified>2010-04-01 21:51:36</lastModified>
+			<size>500</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<imageHeight>100</imageHeight>
+			<name>files</name>
+			<columnName>FILES</columnName>
+			<hint />
+			<viewerStyle>FilesLabel</viewerStyle>
+			<title>附件</title>
+			<imageWidth>100</imageWidth>
+			<editorStyle>FilesEdit</editorStyle>
+			<type>Files</type>
+		</field>
+		<field>
+			<id>4028d9e428386c9601283872ad53001d</id>
+			<lastModified>2010-04-26 12:49:19</lastModified>
+			<size>2000</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<imageHeight>300</imageHeight>
+			<name>pic</name>
+			<columnName>PIC</columnName>
+			<hint />
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<title>滚动图片</title>
+			<imageWidth>300</imageWidth>
+			<editorStyle>FilesEdit</editorStyle>
+			<type>Files</type>
+		</field>
+		<field>
+			<id>4028d9e428386c9601283873eefb001f</id>
+			<lastModified>2010-04-26 12:50:41</lastModified>
+			<size>2</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>flag</name>
+			<columnName>FLAG</columnName>
+			<hint />
+			<options>y=显示,n=不显示</options>
+			<optionStyle>normal</optionStyle>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<title>图片显示标识</title>
+			<editorWidth />
+			<editorStyle>EnumRadiosEdit</editorStyle>
+			<type>Enum</type>
+		</field>
+	</entity>
+	<entity>
+		<id>1f628d0627b6e1fa0127b6e612a70022</id>
+		<lastModified>2010-04-01 09:04:43</lastModified>
+		<tableName>NEWSTYPE</tableName>
+		<description />
+		<order>desc</order>
+		<name>newstype</name>
+		<title>文稿类型</title>
+		<titleField>cms.newstype.id</titleField>
+		<identifier>
+			<id>1f628d0627b6e1fa0127b6e612a70023</id>
+			<lastModified>2010-04-01 09:04:43</lastModified>
+			<field>cms.newstype.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>id</name>
+			<columnName>ID</columnName>
+			<viewerPattern />
+			<hint />
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>序号</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0627b6e1fa0127b6e668390026</id>
+			<lastModified>2010-04-01 09:05:05</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<editorHeight />
+			<nullable>false</nullable>
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern />
+			<editorWidth>300</editorWidth>
+			<hint />
+			<name>type</name>
+			<defaultValue />
+			<title>新闻类型</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>TYPE</columnName>
+			<id>4028d9e428489ba1012848c7a796003d</id>
+			<lastModified>2010-04-29 16:56:03</lastModified>
+			<type>String</type>
+		</field>
+	</entity>
+	<entity>
+		<name>links</name>
+		<tableName>LINKS</tableName>
+		<title>超链接</title>
+		<description />
+		<id>4028d8eb2809e23c012809e490e30019</id>
+		<lastModified>2010-04-17 11:51:33</lastModified>
+		<titleField>cms.links.id</titleField>
+		<identifier>
+			<id>4028d8eb2809e23c012809e490e3001a</id>
+			<lastModified>2010-04-17 11:51:33</lastModified>
+			<field>cms.links.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>id</name>
+			<columnName>ID</columnName>
+			<viewerPattern />
+			<hint />
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>4028d8eb2809e23c012809e73d17001d</id>
+			<lastModified>2010-04-17 11:54:29</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<id>4028d8eb2809e23c012809e91206001f</id>
+			<lastModified>2010-04-17 11:56:29</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>title</name>
+			<hint />
+			<viewerPattern />
+			<columnName>TITLE</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>链接名称</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>link</name>
+			<hint />
+			<viewerPattern />
+			<columnName>LINK</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>链接地址</title>
+			<editorWidth>400</editorWidth>
+			<editorStyle>StringEdit</editorStyle>
+			<id>4028d8eb2809e23c012809ed73da0021</id>
+			<lastModified>2010-04-17 12:01:16</lastModified>
+			<type>String</type>
+		</field>
+	</entity>
+	<entity>
+		<name>applications</name>
+		<tableName>APPLICATIONS</tableName>
+		<title>数据应用</title>
+		<description />
+		<id>4028d8eb2809e23c012809ee5cc30023</id>
+		<lastModified>2010-04-17 12:02:15</lastModified>
+		<titleField>cms.applications.id</titleField>
+		<identifier>
+			<id>4028d8eb2809e23c012809ee5cc30024</id>
+			<lastModified>2010-04-17 12:02:15</lastModified>
+			<field>cms.applications.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>id</name>
+			<columnName>ID</columnName>
+			<viewerPattern />
+			<hint />
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>4028d8eb2809e23c012809f16deb0026</id>
+			<lastModified>2010-04-17 12:05:36</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>title</name>
+			<columnName>TITLE</columnName>
+			<viewerPattern />
+			<hint />
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>数据应用标题</title>
+			<editorWidth>400</editorWidth>
+			<editorStyle>StringEdit</editorStyle>
+			<id>4028d8eb2809e23c012809f1b3500028</id>
+			<lastModified>2010-04-17 12:05:54</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>20000</size>
+			<defaultValue />
+			<nullable>false</nullable>
+			<name>description</name>
+			<columnName>DESCRIPTION</columnName>
+			<hint />
+			<editorHeight>500</editorHeight>
+			<title>数据应用描述</title>
+			<editorWidth>500</editorWidth>
+			<editorStyle>HtmlEdit</editorStyle>
+			<id>4028d8eb2809e23c012809f22a36002a</id>
+			<lastModified>2010-04-17 12:06:25</lastModified>
+			<type>RichText</type>
+		</field>
+	</entity>
+	<entity>
+		<name>servicecase</name>
+		<tableName>SERVICECASE</tableName>
+		<title>服务案例</title>
+		<description />
+		<id>1f628d2d2aea91f9012aea936acf000c</id>
+		<lastModified>2010-09-07 13:03:03</lastModified>
+		<titleField>cms.servicecase.id</titleField>
+		<identifier>
+			<id>1f628d2d2aea91f9012aea936acf000d</id>
+			<lastModified>2010-09-07 13:03:03</lastModified>
+			<field>cms.servicecase.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<viewerPattern>%d</viewerPattern>
+			<viewerStyle>LongLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>id</name>
+			<unitValue />
+			<defaultValue />
+			<title>Id</title>
+			<editorStyle>LongEdit</editorStyle>
+			<columnName>ID</columnName>
+			<id>1f628d2d2aea91f9012aea938c00000f</id>
+			<lastModified>2010-09-07 13:03:12</lastModified>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>title</name>
+			<defaultValue />
+			<title>名称</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>TITLE</columnName>
+			<id>1f628d2d2aea91f9012aea94d56b0011</id>
+			<lastModified>2010-09-07 13:04:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<editorHeight>100</editorHeight>
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>description</name>
+			<defaultValue />
+			<title>支撑项目描述</title>
+			<editorStyle>TextAreaEdit</editorStyle>
+			<columnName>DESCRIPTION</columnName>
+			<id>1f628d2d2aea91f9012aea95457f0013</id>
+			<lastModified>2010-09-07 13:05:05</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>source</name>
+			<defaultValue />
+			<title>支撑项目来源</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>SOURCE</columnName>
+			<id>1f628d2d2aea91f9012aea958b370015</id>
+			<lastModified>2010-09-07 13:05:23</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>userunit</name>
+			<defaultValue />
+			<title>用户所在单位</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>USERUNIT</columnName>
+			<id>1f628d2d2aea91f9012aea95dadd0017</id>
+			<lastModified>2010-09-07 13:05:43</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>type</name>
+			<defaultValue />
+			<title>服务类别</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>TYPE</columnName>
+			<id>1f628d2d2aea91f9012aea962eb70019</id>
+			<lastModified>2010-09-07 13:06:05</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>1f628d2d2aea91f9012aea96925d001c</id>
+			<lastModified>2010-09-07 13:06:30</lastModified>
+			<size>2000</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>serviceunit</name>
+			<defaultValue />
+			<title>提供服务单位</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>SERVICEUNIT</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<size>32700</size>
+			<nullable>true</nullable>
+			<editorHeight>400</editorHeight>
+			<editorWidth>500</editorWidth>
+			<hint />
+			<name>content</name>
+			<defaultValue />
+			<editorStyle>HtmlEdit</editorStyle>
+			<title>主要服务内容</title>
+			<columnName>CONTENT</columnName>
+			<id>1f628d2d2aea91f9012aea97208b001e</id>
+			<lastModified>2010-09-07 13:07:07</lastModified>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth>300</editorWidth>
+			<hint />
+			<name>usedatabase</name>
+			<defaultValue />
+			<title>主要利用的数据库</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>USEDATABASE</columnName>
+			<id>1f628d2d2aea91f9012aea9767c60020</id>
+			<lastModified>2010-09-07 13:07:25</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>tools</name>
+			<defaultValue />
+			<title>主要利用的软件工具</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>TOOLS</columnName>
+			<id>1f628d2d2aea91f9012aea9797cb0022</id>
+			<lastModified>2010-09-07 13:07:37</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>servicetime</name>
+			<defaultValue />
+			<title>提供服务时间</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>SERVICETIME</columnName>
+			<id>1f628d2d2aea91f9012aea97d7d70025</id>
+			<lastModified>2010-09-07 13:07:53</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<nullable>true</nullable>
+			<editorHeight>400</editorHeight>
+			<editorWidth>500</editorWidth>
+			<hint />
+			<name>effect</name>
+			<defaultValue />
+			<editorStyle>HtmlEdit</editorStyle>
+			<title>服务成效</title>
+			<columnName>EFFECT</columnName>
+			<id>1f628d2d2aea91f9012aea9841a40027</id>
+			<lastModified>2010-09-07 13:08:21</lastModified>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<imageHeight>200</imageHeight>
+			<imageWidth>200</imageWidth>
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<hint />
+			<name>pic</name>
+			<defaultValue />
+			<editorStyle>FilesEdit</editorStyle>
+			<title>图片</title>
+			<columnName>PIC</columnName>
+			<id>1f628d2d2b14188c012b141ae09c000f</id>
+			<lastModified>2010-09-15 14:35:27</lastModified>
+			<type>Files</type>
+		</field>
+	</entity>
+	<entity>
+		<name>commenddb</name>
+		<tableName>COMMENDDB</tableName>
+		<title>推荐数据库</title>
+		<description />
+		<id>1f628d2d2b14188c012b141c1a0a0011</id>
+		<lastModified>2010-09-15 14:36:47</lastModified>
+		<titleField>cms.commenddb.id</titleField>
+		<identifier>
+			<id>1f628d2d2b14188c012b141c1a0a0012</id>
+			<lastModified>2010-09-15 14:36:47</lastModified>
+			<field>cms.commenddb.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<viewerPattern>%d</viewerPattern>
+			<viewerStyle>LongLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>id</name>
+			<unitValue />
+			<defaultValue />
+			<title>Id</title>
+			<editorStyle>LongEdit</editorStyle>
+			<columnName>ID</columnName>
+			<id>1f628d2d2b14188c012b141c30090014</id>
+			<lastModified>2010-09-15 14:36:53</lastModified>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>title</name>
+			<defaultValue />
+			<title>名称</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>TITLE</columnName>
+			<id>1f628d2d2b14188c012b141c866c0016</id>
+			<lastModified>2010-09-15 14:37:15</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<editorHeight>200</editorHeight>
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>detail</name>
+			<defaultValue />
+			<title>描述</title>
+			<editorStyle>TextAreaEdit</editorStyle>
+			<columnName>DETAIL</columnName>
+			<id>1f628d2d2b14188c012b141ce2350018</id>
+			<lastModified>2010-09-15 14:37:38</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<linkStyle>webUrl</linkStyle>
+			<nullable>true</nullable>
+			<imageHeight />
+			<imageWidth />
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>metadata</name>
+			<defaultValue />
+			<title>元数据</title>
+			<editorStyle>HyperLinkTextEdit</editorStyle>
+			<columnName>METADATA</columnName>
+			<id>1f628d2d2b14188c012b141d3f05001a</id>
+			<lastModified>2010-09-15 14:38:02</lastModified>
+			<type>HyperLink</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<nullable>true</nullable>
+			<editorHeight>400</editorHeight>
+			<editorWidth>500</editorWidth>
+			<hint />
+			<name>announce</name>
+			<defaultValue />
+			<editorStyle>HtmlEdit</editorStyle>
+			<title>共享声明</title>
+			<columnName>ANNOUNCE</columnName>
+			<id>1f628d2d2b14188c012b141d8c07001c</id>
+			<lastModified>2010-09-15 14:38:22</lastModified>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>200</size>
+			<linkStyle>webUrl</linkStyle>
+			<nullable>true</nullable>
+			<imageHeight />
+			<imageWidth />
+			<editorWidth>400</editorWidth>
+			<hint />
+			<name>access</name>
+			<defaultValue />
+			<title>访问此库</title>
+			<editorStyle>HyperLinkTextEdit</editorStyle>
+			<columnName>ACCESS</columnName>
+			<id>1f628d2d2b14188c012b141df806001e</id>
+			<lastModified>2010-09-15 14:38:49</lastModified>
+			<type>HyperLink</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<imageHeight>200</imageHeight>
+			<imageWidth>200</imageWidth>
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<hint />
+			<name>pic</name>
+			<defaultValue />
+			<title>图片</title>
+			<editorStyle>FilesEdit</editorStyle>
+			<columnName>PIC</columnName>
+			<id>1f628d2d2b14188c012b141e45940020</id>
+			<lastModified>2010-09-15 14:39:09</lastModified>
+			<type>Files</type>
+		</field>
+	</entity>
+	<entity>
+		<name>dbinfo</name>
+		<title>数据库介绍</title>
+		<tableName>DBINFO</tableName>
+		<description />
+		<id>1f628d2d2b14188c012b141e96420022</id>
+		<lastModified>2010-09-15 14:39:30</lastModified>
+		<titleField>cms.dbinfo.id</titleField>
+		<identifier>
+			<id>1f628d2d2b14188c012b141e964c0023</id>
+			<lastModified>2010-09-15 14:39:30</lastModified>
+			<field>cms.dbinfo.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<viewerStyle>LongLabel</viewerStyle>
+			<viewerPattern>%d</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>id</name>
+			<defaultValue />
+			<unitValue />
+			<title>Id</title>
+			<editorStyle>LongEdit</editorStyle>
+			<columnName>ID</columnName>
+			<id>1f628d2d2b14188c012b141eba8f0025</id>
+			<lastModified>2010-09-15 14:39:39</lastModified>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>20000</size>
+			<editorHeight>400</editorHeight>
+			<nullable>true</nullable>
+			<editorWidth>500</editorWidth>
+			<hint />
+			<name>detail</name>
+			<defaultValue />
+			<title>描述</title>
+			<editorStyle>HtmlEdit</editorStyle>
+			<columnName>DETAIL</columnName>
+			<id>1f628d2d2b14188c012b141f57ca0027</id>
+			<lastModified>2010-09-15 14:40:19</lastModified>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>200</size>
+			<nullable>true</nullable>
+			<imageHeight>200</imageHeight>
+			<imageWidth>200</imageWidth>
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<hint />
+			<name>pic</name>
+			<defaultValue />
+			<editorStyle>FilesEdit</editorStyle>
+			<title>图片</title>
+			<columnName>PIC</columnName>
+			<id>1f628d2d2b14188c012b142073780029</id>
+			<lastModified>2010-09-15 14:41:32</lastModified>
+			<type>Files</type>
+		</field>
+	</entity>
+	<view>
+		<name>updateBean</name>
+		<id>1f628d0627b6e1fa0127b6e3aab0001c</id>
+		<lastModified>2010-04-01 09:02:06</lastModified>
+		<source>cms.newstype</source>
+	</view>
+	<view>
+		<name>listBeans</name>
+		<id>1f628d0627b6e1fa0127b6e3aacf001d</id>
+		<lastModified>2010-04-01 09:02:06</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>showBean</name>
+		<id>1f628d0627b6e1fa0127b6e3aacf001e</id>
+		<lastModified>2010-04-01 09:02:06</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>queryEntity</name>
+		<id>1f628d0627b6e1fa0127b6e3aacf001f</id>
+		<lastModified>2010-04-01 09:02:06</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>indexEntity</name>
+		<id>1f628d0627b6e1fa0127b6e3aacf0020</id>
+		<lastModified>2010-04-01 09:02:06</lastModified>
+		<source>cms.newstype</source>
+	</view>
+	<view>
+		<name>updateBean</name>
+		<id>1f628d0627b6e1fa0127b6e6d5d80029</id>
+		<lastModified>2010-04-01 09:05:33</lastModified>
+		<source>cms.newstype</source>
+	</view>
+	<view>
+		<name>listBeans</name>
+		<id>1f628d0627b6e1fa0127b6e6d5d8002a</id>
+		<lastModified>2010-04-01 09:05:33</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>showBean</name>
+		<id>1f628d0627b6e1fa0127b6e6d5d8002b</id>
+		<lastModified>2010-04-01 09:05:33</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>queryEntity</name>
+		<id>1f628d0627b6e1fa0127b6e6d5d8002c</id>
+		<lastModified>2010-04-01 09:05:33</lastModified>
+		<source>cms.newstype</source>
+		<item>
+			<source>cms.newstype.id</source>
+		</item>
+	</view>
+	<view>
+		<name>indexEntity</name>
+		<id>1f628d0627b6e1fa0127b6e6d5e7002d</id>
+		<lastModified>2010-04-01 09:05:33</lastModified>
+		<source>cms.newstype</source>
+	</view>
+	<view>
+		<id>4028818d27b4b9d40127b4c27468002c</id>
+		<lastModified>2010-03-31 23:06:34</lastModified>
+		<name>updateBean</name>
+		<source>cms.news</source>
+		<item>
+			<source>cms.news.title</source>
+		</item>
+		<item>
+			<source>cms.news.author</source>
+		</item>
+		<item>
+			<source>cms.news.type</source>
+		</item>
+		<item>
+			<source>cms.news.content</source>
+		</item>
+		<item>
+			<source>cms.news.files</source>
+		</item>
+	</view>
+	<view>
+		<id>4028818d27b4b9d40127b4c27478002d</id>
+		<lastModified>2010-03-31 23:06:35</lastModified>
+		<name>listBeans</name>
+		<source>cms.news</source>
+		<item>
+			<source>cms.news.type</source>
+		</item>
+		<item>
+			<source>cms.news.title</source>
+		</item>
+		<item>
+			<source>cms.news.author</source>
+		</item>
+		<item>
+			<source>cms.news.addtime</source>
+		</item>
+	</view>
+	<view>
+		<id>4028818d27b4b9d40127b4c27478002e</id>
+		<lastModified>2010-03-31 23:06:35</lastModified>
+		<name>showBean</name>
+		<source>cms.news</source>
+		<item>
+			<source>cms.news.type</source>
+		</item>
+		<item>
+			<source>cms.news.title</source>
+		</item>
+		<item>
+			<source>cms.news.author</source>
+		</item>
+		<item>
+			<source>cms.news.addtime</source>
+		</item>
+		<item>
+			<source>cms.news.content</source>
+		</item>
+		<item>
+			<source>cms.news.files</source>
+		</item>
+	</view>
+	<view>
+		<id>4028818d27b4b9d40127b4c27478002f</id>
+		<lastModified>2010-03-31 23:06:35</lastModified>
+		<name>queryEntity</name>
+		<source>cms.news</source>
+		<item>
+			<source>cms.news.id</source>
+		</item>
+		<item>
+			<source>cms.news.title</source>
+		</item>
+		<item>
+			<source>cms.news.addtime</source>
+		</item>
+		<item>
+			<source>cms.news.author</source>
+		</item>
+		<item>
+			<source>cms.news.creator</source>
+		</item>
+		<item>
+			<source>cms.news.type</source>
+		</item>
+		<item>
+			<source>cms.news.content</source>
+		</item>
+	</view>
+	<view>
+		<id>4028818d27b4b9d40127b4c274780030</id>
+		<lastModified>2010-03-31 23:06:35</lastModified>
+		<name>indexEntity</name>
+		<source>cms.news</source>
+		<item>
+			<source>cms.news.title</source>
+		</item>
+		<item>
+			<source>cms.news.author</source>
+		</item>
+		<item>
+			<source>cms.news.creator</source>
+		</item>
+		<item>
+			<source>cms.news.content</source>
+		</item>
+		<item>
+			<source>cms.news.type</source>
+		</item>
+	</view>
+	<view>
+		<name>listEntities</name>
+		<id>1f628d2d2aea91f9012aea99b3d50028</id>
+		<lastModified>2010-09-07 13:09:55</lastModified>
+		<source>cms</source>
+		<item>
+			<source>cms.news</source>
+		</item>
+		<item>
+			<source>cms.servicecase</source>
+		</item>
+	</view>
+	<view>
+		<name>editEntities</name>
+		<id>1f628d2d2aea91f9012aea99b3d50029</id>
+		<lastModified>2010-09-07 13:09:55</lastModified>
+		<source>cms</source>
+		<item>
+			<source>cms.news</source>
+		</item>
+		<item>
+			<source>cms.newstype</source>
+		</item>
+		<item>
+			<source>cms.links</source>
+		</item>
+		<item>
+			<source>cms.applications</source>
+		</item>
+		<item>
+			<source>cms.servicecase</source>
+		</item>
+		<item>
+			<source>cms.commenddb</source>
+		</item>
+		<item>
+			<source>cms.dbinfo</source>
+		</item>
+	</view>
+</dataset>
+

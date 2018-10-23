@@ -1,0 +1,35 @@
+ #set($theme = $themeTool.theme)
+ #set($widget = $widgetFactory.getWidget("bottomHorizontal"))
+ #set($menus = $navigatorTool.getMenusXml(${widget.props.tree}))
+   <table width="970" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr>
+      <td height="11" colspan="3"></td>
+    </tr>
+    <tr>
+      <td width="3"></td>
+      <td width="963" height="27" valign="top"><table width="963" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="27" align="center" background="/themes/$theme.name/res/images/bottom_01.gif"><table width="958" border="0" cellspacing="0" cellpadding="0">
+                <tr id="bottom">
+                  <td align="center" class="wenzi16">
+                	#foreach($menu in $menus)	
+                	#set($content = $menu.substring(0,$menu.indexOf("|")))
+                	#set($position = $menu.indexOf("|") + 1)
+                	#set($url = $menu.substring($position))
+                	#if($velocityCount !=1) | #end<a href="${url}" class="wenzi16">${content}</a>
+                	#end
+                </tr>
+              </table></td>
+          </tr>
+          <tr>
+            <td height="4" background="/themes/$theme.name/res/images/bottom_02.gif"></td>
+          </tr>
+          <tr>
+            <td height="70" align="center" valign="top" class="bottom_zi" id="bottom_di">
+           	${widget.props.copyright}
+            </td>
+          </tr>
+        </table></td>
+      <td width="4"></td>
+    </tr>
+  </table>

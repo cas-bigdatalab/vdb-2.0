@@ -1,0 +1,3 @@
+#set($themeres="$pageroot")
+#set($theme = $themeTool.theme)
+#parse("$pageroot/js/css.css")

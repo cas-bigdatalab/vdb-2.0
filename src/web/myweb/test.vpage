@@ -1,0 +1,3 @@
+#foreach($i in [1..5])
+<li> [$i] welcome to $productName!</li>
+#end

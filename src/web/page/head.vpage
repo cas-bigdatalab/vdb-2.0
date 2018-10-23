@@ -1,0 +1,37 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="/favicon.ico"/>
+<title>#if($title)$title#else$domain.title#end</title>
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/editor.js"></script>
+<script language="javascript" src="/console/shared/js/firefox.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script type="text/javascript" src="/console/shared/js/widget.js" ></script>
+
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/check.js"></script>
+<script language="javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js" ></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js" ></script>
+<script type="text/javascript" src="/console/shared/js/tablecloth.js" ></script>
+<link href="/console/shared/js/tablecloth.css" type=text/css rel=stylesheet>
+<link href="/page/js/css.vsp" type=text/css rel=stylesheet>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<link href="/console/shared/js/common.css" type=text/css rel=stylesheet>
+<link href="/page/js/search.css" type=text/css rel=stylesheet>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+
+<script language="javascript" src="/console/shared/plugins/amcharts/js/FusionCharts.js"></script>
+<script language="javascript" src="/console/shared/plugins/amcharts/js/currentCharts.js"></script>
+<script language="javascript" src="/console/shared/plugins/amcharts/js/swfobject.js"></script>
+<link rel="StyleSheet" href="/console/shared/plugins/amcharts/css/style.css" type="text/css" />
+<link rel="StyleSheetFie" href="/console/shared/plugins/amcharts/css/styleFie.css" type="text/css" />
+
+#parse("viewersHead.inc")
+</head>

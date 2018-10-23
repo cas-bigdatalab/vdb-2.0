@@ -1,0 +1,37 @@
+#set($role=$field.foreignKey)
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">关系描述</td>
+      <!-- 引用关系键的ID以隐藏域的形式存放在表单中 -->
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_foreignKey" value="$!{field.foreignKey.id}">
+      <input type="hidden" name="P_columnName" value="${role.columnName}">
+      #if(${role.columnName} and $!{role.columnName}!="")
+     	 通过外键字段<font color="red"><i>${role.columnName}</i></font>与<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>关联
+      [<a href="updateO2M.vpage?id=${role.relationDefinition.id}">查看该关联关系</a>]
+      #else
+      	此属性未绑定任何关系
+      #end
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="RefSelect" #if(!$field.editorStyle||${field.editorStyle}=='RefSelect') checked #end>下拉框
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="RefRadios" #if(${field.editorStyle}=='RefRadios') checked #end>单选框
+       	<input type="radio" style="border:0px" name="P_editorStyle" value="RefPopup" #if(${field.editorStyle}=='RefPopup') checked #end>弹出窗口
+      	<br><font color="red" size="2">提示：当${role.target.title}的记录超过50条时，您的选择无效，系统自动选择弹出窗口的编辑风格</font>
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="RefLabel" checked>简单显示
+      </td>
+    </tr>
+</table>
+<script $ifDefer>	
+	//选中编辑风格
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+</script>    
+  

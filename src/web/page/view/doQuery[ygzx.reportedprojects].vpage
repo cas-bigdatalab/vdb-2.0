@@ -1,0 +1,39 @@
+﻿<!--created by VdbPublisher at 2016-03-29 22:12:23-->
+
+#set($jsoQuery = $tool.parseJsoQuery($param.query))
+
+
+			
+	#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "listItems", 'ff80808151c89ef80151c8b004c2000f'))
+#set($filter=$auth.mergeFilter($page.grantFilter,'8a80602a5105a41d0151b95357020037'))
+#if($filter)
+#set($query = $tool.createQueryFromSql('ygzx.projects', "select * from projects where tojuanzhu='0' and length(report)>10 and ($filter)"))
+#else
+#set($query = $tool.createQueryFromSql('ygzx.projects', "select * from projects where tojuanzhu='0' and length(report)>10"))
+#end
+	
+#foreach($name in $jsoQuery.variables.keySet())
+#nul($query.bindVariable($name, $jsoQuery.variables.get($name)))
+#end
+
+##增加用户查询条件
+$tool.mergeQuery($query, $jsoQuery)
+
+
+
+##设定查询结果的操作菜单
+##单项菜单
+#define($itemMenu)
+	<a href='${pageroot}/showItem.vpage?id=${entity.uri}/${id}' target='_blank'>详细</a>
+#end
+
+##所有项菜单
+#define($gridMenu)
+#end
+
+##创建PageViewer对象
+#set($entity = $query.entity)
+#set($pageViewer = $pager.create($query, $jsoQuery.pageIndex, $jsoQuery.pageSize))
+##显示PageViewer对象
+#parse("${pageroot}/view/listItems[${entity.uri}].vpage")
+

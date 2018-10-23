@@ -1,0 +1,6 @@
+﻿#set($name="${param.name}${param.name}")
+#if (${catalog.fromUri(${name})} and $param.oldUri!=$name)
+false
+#else
+true
+#end

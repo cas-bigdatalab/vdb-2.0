@@ -1,0 +1,39 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($fileUri = $param.uri)
+#set($dsUri = $uriTool.getDataSetUri($fileUri))
+#if(!$dsUri)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+#set($fileId = $uriTool.getId($fileUri))
+#set($meta = $tool.getFile($dsUri,$fileId))
+#if(!$meta)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<file>
+			<name>
+			#if($!{meta.title} and $!{meta.extension})
+				${meta.title}.${meta.extension}
+			#end
+			</name>
+			<contentType>$!{meta.contentType}</contentType>
+			<size>$!{meta.fileSize}</size>
+			<url>
+			#if($!{meta.servletPath})
+				${request.scheme}://${request.serverName}:${request.serverPort}${meta.servletPath}
+			#end
+			</url>
+		</file>
+	</body>
+</response>
+#end
+#end
+#end

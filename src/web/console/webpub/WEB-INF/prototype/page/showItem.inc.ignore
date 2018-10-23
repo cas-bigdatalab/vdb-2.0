@@ -1,0 +1,34 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#set($entity = ${catalog.fromUri($page.entityUri)})
+#saveAs("view/${page.name}.vpage")
+\#set(${D}entity = ${D}tool.getEntity('$entity.uri'))
+\#set($bean = ${D}tool.getBean('$entity.uri', $param.id))
+\#usingLayout("${engine.webpub}/layout.vpage")
+\#set($title='${domain.title}-$entity.title')
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<div class="search01_big_div">
+    	<div class="title_div">--${entity.title}--</div>
+    	<div class="search03_div">
+        	<table width="683" border="0" cellpadding="0" cellspacing="0" style="font-size:12px;">
+		        #set($fields=$page.viewFields)
+				#foreach ($viewField in $fields)
+					#set($field = ${catalog.fromUri($viewField.fieldUri)})
+					\#if ($page.display||(!${D}bean.get("$field.name").empty))
+					==== $page.hideCollectionFieldTitle
+					==== $viewField.field.isCollection()
+					\#if ($page.hideCollectionFieldTitle&&$viewField.field.isCollection())
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">$canvas.view($field)&nbsp;</td>
+					</tr>
+					\#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">${field.title}</td>
+						<td #if($velocityCount % 2 == 1) class="search03_td_bg" #end  width="539" style="padding:6px;" >$canvas.view($field)&nbsp;</td>
+					</tr>					
+					\#end
+					\#end
+				#end
+              </table>
+      </div>
+</div>
+${D}loggerTool.logAccess(null,null,${D}entity,'showItem',null,${D}param.id,false)

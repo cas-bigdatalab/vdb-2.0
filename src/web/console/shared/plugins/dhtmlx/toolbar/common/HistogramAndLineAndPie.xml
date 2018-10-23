@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="histogram" img="column.gif"   text="柱状图" />
+	<item type="button"	id="line" img="line.gif"  text="曲线图"  />
+	<item id="pie"   type="button"  img="pie.gif"  text="饼状图"  />
+	<item id="sep3"   type="separator"/>
+</toolbar>

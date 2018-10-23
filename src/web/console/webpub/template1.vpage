@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link href="/console/shared/js/css.css" rel="stylesheet" type="text/css" />
+<link href="/console/shared/js/bottom01.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="right_top_div" style="width:100%">
+<div class="right_top_left_div" align="left">
+       <img src="images/ico_01.gif" height="14" width="20" /> <font style="color:#ffffff;font-size:12px">&nbsp;您的当前位置：</font>
+	  <font style="color:#fffd4d;font-size:12px"><strong>首页 -> 网站发布</strong></font>
+</div>
+</div>
+<div style="text-align:center;">
+	$body
+</div>
+</body>
+</html>

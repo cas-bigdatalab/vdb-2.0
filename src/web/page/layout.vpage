@@ -1,0 +1,19 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:26-->
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+#parse("head.vpage")
+<body style="font-size:12px;" 
+>
+<div id="pageTop" style="width:970px;margin:auto;text-align:left">
+#parse("top.vpage")
+</div>
+<div class="bj1"  style="width:970px;">
+$body
+</div>
+<div id="pageBottom" style="width:970px;margin:auto;text-align:left">
+#parse("bottom.vpage")
+</div>
+</body>
+</html>

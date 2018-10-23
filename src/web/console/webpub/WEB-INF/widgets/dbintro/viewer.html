@@ -1,0 +1,22 @@
+#set($query = $tool.createQueryFromSql('cms.dbinfo', "select * from dbinfo"))
+#set($num = 0)
+#set($recordSize = $num + 1)
+#set($pageIndex = 1)
+#set($pageViewer = $tool.createPageViewer($query, $pageIndex, $recordSize))
+#if($pageViewer.beans.size()> $num)
+#set($bean = $pageViewer.beans.get($num))
+<table width="99%" border="0" cellpadding="0" cellspacing="0" style="margin:0px 0 0px 0;font-size:12px;line-height:18px;">
+     <tr>
+       	<td width="5" align="left" valign="top"></td>
+       	<td width="171" height="107" align="center" valign="middle">
+        #if($bean.get('pic').files)<div style="border: 1px solid #bebebe;padding: 1px;"><img src="$bean.get('pic').files.get(0).servletPath"  width="169" height="105"/></div>#end
+		</td>
+       	<td width="280" align="left" style="padding-left:10px;padding-top:5px;padding-right:5px;" valign="top"><img src="/widgets/$widget.name/res/images/shy_13.gif" border="0"/>
+       	#if($!bean.get('detail').format('%s').replaceFirst("<p>","").length() > 120)
+			$!bean.get('detail').format('%s').replaceFirst("<p>","").substring(0,120)...
+		#else										
+       	$!bean.get('detail').format('%s').replaceFirst("<p>","")
+       	#end<a href="${engine.webpub}/showEntity.vpage?uri=cms.dbinfo&num=${num}" style="color: #EC0002;">[详细]</a></td>
+     </tr>
+</table>
+#end

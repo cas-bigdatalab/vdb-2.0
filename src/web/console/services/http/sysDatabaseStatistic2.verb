@@ -1,0 +1,90 @@
+ <?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>服务调用成功</message>
+	</head>
+	<body>
+		<statistic> 
+			#foreach($dataset in $domain.dataSets)
+			<dataset>
+				#set($indicator=$indicatorTool.getDatasetIndicator($dataset.uri))
+				#if($indicator)
+				#set($idb=$indicator.dbIndicator)
+				#set($rinList=$indicator.repositoryIndicatorList)
+				#end
+				<dsid>$!{indicator.dsid}</dsid>
+				<uri>$!{indicator.uri}</uri>
+				<title>#xml($!{indicator.title})</title>
+				<dbms>$!{indicator.dbms}</dbms>
+				<description>#xml($!{indicator.description})</description>
+				#if($idb)
+				<dbIndicator>
+					<bytes>$!{idb.bytes}</bytes>
+					<recordNum>$!{idb.recordNum}</recordNum>
+					<entityNum>$!{idb.entityNum}</entityNum>
+					<relationNum>$!{idb.relationNum}</relationNum>
+					<relationRate>$!{idb.relationRate}</relationRate>
+					<fieldNum>$!{idb.fieldNum}</fieldNum>
+					<textFieldNum>$!{idb.textFieldNum}</textFieldNum>
+					<integrityRate>$!{idb.integrityRate}</integrityRate>
+					<structureDiagram>$indicatorTool.getCloudString($dataset.uri)</structureDiagram>
+					<lastStatsTime>$!{idb.lastStatsTime}</lastStatsTime>
+					<tables>
+						#foreach($ei in $idb.entityIndicatorList)
+						<table>
+							<id>$!{ei.id}</id>
+							<uri>$!{ei.uri}</uri>
+							<tableName>$!{ei.tableName}</tableName>
+							<title>#xml($!{ei.title})</title>
+							<bytes>$!{ei.bytes}</bytes>
+							<recordNum>$!{ei.recordNum}</recordNum>
+							<integrityRate>$!{ei.integrityRate}</integrityRate>
+							<lastStatsTime>$!{ei.lastStatsTime}</lastStatsTime>
+							<fields>
+								#foreach($fi in $ei.fieldIndicatorList)
+								<field>
+									<id>$!{fi.id}</id>
+									<name>$!{fi.name}</name>
+									<title>#xml($!{fi.title})</title>
+									<integrityRate>$!{fi.integrityRate}</integrityRate>
+									<lastStatsTime>$!{fi.lastStatsTime}</lastStatsTime>
+								</field>
+								#end
+							</fields>
+						</table>
+						#end
+					</tables>
+				</dbIndicator>
+				#end
+				<repositoryIndicators>
+				#foreach($ri in $rinList)
+					<repositoryIndicator>
+						<repositoryName>$!{ri.repositoryName}</repositoryName>
+						<bytes>$!{ri.bytes}</bytes>
+						<items>$!{ri.items}</items>
+						<directoryNum>$!{ri.directoryNum}</directoryNum>
+						<maxFileBytes>$!{ri.maxFileBytes}</maxFileBytes>
+						<minFileBytes>$!{ri.minFileBytes}</minFileBytes>
+						<maxDirDepth>$!{ri.maxDirDepth}</maxDirDepth>
+						<lastStatsTime>$!{ri.lastStatsTime}</lastStatsTime>
+						<fileIndicators>
+						#foreach($fileIndiMap in $ri.fileIndicatorMap.entrySet())
+							#set($fileIndi=$fileIndiMap.value)
+							<fileIndicator>
+								<contentType>$!{fileIndi.contentType}</contentType>
+								<fileExtension>$!{fileIndi.fileExtension}</fileExtension>
+								<items>$!{fileIndi.items}</items>
+								<bytes>$!{fileIndi.bytes}</bytes>
+								<lastStatsTime>$!{fileIndi.lastStatsTime}</lastStatsTime>
+							</fileIndicator>
+						#end
+						</fileIndicators>
+					</repositoryIndicator>
+				#end
+				</repositoryIndicators>
+			</dataset>
+			#end
+		</statistic>
+	</body>
+</response>

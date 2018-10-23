@@ -1,0 +1,9 @@
+﻿#if($field.viewerStyle == 'PassLabel')
+******
+#elseif($field.xml == 'true'&&$field.viewerPattern != ""&&$field.viewerPattern)
+\#xml(${D}!bean.get('${field.name}').format('$field.viewerPattern'))
+#elseif($field.viewerPattern != ""&&$field.viewerPattern)
+${D}!bean.get('${field.name}').format('$field.viewerPattern')
+#else
+${D}!bean.get('${field.name}').format('%s')
+#end

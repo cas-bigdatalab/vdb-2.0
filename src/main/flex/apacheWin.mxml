@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="apache文件存储位置" layout="absolute" width="400" height="300" fontSize="14" showCloseButton="true" close="close();" borderColor="#6C8EF0" backgroundColor="#DEE8EF">
+	<mx:Metadata>
+	[Event(name="saveapache")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+		import mx.managers.PopUpManager;
+		import mx.controls.Alert;
+		//import 
+		
+		public function save():void
+		{
+			this.dispatchEvent(new Event("saveapache"));
+		}
+		public function close():void
+		{
+			PopUpManager.removePopUp(this);
+		}
+		
+	]]>
+</mx:Script>
+	<mx:Label text="名称 :" x="32" y="35" fontSize="14"/>  
+	<mx:TextInput id="apacheName" width="237" x="84" y="33"/>  
+	<mx:Label  text="路径 :"  y="86" x="33" fontSize="14"/>  
+	<mx:TextInput id="path" width="237" x="84" y="84" />    
+	<mx:Button label="取消" click="close();" x="201" y="172"/>  
+	<mx:Button label="保存" click="save();" x="116" y="172" width="63"/> 
+	
+</mx:TitleWindow>

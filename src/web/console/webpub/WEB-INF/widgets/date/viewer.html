@@ -1,0 +1,9 @@
+#set($height = 0)
+#if($widget.props.height)
+	#set($height = $widget.props.height)
+#end
+#set($selected = "5")
+#if($widget.props.no)
+	#set($selected = $widget.props.no)
+#end
+<embed src="/widgets/date/res/${selected}.swf" width="100%" height="$height" type="application/x-shockwave-flash"></embed>

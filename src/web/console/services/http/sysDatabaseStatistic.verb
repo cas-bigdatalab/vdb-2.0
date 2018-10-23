@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>服务调用成功</message>
+	</head>
+	<body>
+		<databaseStatistic> 
+			#foreach($dataset in $domain.dataSets)
+			<database>
+				#set($idb=false)
+				#set($idb=$indicatorTool.getDatasetIndicator($dataset.uri))
+				<dsid>$!{idb.dsid}</dsid>
+				<uri>$!{idb.uri}</uri>
+				<title>#xml($!{idb.title})</title>
+				<dbms>$!{idb.dbms}</dbms>
+				<description>#xml($!{idb.description})</description>
+				#set($dbIndicator = $idb.dbIndicator)
+				#set($rinList=$idb.repositoryIndicatorList)
+				#set($items=0)
+				#set($bytes=0)
+				#foreach($ri in $rinList)
+					#set($items = $items + $ri.items)
+					#set($bytes = $bytes + $ri.bytes)
+				#end
+				#set($allBytes = $bytes + $!{dbIndicator.bytes})
+				<bytes>$!{allBytes}</bytes>
+				<nsdBytes>$!{bytes}</nsdBytes>
+				<sdBytes>$!{dbIndicator.bytes}</sdBytes>
+				<nsdItems>$!{items}</nsdItems>
+				<sdItems>$!{dbIndicator.recordNum}</sdItems>
+				<sdClasses>$!{dbIndicator.entityNum}</sdClasses>
+				<sdRelations>$!{dbIndicator.relationNum}</sdRelations>
+				<sdRelationRate>$!{dbIndicator.relationRate}</sdRelationRate>
+				<sdFields>$!{dbIndicator.fieldNum}</sdFields>
+				<sdTextFields>$!{dbIndicator.textFieldNum}</sdTextFields>
+				<integrityRate>$!{dbIndicator.integrityRate}</integrityRate>
+				<structureDiagram>$indicatorTool.getCloudString($dataset.uri)</structureDiagram>
+				<tables>
+					#foreach($ei in $dbIndicator.entityIndicatorList)
+					<table>
+						<id>$!{ei.id}</id>
+						<uri>$!{ei.uri}</uri>
+						<name>$!{ei.tableName}</name>
+						<title>#xml($!{ei.title})</title>
+						<bytes>$!{ei.size}</bytes>
+						<items>$!{ei.recordNum}</items>
+						<usedRate>$!{ei.integrityRate}</usedRate>
+						<lastStatsTime>$!{ei.lastStatsTime}</lastStatsTime>
+						<fields>
+							#foreach($fi in $ei.fieldIndicatorList)
+							<field>
+								<id>$!{fi.id}</id>
+								<uri>$!{fi.name}</uri>
+								<name>$!{fi.name}</name>
+								<title>#xml($!{fi.title})</title>
+								<usedrate>$!{fi.integrityRate}</usedrate>
+								<lastStatsTime>$!{fi.lastStatsTime}</lastStatsTime>
+							</field>
+							#end
+						</fields>
+					</table>
+					#end
+				</tables>
+				<contentTypes>
+					<contentType>
+						<contentType>unknown</contentType>
+						<items>$!{items}</items>
+						<bytes>$!{bytes}</bytes>
+					</contentType>
+				</contentTypes>
+			</database>
+			#end
+		</databaseStatistic>
+	</body>
+</response>

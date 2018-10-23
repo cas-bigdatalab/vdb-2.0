@@ -1,0 +1,8 @@
+#set($ds = ${domain.getDataSets()})
+#foreach ($bean in $ds)
+	<div>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;#if($widget.props.get(${bean.uri}))$widget.props.get(${bean.uri}) #else $bean.description #end
+		</p>
+	</div>
+#end

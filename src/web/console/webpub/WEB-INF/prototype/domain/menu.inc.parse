@@ -1,0 +1,26 @@
+#saveAs("menu.vpage")
+<div style="margin: 10pt;">
+<form action="${pageroot}/crossQuery.vpage" method="get">
+<input name="keywords" size="14" value="${H}if(${D}session.getAttribute("keywords"))${D}!{session.getAttribute("keywords")}${H}else关键字...${H}end" onmouseover="this.select()"><button type="submit">跨库检索</button><br>
+<input name="expr" type="radio" value="AND"\#if(\$session.getAttribute("expr")!="OR") checked \#end>AND
+<input name="expr" type="radio" value="OR"\#if(\$session.getAttribute("expr")=="OR") checked \#end>OR <br>
+</form>
+#selectView($view, $domain, 'listDataSets')
+#foreach($dataset in $view.items)
+	<img src="/console/shared/images/ds.gif">$dataset.title<br>
+	$view<br>
+	#selectView($view, $dataset, 'listEntities')
+	$view<br>
+	<ul>
+	#foreach($item in $view.items)
+	#if($item.isQuery())
+		<li><img src="${pageroot}/images/bigtable.gif" align="top"> <a class='lef1' href='${pageroot}/showQuery.vpage?uri=$item.uri'>$item.title</a></li>
+	#else
+		##\#if (${D}auth.isUserInRole("ROLE_ADMIN")||${D}auth.userIsGranted(${D}auth.username,"$item.id"))
+		<li><img src="${pageroot}/images/bigtable.gif" align="top"> <a class='lef1' href='${pageroot}/showEntity.vpage?uri=$item.uri'>$item.title</a></li>
+		##\#end
+	#end
+	#end
+	</ul>
+#end
+</div>

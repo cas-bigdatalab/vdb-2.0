@@ -1,0 +1,89 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="域属性")
+<script type="text/javascript" src="/console/shared/plugins/slidebar/myJSFrame.js"></script>
+<style type="text/css">
+	body {font-size:14px}
+	#abc{float:left;}
+	.slidebox { height:24px; width:213px; overflow:hidden; position:relative;}
+	.lineBox { padding:0 6px;}
+	.slidebox .line {background:url(/console/shared/plugins/slidebar/bg2.gif) repeat-x left bottom; width:100%; height:20px; cursor:pointer}
+	.slidebox .cursor { position:absolute; z-index:20; top:0px; left:0px; height:21px; width:11px;  overflow:hidden; background:url(/console/shared/plugins/slidebar/cursor.gif) no-repeat; cursor:pointer; filter:alpha(opacity=90); opacity:0.9}
+	</style>
+<script type="text/javascript" src="/console/shared/plugins/slidebar/slidebar.js"></script>
+
+<form action="doUpdateDomain.vpage" method="post" name="form1" id="form1" >
+	 <table width="80%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td width="150px" class="table_bg" style="border-top:#91c0fe 1px solid;">域标题 </td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">
+				<input type="text" name="P_title" size="35" value="${domain.title}">
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">本域uri </td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="text" name="P_name" size="35" value="${domain.uri}">
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">本域服务地址 </td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+			#set($serviceUri = $domain.serviceUri)
+			#if(!$serviceUri)
+				#set($serviceUri = "http://${request.serverName}")
+				#if($request.serverPort != 80)
+					#set($serviceUri = "$serviceUri:${request.serverPort}")
+				#end
+			#end
+				<input type="text" name="P_serviceUri" size="35" value="$serviceUri">
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">元数据项注册ID</td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px" >${domain.id}</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">元数据项注册时间</td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				${domain.lastModified}
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">描述信息</td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea name="P_description" rows="8" cols="50">${domain.description}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">每页显示记录数 </td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+			<div class="box">
+				<input type="text"  id="abc" size="2" value="${domain.defaultPageSize}" disabled/>
+				<input type="hidden" name="P_defaultPageSize" id="abcd" size="2" value="${domain.defaultPageSize}"/>
+				<script type="text/javascript">
+					var t = new SlideBar();
+					t.maxValue = "99";
+					t.defaultValue = ${domain.defaultPageSize} - 1;
+					t.onmoving = function(){
+						$f("abc").value = $f("abcd").value = this.title = Math.floor(this.value) + 1;
+					};
+					t.write();
+				</script>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="150px" class="table_bg">网站搜索关键字</td>
+			<td align="left" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea name="P_keyWords" rows="8" cols="50">${domain.keyWords}</textarea>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+	</div>
+</form>

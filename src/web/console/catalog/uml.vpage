@@ -1,0 +1,23 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="对象类图")
+
+#invoke("vdb.mydb.jsp.action.catalog.DoGetUMLImage")
+
+#set($type = $type)
+#if ($type == "entity")
+	#set($pathC = $pathC)
+	#set($pathE = $pathE)
+#else
+	#set($pathC = $pathC)
+	#set($pathE = $pathE)
+#end
+<div class="tab">
+	<div class="">
+		<a href="#" onclick="$('img').attr('src','$pathC')">中文类图</a>
+		<a href="#" onclick="$('img').attr('src','$pathE')">英文类图</a>
+	</div>
+</div>
+<br><br>
+<div align="center" style="filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;">
+	<img id="iamge" src="$pathC"/>
+</div>

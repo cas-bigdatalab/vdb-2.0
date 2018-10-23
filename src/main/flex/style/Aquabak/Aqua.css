@@ -1,0 +1,313 @@
+/*
+This work is licensed under the Creative Commons Attribution 3.0 United States License. 
+To view a copy of this licence, visit http://creativecommons.org/licenses/by/3.0/us/ or 
+send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California 94105, USA.
+
+You must attribute this work to <a href="http://www.asfusion.com" >Nahuel Foronda</a> (with link)
+
+*/
+
+/*
+
+README:
+
+This style uses programatic skins. To compile, you need to add CSSPlus.swc to your library path
+
+*/
+
+/****************************************************************************************************************
+                                             MX COMPONENTS                                                      *
+*****************************************************************************************************************
+*/
+Application{
+	backgroundColor:#f9f6d9;
+	backgroundRepeat:repeat;
+	background-image:Embed(source='images/main_bg.png');
+	fontFamily: "Lucida Grande";
+	fontFamily: "WRYH"; 
+	color: #000000;
+	fontSize: 12;
+	themeColor:#288bca;
+}
+RichTextEditor{
+	borderStyle:"none";
+	headerHeight: 0;
+	borderSkin: Embed(source='images/transparent.png');
+	borderThicknessLeft:0;
+	borderThicknessRight:0;
+	top:45;
+	bottom:30;
+}
+Panel{
+	/*titleStyleName: "panelTitle";
+	headerHeight:45;
+	
+	backgroundRepeat:repeat;
+	background-image:Embed(source='images/panel_bg.png');
+	cornerRadius:8;
+	borderStyle:solid;
+	filters:dropShadow;
+	borderColor:#dddddd;
+	paddingTop:8;
+	paddingLeft:8;
+	paddingRight:8;
+	paddingBottom:8;*/
+}
+List{
+	selectionColor:#4385d9;
+	rollOverColor:#4385d9;
+	textRollOverColor:#ffffff;
+	textSelectedColor:#ffffff;
+	
+}
+Button{
+	upSkin:Embed(source='images/glass_btn_up.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	downSkin:Embed(source='images/glass_btn_over.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	overSkin:Embed(source='images/glass_btn_over.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	selectedUpSkin:Embed(source='images/glass_btn_over.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	selectedOverSkin:Embed(source='images/glass_btn_over.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	disabledSkin:Embed(source='images/glass_btn_disable.png', scaleGridLeft=10, scaleGridRight=11, scaleGridTop=10,scaleGridBottom=11);
+	color:#000000;
+	textRollOverColor:#000000;
+}
+TileList{
+	columnWidth: 140;
+	rowHeight: 120;
+}
+DataGrid{
+	headerColors:#7ab8ef,#c6fdff;
+	selectionColor:#4385d9;
+	rollOverColor:#4385d9;
+	textRollOverColor:#ffffff;
+	textSelectedColor:#ffffff;
+}
+
+ScrollBar{
+	trackSkin:Embed(source='images/track_skin.png');
+	thumbUpSkin:Embed(source='images/thum_skin.png', scaleGridLeft=8, scaleGridRight=9, scaleGridTop=11,scaleGridBottom=12);
+	thumbOverSkin:Embed(source='images/thum_skin.png', scaleGridLeft=8, scaleGridRight=9, scaleGridTop=11,scaleGridBottom=12);
+	thumbDownSkin:Embed(source='images/thum_skin.png', scaleGridLeft=8, scaleGridRight=9, scaleGridTop=11,scaleGridBottom=12);
+	upArrowUpSkin:Embed(source='images/scroll_arrow_up_up.png');
+	upArrowDownSkin:Embed(source='images/scroll_arrow_up_over.png');
+	upArrowOverSkin:Embed(source='images/scroll_arrow_up_over.png');
+	downArrowUpSkin:Embed(source='images/scroll_arrow_down_up.png');
+	downArrowDownSkin:Embed(source='images/scroll_arrow_down_over.png');
+	downArrowOverSkin:Embed(source='images/scroll_arrow_down_over.png'); 
+}
+/****************************************************************************************************************
+                                           CUSTOM COMPONENTS                                                    *
+*****************************************************************************************************************
+*/
+
+SuperImage{
+	 borderStyle:solid;
+}
+Rating{
+	top:52;
+}
+/****************************************************************************************************************
+                                             VIEWS                                                              *
+*****************************************************************************************************************
+*/
+MainUI{
+	backgroundRepeat:repeat-x;
+	background-image:Embed(source='images/main_gradient.png');
+}
+Header{
+	backgroundRepeat:repeat-x;
+	background-image:Embed(source='images/header_bg.png');
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+}
+Content{
+	left:130;
+	top:21;
+}
+/****************************************************************************************************************
+                                             Classes                                                            *
+*****************************************************************************************************************
+*/
+
+.mainUIExtra{
+	width: 110;
+	height: 107;
+	background-image:Embed(source='images/badge.png');
+	top:30;
+	left:960;
+}
+
+/* Navigation ---------------------------------------------------------------------------------------------------*/
+.navigation{
+	layout:vertical;
+	left:0;
+	top:150;
+	backgroundRepeat:repeat-y;
+	background-image:Embed(source='images/dock_bg.png');
+	paddingLeft:5;
+	paddingTop:15;
+	paddingBottom:15;
+	fontSize: 15;
+}
+.galleryLink{
+	upIcon: Embed(source='images/gallery_icon_up.png'); 
+	overIcon: Embed(source='images/gallery_icon_up.png'); 
+	downIcon: Embed(source='images/gallery_icon_up.png');
+	textIndent:70;
+	backgroundRepeat:no-repeat;
+	background-image:Embed(source='images/gallery_text.png');
+	borderThickness: 0;
+	backgroundImageVerticalCenter: 0;
+	backgroundImageLeft: 76;
+}
+
+.aboutLink{
+	upIcon: Embed(source='images/about_icon_up.png'); 
+	overIcon: Embed(source='images/about_icon_up.png'); 
+	downIcon: Embed(source='images/about_icon_up.png');
+	textIndent:60;
+	backgroundRepeat:no-repeat;
+	background-image:Embed(source='images/about_text.png');
+	borderThickness: 0;
+	backgroundImageVerticalCenter: 0;
+	backgroundImageLeft: 76;
+
+}
+.participateLink{
+	upIcon: Embed(source='images/participate_icon_up.png'); 
+	overIcon: Embed(source='images/participate_icon_up.png'); 
+	downIcon: Embed(source='images/participate_icon_up.png');
+	textIndent:100;
+	backgroundRepeat:no-repeat;
+	background-image:Embed(source='images/participate_text.png');
+	borderThickness: 0;
+	backgroundImageVerticalCenter: 0;
+	backgroundImageLeft: 76;
+
+}
+/* Header     ---------------------------------------------------------------------------------------------------*/
+.mainTitle{
+	top:0;
+	left:5;
+	fontSize: 14;
+	fontWeight:bold;
+}
+.tagLine{
+	top:3;
+	fontSize: 11;
+	left:100;
+}
+/* Main Window  ---------------------------------------------------------------------------------------------------*/
+
+.panelTitle{
+	textAlign:center;
+	fontSize:13;
+}
+
+.wrapper{
+	top:50;
+}
+/* ----------------------------------------------------------------------------------------------------------------
+ ---------------------------------------------- Gallery    --------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------*/
+
+.thumbnailImage{
+	overlaySkin: Embed(source='images/thum_hightlight2.png');
+	verticalCenter:0; 
+	horizontalCenter:0;
+}
+.bigImage{
+	top:212;
+	borderStyle: inset;
+	borderColor: #ffffff;
+}
+/* designInfo  ---------------------------------------------------------------------------------------------------*/
+.designInfo{
+	top:310;
+}
+/* Overlay  ---------------------------------------------------------------------------------------------------*/
+.filterAndSort{
+	top:15;
+}
+.filterLabel{
+	left:-50;
+}
+.sortLabel{
+	left:-50;
+}
+
+.viewButtonBar{
+	buttonWidth:29;
+	fontSize:1;
+	textIndent:29;
+	lastButtonStyleName:gridButton;
+	firstButtonStyleName:thumbnailsButton;
+	buttonHeight:25;
+	top:14;
+	left:10;
+}
+.gridButton{
+	upSkin:Embed(source='images/list_button_unselected.png');
+	overSkin:Embed(source='images/list_button_unselected.png');
+	downSkin:Embed(source='images/list_button_selected.png');
+	selectedUpSkin:Embed(source='images/list_button_selected.png');
+	selectedOverSkin:Embed(source='images/list_button_selected.png');
+}
+.thumbnailsButton{
+	upSkin:Embed(source='images/thumb_button_unselected.png');
+	overSkin:Embed(source='images/thumb_button_unselected.png');
+	downSkin:Embed(source='images/thumb_button_selected.png');
+	selectedUpSkin:Embed(source='images/thumb_button_selected.png');
+	selectedOverSkin:Embed(source='images/thumb_button_selected.png');
+}
+.filterInput{
+	borderSkin:Embed(source='images/search_input.png', scaleGridLeft=22, scaleGridRight=65, scaleGridTop=18,scaleGridBottom=19);
+	cornerRadius:12;
+	textIndent:18;
+	fontSize:12;
+	fontFamily:Verdana;
+	borderThikness:1;
+	borderStyle:solid;
+	top:1;
+	right:55;
+	left:580;
+}
+.sortComboBox{
+	right:5;
+	upSkin: Embed(source='images/sort_unselected.png',scaleGridLeft=1, scaleGridRight=2, scaleGridTop=20,scaleGridBottom=21);
+	overSkin:Embed(source='images/sort_unselected.png',scaleGridLeft=1, scaleGridRight=2, scaleGridTop=20,scaleGridBottom=21);
+	downSkin:Embed(source='images/sort_selected.png',scaleGridLeft=1, scaleGridRight=2, scaleGridTop=20,scaleGridBottom=21);
+	selectedUpSkin:Embed(source='images/sort_selected.png',scaleGridLeft=1, scaleGridRight=2, scaleGridTop=20,scaleGridBottom=21);
+	selectedOverSkin:Embed(source='images/sort_selected.png',scaleGridLeft=1, scaleGridRight=2, scaleGridTop=20,scaleGridBottom=21);
+	textIndent:82;
+	dropDownStyleName:sortDropDown;
+}
+.sortDropDown{
+	textIndent:5;
+	fontSize:11;
+	backgroundAlpha:0.8;
+}
+
+
+
+/****************************************************************************************************************
+                                             FILTERS                                                            *
+*****************************************************************************************************************
+*/
+.dropShadow{
+	distance:5;
+	blurX:32;
+	blurY:32;
+	quality:3;
+	alpha:0.6;
+}
+
+/****************************************************************************************************************
+                                             FONTS                                                              *
+*****************************************************************************************************************
+*/
+@font-face {
+   fontFamily: "WRYH"; 
+   src:url("fonts/SIMKAI.TTF");
+}

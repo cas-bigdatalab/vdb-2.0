@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.theme.Theme">
+		<property name="title" value="一米阳光"/>
+		<property name="order" value="7000"/>
+		<property name="provider" value="科学数据中心"/>
+	</bean>
+</beans>

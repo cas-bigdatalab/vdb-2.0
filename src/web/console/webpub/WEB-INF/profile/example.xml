@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-lazy-init="false" default-autowire="no" default-dependency-check="none" default-merge="false">
+  <bean class="vdb.mydb.widget.WidgetLayout" lazy-init="default" autowire="default" dependency-check="default">
+    <property name="layout" value="l121" />
+    <property name="name" value="example" />
+    <property name="title" value="首页" />
+    <property name="theme" value="test" />
+    <property name="columns">
+      <map merge="default">
+        <entry key="column1">
+          <list merge="default">
+          </list>
+        </entry>
+        <entry key="column2">
+          <list merge="default">
+          </list>
+        </entry>
+        <entry key="column3">
+          <list merge="default">
+          </list>
+        </entry>
+      </map>
+    </property>
+  </bean>
+</beans>
+

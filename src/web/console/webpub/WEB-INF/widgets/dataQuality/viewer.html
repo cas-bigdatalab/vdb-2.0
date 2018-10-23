@@ -1,0 +1,23 @@
+<table style="font-size:10pt">
+	<tr>
+		<td align="right">最后统计：</td>
+		<td>$domainStatTool.getStatTime()</td>
+	</tr>
+	<tr>
+		<td align="right">数据量：</td>
+		<td>$formater.formatBytes($domainStatTool.getDomainDataSize())</td>
+	</tr>
+	<tr>
+		<td align="right">记录数：</td>
+		<td>$domainStatTool.getDomainTotalRecords()</td>
+	</tr>
+	<tr>
+		<td align="right">字段利用率：</td>
+#set($ratio = $domainStatTool.getDomainUtilization() * 100)
+		<td>$number.format("#.##", $ratio)%</td>
+	</tr>
+	<tr>
+		<td align="right">访问次数：</td>
+		<td>$domainStatTool.getTotalAccessNumber()</td>
+	</tr>
+</table>

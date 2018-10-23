@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.typelib.FieldType">
+		<property name="fieldClass" value="vdb.mydb.typelib.type.VdbExprType"/>
+		<property name="readonly" value="true"/>
+		<property name="advanced" value="false"/>
+		<property name="sortable" value="false"/>
+		<property name="order" value="8000"/>
+		<property name="title" value="表达式类型"/>
+	</bean>
+</beans>

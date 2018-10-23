@@ -1,0 +1,103 @@
+﻿<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#set($entity = $tool.getEntity(${param.uri}))
+#selectView($view, $entity, 'queryEntity')
+#set($fields = $view.items)
+#set($fieldsCount = 3)
+#set ($seqid = $seq.id)
+<br>
+<script language="javascript" src="/console/shared/js/editor.js" defer></script>
+<div id="search_form${seqid}" style="width:500px">
+<table width="88%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td  class="tatle01"><img src="images/ico_sanjiao.gif" class="ico_sanjiao"/>请设定组合查询条件</td>
+  </tr>
+</table>
+<div id="form_${seqid}" >
+<table width="98%" border="0" cellpadding="6" align="center" class="table3" id="tableSearch${seqid}">  
+#foreach ($no in [1..$fieldsCount])
+	<tr >
+	<td width="16">
+	#if ($no == 1)<img src='images/ico_jiaohao.jpg'  height="15" width="14" border=0 style="cursor:pointer" alt="新增查询条件" align=absbottom onclick="addField${seqid}('${seqid}');">#else &nbsp; #end
+	</td>
+      <td width="60px" height=30px><span id="FDAREA">
+      <select class="fieldList" id="FIELDLIST$no$seqid" onchange="onQueryFieldSelect(this, $('#OPAREA$no$seqid')[0],$('#QEAREA$no$seqid')[0])">
+	#foreach ($field in $fields)
+      <option uri="${field.uri}" value="${field.id}"#if ($no == $velocityCount) selected #end>${field.title}</option>
+    #end
+      </select></span>
+      </td>
+	  <td  width="60px" ><span id="OPAREA$no$seqid"></span></td>
+	  <td  width="150px" ><span id="QEAREA$no$seqid"></span></td>
+    </tr>
+#end
+  </table>
+  <p align="center">
+	<table>
+	<tr>
+	  	<td><input type="checkbox" id="searchFlag" name="searchFlag"> 在结果中查询</td>
+		<td><div class="ico_02"><a href="#" onclick="checkValid();">开始查询</a></div></td>
+		<td><div class="ico_02"><a href="#"  onclick="resetQuery${seqid}('${seqid}');">重新设定条件</a></div></td>
+	</tr>
+	</table>
+  </p>
+</div>
+</div>
+<script defer>
+	var fieldsCount = $fieldsCount;
+	var fieldsTemp = $fieldsCount;
+	var fieldsItemCount = $fields.size();	
+	#foreach ($no in [1..$fieldsCount])
+		initializeQueryField($("#FIELDLIST$no$seqid")[0],$("#OPAREA$no$seqid")[0],$("#QEAREA$no$seqid")[0]);
+	#end
+	function resetQuery${seqid}(seqid)
+	{
+		var trCount = document.getElementById('tableSearch' + seqid).rows.length ;
+		for(var j = trCount; j > fieldsTemp; j--)
+		{
+			document.getElementById('tableSearch' + seqid).deleteRow(j - 1);
+			fieldsCount--;
+		}
+		
+		for(var i = 1; i < fieldsTemp+1; i++)
+		initializeQueryField($("#FIELDLIST" + i + seqid)[0], $("#OPAREA"+i+seqid)[0], $("#QEAREA"+i+seqid)[0]);
+	
+		doReset($('#form_${seqid}')[0]);
+	}
+	function addField${seqid}(seqid)
+	{
+		fieldsCount++;
+		
+		//添加行
+		var newTr = document.getElementById("tableSearch"+seqid).insertRow(-1);
+		var newTd = document.createElement("td");
+		var newTd0 = document.createElement("td");
+		var newTd1 = document.createElement("td");
+		var newTd2 = document.createElement("td");
+		newTd.innerHTML = '&nbsp;';
+		newTr.appendChild(newTd);
+		newTd0.innerHTML = '<span id="FDAREA"> <select class="fieldList" id="FIELDLIST'+fieldsCount+'$seqid" onchange=onQueryFieldSelect(this,$(\"#OPAREA'+fieldsCount+'$seqid\")[0],$(\"#QEAREA'+fieldsCount+'$seqid\")[0])>	#foreach ($field in $fields)      <option uri="${field.uri}" value="${field.id}"#if ($no == $velocityCount) selected #end>${field.title}</option>    #end      </select></span>'; 
+		newTr.appendChild(newTd0);
+		newTd1.innerHTML= '<span id="OPAREA'+fieldsCount+'$seqid"></span>';
+		newTr.appendChild(newTd1);
+		newTd2.innerHTML= '<span id="QEAREA'+fieldsCount+'$seqid"></span>';
+		newTr.appendChild(newTd2);
+		initializeQueryField($("#FIELDLIST"+fieldsCount+"$seqid")[0],$("#OPAREA"+fieldsCount+"$seqid")[0],$("#QEAREA"+fieldsCount+"$seqid")[0]);
+	}
+	
+	function checkValid()
+	{
+		if(typeof($('.hintError').get(0))=="undefined")
+		{
+			var obj=document.getElementById("searchFlag");
+			if (obj.checked)
+			{
+				return doQuery2($('#form_${seqid}')[0],1);
+			}
+			return doQuery2($('#form_${seqid}')[0],0);
+		}
+		else
+		{
+			alert("数据格式错误！请重新输入后进行查询！");
+		}
+	}
+</script>

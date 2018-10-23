@@ -1,0 +1,28 @@
+﻿#usingLayout('/console/webpub/template1.vpage')
+#set($title="索引库维护")
+
+	<div class="button_div">
+    	<div class="button01_div" style="padding-left:20px;">
+        	<div class="button01_left_div"></div>
+            <div class="button01_mid_div"><a href="doIndex.vpage">重新构建索引库（跨库检索时，需从索引库检索数据，索引库每日零点自动更新）</a></div>
+            <div class="button01_right_div"></div>
+        </div>
+	</div>
+    <div class="clear"></div>
+        <div class="button_div">
+    	<div id="button01_div" style="padding-left:20px;">
+        	<div class="button01_left_div"></div>
+            <div class="button01_mid_div"><a href="#" onclick="confirmInfo()">清空索引库</a></div>
+            <div class="button01_right_div"></div>
+        </div>
+    </div>
+
+<script>
+function confirmInfo()
+{
+	if(confirm("真的要这么做吗？该操作将会清空索引库内容！！\r\n执行清空操作之后，前台将无法检索到数据！"))
+	{
+		location.href="doDeleteIndexDb.vpage";
+	}
+}
+</script>

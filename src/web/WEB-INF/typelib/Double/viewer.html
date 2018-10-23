@@ -1,0 +1,5 @@
+#if(!$field.viewerPattern || $field.viewerPattern == "")
+${D}!bean.get('${field.name}').format("%f")$!field.unitValue
+#else
+${D}!bean.get('${field.name}').format('$field.viewerPattern')$!field.unitValue
+#end

@@ -1,0 +1,29 @@
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#invoke("vdb.webpub.background.DoSaveBackground")
+
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+﻿#usingLayout('/console/webpub/template1.vpage')
+<script type="text/javascript">
+	
+	var dhxWins1 = new dhtmlXWindows();
+	dhxWins1.enableAutoViewport(true);
+	
+	dhxWins1.setImagePath("/console/shared/plugins/dhtmlx/windows/imgs/");
+	document.body.scrollTop=0;
+	win1 = dhxWins1.createWindow("win1", 200, 200, 300, 200);
+	win1.centerOnScreen();
+	win1.setModal(true);	
+	win1.tI("操作结果");
+	var htmlString = "<div align='center' style='height:100%;background-Color:#f7f9fa;font-size:10pt' ><br><br><img src='/console/shared/images/onSuccess.gif' border=0 align=absbottom>保存成功！<br><br><br><button type='button' onclick=window.location.href='publish.vpage';dhxWins1.window('win1').close();><img src='/console/shared/images/gb.gif' border=0 align=absbottom>关闭页面</button></div>";
+	win1.attachHTMLString(htmlString);
+	
+	//window.location.href="publish.vpage";
+</script>
+<body>
+</body>

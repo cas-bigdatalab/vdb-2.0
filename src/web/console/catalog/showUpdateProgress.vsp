@@ -1,0 +1,2 @@
+﻿#set($progressReporter=$request.getSession().getAttribute("progressReporter"))
+$progressReporter.pos|$progressReporter.max|$!progressReporter.prompt

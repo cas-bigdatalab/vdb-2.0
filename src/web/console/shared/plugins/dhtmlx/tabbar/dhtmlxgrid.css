@@ -1,0 +1,387 @@
+DIV.gridbox {
+	OVERFLOW: hidden; TEXT-ALIGN: left
+}
+.dhx_sub_row {
+	BACKGROUND-COLOR: white
+}
+DIV.gridbox .xhdr {
+	BACKGROUND-COLOR: #d4d0c8
+}
+DIV.gridbox TABLE.hdr TD {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: white 1px solid; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: white 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: gray 1px solid; FONT-FAMILY: arial; BACKGROUND-COLOR: #d4d0c8; TEXT-ALIGN: center; -moz-user-select: -moz-none; empty-cells: show
+}
+DIV.gridbox TABLE.hdr TD DIV.hdrcell {
+	OVERFLOW: hidden
+}
+DIV.gridbox TABLE.obj TD {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: white 1px solid; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; BORDER-LEFT: white 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: gray 1px solid; FONT-FAMILY: Arial; -moz-user-select: -moz-none; empty-cells: show
+}
+DIV.gridbox TABLE.obj TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DIV.gridbox TABLE.hdr TH {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+DIV.gridbox TABLE.row20px TR TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 20px
+}
+DIV.gridbox .objbox {
+	POSITION: relative; BACKGROUND-COLOR: white
+}
+DIV.gridbox TABLE.obj TD SPAN.space {
+	WIDTH: 18px
+}
+DIV.gridbox TABLE.obj TD IMG.space {
+	WIDTH: 18px
+}
+DIV.gridbox TABLE.obj TR.rowselected TD.cellselected {
+	COLOR: black; BACKGROUND-COLOR: #d8d8d8
+}
+DIV.gridbox TABLE.obj TD.cellselected {
+	COLOR: black; BACKGROUND-COLOR: #d8d8d8
+}
+DIV.gridbox TABLE.obj TR.rowselected TD {
+	COLOR: black; BACKGROUND-COLOR: #e1e0d7
+}
+DIV.gridbox TABLE.obj TD.editable {
+	-moz-user-select: text
+}
+DIV.gridbox TABLE.obj TD.group_row {
+	BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 10pt; VERTICAL-ALIGN: middle; BORDER-BOTTOM: navy 2px solid; FONT-FAMILY: Tahoma; HEIGHT: 30px; BORDER-RIGHT-WIDTH: 0px
+}
+.dragSpanDiv {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; FONT-SIZE: 12px; Z-INDEX: 999; BORDER-LEFT: gray 1px solid; BORDER-BOTTOM: gray 1px solid; BACKGROUND-COLOR: white
+}
+.dhx_combo_select {
+	BORDER-RIGHT: silver 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 12px; Z-INDEX: 600; OVERFLOW: hidden; BORDER-LEFT: black 1px solid; CURSOR: default; BORDER-BOTTOM: silver 1px solid; FONT-FAMILY: arial; POSITION: absolute; HEIGHT: auto; BACKGROUND-COLOR: white
+}
+.dhx_combo_edit {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 1px; PADDING-LEFT: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: 12px arial; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhx_textarea {
+	BORDER-RIGHT: silver 1px solid; BORDER-TOP: black 1px solid; Z-INDEX: 600; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: silver 1px solid; POSITION: absolute; HEIGHT: 100px
+}
+.dhx_clist {
+	BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: black 1px solid; PADDING-LEFT: 2px; Z-INDEX: 300; PADDING-BOTTOM: 2px; BORDER-LEFT: black 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: black 1px solid; BACKGROUND-COLOR: white
+}
+.gridDragLine {
+	LEFT: 0px; OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; TOP: 10px; HEIGHT: 2px; BACKGROUND-COLOR: black
+}
+DIV.pagingBlock {
+	FONT-SIZE: 12px; FONT-FAMILY: verdana,arial
+}
+DIV.pagingBlock .pagingCurrentPage {
+	FONT-WEIGHT: bold; CURSOR: default
+}
+DIV.pagingBlock .pagingPage {
+	CURSOR: pointer; TEXT-DECORATION: underline
+}
+SPAN.recordsInfoBlock {
+	FONT-SIZE: 12px; FONT-FAMILY: verdana,arial
+}
+DIV.pagingBlock A {
+	PADDING-RIGHT: 2px; CURSOR: pointer; COLOR: black; TEXT-DECORATION: none
+}
+DIV.pagingBlock A.dhx_not_active {
+	CURSOR: default; TEXT-DECORATION: none
+}
+.toolbar_select {
+	FONT-SIZE: 10px
+}
+.dhtmlxGrid_selection {
+	BORDER-RIGHT: black 1px dotted; BORDER-TOP: black 1px dotted; FILTER: alpha(opacity=50); BORDER-LEFT: black 1px dotted; BORDER-BOTTOM: black 1px dotted; BACKGROUND-COLOR: yellow; -moz-opacity: 0.5; opacity: 0.5
+}
+DIV.gridbox_xp {
+	BORDER-RIGHT: #d3d3d3 1px solid; BORDER-TOP: #d3d3d3 1px solid; BORDER-LEFT: #d3d3d3 1px solid; BORDER-BOTTOM: #d3d3d3 1px solid
+}
+DIV.gridbox_xp .xhdr {
+	BACKGROUND-IMAGE: url(imgs/header_bg_60.gif)
+}
+DIV.gridbox_xp TABLE.hdr TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0px; BACKGROUND-IMAGE: url(imgs/header_bg_60.gif); BORDER-BOTTOM-WIDTH: 0px; PADDING-BOTTOM: 5px; MARGIN: 0px; OVERFLOW: hidden; COLOR: #616161; PADDING-TOP: 5px; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px; -moz-user-select: -moz-none
+}
+DIV.gridbox_xp TABLE.hdr TD DIV.hdrcell {
+	BORDER-RIGHT: gray 1px solid; FONT-SIZE: 12px; BORDER-LEFT: white 1px solid; FONT-FAMILY: Arial; WHITE-SPACE: nowrap; HEIGHT: 16px
+}
+DIV.gridbox_xp TABLE.obj TD {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #d3d3d3 1px solid; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; PADDING-TOP: 0px; BORDER-BOTTOM: #d3d3d3 1px solid; FONT-FAMILY: Arial; -moz-user-select: -moz-none
+}
+DIV.gridbox_xp TABLE.obj TR.rowselected TD {
+	COLOR: black; BACKGROUND-COLOR: #f5f5f5
+}
+DIV.gridbox_xp TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #f5f5f5
+}
+DIV.gridbox TABLE.obj TD.cellselected {
+	BACKGROUND-COLOR: #f5f5f5
+}
+DIV.gridbox_xp TABLE.row20px TR TD {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; WHITE-SPACE: nowrap; HEIGHT: 22px
+}
+DIV.gridbox_gray {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; BORDER-BOTTOM: gray 1px solid; BACKGROUND-COLOR: #d4d0c8
+}
+DIV.gridbox_mt {
+	BORDER-RIGHT: #d3d3d3 1px solid; BORDER-TOP: #d3d3d3 1px solid; BORDER-LEFT: #d3d3d3 1px solid; BORDER-BOTTOM: #d3d3d3 1px solid
+}
+DIV.gridbox_mt .dhx_sub_row {
+	BACKGROUND-COLOR: transparent
+}
+DIV.gridbox_mt .xhdr {
+	BACKGROUND-IMAGE: url(imgs/header_bg.gif)
+}
+DIV.gridbox_mt .xhdr_last {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT: #d3d3d3 1px solid; BORDER-BOTTOM: #d3d3d3 1px solid; BORDER-RIGHT-WIDTH: 0px
+}
+DIV.gridbox_mt TABLE.hdr TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url(imgs/header_bg.gif); PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #d3d3d3 1px solid; COLOR: #616161; PADDING-TOP: 0px; BORDER-BOTTOM: #d3d3d3 1px solid; TEXT-ALIGN: center; BORDER-RIGHT-WIDTH: 0px; -moz-user-select: -moz-none
+}
+DIV.gridbox_mt TABLE.hdr TD DIV.hdrcell {
+	FONT-SIZE: 12px; FONT-FAMILY: Verdana; WHITE-SPACE: nowrap; HEIGHT: 16px
+}
+DIV.gridbox_mt TABLE.obj TD {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #d3d3d3 0px solid; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; PADDING-TOP: 0px; BORDER-BOTTOM: #d3d3d3 1px solid; FONT-FAMILY: Verdana; -moz-user-select: -moz-none
+}
+DIV.gridbox_mt TABLE.obj TR.rowselected TD {
+	COLOR: black; BACKGROUND-COLOR: #d6d3fa
+}
+DIV.gridbox_mt TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #d6d3fa
+}
+DIV.gridbox TABLE.obj TD.cellselected {
+	BACKGROUND-COLOR: #d6d3fa
+}
+DIV.gridbox_mt TABLE.row20px TR TD {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; WHITE-SPACE: nowrap; HEIGHT: 22px
+}
+DIV.gridbox DIV.ftr {
+	LEFT: 0px; OVERFLOW: hidden; WIDTH: 100%; BOTTOM: 1px; POSITION: absolute
+}
+DIV.gridbox DIV.ftr TD {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: gray 1px solid; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; OVERFLOW: hidden; PADDING-TOP: 0px; FONT-STYLE: italic; FONT-FAMILY: arial; BACKGROUND-COLOR: #ffffcc
+}
+DIV.gridbox TABLE.hdr TD.columnTargetR DIV.hdrcell {
+	BORDER-RIGHT: #ff6600 3px double; BORDER-LEFT: #d4d0c8 3px solid
+}
+DIV.gridbox TABLE.hdr TD.columnTargetL DIV.hdrcell {
+	BORDER-RIGHT: #d4d0c8 3px solid; BORDER-LEFT: #ff6600 3px double
+}
+.dhx_dragColDiv {
+	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 20px; BORDER-TOP: white 1px solid; PADDING-LEFT: 20px; FONT-WEIGHT: normal; FONT-SIZE: 12px; FILTER: alpha(opacity:75); PADDING-BOTTOM: 5px; MARGIN: 0px; BORDER-LEFT: white 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: gray 1px solid; FONT-FAMILY: Arial; BACKGROUND-COLOR: #d4d0c8; TEXT-ALIGN: center; -moz-opacity: 0.75; opacity: 0.75
+}
+DIV.gridbox_light {
+	BORDER-RIGHT: #c2d5dc 1px solid; BORDER-TOP: #c2d5dc 1px solid; BORDER-LEFT: #c2d5dc 1px solid; BORDER-BOTTOM: #c2d5dc 1px solid
+}
+DIV.gridbox_light .xhdr {
+	BACKGROUND-IMAGE: url(imgs/skin_light_header.png)
+}
+DIV.gridbox_light .xhdr_last {
+	BORDER-RIGHT: #93afba 1px solid; BORDER-TOP: #fdfdfd 1px solid; BORDER-LEFT: #fdfdfd 1px solid; BORDER-BOTTOM: #93afba 1px solid
+}
+DIV.gridbox_light TABLE.hdr {
+	BACKGROUND-IMAGE: url(imgs/skin_light_header.png)
+}
+DIV.gridbox_light TABLE.hdr TD {
+	BORDER-RIGHT: #93afba 1px solid; BORDER-TOP: #fdfdfd 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 11px; VERTICAL-ALIGN: top; BORDER-LEFT: #fdfdfd 1px solid; COLOR: #055a78; BORDER-BOTTOM: #93afba 1px solid; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: transparent; TEXT-ALIGN: left
+}
+DIV.gridbox_light TABLE.hdr TD DIV.hdrcell {
+	PADDING-LEFT: 10px; WIDTH: auto
+}
+DIV.gridbox_light TABLE.hdr .filter {
+	PADDING-LEFT: 0px! important; TEXT-ALIGN: center; -moz-user-select: text
+}
+DIV.gridbox_light TABLE.obj TD {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #d6d6d6 1px solid; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 11px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT: white 1px solid; FONT-FAMILY: Tahoma
+}
+DIV.gridbox_light TABLE.obj {
+	BORDER-BOTTOM: #d6d6d6 1px solid
+}
+DIV.gridbox_light TABLE.row20px TR TD {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px
+}
+DIV.gridbox_light .dhx_combo_edit {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+DIV.gridbox_light TABLE.obj TR.rowselected TD {
+	COLOR: black; BACKGROUND-COLOR: #ededed
+}
+DIV.gridbox_light TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #ededed
+}
+DIV.gridbox TABLE.obj TD.cellselected {
+	BACKGROUND-COLOR: #ededed
+}
+DIV.gridbox_light .odd_light {
+	BACKGROUND-COLOR: #e5f2f8
+}
+DIV.gridbox_light DIV.ftr TD {
+	empty-cells: show
+}
+DIV.gridbox_modern {
+	BORDER-RIGHT: #d6d6d6 1px solid; BORDER-TOP: #d6d6d6 1px solid; BORDER-LEFT: #d6d6d6 1px solid; BORDER-BOTTOM: #d6d6d6 1px solid
+}
+DIV.gridbox_modern .dhx_sub_row {
+	BACKGROUND-COLOR: transparent
+}
+DIV.gridbox_modern .xhdr {
+	BACKGROUND-IMAGE: url(imgs/skin_modern_header.png)
+}
+DIV.gridbox_modern .xhdr_last {
+	BORDER-RIGHT: #b5b5b5 1px solid; BORDER-TOP: #fdfdfd 1px solid; BORDER-LEFT: #fdfdfd 1px solid; BORDER-BOTTOM: #b5b5b5 1px solid
+}
+DIV.gridbox_modern TABLE.hdr {
+	BACKGROUND-IMAGE: url(imgs/skin_modern_header.png)
+}
+DIV.gridbox_modern TABLE.hdr TD {
+	BORDER-RIGHT: #b5b5b5 1px solid; BORDER-TOP: #fdfdfd 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 11px; VERTICAL-ALIGN: top; BORDER-LEFT: #fdfdfd 1px solid; COLOR: #055a78; BORDER-BOTTOM: #b5b5b5 1px solid; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: transparent; TEXT-ALIGN: left
+}
+DIV.gridbox_modern TABLE.hdr TD DIV.hdrcell {
+	PADDING-LEFT: 10px; WIDTH: auto
+}
+DIV.gridbox_modern TABLE.hdr .filter {
+	PADDING-LEFT: 0px! important; TEXT-ALIGN: center
+}
+DIV.gridbox_modern TABLE.obj TD {
+	BORDER-RIGHT: 0px solid; PADDING-RIGHT: 4px; BORDER-TOP: 0px solid; PADDING-LEFT: 4px; FONT-SIZE: 11px; BORDER-LEFT: 0px solid; BORDER-BOTTOM: 0px solid; FONT-FAMILY: Tahoma
+}
+DIV.gridbox_modern TABLE.row20px TR TD {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px
+}
+DIV.gridbox_modern .dhx_combo_edit {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+DIV.gridbox_modern TABLE.obj TR.rowselected TD {
+	COLOR: black; BACKGROUND-COLOR: #9ac2e5
+}
+DIV.gridbox_modern TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #9ac2e5
+}
+DIV.gridbox TABLE.obj TD.cellselected {
+	BACKGROUND-COLOR: #9ac2e5
+}
+DIV.gridbox_modern .odd_modern {
+	BACKGROUND-COLOR: #ededed
+}
+DIV.gridbox_modern DIV.ftr TD {
+	BORDER-RIGHT: gray 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: gray 0px solid; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-STYLE: italic; FONT-FAMILY: arial; BACKGROUND-COLOR: #ffffcc
+}
+DIV.gridbox_clear .xhdr {
+	BACKGROUND-COLOR: transparent
+}
+DIV.gridbox_clear DIV.topMumba {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LEFT: 0px; BACKGROUND-IMAGE: url(imgs/skinC_header.png); PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 100%; PADDING-TOP: 0px; POSITION: absolute; HEIGHT: 3px
+}
+DIV.gridbox_clear DIV.bottomMumba {
+	LEFT: 0px; BACKGROUND-IMAGE: url(imgs/skinD_header.png); OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 3px
+}
+DIV.gridbox_clear DIV.bottomMumba IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; POSITION: absolute; TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+DIV.gridbox_clear DIV.topMumba IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; POSITION: absolute; TOP: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+DIV.gridbox_clear {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px
+}
+DIV.gridbox_clear TABLE.hdr TD {
+	BORDER-TOP-WIDTH: 0px; FONT-WEIGHT: bold; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: top; COLOR: #055a78; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: transparent; TEXT-ALIGN: left; BORDER-RIGHT-WIDTH: 0px
+}
+DIV.gridbox_clear TABLE.hdr TD DIV.hdrcell {
+	PADDING-LEFT: 10px; PADDING-BOTTOM: 2px; WIDTH: auto
+}
+DIV.gridbox_clear TABLE.hdr .filter {
+	PADDING-LEFT: 0px! important; TEXT-ALIGN: center
+}
+DIV.gridbox_clear TABLE.obj TD {
+	BORDER-TOP-WIDTH: 0px; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 11px; BORDER-LEFT-COLOR: #d6d6d6; BORDER-BOTTOM-WIDTH: 0px; BORDER-BOTTOM-COLOR: #d6d6d6; BORDER-TOP-COLOR: #d6d6d6; FONT-FAMILY: Tahoma; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #d6d6d6
+}
+DIV.gridbox_clear TABLE.row20px TR TD {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px
+}
+DIV.gridbox_clear .dhx_combo_edit {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma
+}
+DIV.gridbox_clear .odd_clear {
+	BACKGROUND-COLOR: #e5f2f8
+}
+DIV.gridbox_clear DIV.ftr TD {
+	BORDER-RIGHT: gray 0px solid; PADDING-RIGHT: 5px; BORDER-TOP: gray 1px solid; PADDING-LEFT: 10px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; FONT-STYLE: italic; FONT-FAMILY: arial; BACKGROUND-COLOR: #ffffcc
+}
+DIV.gridbox_sbdark .objbox {
+	BACKGROUND: #313131
+}
+DIV.gridbox_sbdark .xhdr {
+	BACKGROUND-COLOR: #313131
+}
+DIV.gridbox_sbdark .xhdr_last {
+	BORDER-RIGHT: #202220 1px solid; BORDER-TOP: #474948 1px solid; BORDER-LEFT: #202220 1px solid; BORDER-BOTTOM: #202220 1px solid
+}
+DIV.gridbox_sbdark {
+	BACKGROUND: #313131
+}
+DIV.gridbox_sbdark TABLE {
+	BORDER-COLLAPSE: collapse
+}
+DIV.gridbox_sbdark TABLE.hdr TR {
+	BORDER-TOP: #202220 1px solid
+}
+DIV.gridbox_sbdark TABLE.hdr {
+	BORDER-RIGHT: #202220 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #474948 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: top; BORDER-LEFT: #202220 1px solid; COLOR: #8a8f84; PADDING-TOP: 2px; BORDER-BOTTOM: #202220 1px solid; BACKGROUND-COLOR: #313131; TEXT-ALIGN: left
+}
+DIV.gridbox_sbdark TABLE.hdr TD {
+	BORDER-RIGHT: #202220 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #474948 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: top; BORDER-LEFT: #202220 1px solid; COLOR: #8a8f84; PADDING-TOP: 2px; BORDER-BOTTOM: #202220 1px solid; BACKGROUND-COLOR: #313131; TEXT-ALIGN: left
+}
+DIV.gridbox_sbdark .hdrcell {
+	PADDING-LEFT: 0px! important; FONT-FAMILY: 'Lucida Sans Unicode','Tahoma'
+}
+DIV.gridbox_sbdark TABLE.hdr TD DIV.hdrcell {
+	PADDING-LEFT: 10px; WIDTH: auto
+}
+DIV.gridbox_sbdark TABLE.obj TD {
+	BORDER-TOP-WIDTH: 0px; BORDER-RIGHT: #edf3f0 1px solid; FONT-SIZE: 11px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT: #202220 1px solid; FONT-FAMILY: 'Consolas','Lucida Sans Unicode','Tahoma'
+}
+DIV.gridbox_sbdark TABLE.row20px TR TD {
+	PADDING-RIGHT: 5px! important; PADDING-LEFT: 5px! important; PADDING-BOTTOM: 0px! important; TEXT-INDENT: 1px; PADDING-TOP: 0px! important
+}
+DIV.gridbox_sbdark .dhx_combo_edit {
+	FONT-SIZE: 11px; FONT-FAMILY: 'Lucida Sans Unicode','Tahoma'
+}
+DIV.gridbox_sbdark TABLE.obj TR.rowselected TD {
+	COLOR: white! important; BACKGROUND-COLOR: #8a8f84
+}
+DIV.gridbox_sbdark TABLE.obj TR:hover {
+	COLOR: white! important; BACKGROUND-COLOR: #8a8f84
+}
+DIV.gridbox_sbdark .odd_light:hover {
+	COLOR: white! important; BACKGROUND-COLOR: #8a8f84
+}
+DIV.gridbox_sbdark TABLE.obj TR.rowselected TD.cellselected {
+	BACKGROUND-COLOR: #8a8f84
+}
+DIV.gridbox_sbdark TABLE.obj TD.cellselected {
+	BACKGROUND-COLOR: #8a8f84
+}
+DIV.gridbox_sbdark .cellselected {
+	BACKGROUND-COLOR: #6e6f64! important
+}
+DIV.gridbox_sbdark .ev_sbdark {
+	BACKGROUND-COLOR: #ffffff
+}
+DIV.gridbox_sbdark .odd_sbdark {
+	BACKGROUND-COLOR: #edf3f0
+}
+.dhtmlx_live_validation_error {
+	BACKGROUND-COLOR: #ffe0e0! important
+}
+.dhtmlx_validation_error {
+	BORDER-BOTTOM: red 2px solid
+}
+.dhx_header_cmenu {
+	BORDER-RIGHT: silver 2px outset; BORDER-TOP: silver 2px outset; Z-INDEX: 2; BORDER-LEFT: silver 2px outset; BORDER-BOTTOM: silver 2px outset; BACKGROUND-COLOR: #ffffff
+}
+.dhx_header_cmenu_item {
+	WHITE-SPACE: nowrap
+}
+DIV.gridbox_dhx_skyblue DIV.ftr TD {
+	BORDER-LEFT-COLOR: #a4bed4; BACKGROUND-IMAGE: url(./imgs/sky_blue_grid.gif); BORDER-BOTTOM-COLOR: #a4bed4; BORDER-TOP-COLOR: #a4bed4; TEXT-ALIGN: right; BORDER-RIGHT-COLOR: #a4bed4
+}

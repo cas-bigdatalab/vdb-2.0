@@ -1,0 +1,28 @@
+#set($domain = $manager.domain)
+#if(!$domain)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<conceptTree>
+			<root uri="" url="${request.scheme}://${request.serverName}:${request.serverPort}" introduction="$!domain.description" name="$!{domain.name}">
+				#foreach ($dataset in $domain.dataSets)
+					#if($dataset.description) #set($datasetDesc=$dataset.description.replaceAll('<','&lt;').replaceAll('>','&gt;')) #end
+					<node uri="$!{dataset.uri}" url="" introduction="$!datasetDesc" order="$!velocityCount" name="$!{dataset.name}">
+						#foreach($entity in $dataset.entities)
+							#if($entity.description) #set($entityDesc=$entity.description.replaceAll('<','&lt;').replaceAll('>','&gt;')) #end
+							<leaf uri="$!{entity.uri}" url="${request.scheme}://${request.serverName}:${request.serverPort}/page/showEntity.vpage?uri=$!{entity.uri}" introduction="$!entityDesc" order="$!velocityCount" name="$!{entity.name}">
+							</leaf>
+ 						#end
+					</node>
+ 				#end
+			</root>
+		</conceptTree>
+	</body>
+</response>
+#end

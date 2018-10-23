@@ -1,0 +1,61 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:22-->
+
+##定义一个指向ygzx.iodetails的实体对象
+#set($entity = $tool.getEntity('ygzx.iodetails'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c002a" fieldUri="ygzx.iodetails.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按id排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> id</b>#if ('ygzx.iodetails.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c002b" fieldUri="ygzx.iodetails.iodate" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按日期排序" ><b> 日期</b>#if ('ygzx.iodetails.iodate' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c002d" fieldUri="ygzx.iodetails.inputmoney" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按收入排序" ><b> 收入</b>#if ('ygzx.iodetails.inputmoney' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c002e" fieldUri="ygzx.iodetails.outputmoney" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按支出排序" ><b> 支出</b>#if ('ygzx.iodetails.outputmoney' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c002f" fieldUri="ygzx.iodetails.leftmoney" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按余额排序" ><b> 余额</b>#if ('ygzx.iodetails.leftmoney' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c0031" fieldUri="ygzx.iodetails.fund" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按对应基金排序" ><b> 对应基金</b>#if ('ygzx.iodetails.fund' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d4538c0032" fieldUri="ygzx.iodetails.provider" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按汇款人排序" ><b> 汇款人</b>#if ('ygzx.iodetails.provider' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿	$!bean.get('iodate').dateFormat('yyyy年MM月dd日')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('inputmoney').format("%f")
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('outputmoney').format("%f")
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('leftmoney').format("%f")
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('fund').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('provider').format('%s')
+&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

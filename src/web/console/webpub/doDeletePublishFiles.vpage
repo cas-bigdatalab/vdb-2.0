@@ -1,0 +1,5 @@
+﻿#invoke("vdb.webpub.vsp.DoDeletePublishFiles")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="清空发布文件")
+
+成功清空发布文件！

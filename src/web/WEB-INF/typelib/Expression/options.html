@@ -1,0 +1,18 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">组合表达式</td>
+      <td width="80%" style="padding-left:12px;">
+     	<input type="text" size="38" name="P_expr" value="$!{field.expr}">
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="ExprLabel" checked>组合标签
+      </td>
+    </tr>
+</table>
+<script $ifDefer>	
+	//选中编辑风格
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+</script>

@@ -1,0 +1,63 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_columnName" value="${meta.columnName}"><input type="text" size="35" value="${meta.columnName}" disabled></td>
+    </tr>
+    
+    <tr>
+      <td class="table_bg">链接类型</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_linkStyle" value="webUrl" 
+      		#if(!$field.linkStyle||$field.linkStyle==''||${field.linkStyle}=='webUrl') checked #end
+      		onclick="$('#image').hide();$('#answerStyle').show();">网页链接
+      	<input type="radio" style="border:0px" name="P_linkStyle" value="mailUrl"
+      	  #if(${field.linkStyle}=='mailUrl')checked #end
+      	  onclick="$('#image').hide();$('#answerStyle').show();">邮箱链接
+      	<input type="radio" style="border:0px" name="P_linkStyle" value="ftpUrl"
+      	  #if(${field.linkStyle}=='ftpUrl')checked #end
+      	  onclick="$('#image').hide();$('#answerStyle').show();">FTP链接
+      	<input type="radio" style="border:0px" name="P_linkStyle" value="imageUrl"
+      	#if(${field.linkStyle}=='imageUrl')checked #end
+      	 onclick="$('#image').show();$('#answerStyle').hide();">图片类型
+      </td>
+    </tr>
+  
+    <tr id="image"
+    	#if(${field.linkStyle}!='imageUrl') style="display:none;" #end>
+      <td class="table_bg">图片大小</td>
+      <td width="80%" style="padding-left:12px;">
+      	宽度：<input type="text" size="6" name="P_imageWidth" value="$!{field.imageWidth}">pt
+      	高度：<input type="text" size="6" name="P_imageHeight" value="$!{field.imageHeight}">pt
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="HyperLinkTextEdit" checked>文本输入框
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="table_bg">编辑框尺寸</td>
+      <td width="80%" style="padding-left:12px;">
+		     	<input type="text" name="P_editorWidth" value="$!{field.editorWidth}" size="4">px
+      </td>
+    </tr>
+    
+	<tr #if(${field.linkStyle}=='imageUrl') style="display:none;" #end id="answerStyle">
+      <td class="table_bg">链接窗口</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_answerStyle" value="_self"
+      		#if($!{field.answerStyle}==''||${field.answerStyle}=='_self') checked #end>当前窗口
+      	<input type="radio" style="border:0px" name="P_answerStyle" value="_blank"
+      		#if(${field.answerStyle}=='_blank') checked #end>新窗口
+      </td>
+    </tr>
+</table>
+<script $ifDefer>	
+	//选中编辑风格
+	checkRadioOptions(form1.elements("P_linkStyle"), "$!{field.linkStyle}");
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_answerStyle"), "$!{field.answerStyle}");
+</script>    

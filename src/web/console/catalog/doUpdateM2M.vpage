@@ -1,0 +1,19 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateM2M")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改关系信息")
+<script>
+#if ($param.isNew==true)
+top.addItem('RelationList@${param.dsid}','Relation@m2m@${param.mid}','$catalog.fromId(${param.mid}).title');
+#else
+top.setItemText('RelationList@${param.dsid}','Relation@m2m@${param.mid}','$catalog.fromId(${param.mid}).title');
+#end
+</script>
+
+修改关系成功！<br/>
+<div style="margin-top:10px;">	
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateM2M.vpage?id=${param.mid}"><img src="/console/shared/images/goto.gif" border="none"/>返回继续修改</a><br/>
+		<a href="listRelations.vpage?dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>返回关系列表</a>
+	</div>
+</div>

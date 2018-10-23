@@ -1,0 +1,47 @@
+﻿<link rel="stylesheet" type="text/css" href="/console/shared/js/style.css">
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<cript type="text/javascript" src="/console/shared/js/interface.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js"></script>
+
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/check.js"></script>
+<script language="JavaScript" src="/console/shared/js/ui.js"></script>
+#set($cuser = ${param.cuser})
+	<!-- 用户登录记录 -->
+	<br>
+	<div id="loginDIV">
+		<button id="excelImportButton" onclick="userLoginLog('$cuser');";>
+			<img src='/console/shared/images/add.gif' border=0 align=absbottom>
+			登录历史
+		</button>
+		<div id="loginInnerDIV" style="display:none"></div>
+	</div>
+	<!-- 对于每个记录集的访问记录 -->
+	#foreach ($ds in $manager.domain.dataSets)
+		<br>
+		<button id="excelImportButton" onclick="userVisitLog('$cuser','${ds.id}');">
+			<img src='/console/shared/images/add.gif' border=0 align=absbottom>
+			${ds.title}
+		</button>
+		<div id="visitInner_${ds.id}"  style="display:none"></div>
+	#end
+<br>
+<script defer>
+	function userLoginLog(username){
+		loadHTML1("/console/security/userLoginLog.vpage", 
+			"username=" + username, 
+			$("#loginInnerDIV")[0]
+			)
+			$("#loginInnerDIV").toggle();
+	}
+	
+	function userVisitLog(username,dsid){
+		loadHTML1("/console/security/userVisitLog.vpage", 
+			"username=" + username + "&datasetId=" + dsid, 
+			$("#visitInner_" + dsid)[0]
+			)
+			$("#visitInner_" + dsid).toggle();
+	}
+
+</script>

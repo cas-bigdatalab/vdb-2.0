@@ -1,0 +1,8 @@
+<div id="E_$field.id">	
+<select name="${field.name}" id="$editorName" style="${editorStyle}">
+	#foreach($entry in $field.typeDriver.options.entrySet())
+	<option value="${entry.key}">${entry.value}</option>
+	#end
+</select>
+<input type="hidden" name="type" value="${field.typeName}">
+</div>

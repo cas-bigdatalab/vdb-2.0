@@ -1,0 +1,54 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#selectDataSet($dataset,$param.uri)
+#if(!$dataset)	
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<schema>
+			<database>
+				<uri>$!dataset.uri</uri>
+				<title>$!dataset.title</title>
+				<name>$!dataset.name</name>
+				#foreach($entity in $!dataset.entities)
+					<entity>
+						<name>$!entity.name</name>
+						<uri>$!entity.uri</uri>
+						<description>$!entity.description</description>
+						<title>$!entity.title</title>
+						<identifier>$!entity.identifier.field.uri</identifier>
+						#foreach($field in $!entity.fields)
+					 		<field>
+					 			<name>$!field.name</name>
+					 			<uri>$!field.uri</uri>
+					 			<title>$!field.title</title>
+					 			<type>$!field.type.name</type>
+					 			#if($!field.isReference() || $!field.isCollection())
+					 				<target>$!field.relationKey.target.uri</target>
+					 			#end
+					 		</field>
+						#end
+					</entity>
+				#end
+				#foreach($view in $dataset.views)
+					<view>
+						<name>$!view.name</name>
+						<source>$!view.source.uri</source>
+						#foreach($item in $!view.items)
+							<item>$!item.uri</item>
+						#end
+					</view>
+				#end
+			</database>
+		</schema>
+	</body>
+</response>
+#end
+#end

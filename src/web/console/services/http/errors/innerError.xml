@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>500</code>
+		<message>服务器内部错误</message>
+	</head>
+	<body>
+	</body>
+</response>

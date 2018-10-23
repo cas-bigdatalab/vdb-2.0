@@ -1,0 +1,9 @@
+#set($seqid=$calendar.time)
+#set($sid=$seq.id)
+<div id="csdbarea_out_${seqid}${sid}" align="center" style="margin-top:-10px;padding-left:10px;overflow: hidden;width:220" ></div>
+<script type="text/javascript">
+	jQuery.getScript("http://widget.csdb.cn/csdbarea.jsp", function()
+	{		
+		$('#csdbarea_out_${seqid}${sid}').html(showWidget_csdbarea());
+	});
+</script>

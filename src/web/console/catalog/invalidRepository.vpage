@@ -1,0 +1,3 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="错误的连接设置")
+无法连接至指定的数据集，请重新设置连接信息。

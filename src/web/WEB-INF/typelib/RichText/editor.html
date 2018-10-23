@@ -1,0 +1,19 @@
+<!--#set($editorName='E_'+$seq.id)-->
+<div id="E_$field.id" >
+<input  type="hidden" name="$editorName" id="$editorName" value="\#xml(${data.value})"/>
+<input  type="hidden" name="editorName" value="$editorName"/>
+
+#if(${field.editorWidth} and $field.editorWidth.length() > 0 and $convert.parseNumber($field.editorWidth) > 560)
+	#set($width = $!{field.editorWidth})
+#else 
+	#set($width = 560)
+#end
+
+#if(${field.editorHeight} and $field.editorHeight.length() > 0 and $convert.parseNumber($field.editorHeight) > 300)
+	#set($height = $!{field.editorHeight})
+#else
+	#set($height = 300)
+#end
+
+<iframe frameborder="0" width="$width" height="$height" scrolling="no" src="/console/shared/plugins/fckeditor/editor/fckeditor.html?InstanceName=$editorName&amp;Toolbar=Default" id="${editorName}___Frame"> </iframe>
+</div>

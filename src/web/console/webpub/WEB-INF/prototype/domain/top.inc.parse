@@ -1,0 +1,3 @@
+#saveAs("top.vpage")
+#set($theme = $themeTool.theme)
+#parse("/console/webpub/WEB-INF/themes/$theme.name/top.vpage")

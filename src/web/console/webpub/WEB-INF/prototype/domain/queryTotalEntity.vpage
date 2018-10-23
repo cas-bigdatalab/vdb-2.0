@@ -1,0 +1,61 @@
+﻿#usingLayout("${pageroot}/layout.vpage")
+#set($pageSize=8)
+#invoke("vdb.mydb.vtl.action.QueryAction")
+#set($entity = $tool.getEntity($session.getAttribute("uri")))
+<div align="center" style="width:968px;border:#cdcdcd 1px solid;background-color:white;">
+<div style="height:20">
+<br>
+<form action="queryTotalEntity.vpage" method="get">
+  		<select name="uri">
+			#foreach ($entity1 in $entity.dataSet.entities)
+		    	<option value="${entity1.uri}"#if (${entity1.uri} == $entity.uri) selected #end>${entity1.title}</option>
+		    #end
+	      </select>
+		<input name="keywords" size="28" value="#if($session.getAttribute("keywords"))$!{session.getAttribute("keywords")}#else关键字...#end" onmouseover="this.select()">
+		<button type="submit">全表检索</button> 
+</form>
+</div>
+<div style="width:100%;padding:5px 10px 5px 10px" align="center">
+<br><br>
+<p align="left">在 <font color="red">$entity.dataSet.title $entity.title</font> 中查询包含 <font color="red">$param.keywords</font> 的内容：</p>
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="\#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+	#foreach ($hit in $pageViewer.beans)
+<table align="center" width="100%" border="0" cellpadding="1">
+  <tr class="header">
+    <td><a href="/page/showItem.vpage?id=$hit.entity.uri/${hit.beanId}" target="_blank"><font color="red">$hit.title</font></a></td>
+  </tr>
+  <tr class="header">
+    <td align="left" style="font-size:8pt">
+    <font color="green" face="Tahoma"><i>来源：$hit.dataSet.title $hit.entity.title</i>
+    <i>收录时间：$tool.formatDate($hit.indexTime, "yyyy-M-d HH:mm:ss")</i>
+    </font>
+    </td>
+  </tr>
+  <tr class="header">
+    <td align="left"><font color="black"> $tool.formatSubStr($hit.text, 500,"...")
+    </td>
+  </tr>
+  <tr class="header">
+    <td align="left" style="font-size:8pt">
+    #set($url = "$request.requestURL")
+    <font color="green"><font face="Tahoma"><i>$url.replaceAll("queryTotalEntity.vpage", "showBean($hit.entity.uri).vpage?id=${hit.beanId}")</i></font></td>
+  </tr>
+</table>
+<br>
+    #end
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+       #parse("/console/shared/pageViewer1.vpage")
+    </div>
+</center>
+	#end
+#end
+</div>
+</div>

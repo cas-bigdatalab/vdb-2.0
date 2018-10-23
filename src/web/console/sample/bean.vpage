@@ -1,0 +1,8 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示bean对象的引用')
+
+#set($bean = $tool.getBean('cn.csdb.vdb.bookstore.book', 2))
+
+书名： $bean.title.value<br>
+单价： $bean.price.value<br>
+印刷时间：$tool.formatDate($bean.publishDate.date, 'yyyy年M月d日 HH:mm:ss')<br>

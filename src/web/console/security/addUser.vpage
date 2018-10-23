@@ -1,0 +1,135 @@
+﻿<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<script language="javascript" src="/console/shared/js/selectOption.js"
+	defer>
+</script>
+<script>
+	function form1_onsubmit(form) {
+		var groupValues="";
+		for(var i=0;i<form.dept_cd_b.options.length;i++) {
+			groupValues=groupValues+";"+form.dept_cd_b.options[i].value;
+		}
+		form.groupValues.value=groupValues.substr(1,groupValues.length);
+		
+		if(checkNotEmpty(form.T1, "用户名") && checkNotEmpty(form.T2, "登录密码")) {
+			if(form.T2.value==form.RT2.value){
+				return true;
+			} else {
+				alert("两次密码不一致！");
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	function checkNotEmpty(elementObject, elementTitle) {
+		if(elementObject.value == "" ) {
+			alert("请输入" + elementTitle + " !");
+			try {
+				elementObject.focus();
+			} catch(e) {
+
+			}
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>
+
+<form onSubmit="return form1_onsubmit(this);" id="userForm" method="post" action="doAddUser.vpage">
+	<div>
+		<table align="left" border="2" width="690" cellpadding="6" class="table1 dataset">
+			<tr class="bg0">
+				<td colspan="2" style="padding-left:40px;">
+					用户名：
+					<input type="text" name="T1" size="12">
+					密码：
+					<input type="password" name="T2" size="22">
+					密码确认：
+					<input type="password" name="RT2" size="22">
+					<br>
+					学&nbsp;&nbsp;&nbsp;&nbsp;位：
+					<input type="text" name="xuewei" size="12">
+					职称：
+					<input type="text" name="zhicheng" size="20">
+					研究领域：
+					<input type="text" name="lingyu" size="20">
+					<br>
+					电&nbsp;&nbsp;&nbsp;&nbsp;话：
+					<input type="text" name="phone" size="12">
+					传真：
+					<input type="text" name="fax" size="20">
+					电子邮件：
+					<input type="text" name="mail" size="20">
+					<br>
+					邮&nbsp;&nbsp;&nbsp;&nbsp;编：
+					<input type="text" name="youbian" size="12">
+					单位：
+					<input type="text" name="unit" size="20">
+					邮政地址：
+					<input type="text" name="address" size="20">
+					<br>
+					描&nbsp;&nbsp;&nbsp;&nbsp;述：
+					<textarea name="detail" rows="8" cols="64"></textarea>
+					<table width="200" height="190" border="0px" style="padding-left:80px;" cellpadding="4" cellspacing="0">
+						<tr class="bg0">
+							<td>
+								用户组列表：
+								<br>
+								<br>
+								<select id="dept_cd_a" name="dept_cd_a" multiple style="color:blue;margin:-2px; width:250px" size="8">
+									#foreach ($group in $auth.groupList)
+										<option value="${group.get('GROUPID')}">
+											#set ($v=$group.get("GROUPCODE").length() / 5)
+											#if ($v > 0)
+												#foreach ( $bar in [1..$v] )
+													-
+												#end
+											#end
+											${group.get("GROUPNAME")}
+										</option>
+									#end
+								</select>
+							</td>
+							<td>
+								<br>
+								<br>
+								<input type="button" value="全添加" class="btn_mouseout" onclick="addAll(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));" style="visibility: hidden;">
+								<br>
+								<input type="button" value="添  加" class="btn_mouseout" onclick="checkBeforeMove(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));">
+								<br>
+								<input type="button" value="删  除" class="btn_mouseout" onclick="deleteSel(document.getElementById('dept_cd_b'));">
+								<br>
+								<input type="button" value="全删除" class="btn_mouseout" onclick="deleteAll(document.getElementById('dept_cd_b'));" style="visibility: hidden;">
+							</td>
+							<td>
+								添加用户所在组：
+								<br>
+								<br>
+								<select id="dept_cd_b" name="dept_cd_b" multiple style="color:blue;margin:-2px; width:150px" size="8">
+									#foreach ($group in $auth.groupList)
+										#if ($param.id && $group.get("GROUPCODE")==$param.id)
+											<option value="${group.get('GROUPID')}">
+												${group.get("GROUPNAME")}
+											</option>
+										#end
+									#end
+								</select>
+								<input type="hidden" name="groupValues">
+							</td>
+						</tr>
+					</table>
+					<div style="padding-left:194px">
+						<input type="Submit" value="增加新用户" name="B1" class="btn_mouseout">
+					</div>
+					<div style="height:20px">
+					</div>
+				</td>
+			</tr>
+		</table>
+		<br><br><br>
+	</div>
+</form>

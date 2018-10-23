@@ -1,0 +1,347 @@
+﻿#set($entityUri = $param.entityUri)
+#set($entity = $tool.getEntity($entityUri))
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<iframe   name="itarget" id="itarget" style="display:none"></iframe>
+<fieldset class="query" style="padding-left:30px">
+<legend>excel导入</legend>
+<br>
+<form name="fileUploadForm"  action="excelImport.jsp?tid=${entity.id}&importType=1"  target="itarget" method="post"
+                  enctype="multipart/form-data"> 
+        <div id="nextStep0" >  
+        <input type="file" name="file" id="file"  size="30" style="width:300"> 
+        <input type="button" onclick="javascript:nextStep1();"   value="下一步" >
+        </div>
+        </form>
+        <div id="nextStep1" style="display:none;font-size:9pt">
+		使用大标题&nbsp;	<input type="checkbox" id="useBigCheck"  name="useBig" onclick="changeBig()">	
+		<div id="useSmall">
+		<br>
+		<table cellSpacing="0" borderColorDark="#ffffff" cellPadding="0" borderColorLight="#000000" border="1" style="font-size:9pt;">
+		    <caption><b>使用小标题</b></caption>
+		    <thead>
+		        <tr bgcolor="#CCC08F">
+		            <th><b>A</b></th>
+		            <th><b>B</b></th>
+		            <th><b>C</b></th>
+		            <th><b>D</b></th>
+		            <th><b>E</b></th>
+		            <th><b>...</b></th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr>
+		            <td id="atd1">&nbsp;</td>
+		            <td id="atd2">&nbsp;</td>
+		            <td id="atd3">&nbsp;</td>
+		            <td id="atd4">&nbsp;</td>
+		            <td id="atd5">&nbsp;</td>
+		            <td >...</td>
+		        </tr>
+		         <tr>
+		            <td id="atd6">&nbsp;</td>
+		            <td id="atd7">&nbsp;</td>
+		            <td id="atd8">&nbsp;</td>
+		            <td id="atd9">&nbsp;</td>
+		            <td id="atd10">&nbsp;</td>
+		            <td >...</td>
+		        </tr>
+		        <tr>
+		            <td id="atd11">&nbsp;</td>
+		            <td id="atd12">&nbsp;</td>
+		            <td id="atd13">&nbsp;</td>
+		            <td id="atd14">&nbsp;</td>
+		            <td id="atd15">&nbsp;</td>
+		            <td >&nbsp;...&nbsp;</td>
+		        </tr>
+		    </tbody>
+		    <tfoot>
+		        <tr>
+				<td>&nbsp;...&nbsp;</td>
+				<td>&nbsp;...&nbsp;</td>
+				<td>&nbsp;...&nbsp;</td>
+				<td>&nbsp;...&nbsp;</td>
+				<td>&nbsp;...&nbsp;</td>
+				<td>&nbsp;...&nbsp;</td>
+		        </tr>
+		    </tfoot>
+		</table>
+		</div>
+		<div id="useBig">
+				<br>
+				<table cellSpacing="0" borderColorDark="#ffffff" cellPadding="0" borderColorLight="#000000" border="1" style="font-size:9pt">
+				    <caption><b>使用大标题</b></caption>
+				    <thead>
+				        <tr bgcolor="#CCC08F">
+				            <th id="btd1">&nbsp;</th>
+				            <th id="btd2">&nbsp;</th>
+				            <th id="btd3">&nbsp;</th>
+				            <th id="btd4">&nbsp;</th>
+				            <th id="btd5">&nbsp;</th>
+				            <th><b>...</b></th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				         <tr>
+				            <td id="btd6">&nbsp;</td>
+				            <td id="btd7">&nbsp;</td>
+				            <td id="btd8">&nbsp;</td>
+				            <td id="btd9">&nbsp;</td>
+				            <td id="btd10">&nbsp;</td>
+				            <td >&nbsp;...&nbsp;</td>
+				        </tr>
+				           <tr>
+				            <td id="btd11">&nbsp;</td>
+				            <td id="btd12">&nbsp;</td>
+				            <td id="btd13">&nbsp;</td>
+				            <td id="btd14">&nbsp;</td>
+				            <td id="btd15">&nbsp;</td>
+				            <td >...</td>
+				        </tr>
+				    </tbody>
+				    <tfoot>
+				        <tr>          
+						<td>&nbsp;...&nbsp;</td>
+						<td>&nbsp;...&nbsp;</td>
+						<td>&nbsp;...&nbsp;</td>
+						<td>&nbsp;...&nbsp;</td>
+						<td>&nbsp;...&nbsp;</td>
+						<td>&nbsp;...&nbsp;</td>
+				        </tr>
+				    </tfoot>
+				</table>
+				</div>
+				
+				<br>
+				 <input type="button" onclick="lastStep1();"   value="上一步" >
+				 <input type="button" onclick="nextStep2();"   value="下一步" >
+                </div>
+          <div id="nextStep2" style="display:none;font-size:9pt">
+          <table cellSpacing="0" borderColorDark="#ffffff"  cellPadding="0" borderColorLight="#000000" border="1" style="font-size:9pt" id="setImportTable">
+				    <caption><b>导入</b></caption>
+				    <thead>
+				        <tr bgcolor="#CCC08F" >
+				            <th width="100px"><b>&nbsp;&nbsp;excel列&nbsp;&nbsp;</b></th>
+				            <th><b>&nbsp;&nbsp;-->&nbsp;&nbsp;</b></th>
+				            <th><b>&nbsp;&nbsp;数据库字段&nbsp;&nbsp;</b></th>
+				           
+				        </tr>
+				    </thead>
+				    <tbody>
+				    </tbody>
+				</table>
+          <br>
+				 <input type="button" onclick="lastStep2();"   value="上一步" >
+				 <input type="button" onclick="return chk();" name="submit1" value="完成" >
+          </div> 
+</fieldset>
+<script DEFER>
+	var rowInfo;
+	var colInfo;
+    function nextStep1()
+    {
+       	var f=document.getElementById("file");
+        if(f.value=="")
+           {
+               alert("请上传文件！");
+               return false;
+           }
+        if(f.value.substr(f.value.length-3,f.value.length)!="xls")
+           {
+               alert("文件格式不正确！");
+               return false;
+           }
+            
+        document.fileUploadForm.submit();
+		var fs=f.value.split("\\");
+        jQuery.ajax({
+	        type: "POST",
+			url:"excelImport.jsp",
+			data:{importType:2,filename:encodeURI(fs[fs.length-1])},
+			success:function(responseText)
+			{
+			  	rowInfo = responseText.split("@@||"); 
+			    for(var i=1;i<=3;i++)
+			    {
+			     	for(var j=1;j<=5;j++)
+			     	{
+					   	document.getElementById("btd"+((i-1)*5+j)).innerHTML="&nbsp;";
+						document.getElementById("atd"+((i-1)*5+j)).innerHTML="&nbsp;";
+				   	}
+				}
+			    
+			    for(var i=1;i<=rowInfo.length;i++)
+			    {
+					colInfo=rowInfo[i-1].split("^^**");
+					for(var j=1;j<=colInfo.length;j++)
+					{
+			      		if(j<6)
+			      		{
+				 	    	document.getElementById("atd"+((i-1)*5+j)).innerHTML="&nbsp;"+colInfo[j-1]+"&nbsp;";
+				 			document.getElementById("btd"+((i-1)*5+j)).innerHTML="&nbsp;"+colInfo[j-1]+"&nbsp;";
+				 		}
+	 				}
+				 }
+			     
+				
+				$("#nextStep0").hide();
+				$("#nextStep1").show();
+				if(document.getElementById("useBigCheck").checked)
+				{
+					$("#useSmall").hide();
+					$("#useBig").show();
+				}
+				else
+				{
+					$("#useSmall").show();
+					$("#useBig").hide();
+				}
+					    
+				}
+		   });
+        }
+        
+        
+        function lastStep1()
+        {
+        	$("#nextStep1").hide();
+        	$("#nextStep0").show();
+        }
+        
+        function lastStep2()
+        {
+        	$("#nextStep2").hide();
+        	$("#nextStep1").show();
+        }
+        
+        
+        function doCheck(obj)
+        {
+        	for(var i=0;i<document.getElementsByName("selectField").length;i++)
+        	{
+        		if(document.getElementsByName("selectField")[i]!=obj)
+        		{
+        			if(document.getElementsByName("selectField")[i].value==obj.value)
+        				document.getElementsByName("selectField")[i].options[0].selected=true;
+        		}
+        	}
+        }
+        
+        
+        function changeBig()
+        {
+        	if(document.getElementById("useBigCheck").checked)
+        	{
+        		$("#useSmall").hide();
+        		$("#useBig").show();
+        	}
+        	else
+        	{
+        		$("#useSmall").show();
+        		$("#useBig").hide();
+        	}
+        }
+
+	  	function chk()
+	    {
+	      	var resultStr="";
+	        for(var i=0;i<document.getElementsByName("selectField").length;i++)
+	    	{
+	     		if(document.getElementsByName("selectField")[i].value!="0")
+	    			resultStr=resultStr+document.getElementsByName("selectField")[i].value+"("+i+")"+";";
+	      	}
+	        
+	        resultStr=resultStr.substring(0,resultStr.length-1);
+	        var actionStr="excelImport.jsp?tid=${entity.id}&importType=3&resultStr="+resultStr;
+	        if(document.getElementById("useBigCheck").checked)
+	        	actionStr=actionStr+"&useBig=y";
+	        if(!document.getElementById("useBigCheck").checked)
+	        	actionStr=actionStr+"&useBig=n";
+	       	var f=document.getElementById("file");
+	        var fs=f.value.split("\\");
+	        actionStr=actionStr+"&filename="+escape(fs[fs.length-1]);
+	        document.fileUploadForm.action=encodeURI(encodeURI(actionStr));
+	        document.fileUploadForm.submit();
+	    }
+  	
+	    function nextStep2()
+	    {
+	    	var rowsCount=document.getElementById("setImportTable").rows.length;
+	    	for(var ti=rowsCount;ti>1;ti--)
+	    	{
+	    		document.getElementById("setImportTable").deleteRow(ti-1);
+	    	}
+	    	$("#nextStep1").hide();
+	    
+		    colInfo=rowInfo[0].split("^^**");
+		    if(!document.getElementById("useBigCheck").checked)
+		    {
+		      	for(var j=1;j<=colInfo.length;j++){
+			     
+	
+			        var newTr = document.getElementById("setImportTable").insertRow(-1);
+	
+			        var newTd0 = document.createElement("td");
+				    var newTd1 = document.createElement("td");
+				    var newTd2 = document.createElement("td");
+			        newTd0.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+String.fromCharCode("A".charCodeAt(0)+j-1)+"&nbsp;&nbsp;";
+			        newTr.appendChild(newTd0); 
+			        newTd1.innerHTML= "&nbsp;&nbsp;"+"-->"+"&nbsp;&nbsp;";
+			        newTr.appendChild(newTd1);
+			        var selStr="&nbsp;&nbsp;<select name='selectField' onchange=doCheck(this)>";
+			        selStr=selStr+"<option value='0'></option>";
+			        var n=0;
+			        #foreach($field in $entity.fields)
+			        n++;
+			        if(n==j)
+			        {
+			        	selStr=selStr+"<option value='$field.columnName' selected>${field.title}($field.columnName)</option>";
+			        }else
+			        {
+			        	selStr=selStr+"<option value='$field.columnName' >${field.title}($field.columnName)</option>";
+			        }
+	
+					#end
+			        selStr=selStr+"</select>&nbsp;&nbsp;";
+			        newTd2.innerHTML = selStr; 
+			     	newTr.appendChild(newTd2);
+		   			}
+				}
+			     
+				     
+			    if(document.getElementById("useBigCheck").checked)
+			    {
+	
+			    	for(var j=1;j<=colInfo.length;j++){
+				     
+				        var newTr = document.getElementById("setImportTable").insertRow(-1);
+				        var newTd0 = document.createElement("td");
+				        var newTd1 = document.createElement("td");
+				        var newTd2 = document.createElement("td");
+	
+					    newTd0.innerHTML=colInfo[j-1];
+	 					newTr.appendChild(newTd0);      
+				        newTd1.innerHTML= "&nbsp;&nbsp;"+"-->"+"&nbsp;&nbsp;";
+				        newTr.appendChild(newTd1);
+				        var selStr="&nbsp;&nbsp;<select name='selectField' onchange=doCheck(this)>";
+				        selStr=selStr+"<option value='0'></option>";
+				        var n=0;
+				        #foreach($field in $entity.fields)
+				        n++;
+				        if(n==j)
+				        {
+				        	selStr=selStr+"<option value='$field.columnName' selected>${field.title}($field.columnName)</option>";
+				        }else
+				        {
+				        	selStr=selStr+"<option value='$field.columnName' >${field.title}($field.columnName)</option>";
+				        }
+	
+						#end
+				        selStr=selStr+"</select>&nbsp;&nbsp;";
+				        newTd2.innerHTML = selStr; 
+				        newTr.appendChild(newTd2);
+				   	}
+				 }
+		       	$("#nextStep2").show();
+	        }
+</script>

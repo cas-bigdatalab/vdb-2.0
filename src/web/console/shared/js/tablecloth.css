@@ -1,0 +1,33 @@
+/* 
+
+	TableCloth	
+	by Alen Grakalic, brought to you by cssglobe.com
+	
+*/
+
+/* general styles */
+
+table.tablecloth, table.tablecloth td{
+	font:100% Arial, Helvetica, sans-serif; 
+	font-size:10pt;
+}
+table.tablecloth{width:100%;border-collapse:collapse;margin:1em 0;}
+table.tablecloth th, table.tablecloth td{text-align:left;padding:.5em;border:1px solid #fff;}
+table.tablecloth th{background:#328aa4;color:#fff;}
+table.tablecloth td{background:#e5f1f4;}
+
+/* tablecloth styles */
+
+table.tablecloth tr.even td{background:#e5f1f4;}
+table.tablecloth tr.odd td{background:#f8fbfc;}
+
+table.tablecloth th.over,table.tablecloth tr.even th.over,table.tablecloth tr.odd th.over{background:#4a98af;}
+table.tablecloth th.down, table.tablecloth tr.even th.down,table.tablecloth tr.odd th.down{background:#bce774;}
+table.tablecloth th.selected,table.tablecloth tr.even th.selected,table.tablecloth tr.odd th.selected{}
+
+table.tablecloth td.over,table.tablecloth tr.even td.over,table.tablecloth tr.odd td.over{background:#ecfbd4;}
+table.tableclothtd.down,table.tablecloth tr.even td.down,table.tablecloth tr.odd td.down{background:#bce774;color:#fff;}
+table.tablecloth td.selected,table.tablecloth tr.even td.selected,table.tablecloth tr.odd td.selected{background:#bce774;color:#555;}
+
+/* use this if you want to apply different styleing to empty table cells*/
+table.tablecloth td.empty,table.tablecloth tr.odd td.empty,table.tablecloth tr.even td.empty{background:#fff;}

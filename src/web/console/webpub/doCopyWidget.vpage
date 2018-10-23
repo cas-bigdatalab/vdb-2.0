@@ -1,0 +1,9 @@
+#invoke("vdb.mydb.widget.vsp.DoCopyWidget")
+
+<body>
+</body>
+<script>
+    parent.document.location.reload();
+	parent.dhxWins.window('w1').close();
+	parent.alert("${message}");
+</script>

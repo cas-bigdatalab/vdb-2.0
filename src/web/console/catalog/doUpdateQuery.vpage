@@ -1,0 +1,21 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateQuery")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改实体信息")
+
+#set($queryUri = $catalog.fromId($param.dsid).uri + "." + $param.P_name)
+#set($id = ${catalog.fromUri($queryUri).id})
+<script>
+#if ($param.isNew==true)
+top.addItem('QueryList@$param.dsid','Query@$id','${catalog.fromUri($queryUri).title}');
+#else
+top.setItemText('QueryList@$param.dsid','Query@$id','${catalog.fromUri($queryUri).title}');
+#end
+</script>
+#if ($param.isNew==true) 新建查询成功！ #else 修改查询成功！ #end<br/>
+<div style="margin-top:10px;">	
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateQuery.vpage?id=${id}"><img src="/console/shared/images/goto.gif" border="none"/>返回继续修改</a><br/>
+		<a href="listQueries.vpage?dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>返回查询列表</a>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示vdb支持的http service接口')
+
+
+<br><b>数据跨域互操作接口</b>
+<br><a href="/service?verb=dhGetDatabaseList">dhGetDatabaseList</a>
+<br><a href="/service?verb=dhGetDatabaseSchema&uri=cn.csdb.vdb.bookstore">dhGetDatabaseSchema</a>
+<br><a href="/service?verb=dhGetIndexes&uri=cn.csdb.vdb.bookstore.book&beginIndex=1&size=8">dhGetIndexes</a>
+<br><a href="/service?verb=dhGetIndexModifications&uri=cn.csdb.vdb.bookstore.book&beginIndex=1&size=10&startDate=2007-01-01&endDate=2010-07-05">dhGetIndexModifications</a>
+<br><a href="/service?verb=daiGetRecord&uri=cn.csdb.vdb.bookstore.book/1">daiGetRecord</a>
+<br><a href="/service?verb=uiGetRecord&uri=cn.csdb.vdb.bookstore.book/1">uiGetRecord</a>
+<br><a href="/service?verb=daiQuery&uri=cn.csdb.vdb.bookstore&cql=java">daiQuery</a>
+<br><a href="/service?verb=daiEntityQuery&uri=cn.csdb.vdb.bookstore.book&cql=cn.csdb.vdb.bookstore.book.price>30 and cn.csdb.vdb.bookstore.book.title like java">daiEntityQuery</a>
+<br><a href="/service?verb=uiQuery&uri=cn.csdb.vdb.bookstore.book">uiQuery</a>
+<br><a href="/service?verb=daiGetFile&uri=cn.csdb.vdb.bookstore/1f62834220a221600120a22a0b480011">daiGetFile</a>
+
+<br><br>
+<b>元数据访问服务接口</b>
+<br><a href="/service">默认接口</a>
+<br><a href="/service?verb=dhGetCatalog&uri=cn.csdb.vdb.bookstore">dhGetCatalog</a>
+<br><a href="/service?verb=sysDatabaseStatistic">sysDatabaseStatistic</a>
+<br><a href="/service?verb=sysGetEntityList&uri=cn.csdb.vdb.bookstore">sysGetEntityList</a>
+<br><a href="/service?verb=sysStatus">sysStatus</a>
+

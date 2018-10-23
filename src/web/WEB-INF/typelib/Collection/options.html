@@ -1,0 +1,71 @@
+#set($role=$field.foreignKey)
+
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+   <!-- 
+   	<tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%"><input type="hidden" name="P_columnName" value="${meta.name}"><input type="text" size="35" value="${meta.name}" disabled></td>
+    </tr>
+   --> 
+    <tr>
+      <td class="table_bg">关系描述</td>
+      <!-- 集合关系键的ID以隐藏域的形式存放在表单中 -->
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_foreignKey" value="${field.foreignKey.id}">
+		#if ($role.isManyToMany())		
+			通过关系表<font color="red"><i>${role.relationDefinition.associationTableName}</i></font>中的<font color="red"><i>${role.columnName}</i></font>与<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>关联
+	      [<a href="updateM2M.vpage?id=${role.relationDefinition.id}">查看该关联关系</a>]
+		#elseif($role.isManyToOne() or $role.isOneToMany())		
+			通过<a href="updateEntity.vpage?id=${role.target.id}">${role.target.title}</a>中的外键字段<font color="red"><i>${role.peer.columnName}</i></font>与之关联
+	      [<a href="updateO2M.vpage?id=${role.relationDefinition.id}">查看该关联关系</a>]
+		#else
+			此属性未绑定任何关系
+		#end
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="TitleEditor" #if (${field.editorStyle}!='CollectionEditor') checked #end>标题格式
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="CollectionEditor" #if (${field.editorStyle}=='CollectionEditor') checked #end>表格格式
+      </td>
+    </tr>
+    <tr id="sep" #if (${field.editorStyle}!='TitleEditor') style="display:none;" #end >
+      <td class="table_bg">分隔符</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_seprecateStyle"  #if (${field.seprecateStyle}!='br') checked #end　value="nbsp">空格
+      	<input type="radio" style="border:0px" name="P_seprecateStyle"  #if (${field.seprecateStyle}=='br') checked #end value="br">换行
+      </td>
+    </tr>	
+    
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="TitleLabel"  #if (${field.viewerStyle}!='CollectionLabel') checked #end onclick="$('#qDisp1').hide();$('#qDisp2').hide();">标题列表
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="CollectionLabel"  #if (${field.viewerStyle}=='CollectionLabel') checked #end onclick="$('#qDisp1').show();$('#qDisp2').show();">表格显示
+      </td>
+    </tr>
+    
+     <tr id="qDisp1" #if (${field.viewerStyle}!='CollectionLabel') style="display:none;" #end >
+      <td class="table_bg">是否分页</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_pageStyle"  #if (${field.pageStyle}!='off') checked #end　value="on">分页显示
+      	<input type="radio" style="border:0px" name="P_pageStyle"  #if (${field.pageStyle}=='off') checked #end value="off">不分页显示
+      </td>
+      </tr>	
+      
+      <tr id="qDisp2" #if (${field.viewerStyle}!='CollectionLabel') style="display:none;" #end >
+      <td class="table_bg">查询按钮</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_queryStyle"  #if (${field.queryStyle}!='off') checked #end value="on">显示
+      	<input type="radio" style="border:0px" name="P_queryStyle"  #if (${field.queryStyle}=='off') checked #end value="off">不显示
+      </td>
+    </tr>
+  
+</table>
+<script $ifDefer>
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+</script>    
+
+
+  

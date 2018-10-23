@@ -1,0 +1,212 @@
+﻿<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<!--[if IE]><script src="/console/shared/js/excanvas.js" type="text/javascript" charset="utf-8"></script><![endif]-->
+<script src="/console/shared/js/jquery.bt.min.js" type="text/javascript" charset="utf-8"></script>
+<!--[if IE]><link href="/console/shared/js/demo-ie-fix.css" rel="stylesheet" type="text/css"><![endif]-->
+<script refer>
+$(document).ready(function() {
+ $('#example').bt(document.getElementById('divexample').innerHTML, {trigger: 'click', positions: 'bottom'});
+});
+</script>
+#set($uid = $tool.decode(${param.uid},"utf-8"))
+##定义两个变量分别标记页面类型的中英文名称
+## 页面类型 ： listItems(前台列表页面) showItem（前台细览页面） listEditItems（编辑列表页面） addItem（添加记录页面） updateItem（修改记录页面）
+#set($pageNames=["listItems","showItem","listEditItems","addItem","updateItem"])
+#set($pageTitles=["前台列表页面","前台细览页面","编辑列表页面","添加记录页面","修改记录页面"])
+<form method="post" action="DoGrantUser.action?gid=$!{param.gid}">
+	<table align="center" border="1" width="100%" border="1" cellpadding="6" class="table1 dataset">
+		<tr class="bg0">
+			<td width="26%" align="right">
+				用户名
+			</td>
+			<td width="66%">
+				<div id="example" style="cursor:pointer;font-size:13px" >
+					$uid (鼠标单击，查看用户详细信息)
+				</div>
+				
+				<div id="divexample" style="display:none;">
+				#set ($user = $auth.getUser($param.uid))
+					<table border="0px" style="font-size:12px" width="300px">
+						<tr>
+							<td align="right">用户名： </td>
+							<td>$!{user.get('USERID')}</td>
+						</tr>
+						<tr>
+							<td align="right">学位： </td>
+							<td>$!{user.get('XUEWEI')}</td>
+						</tr>
+						<tr>
+							<td align="right">职称： </td>
+							<td>$!{user.get('ZHICHENG')}</td>
+						</tr>
+						<tr>
+							<td align="right">研究领域： </td>
+							<td>$!{user.get('LINGYU')}</td>
+						</tr>
+						<tr>
+							<td align="right">联系电话： </td>
+							<td>$!{user.get('PHONE')}</td>
+						</tr>
+						<tr>
+							<td align="right">传真： </td>
+							<td>$!{user.get('FAX')}</td>
+						</tr>
+						<tr>
+							<td align="right">电子邮箱： </td>
+							<td>$!{user.get('MAIL')}</td>
+						</tr>
+						<tr>
+							<td align="right">邮编： </td>
+							<td>$!{user.get('YOUBIAN')}</td>
+						</tr>
+						<tr>
+							<td align="right">单位： </td>
+							<td>$!{user.get('UNIT')}</td>
+						</tr>
+						<tr>
+							<td align="right" valign="top">邮政地址： </td>
+						<td valign="top"> $!{user.get('ADDRESS')}
+							</td>
+						</tr>
+						<tr>
+							<td align="right" valign="top">描述信息： </td>
+							<td valign="top"> $!{user.get('DETAIL')}
+						</td>
+						</tr>
+					</table>
+				</div>
+				<input name="uid" type="hidden" value="${param.uid}">
+			</td>
+		</tr>
+		
+		<tr class="bg0">
+			<td width="26%" align="right">
+				用户角色
+			</td>
+			<td width="66%">
+				#foreach ($role in $auth.getRolesByResourceClassType("module"))
+				<input name="module" type="checkbox" value="${role.getName()}"
+					#if ($auth.userIsGranted($param.uid, $role.getName(),
+						"module", "all")) checked #elseif ($auth.groupsOfUserIsGranted($param.uid, $role.getName(),
+						"module", "all")) checked
+						disabled="disabled" #end style="zoom:85%">
+						${role.getTitle()}
+					#end
+			</td>
+		</tr>
+		
+		## 所有数据集名称
+		#foreach ($dataset in $domain.ex.getView("editDataSets").items)
+			<tr>
+				<td colspan="2" align="center" class="bg2">
+					<b>${dataset.title}</b>
+					<input type="checkbox" name="edit_dataset_${dataset.id}" value="forbidden"
+					#if ($auth.userIsGranted($param.uid, "edit_dataset", $dataset.id, "forbidden"))
+					checked
+					#end
+					>禁止编辑
+				</td>
+			</tr>
+			
+			## 所有数据集中表的名称
+			#foreach ($entity in $dataset.entities)
+				<tr class="bg0" background="#000">
+					<td width="26%" align="right" style="padding-left:20px;">
+						<b>${entity.title}</b>
+					</td>
+					<td width="66%" align="left">
+						<b>页面</b>
+					</td>
+				</tr>
+				#foreach($i in [0..4])
+					<tr class="bg0" background="#000">
+						<td width="26%" align="right" style="padding-left:20px;">
+							$pageTitles.get($i)
+						</td>
+						<td>
+							#set($select = "<select name='${entity.id}_$pageNames.get($i)_select'>" + "<option value='empty'>默认$pageTitles.get($i)</option>")
+							#set ($flag = 0)
+							&nbsp;$select
+								#foreach ($page in $pagesTool.getPageByType("$pageNames.get($i)",${entity.uri}))
+									#if (!$page.default)
+									<option value="${page.name}"											
+											#if ($auth.groupsOfUserIsGranted($param.uid, "$pageNames.get($i)", $entity.id, $page.getName()))
+											style="color:red;"  
+											#if ($flag == 0) selected #end	
+											#end
+											#if ($auth.userIsGranted($param.uid, "$pageNames.get($i)", $entity.id, $page.getName()))
+											selected	
+											#set ($flag = 1)
+											#end>
+										${page.title}
+									</option>
+									#end
+									<option value="forbidden">------------</option>											
+								#end
+							</select>
+						</td>
+					</tr>
+				#end
+				#end
+				
+				## 所有数据集中查询名称
+				#foreach ($query in $dataset.queries)
+				#if($query.entity)
+				<tr class="bg0" background="#000">
+					<td width="26%" align="right" style="padding-left:20px;">
+						<b>${query.title}</b>
+					</td>
+					<td width="66%" align="left">
+						<b>页面</b>
+					</td>
+				</tr>
+				#foreach($i in [0..4])
+					<tr class="bg0" background="#000">
+						<td width="26%" align="right" style="padding-left:20px;">
+							$pageTitles.get($i)
+						</td>
+						<td>
+							#set($select = "<select name='${query.id}_$pageNames.get($i)_select'>" + "<option value='empty'>默认$pageTitles.get($i)</option>")
+							#set ($flag = 0)
+							&nbsp;$select
+								#foreach ($page in $pagesTool.getPageByType("$pageNames.get($i)",${query.entity.uri}))
+									#if (!$page.default)
+									<option value="${page.name}"											
+											#if ($auth.groupsOfUserIsGranted($param.uid, "$pageNames.get($i)", $query.id, $page.getName()))
+											style="color:red;"  
+											#if ($flag == 0) selected #end	
+											#end
+											#if ($auth.userIsGranted($param.uid, "$pageNames.get($i)", $query.id, $page.getName()))
+											selected	
+											#set ($flag = 1)
+											#end>
+										${page.title}
+									</option>
+									#end
+								#end
+							</select>
+						</td>
+					</tr>
+				#end
+				#end
+				#end
+			#end
+		<tr>
+			<td width="35%" colspan="2">
+				<p align="center">
+					<input type="submit" value="保存角色分配" name="B1" class="btn_mouseout">
+					<input type="reset" value="重新填写" name="B2" class="btn_mouseout">
+				</p>
+			</td>
+		</tr>
+		
+		<tr  style="border:1px solid white">
+			<td width="35%" colspan="2"  style="border-left:1px solid white;border-right:1px solid white;border-bottom:1px solid white">
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+	<br><br><br>
+</form>

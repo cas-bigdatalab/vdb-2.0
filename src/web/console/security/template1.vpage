@@ -1,0 +1,88 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>VisualDB Security 安全中心</title>
+<link href="/console/shared/js/css.css" rel="stylesheet" type="text/css" />
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/grid/skins/dhtmlxgrid_dhx_skyblue.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.css"/>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.js"></script>  
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgridcell.js"></script>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid_undo.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid_mcol.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid_markers.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/ext/dhtmlxgrid_hmenu.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_selection.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid_drag.js"></SCRIPT>
+<SCRIPT src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_nxml.js"></SCRIPT>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxdataprocessor.js"></script>
+<script src="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.js"></script> 
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_dhxcalendar.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_cntr.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_link.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_calck.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_calc.css"/>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_clist.js"></script>
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/calendar/skins/dhtmlxcalendar_yahoolike.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/skins/dhtmlxlayout_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/toolbar/skins/dhtmlxtoolbar_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/toolbar/dhtmlxtoolbar.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+ <link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/menu/skins/dhtmlxmenu_dhx_skyblue.css"/>
+<script language="JavaScript" src="/console/shared/plugins/dhtmlx/menu/dhtmlxmenu.js"></script>
+<script language="JavaScript" src="/console/shared/plugins/dhtmlx/menu/dhtmlxmenu_ext.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.css" />
+<script language="JavaScript" type="text/javascript" src="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar.css"/>
+<script  src="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar.js"></script>
+<script src="js/template.js" charset="UTF-8"></script>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js" ></script>
+</head>
+<body onload="doOnLoad();" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="overflow-y: hidden">
+	<div id="topDiv" class="top_div">
+    	<div class="top_left_div">
+        	<div class="title_left_title_div">$domain.title</div>
+        </div>
+        <div class="top_right_div"><img src="/console/shared/images/top_right_bg.jpg" width="350"  height="80" border="0" usemap="#Map" />
+          <map name="Map" id="Map"> <area shape="rect" coords="196,19,335,46" href="/console/shared/logout.jsp" /> </map>
+        </div>
+	</div>
+	<div  id="parentId" style="position: relative; top: 0px; left: 0px; width: 100%; auto:flow;"></div>
+	<div id="footTopDiv" class="foot_top"></div>
+	<div id="footDiv" class="foot_div">
+	  	$requestLocale.message("vdb.copyright")
+	</div>
+	
+	<!--左侧树的DIV-->
+	<div id="treeDiv">
+		<div id="treeTitle" class="left_title_bg_div">
+			<div class="left_title_div">安全中心</div>
+		</div>
+		<div id="tree"></div>
+	</div>
+	
+	<!--右侧内容的DIV-->
+	<div id="securityContent" style="display:none;">
+		<div id="position" class="right_top_div">
+			<div class="right_top_left_div">
+			<ul>
+				<li><img src="images/ico_01.gif" height="14" width="20" /></li>
+				<li style="font-size:12px;">&nbsp;&nbsp;您的当前位置：</li>
+				<li id="currentPosition" style="color:#fffd4d;font-size:12px;"><strong>首页 -> 安全中心</strong></li>
+			</ul>
+			</div>
+		</div>
+		<div id="contentMain" style="position: relative; top: 0px; left: 0px; width: 100%; auto:flow;"></div>
+	</div>
+</body>

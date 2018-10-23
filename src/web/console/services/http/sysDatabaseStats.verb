@@ -1,0 +1,23 @@
+#if(!$param.id)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($dataset = $manager.catalog.fromId($param.id))
+#if(!$dataset)	
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<database>
+			<repository>
+				#if ($dataset.jdbcSource) health #else sick #end
+			</repository>
+		</database>
+	</body>
+</response>
+#end
+#end

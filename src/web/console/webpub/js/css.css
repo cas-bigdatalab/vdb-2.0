@@ -1,0 +1,21 @@
+
+html,body,dl,dt,dd{margin:0;padding:0;}
+body{font:normal normal normal 12px Simsun, Arial, "Arial Unicode MS", Mingliu, Helvetica;color:#777;word-break:break-all;margin-left:auto;margin-right:auto;width:970px;text-align:center;font-size:12px;}
+a{ color:#39F}
+#guide {margin:10px 0;font:bold 3em/1.5em Verdana;color:#000000}
+#guide span {background-color:#FFFFFF;width:250px;height:25px;position:absolute;filter:'alpha(opacity=50)';	filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;}
+
+#wrap{padding:0 0px;overflow:hidden;zoom:1; width:100%}
+
+#left{width:200px;margin-right:10px;float:left; min-height:100px}
+#center{width:600px;margin-right:10px;float:left;min-height:100px}
+#right{width:200px;margin-right:10px;float:left;min-height:100px}
+
+#left object,#right object,#left embed,#right embed{width:188px; height:160px}
+#center object,#center embed{width:588px;height:460px}
+#look{height:500px;clear:both; border:solid 1px #000}
+.baseball{margin-bottom:5px; background:#FFF; width:100%; overflow:hidden}
+.baseball dt{border:solid 1px #eee; padding:0 5px;font-size:13px;color:#666;background:#69C;color:#FFF;height:25px; line-height:25px; cursor:move}
+.baseball dt span{float:left;cursor:move}
+.baseball dd{border:solid 1px #eee;padding:5px; min-height:100px}
+.baseball dd img{ max-width:100%}

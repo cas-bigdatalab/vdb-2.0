@@ -1,0 +1,110 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="自定义查询属性")
+
+#if (!$param.id)
+	#set($dataset = ${catalog.fromId(${param.dsid})})
+	#set($meta = ${dataset.ex.createQueryFromName('new')})
+	#set($isNew = "true")
+#else
+	#set($meta = ${catalog.fromId(${param.id})})
+	#set($dataset = ${meta.dataSet})
+	#set($isNew = "false")
+	#set($oldUri="${dataset.uri}.${meta.name}")	
+#end
+
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<script language="javascript">
+	$(function()
+	{
+		$("#form1").validate({
+			submitHandler: function(form){
+				form.submit();
+			},
+			rules: {
+				P_name: {remote: "updateQueryCheck.vpage?oldUri=$!{oldUri}&uri=${dataset.uri}.", required:true}
+			},
+			messages: {
+				P_name: "不能为空！或者uri已经存在"
+			}
+		});	
+	});
+</script>
+
+<form id="form1" name="form1" action="doUpdateQuery.vpage?isNew=${isNew}&mid=${meta.id}&dsid=${meta.dataSet.id}" method="post">
+	<div align="center" style="border:1px solid white">
+	<table width="80%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td class="table_bg" style="border-top:#91c0fe 1px solid;">uri</td>
+			<td style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">
+				<div style="float:left;">${dataset.uri}.<input id="P_name" type="text" name="P_name" size="10" value="$!{meta.name}" ></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">标题</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+			<input type="text" name="P_title" size="35" value="${meta.title}">
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">元数据项注册ID</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">${meta.id}</td>
+		</tr>
+		<tr>
+			<td class="table_bg">元数据项注册时间</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">${meta.lastModified}</td>
+		</tr>
+		<tr>
+			<td class="table_bg">描述信息</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea name="P_description" rows="8" cols="50">$!{meta.description}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">绑定实体</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+			<select name="P_entity" style="width:100px">
+			#foreach ($entity in $meta.dataSet.entities)
+				<option value="${entity.uri}" #if ($entity==$meta.entity) selected #end>
+					${entity.title}
+				</option>
+			#end
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">查询类型</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="queryType"  onchange="setTName(this)" style="width:100px">
+					<option value="P_sql" #if ($null.isNull($meta.oql)) selected #end>
+						sql
+					</option>
+					<option value="P_oql" #if ($!null.isNull($meta.oql)) selected #end>
+						oql
+					</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">查询语句</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea rows="8" cols="50" id="queryTextarea" #if ($!null.isNull($meta.oql))name="P_oql"#else name="P_sql" #end>#if ($meta.sql)${meta.sql}#else$!{meta.oql}#end</textarea>
+			</td>
+		</tr>
+	</table>
+	</div>
+
+	<script type="text/javascript">
+	function setTName(t){
+		$("#queryTextarea").attr("name",t.value);
+	}
+	</script>
+
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+</div>
+</form>

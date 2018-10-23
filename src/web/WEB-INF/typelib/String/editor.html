@@ -1,0 +1,19 @@
+<div id="E_$field.id">	
+	## 多行文本框 
+	#if($field.editorStyle == 'TextAreaEdit')
+	<textarea name="${field.name}" 
+		style="width:${field.editorWidth};height:${field.editorHeight}" \#if($dc.readonly)readonly class="disabled"\#end>${D}tool.encodeXml(${data.value},false)</textarea>
+	
+	## 密码输入框 
+	#elseif($field.editorStyle == 'PassEdit')
+	<input name="${field.name}" 
+		value="${data.value}" style="width:${field.editorWidth};height:${field.editorHeight}"
+		type="password"  \#if(${D}dc.readonly)readonly class="disabled"\#end>
+	
+	## 单行文本框 
+	#else
+	<input name="${field.name}" 
+		value="${data.value}" style="width:${field.editorWidth};height:${field.editorHeight}"   \#if(${D}dc.readonly)readonly class="disabled"\#end>
+	#end
+	
+</div>

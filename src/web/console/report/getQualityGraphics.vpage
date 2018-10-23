@@ -1,0 +1,45 @@
+﻿#invoke("vdb.report.resstat.action.GetDataQualityAction")
+<html>
+	<HEAD>
+		<SCRIPT type="text/javascript" src="js/swfobject.js"></SCRIPT>
+	</HEAD>
+<body>
+	<div id="graphicsDiv"></div>
+<script defer>
+
+	function recordnumChart(){
+	
+		var key = "$key";
+		var graphicsValue = "$graphics";
+		var swf = "";
+		var xml = "";
+	
+		// 判断选中的图形
+		if (key == 'volumeHistogram' || key == 'recordsHistogram' || key == 'utilizationHistogram' || key == 'tableUtilizationHistogram') {
+			swf = "/console/shared/plugins/amcharts/FusionCharts/amcolumn.swf";
+			xml = "/console/shared/plugins/amcharts/FusionChartsXML/amcolumn_Histogram.xml";
+		}
+		if (key == 'volumeLine' || key == 'recordsLine' || key == 'utilizationLine' || key == 'tableUtilizationLine') {
+			swf = "/console/shared/plugins/amcharts/FusionCharts/amline.swf";
+			xml = "/console/shared/plugins/amcharts/FusionChartsXML/amcolumn_Line.xml";
+		}
+		if (key == 'volumePie' || key == 'recordsPie') {
+			swf = "/console/shared/plugins/amcharts/FusionCharts/ampie.swf";
+			xml = "/console/shared/plugins/amcharts/FusionChartsXML/amcolumn_Pie.xml";
+		}
+		// 判断数据是否有值
+		if (graphicsValue == "") {
+			var graphicsDiv = document.getElementById('graphicsDiv');		
+			graphicsDiv.innerHTML = "";
+			return;
+		}
+		var so = new SWFObject(swf, "amcolumn", "725", "280", "0", "0");
+		so.addVariable("path","/console/shared/plugins/amcharts/FusionCharts/");
+		so.addVariable("settings_file", encodeURIComponent(xml));
+		so.addVariable("chart_data", encodeURIComponent(graphicsValue));
+		so.write("graphicsDiv");
+	}
+	recordnumChart();
+</script>
+</body>
+</html>

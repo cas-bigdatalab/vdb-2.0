@@ -1,0 +1,64 @@
+﻿<!-- 修改历史 -->
+
+#set($eid = $param.eid)
+#set($id = $param.id)
+#set($modifyPage = $param.modifyPage)
+#set($modifyPageSize = '10')
+
+#invoke("vdb.log.servlet.ModifyLogAction")
+
+<div align="center" width="80%">
+	#if($modifyPageViewer.recordCount==0)
+		该记录未被修改
+	#else
+	<fieldset class='query' style="padding:10px; margin:10px;align="center";width:90%;">
+		<legend><a style="cursor:default" onclick= $("#modifyLogDetail").toggle();>&gt;&gt;&nbsp;该记录被修改$modifyPageViewer.recordCount次</a></legend><br>
+		<p/>
+		<!-- 修改记录列表详细信息，将随着modifyLogCount的点击而展开/合上 -->
+		<div id="modifyLogDetail" style="display:block"> 
+			#if ($modifyPageViewer.records.size() == 0)
+				<center>
+				  <div style="width:100%" align="left"> <br>
+				    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+				  </div>
+				</center>
+			#else
+				#foreach ($record in $modifyPageViewer.records)
+					#if($record.OPERATION == "update")
+						#set($operation = "修改")
+					#elseif($record.OPERATION == "insert")
+						#set($operation = "添加")
+					#else
+						#set($operation = "删除")
+					#end
+					
+		 			<div align='left'><font color='blue'><li>
+		 			<I>$record.USER_NAME</I> 于<I>$record.OP_TIME</I> 于 <I>$record.IP $operation了该记录<br>
+		 			</li></font></div>
+				#end
+				
+				#if ($modifyPageViewer.pageCount > 1)
+					<br>
+					<center>
+					    <div style="width:100%">
+					      <div align="right">${modifyPageViewer.footerBar1}</div>
+					    </div>
+					    <div style="width:100%">
+					      <div align="right">${modifyPageViewer.footerBar2}</div>
+					    </div>
+					</center>
+				#end
+			#end
+		</div>
+	</fieldset>
+	#end
+</div>
+
+<script defer>
+	function gotoModify(page){
+		loadHTML1("/console/editor/logOfModify.vpage",
+			"eid=$eid&id=$id&modifyPage=" + page,
+			$("#innerModifyLogFrame")[0]);
+		$("#innerModifyLogFrame").show();
+	}
+</script>

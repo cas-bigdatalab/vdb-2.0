@@ -1,0 +1,23 @@
+﻿#invoke("vdb.report.resstat.action.GetDataQualityAction")
+<html>
+	<head>
+		<script type="text/javascript" src="js/swfobjectcircle.js"></script>
+		<style>
+				*{margin:0;padding:0;}
+				div{margin:0 auto;width:600px; height:450px;}
+		</style>
+	</head>
+	<body bgcolor="#000000">
+		<center>
+		<div id="myContent">
+		<input id="cloudxml" type="hidden" value="$data" />
+			<h1>FLASH PLAYER 版本过低。低于9.0.0</h1>
+			<p><a href="http://www.adobe.com/go/getflashplayer">点击下载最新版本flash player</a></p>
+		</div>
+		</center>
+		<script type="text/javascript">
+			var cloudxml = document.getElementById("cloudxml").value;
+			swfobject.embedSWF("flash/flash.swf", "myContent", "1000", "700", "9.0.0", "flash/expressInstall.swf",{xmlurl:cloudxml});
+		</script>
+	</body>
+</html>

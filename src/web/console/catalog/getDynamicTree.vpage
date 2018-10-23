@@ -1,0 +1,175 @@
+#set($id=$param.id)
+#set($temp_path="../../../../../../../")
+#if (!$id || $id=="")
+<?xml version="1.0" encoding="UTF-8"?>
+	<tree id="0">
+		<item text="$manager.domain.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')" id="directory@" child="1"></item>
+	</tree>
+#elseif ($id.indexOf("directory@") >= 0)
+	#set($picPath = $temp_path + "console/catalog/images/model.gif")
+	<tree id="$id">
+	#if (!$manager.domain.dataSets || $manager.domain.dataSets.length == 0)
+		<item text="数据集模型" id="DataSetList" im0="$picPath" im1="$picPath" im2="$picPath">
+		</item>
+	#else
+		<item text="数据集模型" id="DataSetList" child="1" im0="$picPath" im1="$picPath" im2="$picPath">
+		</item>
+	#end
+	#set($picPath = $temp_path + "console/catalog/images/file.gif")
+	<item text="文件存储位置管理" id="repository" im0="$picPath" im1="$picPath" im2="$picPath">
+	</item>
+	#set($picPath = $temp_path + "console/catalog/images/viewing.gif")
+	<item text="模块设计" id="DomainView" im0="$picPath" im1="$picPath" im2="$picPath">
+	</item>
+	#set($picPath = $temp_path + "console/shared/images/keys.gif")
+	<item text="注销本次登录" id="LogOut" im0="$picPath" im1="$picPath" im2="$picPath">
+	</item>
+	</tree>
+#elseif ($id.indexOf("DataSetList") >= 0)
+	<tree id="$id">
+	#set($picPath = $temp_path + "console/catalog/images/dataset.gif")
+	#foreach($ds in $manager.domain.dataSets)
+		#if($ds)
+		<item text="$ds.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')" id="DataSet@$ds.id" child="1" im0="$picPath" im1="$picPath" im2="$picPath">
+		</item>
+		#end
+	#end
+	</tree>
+#elseif ($id.indexOf("DataSet@") >= 0)
+	<tree id="$id">
+	#set($index = $id.indexOf("@") + 1)
+	#set($id = $id.substring($index))
+	#set($ds = $manager.catalog.fromId($id))
+	#if ($ds.jdbcSource)
+		#set($picPath1 = $temp_path + "console/catalog/images/good-repo.gif")
+		<item text="连接信息" id="Repository@$ds.id" im0="$picPath1" im1="$picPath1" im2="$picPath1">
+		</item>
+	#else
+		#set($picPath2 = $temp_path + "console/catalog/images/bad-repo.gif")
+		<item text="连接信息" id="Repository@$ds.id" im0="$picPath2" im1="$picPath2" im2="$picPath2">
+		</item>
+	#end
+	#set($picPath1 = $temp_path + "console/catalog/images/folder.gif")
+	#set($picPath2 = $temp_path + "console/catalog/images/folderopen.gif")
+	#if (!$ds.entities || $ds.entities.length == 0)
+		<item text="实体" id="EntityList@$ds.id" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#else
+		<item text="实体" id="EntityList@$ds.id" child="1" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#end
+	#if (!$ds.queries || $ds.queries.length == 0)
+		<item text="查询" id="QueryList@$ds.id" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#else
+		<item text="查询" id="QueryList@$ds.id" child="1" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#end
+	#if (!$ds.relations || $ds.relations.length == 0)
+		<item text="关系" id="RelationList@$ds.id" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#else
+		<item text="关系" id="RelationList@$ds.id"  child="1" im0="$picPath1" im1="$picPath2" im2="$picPath1">
+		</item>
+	#end
+	#set($picPath1 = $temp_path + "console/catalog/images/viewing.gif")
+	<item text="模块设计" id="DataSetView@$ds.id" im0="$picPath1" im1="$picPath1" im2="$picPath1">
+	</item>
+	</tree>
+#elseif ($id.indexOf("EntityList@") >= 0)
+	<tree id="$id">
+	#set($index = $id.indexOf("@") + 1)
+	#set($id = $id.substring($index))
+	#set($ds = $manager.catalog.fromId($id))
+	#set($picPath = $temp_path + "console/catalog/images/table.gif")
+	#foreach ($entity in $ds.entities)
+		#if ($entity)
+			<item text="$entity.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')(${entity.name})" id="Entity@${entity.id}@${ds.id}" child="1" 
+				im0="$picPath" im1="$picPath" im2="$picPath">
+			</item>
+		#end
+	#end
+	</tree>
+#elseif ($id.indexOf("QueryList@") >= 0)
+	<tree id="$id">
+	#set($index = $id.indexOf("@") + 1)
+	#set($id = $id.substring($index))
+	#set($ds = $manager.catalog.fromId($id))
+	#set($picPath = $temp_path + "console/catalog/images/viewing.gif")
+	#foreach ($query in $ds.queries)
+		#if ($query)
+			<item text="$query.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')" id="Query@$query.id" im0="$picPath" im1="$picPath" im2="$picPath">
+			</item>
+		#end
+	#end
+	</tree>
+#elseif ($id.indexOf("RelationList@") >= 0)
+	<tree id="$id">
+	#set($index = $id.indexOf("@") + 1)
+	#set($id = $id.substring($index))
+	#set($ds = $manager.catalog.fromId($id))
+	#set($picPath1 = $temp_path + "console/catalog/images/m2m.gif")
+	#set($picPath2 = $temp_path + "console/catalog/images/m2o.gif")
+	#foreach ($relation in $ds.relations)
+		#if ($relation)
+			#if ($relation.isManyToMany())
+				<item text="$relation.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')" id="Relation@m2m@$relation.id" im0="$picPath1" 
+					im1="$picPath1" im2="$picPath1">
+				</item>
+			#else
+				<item text="$relation.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')" id="Relation@m2o@$relation.id" im0="$picPath2" 
+					im1="$picPath2" im2="$picPath2">
+				</item>
+			#end
+		#end
+	#end
+	</tree>
+#elseif ($id.indexOf("Entity@") >= 0)
+	<tree id="$id">
+	#set($index1 = $id.indexOf("@") + 1)
+	#set($index2 = $id.lastIndexOf("@"))
+	#set($id = $id.substring($index1,$index2))
+	#set($entity = $manager.catalog.fromId($id))
+	#set($picPath1 = $temp_path + "console/catalog/images/bad-pk.gif")
+	#set($picPath2 = $temp_path + "console/catalog/images/pk.gif")
+	#if (!$entity.identifier || !$entity.identifier.field)
+		<item text="主键" id="Identifier@$entity.id" im0="$picPath1" im1="$picPath1" im2="$picPath1">
+		</item>
+	#else
+		<item text="主键" id="Identifier@$entity.id" im0="$picPath2" im1="$picPath2" im2="$picPath2">
+		</item>
+	#end
+	#set($picPath1 = $temp_path + "console/catalog/images/folder.gif")
+	#set($picPath2 = $temp_path + "console/catalog/images/folderopen.gif")
+	#if (!$entity.fields || $entity.fields.length == 0)
+		<item text="属性" id="FieldList@${entity.id}@${entity.dataSet.id}" im0="$picPath1" 
+			im1="$picPath2" im2="$picPath1">
+		</item>
+	#else
+		<item text="属性" id="FieldList@${entity.id}@${entity.dataSet.id}" child="1" im0="$picPath1" 
+			im1="$picPath2" im2="$picPath1">
+		</item>
+	#end
+	#set($picPath1 = $temp_path + "console/catalog/images/viewing.gif")
+	<item text="页面设计" id="PageView@$entity.id" im0="$picPath1" im1="$picPath1" im2="$picPath1">
+	</item>
+	<item text="模块设计" id="EntityView@$entity.id" im0="$picPath1" im1="$picPath1" im2="$picPath1">
+	</item>
+	</tree>
+#elseif ($id.indexOf("FieldList@") >= 0)
+	<tree id="$id">
+	#set($index1 = $id.indexOf("@") + 1)
+	#set($index2 = $id.lastIndexOf("@"))
+	#set($id = $id.substring($index1,$index2))
+	#set($entity = $manager.catalog.fromId($id))
+	#foreach ($field in $entity.fields)
+		#if ($field)
+			#set($picPath = $temp_path + "typelib/" + $field.typeName+ "/res/logo.gif")
+			<item text="$field.title.replaceAll('<', '&lt;').replaceAll('>','&gt;')($field.name)" id="Field@$field.id" im0="$picPath" 
+				im1="$picPath" im2="$picPath">
+			</item>
+		#end
+	#end
+	</tree>
+#end
+$response.setContentType("text/xml;charset=UTF-8")

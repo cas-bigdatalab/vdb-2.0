@@ -1,0 +1,20 @@
+<chart>
+  <projects>
+    <project>
+      <name>cms</name>
+      <viewType>column</viewType>
+      <condition></condition>
+      <title>CMS新闻类型统计直方图</title>
+      <entityUri>cms.news</entityUri>
+      <fieldUri>cms.news.type</fieldUri>
+    </project>
+    <project>
+      <name>www</name>
+      <viewType>column</viewType>
+      <condition></condition>
+      <title>wwwww</title>
+      <entityUri>cms.newstype</entityUri>
+      <fieldUri>cms.newstype.type</fieldUri>
+    </project>
+  </projects>
+</chart>

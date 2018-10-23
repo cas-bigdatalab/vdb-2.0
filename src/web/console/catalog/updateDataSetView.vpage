@@ -1,0 +1,107 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+
+#set($meta = ${catalog.fromId(${param.id})})
+
+<font color="red">
+	#set($title=${meta.title}+"的视图编辑")
+</font>
+
+<form  id="form1" name="form1" method="post" action="doUpdateDataSetView.vpage?dsid=${param.id}&uri=${meta.uri}&count=${manager.viewTypeManager.dataSetViewTypes.size()}" onsubmit="submitItems(this,${manager.viewTypeManager.dataSetViewTypes.size()})">
+<div align="center" style="border:1px solid white">
+<script language="javascript" src="js/viewEdit.js"></script>
+#set($p = 0)
+
+#foreach ($viewType in $manager.viewTypeManager.dataSetViewTypes)
+	#set($p = $p+1)
+
+	<input name="ids${p}" type="hidden" id='ids${p}'>
+	<input name="viewTypeName${p}" type="hidden" value="${viewType.name}"/>
+	<fieldset style="background:#F6F9FE;width:90%;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;">
+	<legend>${viewType.title}</legend>
+	<table width="80%" border="0">
+		<tr>
+			<td style="border:0px">
+				<div contentEditable=true style="width:200;min-Height:300;_height:300px;border-style: inset; border-width: 2px;background:#fff;background-image:url(./images/wall1.gif)" id="metaList${p}"></div>
+			</td>
+			<td style="border:0px">
+				<input type="button" value="添加所有" onclick="addAll(${p})">
+				<input type="button" value="全部清空" onclick="removeAll(${p})">
+				<br><br>
+				<div>
+				#set($q = 1)
+				#foreach ($table in $meta.entities)
+					<button type="button" gif="images/table.gif" title="${table.title}" mid="${table.id}" onclick="insertMeta2('${p}','${q}',this)"><img src="images/table.gif">${table.title}</button><br>
+					<input type="hidden" id="${p}_${q}gif" value="images/table.gif"/>
+					#set($q = $q+1)
+				#end
+				#foreach ($table in $meta.queries)
+					<button type="button" gif="images/query.gif" title="${table.title}" mid="${table.id}" onclick="insertMeta2('${p}','${q}',this)"><img src="images/query.gif">
+						${table.title}
+					</button><br>
+					<input type="hidden" id="${p}_${q}gif" value="images/table.gif"/>
+					#set($q = $q+1)
+				#end
+				</div>
+				<br/><br/>
+
+				<img src="images/arrow_left.png" width="15" height="15">设置成和<select onchange="copy(${p},this.value)">
+				#set($q = 0)
+				<option value="0">
+					---请选择---
+				</option>
+				#foreach ($viewType1 in $manager.viewTypeManager.dataSetViewTypes)
+					#set($q = $q+1)
+					#if ($viewType.name!=$viewType1.name )
+					<option value="${q}">${viewType1.title}</option>
+					#end
+				#end
+				</select>一样
+				<br/>
+				<br/>
+				<img src="images/arrow_right.png"  width="15" height="15">让<select onchange="copy(this.value,${p})">
+				#set($q = 0)
+				<option value="0">
+					---请选择---
+				</option>
+				#foreach ($viewType1 in $manager.viewTypeManager.dataSetViewTypes)
+					#set($q = $q+1)
+					#if ($viewType.name!=$viewType1.name)
+					<option value="${q}">${viewType1.title}</option>
+					#end
+				#end
+				</select>也设置成这样
+			</td>
+		</tr>
+	</table>
+	</fieldset>
+	<br/>
+#end
+<div id="options" style="display:none;">
+	#foreach ($table in $meta.entities)
+		<button gif="images/table.gif" title="${table.title}" mid="${table.id}" onclick="insertMeta(this)"><img src="images/table.gif" >${table.title}</button><br>
+	#end
+	#foreach ($table in $meta.queries)
+		<button gif="images/query.gif" title="${table.title}" mid="${table.id}" onclick="insertMeta(this,${p})"><img src="images/query.gif" >${table.title}</button><br>
+	#end
+</div>
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="submitItems(this,${manager.viewTypeManager.dataSetViewTypes.size()});document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();window.location.reload();">重新填写</a></div>
+        </div>
+</div>
+<script>
+	$(document).ready(function(){
+ 		var p =0;
+		#foreach ($viewType in $manager.viewTypeManager.dataSetViewTypes)
+
+			p = p + 1;
+			#foreach ($meta in $meta.ex.getView($viewType.name).items)
+					initItem('images/table.gif', '${meta.id}', '${meta.title}',p);
+			#end
+		#end
+});
+</script>
+</div>
+</form>

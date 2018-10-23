@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<menu>
+		<item id="detail" text="编辑数据" img="detail.gif" />
+		<item id="sep0" type="separator"/>
+		<item id="copy" text="复制" img="copy.gif" />
+		<item id="paste" text="粘贴" img="paste.gif" />
+		<!-- <item id="delete" text="清除" img="" /> -->
+		<item id="rowdelete" text="删除" img="delete.gif" />
+		<item id="sep1" type="separator"/>
+		<item id="importAndOutput" text="导入导出" img="imp.gif">
+			<item id="impData" text="导入数据" img="imp.gif"/>
+			<item id="expTep" text="导出模板"  img="exp1.gif"/>
+			<item id="expDataSel" text="导出所选数据" img="exp.gif"/>		
+			<item id="expDataAll" text="导出所有数据" img="exp.gif"/>
+		</item>
+		<item id="grpcount" text="按列分组统计" img="detail.gif" />
+		<item id="sep2" type="separator"/>
+		<item id="colHide" text="隐藏列" img="hide.gif"/>
+		<item id="colShow" text="显示列" img="show.gif">
+			<item id="show_allitem" text="&lt;B&gt;显示全部&lt;/B&gt;" img="showall.gif"/>
+		</item>
+		<item id="file_sep_2" type="separator"/>
+		<!-- <item id="save" text="保存界面" img="save.gif"/> 
+		<item id="file_sep_2" type="separator"/>
+		<item id="close" text="关闭" img="close.gif"/>-->
+</menu>

@@ -1,0 +1,114 @@
+
+
+
+
+
+<script src="/page/js/stuHover.js" type="text/javascript" defer></script>
+
+
+
+
+<!--模板头部-->
+<div 
+ style="background:url(/page/images/top01.jpg);" 
+>
+<table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="96" align="right" valign="top">
+      		<div style="text-align:left;width:100%;position:relative;"><div style="text-align:left;width:970px;position:absolute;left:106px;top:15px;">	<FONT style="FONT-SIZE: 40pt; WIDTH: 100%; COLOR: red; LINE-HEIGHT: 150%; FONT-FAMILY: 华文新魏"><B><I>阳光助学群</I></B></FONT>     </div> </div>
+	        <table height="27" border="0" cellpadding="0" cellspacing="0" style="margin:0 10px 0 0">
+          <!--
+		  <tr align="left">
+            <td height="5" colspan="9"></td>
+          </tr>
+		  --><!--
+          <tr align="left">
+            <td width="10" align="left"><img src="/page/images/top_03.gif"></td>
+            <td width="29" align="center"><img src="/page/images/top_01.gif" width="17" height="12"></td>
+            <td width="36" align="left"></td>
+            <td width="10"><img src="/page/images/top_03.gif"></td>
+            <td width="29" align="center"><img src="/page/images/top_02.gif" width="18" height="13"></td>
+            <td width="36"><a href="#" class="wenzi1">注册</a></td>
+            <td width="10"><img src="/page/images/top_03.gif"></td>
+            <td width="97" align="left"><a href="http://www.csdb.cn" target="_blank" class="wenzi1">科学数据库门户</a></td>
+            <td width="2" align="right"><img src="/page/images/top_03.gif"></td>
+          </tr>
+-->
+      </table>
+      <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="69" align="right" valign="bottom">
+            <table border="0" cellspacing="0" cellpadding="0" style="margin:0 14px 0 0">
+                <tr>
+                  <td height="25" valign="top" class="wenzi2">
+                	$calendar.calendar	
+                  </td>
+                </tr>
+              </table>
+              </td>
+          </tr>
+        </table>
+        </td>
+    </tr>
+</table>
+
+<!--模板水平菜单-->
+<table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <!--old height is 53-->	
+      <td height="53" background="/page/images/top_04.jpg">
+      <table width="970" border="0" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="750" align="center">
+            <table   border="0" cellspacing="0" cellpadding="0">
+               
+				  <tr align="center">
+				  	<td>
+           	 			<div>
+ <ul id='nav'>  <li class="top"><a href="/page/index.vpage" class="top_link"><span>首页</span></a></li>
+ <li class="top"><a href="/page/showItem.vpage?id=cms.news/1" class="top_link"><span>1+1助学</span></a></li>
+ <li class="top"><a href="/page/showEntity.vpage?uri=cms.news&type=新闻动态" class="top_link"><span>阳光大事记</span></a></li>
+ <li class="top"><a href="/page/showEntity.vpage?uri=ygzx.persons" class="top_link"><span>资助学生信息</span></a></li>
+ <li class="top"><a href="/page/showEntity.vpage?uri=ygzx.projects" class="top_link"><span>项目捐助</span></a></li>
+ <li class="top"><a href="/page/showItem.vpage?id=cms.news/15" class="top_link"><span>财务公开</span></a></li>
+ <li class="top"><a href="/page/showItem.vpage?id=cms.news/2" class="top_link"><span>关于阳光助学</span></a></li>
+</ul> </div>
+		   		  	</td>
+				  </tr>
+                  
+				  
+              </table>
+              </td>
+              <td width="220" align="center"><table border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr align="center">
+                  <td align="left" valign="middle">
+					<input name="keywordsTemp" type="text" id="keywordsTemp" class="search">
+				  </td>
+                  <td width="46" align="right"><a href="#" onclick='document.getElementById("keywords").value=document.getElementById("keywordsTemp").value;document.form1.submit();'><img src="/page/images/top_07.gif" width="42" height="22"></a></td>
+                </tr>
+              </table></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+</table>
+
+<!--第二张照片-->
+<!--
+<table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td height="139"></td>
+    </tr>
+    
+	<tr>
+      <td height="1" bgcolor="#FFFFFF"></td>
+    </tr>
+</table>
+-->
+</div>
+<div style="display:none">
+<form action="/page/crossQuery.vpage" method="get" name="form1" style="width:120px;height:0px;">
+    <input name="keywords" type="hidden" id="keywords" class="shuru">
+    <input name="expr" type="hidden" value="AND" checked >
+</form>
+</div>

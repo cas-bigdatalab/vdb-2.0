@@ -1,0 +1,9 @@
+﻿#set($meta = ${catalog.fromId(${param.id})})
+<select name="P_idGenerator" style="width:100pt;">
+	<option value="" selected>不自动生成</option>
+	#foreach ($generator in $manager.idGenerators.generators)
+		#if ($meta && $generator.accepts($meta))
+		<option value="${generator.name}"#if ($generator.name==$param.selected) selected #end>${generator.title}</option>
+		#end
+	#end
+</select>

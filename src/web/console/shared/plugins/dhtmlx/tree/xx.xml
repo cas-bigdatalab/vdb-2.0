@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<tree id="0" >
+    <item   text='VisualDB DataForge' id='sss'>
+       <item   text='项目管理' id='1f62837023cac9420123cae1a714001e'>
+       <item   text='人员信息' id='cn.csdb.vdb.project.person'/>
+       <item   text='项目信息' id='cn.csdb.vdb.project.project'/>
+       <item   text='单位信息' id='cn.csdb.vdb.project.unit'/>
+</item>       <item   text='青海湖数据平台' id='1f62831923a78f8a0123a7970d590009'>
+       <item   text='鸟类观测验证表' id='cn.csdb.vdb.vdbqhh.birdverification_Dic'/>
+       <item   text='鸟类字典表' id='cn.csdb.vdb.vdbqhh.birds'/>
+       <item   text='环湖调查活动表' id='cn.csdb.vdb.vdbqhh.circlelake'/>
+       <item   text='环湖调查地点表' id='cn.csdb.vdb.vdbqhh.CIRCLELAKE_PLACE'/>
+       <item   text='生境字典' id='cn.csdb.vdb.vdbqhh.ENVIR_DIC'/>
+       <item   text='地点所属类别表' id='cn.csdb.vdb.vdbqhh.PLACES_TYPE'/>
+       <item   text='地点类别字典' id='cn.csdb.vdb.vdbqhh.placetype'/>
+       <item   text='居留型字典' id='cn.csdb.vdb.vdbqhh.RESIDENTSTYPE_DIC'/>
+       <item   text='样线基本信息' id='cn.csdb.vdb.vdbqhh.SAMPLE_ROUTE'/>
+       <item   text='样线调查数据表' id='cn.csdb.vdb.vdbqhh.SAMPLE_ROUTE_SURVEY'/>
+       <item   text='土壤类型字典' id='cn.csdb.vdb.vdbqhh.SOIL_TYPE_DICT'/>
+       <item   text='物种表' id='cn.csdb.vdb.vdbqhh.species'/>
+       <item   text='植被类型' id='cn.csdb.vdb.vdbqhh.VEGE_TYPE_DICT'/>
+</item>       <item   text='学生管理' id='1f62837023a7a2c00123a7a422980006'>
+       <item   text='学生表' id='cn.csdb.vdb.vdbstu.stu'/>
+       <item   text='课程表' id='cn.csdb.vdb.vdbstu.course'/>
+       <item   text='教师表' id='cn.csdb.vdb.vdbstu.teacher'/>
+</item>    </item>
+</tree>

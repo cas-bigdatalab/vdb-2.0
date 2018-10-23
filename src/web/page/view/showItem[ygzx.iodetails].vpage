@@ -1,0 +1,210 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:23-->
+#set($entity = $tool.getEntity('ygzx.iodetails'))
+#set($bean = $tool.getBean('ygzx.iodetails', $param.id))
+#usingLayout("/page/layout.vpage")
+#set($title='阳光助学群-基金收支明细')
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+<div class="search01_big_div">
+    	<div class="title_div">--基金收支明细--</div>
+    	<div class="search03_div">
+        	<table width="683" border="0" cellpadding="0" cellspacing="0" style="font-size:12px;">
+		        									#if (true||(!$bean.get("id").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">$!bean.get('id').format('%d')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">id</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >$!bean.get('id').format('%d')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("iodate").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿	$!bean.get('iodate').dateFormat('yyyy年MM月dd日')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">日期</td>
+						<td   width="539" style="padding:6px;" >﻿	$!bean.get('iodate').dateFormat('yyyy年MM月dd日')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("abstract").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('abstract').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">摘要</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >﻿$!bean.get('abstract').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("inputmoney").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">$!bean.get('inputmoney').format("%f")
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">收入</td>
+						<td   width="539" style="padding:6px;" >$!bean.get('inputmoney').format("%f")
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("outputmoney").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">$!bean.get('outputmoney').format("%f")
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">支出</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >$!bean.get('outputmoney').format("%f")
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("leftmoney").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">$!bean.get('leftmoney').format("%f")
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">余额</td>
+						<td   width="539" style="padding:6px;" >$!bean.get('leftmoney').format("%f")
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("account").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('account').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">收入账户</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >﻿$!bean.get('account').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("fund").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('fund').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">对应基金</td>
+						<td   width="539" style="padding:6px;" >﻿$!bean.get('fund').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("provider").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('provider').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">汇款人</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >﻿$!bean.get('provider').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("paymethod").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('paymethod').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">汇款方式</td>
+						<td   width="539" style="padding:6px;" >﻿$!bean.get('paymethod').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("docs").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">#foreach ($file in $!bean.get('docs').files)
+#set($fileUrl = $file.servletPath)
+	<a href="$fileUrl">${file.title}[${file.fileSize}]</a><br>
+#end&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">财务票据</td>
+						<td  class="search03_td_bg"   width="539" style="padding:6px;" >#foreach ($file in $!bean.get('docs').files)
+#set($fileUrl = $file.servletPath)
+	<a href="$fileUrl">${file.title}[${file.fileSize}]</a><br>
+#end&nbsp;</td>
+					</tr>					
+					#end
+					#end
+									#if (true||(!$bean.get("memo").empty))
+					==== false
+					==== false
+					#if (false&&false)
+					<tr>
+						<td  width="683" colspan="2" height="30"  class="search03_td">﻿$!bean.get('memo').format('%s')
+&nbsp;</td>
+					</tr>
+					#else
+					<tr>
+						<td  width="143" height="30"  class="search03_td">备注</td>
+						<td   width="539" style="padding:6px;" >﻿$!bean.get('memo').format('%s')
+&nbsp;</td>
+					</tr>					
+					#end
+					#end
+				              </table>
+      </div>
+</div>
+$loggerTool.logAccess(null,null,$entity,'showItem',null,$param.id,false)

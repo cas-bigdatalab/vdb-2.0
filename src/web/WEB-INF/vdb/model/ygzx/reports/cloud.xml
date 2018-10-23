@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart>
+  <extent>
+    <minx>819.9292514127781</minx>
+    <maxx>1020.0</maxx>
+    <miny>600.0</miny>
+    <maxy>780.0</maxy>
+    <x0>1000.0</x0>
+    <y0>700.0</y0>
+  </extent>
+  <bullets>
+    <bullet id="persons">
+      <x>1000.0</x>
+      <y>640.0</y>
+      <size>80.0</size>
+      <items>2445</items>
+      <bytes>35577.0</bytes>
+      <color>6B0418</color>
+      <title><![CDATA[学生信息表]]></title>
+      <num>数据量：34.74KB</num>
+      <des />
+    </bullet>
+    <bullet id="jiangxuejin">
+      <x>1000.0</x>
+      <y>760.0</y>
+      <size>40.0</size>
+      <items>2445</items>
+      <bytes>53.0</bytes>
+      <color>6B1000</color>
+      <title><![CDATA[奖学金发放]]></title>
+      <num>数据量：53B</num>
+      <des />
+    </bullet>
+    <bullet id="projects">
+      <x>839.964625706389</x>
+      <y>700.0</y>
+      <size>40.07074858722187</size>
+      <items>2445</items>
+      <bytes>93.0</bytes>
+      <color>6B4D00</color>
+      <title><![CDATA[项目]]></title>
+      <num>数据量：93B</num>
+      <des />
+    </bullet>
+  </bullets>
+  <edges />
+</chart>
+

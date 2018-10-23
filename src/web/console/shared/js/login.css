@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+body{ font-family:"宋体"; font-size:12px; color:#000; margin:0px; padding:0px; background:#c4e9f9;}
+div{ margin:0px; padding:0px;}
+img{ margin:0px; padding:0px; border:0px;}
+ul{ margin:0px; padding:0px; list-style-type:none;}
+li{ margin:0px; padding:0px; list-style-type:none;}
+.clear{ clear:both;}
+.left{ float:left;}
+
+html,body{height:100%; overflow-x: hidden; overflow-y: hidden; }
+
+.login01_bg_div{
+	height:auto;
+	min-height:100%;
+	_height:100%;
+	align:center;
+	background:url(../images/Log01_bg.jpg) repeat-x top;
+	}
+.login02_bg_div{ width:996px;
+	height:239px; 
+	margin:0 auto;
+	background:url(../images/Log03_bg.jpg) no-repeat top;
+	padding-top:285px;
+	}
+.login_div{ margin-left:400px;
+	width:270px; 
+	height:140px; 
+	text-align:center;
+	}
+
+.login_div table input{ border:#0084c9 1px solid; height:18px;}
+.login_zi{ font-size:13px; font-weight:bold; color:#FFF;}
+.login_zi02{ font-size:12px;color:#F00;font-weight:bold;}
+.login01_ico{height:23px; 
+	width:66px;
+	float:left;
+	margin-right:3px;
+	}
+.login01_ico a{height:18px; 
+	width:63px;
+	background:url(../images/Logico01_bg.jpg) no-repeat;
+	display:block;
+	padding-top:5px;
+	padding-left:3px;
+	color:#4c2700;
+	text-decoration:none;
+	font-size:13px;
+	}
+.login01_ico a:hover{
+	background:url(../images/Logico02_bg.jpg) no-repeat;
+	}
+	
+.login03_bg_div{background:url(../images/Log02_bg.jpg) repeat-x bottom; height:167px;}

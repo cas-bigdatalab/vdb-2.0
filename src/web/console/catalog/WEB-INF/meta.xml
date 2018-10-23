@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="目录配置"/>
+		<property name="version" value="1"/>
+		<property name="order" value="1000"/>
+		<property name="dependsOn">
+			<list>
+			</list>
+		</property>
+		<property name="description" value="建库人员对数据目录进行配置后，VisualDB可自动生成数据库系统的数据管理界面、数据发布界面以及对数据库访问情况的统计报表。用户配置模块是整个系统的核心部分，对于其它模块的显示方式、操作的数据等等进行整体控制。"/>
+	</bean>
+</beans>

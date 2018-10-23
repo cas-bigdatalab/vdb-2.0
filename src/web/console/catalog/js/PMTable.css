@@ -1,0 +1,64 @@
+.PMTemplateTable{
+border:1px solid #69DDFA;
+font-family:宋体;
+font-size:15px;
+} 
+.PMTemplateTable caption{ 
+padding-bottom:5px; 
+font:bold 1.4em; 
+text-align:center; 
+}
+
+.PMTable{
+border:none;
+font-family:宋体;
+border-collapse:separate; /* 边框重叠,separate表示边框独立 */ 
+border-spacing:10px; /* 通过边框间距属性来指定相邻的单元格之间的距离，可以指定一个或两个值，分别设定水平和垂直间距，此属性与separate值联合使用*/
+font-size:14px;
+width:100%;
+} 
+.PMTable caption{ 
+border:1px 
+padding-bottom:5px; 
+font:bold 1.4em; 
+text-align:left; 
+}
+.PMTable thead.a1{ 
+background-color:#deefff; /* 行名称背景色 */
+}
+.PMTable thead a2{
+border-bottom:2px dotted #0058a3; /* 行名称边框 */
+}
+.PMTable th.a1{ 
+color:#000000; /* 行名称颜色 */ 
+font-weight:bold;
+padding-top:5px; /* 定义单元格文字与边框间的距离 */
+padding-bottom:5px; 
+padding-left:10px;
+padding-right:10px; 
+text-align:left; 
+}
+.PMTable th.a2{ 
+color:#000000; /* 行名称颜色 */ 
+font-weight:bold;
+padding-top:5px; /* 定义单元格文字与边框间的距离 */
+padding-bottom:5px; 
+padding-left:10px;
+padding-right:10px; 
+text-align:left; 
+}
+.PMTable td{ 
+border-bottom:1px dashed #0058a3; /* 单元格边框 */ 
+text-align:left; 
+padding-top:4px;
+padding-bottom:4px; 
+padding-left:10px;
+padding-right:10px;
+vertical-align:bottom;
+}
+.PMTable tr{
+height:35px;	
+}	
+.PMTable tr:hover, .PMTable tr.altrow{ 
+background-color:#c4e4ff; /* 动态变色 */ 
+}

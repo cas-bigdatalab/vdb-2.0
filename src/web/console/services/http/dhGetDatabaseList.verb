@@ -1,0 +1,19 @@
+#set($domain = $manager.domain)
+#if(!$domain)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<databaseList>
+			#foreach ($dataset in $domain.dataSets)
+				<database>$!{dataset.uri}</database>
+			#end
+		</databaseList>
+	</body>
+</response>
+#end

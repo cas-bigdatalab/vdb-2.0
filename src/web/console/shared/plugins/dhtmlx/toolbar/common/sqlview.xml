@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="run" img="run.gif"    text="运行" />
+</toolbar>

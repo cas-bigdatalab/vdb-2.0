@@ -1,0 +1,12 @@
+<LINK rel=stylesheet type=text/css href="/widgets/$widget.name/res/css.css" />
+<script  src="http://msis.csdb.cn/swf/swfobject.js"></script>
+#set($seqid=$calendar.time)
+#set($sid=$seq.id)
+<div id="msis_out_${seqid}${sid}" style="font-size:10px"></div>
+#set($flashWidth = $widgetWidth - 10)
+#set($flashHeight = 200)
+#set($site = $domain.name)
+<script src="http://msis.csdb.cn/widgets/msis.jsp?site=$site&flashWidth=$widgetWidth&flashHeight=$flashHeight&divid=$!{seqid}$!{sid}"></script>
+<script type="text/javascript">
+	setInnerHTML(document.getElementById('msis_out_${seqid}${sid}'),showWidget_msis());
+</script>

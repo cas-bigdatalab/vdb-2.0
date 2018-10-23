@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="metaDefaults" class="vdb.mydb.metacat.Defaults">
+		<property name="map">
+			<map>
+				<!--domain-->
+				<entry key="domain">
+					<map>
+						<entry key="title" value="VisualDB测试域"/>
+						<entry key="theme" value="cool"/>
+						<entry key="defaultPageSize" value="20"/>
+						<entry key="footer" value="中国科学院计算机网络信息中心 2009年5月"/>
+						<entry key="keyWords" value="VisualDB"/>
+					</map>
+				</entry>
+				<!--dataset-->
+				<entry key="dataset">
+					<map>
+						<entry key="title" value="title of dataset"/>
+					</map>
+				</entry>
+				<!--repository-->
+				<entry key="repository">
+					<map>
+						<entry key="loginTimeout" value="60"/>
+					</map>
+				</entry>
+				<!--field-->
+				<entry key="field">
+					<map>
+						<entry key="size" value="-1"/>
+						<entry key="editorWidth" value="100px"/>
+						<entry key="editorHeight" value="21px"/>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

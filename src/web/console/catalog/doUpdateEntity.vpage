@@ -1,0 +1,27 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateEntity")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改实体信息")
+
+#set($uri = $catalog.fromId($param.dsid).uri + "." + $param.P_name)
+#set($id = ${catalog.fromUri($uri).id})
+
+<script>
+#if ($param.isNew==true)
+top.addItem('EntityList@$param.dsid','Entity@$id@$param.dsid','${catalog.fromUri($uri).title}');
+#else
+top.setItemText('EntityList@$param.dsid','Entity@$id@$param.dsid','${catalog.fromUri($uri).title}');
+#end
+</script>
+
+#if ($param.isNew==true) 注册实体属性成功！ #else 修改实体成功！#end<br/>
+<div style="margin-top:10px;">	
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateEntity.vpage?id=${id}&dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>继续修改该实体</a><br/>
+		
+		#if ($param.isModify==false)
+			<a href="listFields.vpage?id=${id}&dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>描述该实体属性</a><br/>
+		#end
+		<a href="listEntities.vpage?dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>进入实体列表</a>
+	</div>
+</div>

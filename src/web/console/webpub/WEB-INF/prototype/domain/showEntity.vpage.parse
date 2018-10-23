@@ -1,0 +1,6 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#saveAs("showEntity.vpage")
+\#usingLayout("${D}{pageroot}/layout.vpage")
+\#set(${D}entity = ${D}tool.getEntity(${D}param.uri))
+\#set(${D}page = ${D}auth.getGrantedPageByTypeAndRes(${D}auth.userName, "listItems",${D}entity.id))
+#layoutWidgets("showEntity")

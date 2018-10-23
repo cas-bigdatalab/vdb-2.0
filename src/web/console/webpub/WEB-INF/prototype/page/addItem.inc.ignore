@@ -1,0 +1,167 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#set($entity = ${catalog.fromUri($page.entityUri)})
+#saveAs("view/${page.name}.vpage")
+\#set(${D}entity = ${D}tool.getEntity('$entity.uri'))
+\#invoke("vdb.mydb.vtl.action.AddBeanForm")
+#set($fields=$page.editFields)
+\#set(${D}jsoFormBinder="form1")
+\$response.setHeader("Pragma", "No-cache")
+\$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+\$response.setDateHeader("Expires", 0)
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/grid/skins/dhtmlxgrid_dhx_skyblue1.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.css"/>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.js"></script>  
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgridcell.js"></script>
+<script src="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.js"></script> 
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_dhxcalendar.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_cntr.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/skins/dhtmlxlayout_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/toolbar/skins/dhtmlxtoolbar_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/toolbar/dhtmlxtoolbar.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.css" />
+<script language="JavaScript" type="text/javascript" src="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+
+<link rel="stylesheet" type="text/css" href="js/edit.css">
+<script language="JavaScript" src="/console/shared/js/check.js"></script>
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/editor/js/updateBean.js"  charset="utf-8"></script>
+<script language="javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/editor.js"></script>
+<script language="javascript" src="/console/shared/js/firefox.js"></script>
+<script language="javascript" src="/console/editor/js/editor.js"></script>
+<script src="${engine.webpub}/js/editor.js" charset="UTF-8"></script>
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/jsoCtrl.js"></script>
+<script language="javascript" src="/console/shared/js/jquery.dimensions.js"></script>
+<script language="javascript" src="/console/shared/js/ui.mouse.js"></script>
+<script language="javascript" src="/console/shared/js/ui.resizable.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js" ></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js" ></script>
+\#parse("../editorsHead.inc")
+<title>新添记录-$entity.title</title>
+</head>
+<body onload="onLoad();">
+\#set (${D}jsoFields = "")
+<form name="form1" method="post" onclick="parent.formIsChanged = true;">
+<script>
+	var thisBeanForm = new Object();
+	thisBeanForm.tableId = '$entity.Id';
+	thisBeanForm.page = '$page.name';
+</script>
+	<div class="edit_div">
+    	<div class="table_div">
+        	 <div class="edit_tips_div" style="text-align:left;padding-left:20px;"><img src="images/tips.jpg" height="19" width="20" />温馨提示：*为必填</div>
+<table width="100%" border="0" cellpadding="6" align="center" class="edit_tips_table">
+#foreach ($editField in $fields)
+#set($field = ${catalog.fromUri($editField.fieldUri)})
+\#remove('dc')
+\#set(${D}dc=${dollar}ctxMap.get('$field.uri'))
+\#if(${D}dc && ${D}dc.visible)
+\#set(${D}data=${dollar}dc.data)
+   <tr>
+        <td align="right" valign="top">#if($field.isIdentifier()||($field.nullable&&$field.nullable=="false"))<font color="red"><b>*&nbsp;</b></font>#end$field.title:</td>
+      <td valign="top" width="70%">$canvas.edit($field)
+      #if($field.isIdentifier())
+      	 \#set($idField = "${field.name}")
+     	 &nbsp;&nbsp;<span id="idExistSpan" style="display:none;"><font color="red">此数值已经存在</font></span><span id="idNotExistSpan" style="display:none;"><font color="green">此数值可以使用</font></span>
+      	 <script>
+      	 	  document.getElementsByName('${field.name}')[0].onblur = function() {
+      	 	    var idValue = document.getElementsByName('${field.name}')[0].value;
+      	 	    if(!check(idValue))
+      	 	    	return;
+				dhtmlxAjax.get("/console/editor/validateIdExisted.vpage?entityUri=$entity.uri&idValue=" + idValue,
+				function(loader) {
+					var validateResult = Trim(loader.ai.responseText);
+					if(validateResult == '1')
+					{
+						document.getElementById('idExistSpan').style.display = '';
+						document.getElementById('idNotExistSpan').style.display = 'none';
+						//document.getElementsByName('${field.name}')[0].focus();
+					}
+					else if(validateResult == '0')
+					{
+						document.getElementById('idNotExistSpan').style.display = '';
+						document.getElementById('idExistSpan').style.display = 'none';
+					}
+				});
+			  };
+			  
+			  function check(value)
+			  {
+			  	if(value == '')
+			  	{
+			  		alert("主键不能为空");
+			  		//document.getElementsByName('${field.name}')[0].focus();
+			  		return false;
+			  	}
+			  	#if(${field.typeName} == "Long")
+			  		var reg = /^(0|[1-9]\d*)$/;
+					if(value.match(reg)==null)
+					{
+						alert("主键是整数类型，请输入一个整数");
+						//document.getElementsByName('${field.name}')[0].focus();
+						return false;
+					}
+			  	#end
+			  	return true;
+			  }
+      	 </script>
+      #end
+      </td>
+    </tr>
+    
+	\#if(${D}jsoFields != "")
+		\#set (${D}jsoFields = ${dollar}jsoFields + " , ")
+	\#end
+	\#set (${D}title = "")
+	#if(!$field.title||$field.title=="")
+		\#set (${D}title = "${field.name}")
+	#else
+		\#set (${D}title = "${field.title}")
+	#end
+	\#set (${D}jsoField = "{'id' : '$field.id', 'name' : '$field.name', 'title' : '${D}title', 'type' : '$field.typeName'}")
+	\#set (${D}jsoFields = ${dollar}jsoFields + ${dollar}jsoField)
+\#end    
+#end    
+                <tr>
+                	<td width="10%"  height="25" align="right"></td>
+                	<td width="47%"  height="25" align="left">
+                      <div class="left_ico"><a href="javascript:void(0);" onclick="submitAddForm(this.form)">保存设置</a></div>
+         			  <div class="left_ico"> <a href="javascript:void(0);" onclick="document.location.href = document.location.href;">重新填写</a></div>
+                    </td>
+                </tr>
+  </table>
+          </div>
+    </div>
+</form>
+</body>
+<script>
+thisBeanForm.fields = [${D}jsoFields];
+var eurl = '$entity.uri';
+function submitAddForm(form)
+{
+	if(document.getElementsByName('${idField}') == null)
+	{
+		if(!check(document.getElementsByName('${D}{idField}')[0].value))
+      		return false;
+    }
+	submitForm(form);
+}
+</script>
+</html>

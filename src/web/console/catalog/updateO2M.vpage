@@ -1,0 +1,118 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="一对多关系")
+
+#if ($param.id)
+	#set($meta = $catalog.fromId($param.id))
+	#set($dataset = ${meta.dataSet})
+	#set($isNew="false")
+#else
+	#set($dataset=${catalog.fromId(${param.dsid})})
+	#set($isNew="true")
+#end
+
+#if ($dataset.entityCount==0)
+	<p>
+		<font color="red">
+			该数据集还没有注册任何实体，请确认后再操作！
+		</font>
+	</p>
+#else
+<form name="form1" id="form1" method="post" action="doUpdateO2M.vpage?isNew=${isNew}&mid=$!{meta.id}&dsid=${dataset.id}" onsubmit="return checkForm()">
+	<div align="center" style="border:1px solid white">
+		<table  width="582" background="images/ero2m.gif" height="1" cellspacing="0" cellpadding="0">
+			<tr >
+				<td  width="131" height="129" rowspan="3" align="center" valign="top"  style="border:0px solid blue">
+					<table  width="100%" id="table5" height="100%" cellspacing="0" cellpadding="0">
+						<tr >
+							<td   align="center" height="30"  style="border:0px solid blue">主表A </td>
+						</tr>
+						<tr >
+							<td  align="center" height="34"  style="border:0px solid blue;">
+							<div   style= "width:80px;height:26px;border:1px solid black;overflow:hidden "> 
+								<select style= "margin-left:-3px;height:30px" name="thisEntity"> 
+									#foreach ($table in $dataset.entities)
+										<option value="${table.id}" tableName="${table.tableName}" #if ($table==$meta.KeyB.target) selected #end >
+											${table.title}
+										</option>
+									#end
+								</select>
+							</div>
+							</td>
+						</tr>
+						<tr >
+							<td  style="border:0px solid blue">
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td height="129" colspan="2" rowspan="3" style="border:0px solid blue" ></td>
+				<td width="125" height="129" rowspan="3" style="border:0px solid blue" align="left" valign="top">
+					<table  width="97%" id="table5" height="100%" cellspacing="0" cellpadding="0" style="border:0px solid blue">
+						<tr>
+							<td height="37" style="border:0px solid blue"></td>
+						</tr>
+						<tr>
+							<td align="center" height="30" style="border:0px solid blue">从表B </td>
+						</tr>
+						<tr>
+							<td align="center" height="56" valign="top" style="border:0px solid blue;padding-top:10px;">
+								<div   style= "width:80px;height:20px;border:1px solid black;overflow:hidden "> 
+								<select   style= "margin-left:-3px;margin-top:-2px;height:30px" name="thatEntity"  onchange="listJdbcAttributes(this.form)"> 
+									#foreach ($table in $dataset.entities)
+										<option value="${table.id}" tableName="${table.tableName}"#if ($table==$meta.KeyA.target) selected #end >
+											${table.title}
+										</option>
+									#end
+								</select>
+								</div>
+								<div id="fieldList1"  style= "width:80px;height:20px;border:1px solid   black;overflow:hidden;margin-top:5px">
+									<select size="1" style= "margin-left:-3px;margin-top:-2px;height:30px" name="thatForeignKeyName" >
+									</select>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td height="35" width="13"  style="border:0px solid blue"></td>
+			</tr>
+			<tr>
+				<td height="21" width="13"  style="border:0px solid blue"></td>
+			</tr>
+			<tr>
+				<td width="13" height="67"  style="border:0px solid blue"></td>
+			</tr>
+			<tr>
+				<td width="131" height="77" style="border:0px solid blue"></td>
+				<td width="153" style="border:0px solid blue"></td>
+				<td width="160" style="border:0px solid blue"></td>
+				<td width="125" style="border:0px solid blue"></td>
+				<td width="13" style="border:0px solid blue"></td>
+			</tr>
+		</table>
+		<br>
+		<div align="center">
+				<div class="right_ico_div">
+				  <input type="hidden" name="uri" value="${dataset.uri}">
+		          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+		          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+		        </div>
+		</div>
+	</div>
+</form>
+<script>
+	function listJdbcAttributes(form) {
+		loadHTML("listJdbcFields.vpage", "dsid=${dataset.id}&table=" +  form.thatEntity.options[form.thatEntity.selectedIndex].getAttribute("tableName") + "&name=thatForeignKeyName&selected=${meta.KeyB.columnName}", document.all.fieldList1);
+	}
+	
+	listJdbcAttributes(form1);
+	
+	function checkForm(){
+		var thatForeignKeyName = document.getElementsByName("thatForeignKeyName")[0].value;
+		if(thatForeignKeyName==""){
+			alert("请选择表B中对应的字段!");
+			return false;
+		}
+		else return true;
+	}
+</script>
+#end

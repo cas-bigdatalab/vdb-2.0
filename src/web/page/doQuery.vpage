@@ -1,0 +1,61 @@
+﻿##创建query对象，二次开发可以自定义
+#set($jsoQuery = $tool.parseJsoQuery($param.query))
+#set($query = $tool.createQuery($jsoQuery))
+#set($entity = $query.entity)
+#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "listItems", $entity.id))
+
+#nul($seq.id)
+##增加用户查询条件
+$tool.mergeQuery($query, $jsoQuery)
+##设定查询结果的操作菜单，二次开发可以自定义
+##单项菜单
+#define($itemMenu)
+	<a href='${pageroot}/showItem.vpage?id=$bean.uri' target='_blank'>详细</a>
+#end
+
+##所有项菜单
+#define($gridMenu)
+#end
+
+
+##jsoQuery转换成QueryFromSql
+#set($queryTemp = $query)
+#set($filter=$auth.mergeFilter($page.grantFilter,$entity.id))
+
+#if($jsoQuery.whereFilter.toJdbcExpr($query))
+	#if($filter && $filter != '1=1')
+		#set($temp = "select ${entity.tableName}.* from ${entity.tableName} where $jsoQuery.whereFilter.toJdbcExpr($query) and ${filter}")
+	#else
+		#set($temp = "select ${entity.tableName}.* from ${entity.tableName} where $jsoQuery.whereFilter.toJdbcExpr($query)")
+	#end
+	
+	#set($parametersTemp = $jsoQuery.whereFilter.toJdbcExpr($queryTemp).toStringSql().getParameters())
+	
+	#foreach($name in $parametersTemp)
+		#set($paramTemp = "$p" + $velocityCount)
+		#set($temp = $formater.replaceFirst("$temp","?","$paramTemp"))
+	#end
+	
+	#set($query = $tool.createQueryFromSql(${entity.uri}, "$temp"))
+	
+	#foreach($name in $parametersTemp)
+		#set($paramTemp1 = "p" + $velocityCount)
+		#nul($query.bindVariable("$paramTemp1", $name))
+	#end
+#else
+	#if($filter && $filter != '1=1')
+		#set($query = $tool.createQueryFromSql(${entity.uri}, "select ${entity.tableName}.* from ${entity.tableName} where ${filter}"))
+	#end
+#end
+
+##创建PageViewer对象
+#set($entity = $query.entity)
+#set($pageViewer = $pager.create($query, $jsoQuery.pageIndex, $jsoQuery.pageSize))
+
+#if($param.flag and $param.flag=="true")
+$loggerTool.logAccess(null,null,$entity,'query',$jsoQuery.whereFilter,null,true)
+#end
+
+<div style="display:none"></div>
+##显示PageViewer对象
+#parse("view/${page.name}.vpage")

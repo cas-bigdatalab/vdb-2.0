@@ -1,0 +1,28 @@
+#if($param.layoutName)
+	#set($layoutName = $param.layoutName)
+#end
+
+#set($widgetLayout = $widgetTool.getWidgetLayoutDAO().loadWidgetLayout($layoutName))
+#set($layout = $widgetLayout.layoutPattern.name)
+
+#set($colMap = $widgetTool.getLayoutPatternManager().getLayoutPattern($layout).columns)
+<div id="wrap" style="width:970px;margin:auto;text-align:left;border:0px solid white">
+	#foreach ($wl in $colMap.keySet())
+	#set($divMargin = "5px")
+	#set($column = $velocityCount)
+	#if($colMap.keySet().size() == $velocityCount)
+		#set($divMargin = "0px")
+	#end
+		<div id='$wl' style='width:$colMap.get($wl)px;margin-right:$divMargin;float:left; min-height:100px;'>
+			#set($widgetlist = $widgetLayout.columns.get($wl))
+			#foreach ($wid in $widgetlist)
+				#set($num = $velocityCount)
+				<dl  id='$wid'  class='baseball'>
+					#set($widgetName = $wid)
+					#set($widgetWidth = $convert.parseNumber($colMap.get($wl)))
+					#parse("/console/webpub/renderWidgetBody.vpage")
+				</dl>	
+			#end
+		</div>
+	#end
+</div>

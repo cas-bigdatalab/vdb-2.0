@@ -1,0 +1,186 @@
+.dhx_toolbar_base_dhx_skyblue {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg.gif); POSITION: relative; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; BACKGROUND-REPEAT: repeat-x; WHITE-SPACE: nowrap; HEIGHT: 27px; OVERFLOW: hidden; CURSOR: default
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_ll {
+	POSITION: absolute; BORDER-LEFT: #a4bed4 1px solid; HEIGHT: 27px; TOP: 0px; LEFT: 0px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_l {
+	POSITION: absolute; BORDER-LEFT: #ffffff 1px solid; HEIGHT: 25px; TOP: 1px; LEFT: 1px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_rr {
+	POSITION: absolute; HEIGHT: 27px; TOP: 0px; RIGHT: 0px; BORDER-RIGHT: #a4bed4 1px solid; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_r {
+	POSITION: absolute; HEIGHT: 25px; TOP: 1px; RIGHT: 1px; BORDER-RIGHT: #ffffff 1px solid; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.float_left {
+	FLOAT: left; aborder: #909090 1px solid
+}
+.dhx_toolbar_base_dhx_skyblue DIV.float_right {
+	FLOAT: right; aborder: #909090 1px solid
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn {
+	POSITION: relative; PADDING-BOTTOM: 2px; MARGIN-TOP: 2px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FLOAT: left; COLOR: #000000; MARGIN-RIGHT: 1px; PADDING-TOP: 3px; -moz-user-select: -moz-none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_btn {
+	COLOR: #999999 !important
+}
+.dhx_toolbar_base_dhx_skyblue DIV.over.dhx_toolbar_btn {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_over.gif); BORDER-BOTTOM: #ffb552 1px solid; BORDER-LEFT: #ffb552 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 50% top; BORDER-TOP: #ffb552 1px solid; BORDER-RIGHT: #ffb552 1px solid; PADDING-TOP: 2px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.pres.dhx_toolbar_btn {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_pressed.gif); BORDER-BOTTOM: #ffbe51 1px solid; BORDER-LEFT: #ffbe51 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 50% top; BORDER-TOP: #ffbe51 1px solid; BORDER-RIGHT: #ffbe51 1px solid; PADDING-TOP: 2px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn IMG {
+	MARGIN: 0px 1px; WIDTH: 18px; FLOAT: left; HEIGHT: 18px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV {
+	MARGIN: 2px 2px 0px; FONT-FAMILY: Tahoma; FLOAT: left; HEIGHT: 16px; FONT-SIZE: 11px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_arw {
+	PADDING-BOTTOM: 2px; MARGIN-TOP: 2px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; FLOAT: left; COLOR: #000000; MARGIN-LEFT: -2px; MARGIN-RIGHT: 1px; PADDING-TOP: 3px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.over.dhx_toolbar_arw {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_over.gif); BORDER-BOTTOM: #ffb552 1px solid; BORDER-LEFT: #ffb552 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 50% top; BORDER-TOP: #ffb552 1px solid; BORDER-RIGHT: #ffb552 1px solid; PADDING-TOP: 2px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.pres.dhx_toolbar_arw {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_pressed.gif); BORDER-BOTTOM: #ffbe51 1px solid; BORDER-LEFT: #ffbe51 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 50% top; BORDER-TOP: #ffbe51 1px solid; BORDER-RIGHT: #ffbe51 1px solid; PADDING-TOP: 2px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_arw DIV.arwimg {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_btnarrow.gif); MARGIN: 2px 0px 0px; WIDTH: 7px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Tahoma; BACKGROUND-POSITION: center 50%; FLOAT: left; HEIGHT: 16px; FONT-SIZE: 11px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_arw DIV.arwimg {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_btnarrow_dis.gif)
+}
+DIV.dhx_toolbar_poly_dhx_skyblue {
+	BORDER-BOTTOM: #a4bed4 1px solid; POSITION: absolute; BORDER-LEFT: #a4bed4 1px solid; BACKGROUND-COLOR: #eaf2fb; MARGIN: 0px; OVERFLOW: hidden; BORDER-TOP: #a4bed4 1px solid; CURSOR: default; BORDER-RIGHT: #a4bed4 1px solid; PADDING-TOP: 1px; -moz-user-select: none
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont {
+	
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TR.tr_btn {
+	BACKGROUND-REPEAT: repeat-x; HEIGHT: 22px
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TR.tr_btn_over.tr_btn {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_subbg_over.gif)
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TR.tr_btn_selected.tr_btn {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_subbg_sel.gif)
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TD.td_btn_sep {
+	HEIGHT: 3px; FONT-SIZE: 1px; VERTICAL-ALIGN: top
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TD.td_btn_sep DIV.btn_sep {
+	BACKGROUND-COLOR: #c7d4df; FONT-SIZE: 1px; BORDER-TOP: #ffffff 1px solid; CURSOR: default; PADDING-TOP: 1px; -moz-user-select: none
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TD.td_btn_img {
+	TEXT-ALIGN: center; WIDTH: 22px; FONT-SIZE: 1px; VERTICAL-ALIGN: middle
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TD.td_btn_img IMG.btn_sel_img {
+	POSITION: relative; WIDTH: 16px; HEIGHT: 16px; MARGIN-LEFT: 3px; MARGIN-RIGHT: 3px; -moz-user-select: none
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TABLE.buttons_cont TD.td_btn_txt {
+	PADDING-LEFT: 1px; PADDING-RIGHT: 10px; FONT-SIZE: 1px; VERTICAL-ALIGN: middle
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TD.td_btn_txt DIV.btn_sel_text {
+	FONT-FAMILY: Tahoma; WHITE-SPACE: nowrap; FLOAT: left; COLOR: #000000; FONT-SIZE: 11px
+}
+DIV.dhx_toolbar_poly_dhx_skyblue TR.tr_btn_disabled TD.td_btn_txt DIV.btn_sel_text {
+	COLOR: #999999 !important
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_sep {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_sep_bg.gif); MARGIN-TOP: 1px; WIDTH: 2px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: 50% top; FLOAT: left; HEIGHT: 25px; MARGIN-LEFT: 0px; FONT-SIZE: 1px; MARGIN-RIGHT: 1px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_text {
+	PADDING-BOTTOM: 0px; MARGIN-TOP: 7px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-FAMILY: Tahoma; FLOAT: left; COLOR: #000000; MARGIN-LEFT: 0px; FONT-SIZE: 11px; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 1px; PADDING-TOP: 0px; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn .inp {
+	BORDER-BOTTOM: #a4bed4 1px solid; POSITION: relative; BORDER-LEFT: #a4bed4 1px solid; PADDING-BOTTOM: 1px; MARGIN: 0px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; FONT-FAMILY: Tahoma; FLOAT: left; FONT-SIZE: 11px; BORDER-TOP: #a4bed4 1px solid; BORDER-RIGHT: #a4bed4 1px solid; PADDING-TOP: 1px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV.sl_bg_l {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_left.gif); WIDTH: 2px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right 50%; FONT-SIZE: 1px; MARGIN-RIGHT: 0px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_btn DIV.sl_bg_l {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_left_dis.gif)
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV.sl_bg_m {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_middle.gif); BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: center 50%; MARGIN-LEFT: 0px; FONT-SIZE: 1px; MARGIN-RIGHT: 0px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_btn DIV.sl_bg_m {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_middle_dis.gif)
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV.sl_bg_r {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_right.gif); WIDTH: 2px; BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: left 50%; MARGIN-LEFT: 0px; FONT-SIZE: 1px
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_btn DIV.sl_bg_r {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_right_dis.gif)
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV.sl_pen {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_pen_def.gif); BORDER-BOTTOM: medium none; POSITION: absolute; BORDER-LEFT: medium none; WIDTH: 15px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 15px; BORDER-TOP: medium none; TOP: 2px; CURSOR: default; BORDER-RIGHT: medium none; -moz-user-select: none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dhx_toolbar_btn DIV.over.sl_pen {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_pen_over.gif) !important
+}
+.dhx_toolbar_base_dhx_skyblue DIV.dis.dhx_toolbar_btn DIV.sl_pen {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_slider_pen_dis.gif) !important
+}
+DIV.dhx_toolbar_slider_label_dhx_skyblue {
+	Z-INDEX: 8422; BORDER-BOTTOM: #ffb052 1px solid; POSITION: absolute; BORDER-LEFT: #ffb052 1px solid; PADDING-BOTTOM: 0px; BACKGROUND-COLOR: #ffe5ad; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; FONT-FAMILY: Tahoma; COLOR: #000000; FONT-SIZE: 10px; BORDER-TOP: #ffb052 1px solid; CURSOR: default; FONT-WEIGHT: normal; BORDER-RIGHT: #ffb052 1px solid; PADDING-TOP: 0px; -moz-user-select: none
+}
+.in_layoutcell.dhx_toolbar_base_dhx_skyblue {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_layoutcell.gif) !important
+}
+.in_layoutcell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_ll {
+	DISPLAY: none
+}
+.in_layoutcell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_rr {
+	DISPLAY: none
+}
+.in_layoutcell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_l {
+	LEFT: 0px !important
+}
+.in_layoutcell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_r {
+	RIGHT: 0px !important
+}
+.in_acccell.dhx_toolbar_base_dhx_skyblue {
+	BACKGROUND-IMAGE: url(../imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_acccell.gif) !important
+}
+.in_acccell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_ll {
+	DISPLAY: none
+}
+.in_acccell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_rr {
+	DISPLAY: none
+}
+.in_acccell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_l {
+	LEFT: 0px !important
+}
+.in_acccell.dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_r {
+	RIGHT: 0px !important
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_ll {
+	DISPLAY: none
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_rr {
+	DISPLAY: none
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_l {
+	LEFT: 0px !important
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_toolbar_base_dhx_skyblue DIV.dhxtoolbar_hdrline_r {
+	RIGHT: 0px !important
+}
+.dhtmlx_skin_dhx_skyblue DIV.dhtmlx_wins_body_inner .dhx_toolbar_base_dhx_skyblue {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.dhx_acc_base_dhx_skyblue .dhx_toolbar_base_dhx_skyblue {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+TABLE.dhtmlxLayoutPolyContainer_dhx_skyblue TD.dhtmlxLayoutSinglePoly .dhx_toolbar_base_dhx_skyblue {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.dhx_toolbar_base_dhx_skyblue DIV.float_right.dhxtoolbar_spacer {
+	FLOAT: right
+}
+.dhx_toolbar_base_dhx_skyblue DIV.float_left.dhxtoolbar_spacer {
+	FLOAT: left
+}

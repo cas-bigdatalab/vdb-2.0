@@ -1,0 +1,8 @@
+$request.setAttribute("pictype", $param.pictype)
+#invoke("vdb.mydb.jsp.action.editor.DoUploadPic")
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+<script>
+	parent.addPic("${type}","${path}");
+</script>

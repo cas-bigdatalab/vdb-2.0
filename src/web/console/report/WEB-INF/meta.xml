@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.module.VdbModuleImpl">
+		<property name="title" value="统计分析"/>
+		<property name="version" value="1"/>
+		<property name="order" value="3000"/>
+		<property name="dependsOn">
+			<list>
+				<value>catalog</value>
+			</list>
+		</property>
+		<property name="description" value="统计分析模块的功能主要包括数据质量指标的统计，数据访问情况统计。其中数据质量指标的统计包括数据集数据量大小，数据实体数据量大小，记录条数，字段在关系数据库中的空间利用率等；数据访问情况统计包括数据集访问情况的统计和数据实体的访问统计。"/>
+	</bean>
+</beans>

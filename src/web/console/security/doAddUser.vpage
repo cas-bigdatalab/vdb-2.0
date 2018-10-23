@@ -1,0 +1,16 @@
+﻿#invoke("vdb.mydb.jsp.action.DoAddUser")
+#if ($sucess)
+	<script>
+		alert("添加成功！");
+		#if($group)
+			top.groupsOnClick("$group");
+		#else
+			top.groupsOnClick("all");
+		#end
+	</script>
+#else
+	<script>
+		alert("添加失败！");
+		history.back();
+	</script>
+#end

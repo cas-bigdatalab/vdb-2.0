@@ -1,0 +1,50 @@
+#set($themes = $themeTool.themes)
+#set($selectedTheme = $themeTool.theme)
+<input type="hidden" id="theme" value="$themeTool.theme.name">
+<ul id="imgPre">
+#set($li_id=0)
+#set($count=$themes.size())
+#foreach($theme in $themes)
+	#if(!$theme.hidden)
+	<li id="theme_$li_id" #if($theme==$selectedTheme) class="selected" #end>
+	<div class="frame">
+		<a onclick="changcss('$theme.name');changeLiClass('theme_',$li_id,$count);" href="/themes/$theme.name/logo.jpg" target="imgHref">
+		<img class="thumb1" src="/themes/$theme.name/logo.jpg"></a>
+	</div>
+	<p>$theme.title</p>
+	</li>
+	#set($li_id=$li_id + 1)
+	#end
+#end
+</ul>
+<div style="display:none">
+<iframe name="imgHref" id="imgHref"></iframe>
+</div>
+<SCRIPT type=text/javascript >
+$('#imgHref').click();
+
+
+	$(document).ready(function(){
+	$('ul#imgPre a').imgPreview({
+	    containerID: 'imgPreviewWithStyles',
+	    imgCSS: {
+	        height: 300
+	    },
+	    onShow: function(link){
+	        $(link).stop().animate({opacity:0.4});
+	        // Reset image:
+	        $('img', this).css({opacity:0});
+	    },
+	    onLoad: function(){
+	        // Animate image
+	        $(this).animate({opacity:1}, 300);
+	    },
+	    onHide: function(link){
+	        $(link).stop().animate({opacity:1});
+	    }
+	});
+	  
+	});
+
+</SCRIPT>
+ 

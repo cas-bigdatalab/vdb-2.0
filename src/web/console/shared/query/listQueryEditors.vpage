@@ -1,0 +1,4 @@
+﻿#set($field=$catalog.fromId($param.selectedFieldId))
+#set($editorName=$param.seqid)
+#set ($editorStyle = "width:150px")
+#parse("/WEB-INF/typelib/${field.typeName}/queryer.html")

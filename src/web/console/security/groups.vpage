@@ -1,0 +1,36 @@
+﻿#usingLayout('/console/security/template1.vpage')
+
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js"></script>
+<script language="JavaScript" src="/console/shared/js/pageViewer.js"></script>
+<script language="JavaScript" src="/console/shared/js/ui.js"></script>
+
+<table align="center" border="1" width="400" border="1" cellpadding="6" class="table1 dataset">
+	<tr class="header">
+		<td colspan="2">
+			用户组列表
+		</td>
+	</tr>
+	#foreach ($group in $auth.groupList)
+		<tr class="bg0">
+			<td width="15%">
+				${group.get("GROUPNAME")}
+			</td>
+			<td width="35%">
+				<a href="updateGroupUser.vpage?gid=${group.get('GROUPID')}">设置用户</a>
+				<a href="updateGroup.vpage?gid=${group.get('GROUPID')}">修改</a>
+				<a href="#" onclick=deleteGroup('${group.get("GROUPID")}','${group.get("GROUPNAME")}')>删除</a>
+				<a href="grantGroup.vpage?gid=${group.get('GROUPID')}&gname=${group.get('GROUPNAME')}">授权</a>
+			</td>
+		</tr>
+	#end
+</table>
+
+<script>
+	function deleteGroup(gid,gname) {
+		if(confirm("真的要删除用户组 " + gname + " 吗？")) {
+			location.href = "doDeleteGroup.action?gid=" + gid;
+		}
+	}
+</script>

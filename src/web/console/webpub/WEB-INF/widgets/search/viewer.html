@@ -1,0 +1,21 @@
+  <form action="/page/crossQuery.vpage" method="get" onsubmit="return checkKeywords();">
+	<input name="keywords" id="kw" size="28" value="关键字..." onmouseover="this.select()">
+	<input name="expr" type="radio" value="AND" checked >AND
+	<input name="expr" type="radio" value="OR">OR &nbsp;
+	<button type="submit">站内检索</button> &nbsp;&nbsp;<a href="#" title="可以通过输入的关键字，在多个数据集中所有可索引字段中进行检索，并获取相匹配的记录">提示</a>
+  </form>
+  <script>
+  function checkKeywords()
+  {
+  	if($("#kw").val()==""||$("#kw").val()=="关键字...")
+	{
+		alert("请输入查询关键字！");
+		$("#kw").focus();
+		return false;
+	}else
+	{
+		return true;
+	}
+		
+  }
+  </script>

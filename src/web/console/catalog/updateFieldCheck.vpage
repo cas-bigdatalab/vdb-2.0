@@ -1,0 +1,6 @@
+﻿#set($uri="${param.uri}${param.P_name}")
+#if (${catalog.fromUri(${uri})} and $formater.decodeUrl($param.oldUri)!=$uri)
+false
+#else
+true
+#end

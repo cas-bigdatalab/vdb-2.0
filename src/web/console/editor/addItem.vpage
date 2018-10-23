@@ -1,0 +1,4 @@
+﻿#set($entity = $tool.getEntity($param.uri))
+#set($uri = $entity.uri)
+#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "addItem", $entity.id))
+#parse("${pageroot}/view/${page.name}.vpage")

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<toolbar>
+	<item id="first"   type="button"   img="ar_left_abs.gif"  imgdis="ar_left_abs_dis.gif"  text="" title="首页" />
+	<item id="prev"   type="button"   img="ar_left.gif"  imgdis="ar_left_dis.gif"  text=""  title="上一页"/>
+	<item id="sep2"   type="separator"/>
+	<item id="text1" type="text" text="转到"/>
+	<item id="input1" type="buttonInput" value="1" width="50" title="跳转到"/>
+	<item id="text2" type="text" text=""/>
+	<item id="sep2"   type="separator"/>
+	<item id="next"   type="button"   img="ar_right.gif"  imgdis="ar_right_dis.gif"  text=""  title="下一页"/>
+	<item id="last"   type="button"   img="ar_right_abs.gif"  imgdis="ar_right_abs_dis.gif"  text=""  title="末页"/>
+	<item id="sep3"   type="separator"/>
+	<item id="refresh"   type="button" img="refresh.png"  text=""  title="刷新"/>
+	<item id="sep4"   type="separator"/>
+	<item id="export" type="button" img="imp.gif"  text="数据导出" />
+	<item id="sep5"   type="separator"/>
+	<item id="text3" type="text" align="right" text="  "/>
+</toolbar>

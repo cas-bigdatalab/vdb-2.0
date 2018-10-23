@@ -1,0 +1,25 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdateDataSet")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改数据集信息")
+<script>
+#if ($param.isNew==true)
+top.addItem('DataSetList','DataSet@$ds.id','$ds.title');
+#else
+top.setItemText('DataSetList','DataSet@${ds.id}','$ds.title');
+#end
+</script>
+#if ($param.isNew==true) 添加新数据集成功！ #else 修改数据集属性成功 #end<br/>
+<div style="margin-top:10px;">		
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		#if ($param.isNew==true)
+			<a href="updateDataSet.vpage"><img src="/console/shared/images/goto.gif" border="none"/>继续添加新数据集</a><br/>
+			##<!-- <a href="updateDataSet.vpage?dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>修改新数据集属性</a><br/> -->
+		#end
+		
+		#if ($param.isNew=="")
+			<a href="updateDataSet.vpage?dsid=${param.dsid}"><img src="/console/shared/images/goto.gif" border="none"/>继续修改数据集属性</a><br/>
+		#end
+		<a href="listDataSets.vpage"><img src="/console/shared/images/goto.gif" border="none"/>进入数据集列表</a>
+	</div>
+</div>

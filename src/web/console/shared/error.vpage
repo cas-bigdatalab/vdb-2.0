@@ -1,0 +1,7 @@
+﻿<p>出错了？还是没有正确发布本网站？</p>
+
+<p>错误信息为：$exception.message</p>
+#nul($exception.printStackTrace())
+<p>
+<a href="/console" target="_blank">进入控制台页面</a>
+</p>

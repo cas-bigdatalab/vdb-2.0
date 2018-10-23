@@ -1,0 +1,100 @@
+<!--created by VdbPublisher at 2010-05-12 21:54:07-->
+#set($entity = $tool.getEntity('cms.news'))
+#set($seqid1=$seq.id)
+<table width="90%" border="0" height="1" align="center">
+  <tr>
+    <td>
+    <div class="search_big_div" style="align:center;">
+    	<div class="title_div">
+    		--#if(${param.type})$tool.decode($param.type,"utf-8")#else $!{entity.title}#end--
+        </div>
+        <div style="width:90%" align="left">$!{entity.description}</div>
+    	<div class="search_top_div">
+        	<div class="search01_left"></div>
+            <div class="search01_mid">
+			<form action="${pageroot}/queryTotalEntity.vpage" method="get" id="totalForm" name="totalForm">
+            	<table width="511" border="0" cellpadding="0" cellspacing="0">
+					 <tr>
+						  <td width="160" align="right">
+  							  <select name="uri" class="select01">
+								#foreach ($entity1 in $entity.dataSet.entities)
+									<option value="${entity1.uri}"#if (${entity1.uri} == ${entity.uri}) selected #end>${entity1.title}</option>
+								#end
+						      </select>
+						  </td>
+                          <td width="6">&nbsp;</td>
+                          <td width="250" align="right" ><input class="input02" name="keywords"  value="—请您输入关键字—" onmouseover="this.select()"/></td>
+                          <td width="84"  height="22" class="ico_01"><a href="#" onclick="return document.getElementById('totalForm').submit();">全表搜索</a></td>
+					 </tr>
+				</table>
+			</form>
+			
+            </div>
+           <div class="search01_right"></div>
+        </div>
+	</div>
+    </td>
+  </tr>
+  <tr>
+	<td>
+	<div class="search02_title_div">高级搜索<a href="#" onclick="toggleQueryImg('queryFormImg${seqid1}');$('#QueryForm${seqid1}')[0].jsoQueryForm.toggle();"><img id="queryFormImg${seqid1}" src="images/ico_jiaohao02.jpg" height="13" width="13" style="margin-left:5px;"></a></div>
+		<!--查询表单-->
+		<div class="search02_contents_div">
+		<div id="QueryForm${seqid1}" class="QueryForm" style="display:none;background:url(../images/contents_bg.jpg) #fff repeat-x 50% top;">
+		</div>
+		</div>
+		<div style="height:20"></div>
+		<!--查询结果显示-->
+		<div id="DataGrid${seqid1}" class="DataGrid"></div> 
+	</td>
+  </tr>
+    
+</table>
+<script DEFER>
+	//定义一个查询对象
+	var jsoQuery = new Query('cms.news');
+	jsoQuery.pageSize = 8;
+	var eb = new ExprBuilder();
+	#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "listItems", $entity.id))
+	#set($filter=$auth.mergeFilter($page.grantFilter,$entity.id))
+	#if($filter)
+	var whereFilter = eb.expr('cms.news.id','in',"select ID from NEWS where $filter");
+	jsoQuery.setWhereFilter(whereFilter);
+	#end
+	#if ($page.orderField)
+		jsoQuery.orderField="$page.orderField";
+	#else
+		jsoQuery.orderField="cms.news.addtime";
+		jsoQuery.orderAsc = "desc";
+	#end
+	
+	#if($param.type) 
+	if(jsoQuery.whereFilter == null)
+	{
+		jsoQuery.setWhereFilter(eb.expr('cms.news.type','eq','$tool.decode($param.type,"utf-8")'));
+	}
+	else
+	{
+		jsoQuery.setWhereFilter(eb.and(jsoQuery.whereFilter,eb.expr('cms.news.type','eq','$tool.decode($param.type,"utf-8")')));
+	}
+	#end
+	
+	//定义一个数据网格
+	var jsoDataGrid = new DataGrid(jsoQuery, $('#DataGrid${seqid1}')[0]);
+	jsoDataGrid.refresh();
+	
+	//定义一个查询框
+	var jsoQueryForm = new QueryForm(jsoQuery, 'cms.news', $('#QueryForm${seqid1}')[0], new function()
+		{
+			this.onsubmit = function()
+			{
+				jsoDataGrid.queryFlag=true;
+				jsoDataGrid.refresh();
+			}
+		}
+	);
+</script>
+<!--如果gotoPage变量不为空-->
+#if(!$param.gotoPage)
+$loggerTool.logAccess(null,null,$entity,'showEntity',null,null,false)
+#end

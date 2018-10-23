@@ -1,0 +1,18 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		#if($uriTool.isEntity($param.uri))
+			<url>${request.scheme}://${request.serverName}:${request.serverPort}/page/showEntity.vpage?uri=$!param.uri</url>
+		#else
+			<url></url>		
+		#end
+	</body>
+</response>
+#end

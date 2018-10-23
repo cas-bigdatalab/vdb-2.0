@@ -1,0 +1,165 @@
+<div id="E_$field.id">	
+	#set($editorName='E_'+$seq.id)
+	\#set(${D}field = ${D}{catalog.fromUri('$field.uri')})
+	<span id="$editorName">
+	##下拉选择框--将下拉框改成google那种模式
+	#if(${field.editorStyle}=='EnumSSelectEdit')
+			
+			\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+				 \#if(${data.value} == ${entry.key}) 
+				 		\#set ($v=${entry.value})
+				 \#end
+			\#end
+			<input type="hidden" name="${field.name}" value="${D}!{data.value}" id="id${field.name}2"/>
+			<input type="text" readonly value="${D}!v" id="id${field.name}"  onfocus="disp${editorName}()" style="width:${field.editorWidth};"/>
+			</br>
+			<div id="selDiv$editorName" style="display:none;border:1px solid #000;z-index:20;position:absolute;filter:alpha(opacity=90); background:#fff;font-size:13px;margin-top:-3px;">		
+				\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+					<div onmouseover="setBG(this)" onmouseout="setBG2(this)" style="width:100%;cursor:hand;" onclick="select${editorName}('${entry.key}','${entry.value}')" >
+						&nbsp;${entry.key}:${entry.value}<br/>
+					</div>
+				\#end
+			<div style="float:right;" ><a href="javascript:void(0);" style="border:none;font-size:12px;" onclick="hide${editorName}()">关闭</a></div>
+			</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function()
+			{	
+				$("#selDiv${editorName}").width($("#id${field.name}").width());
+				});
+				
+			function disp${editorName}(){
+				$("#selDiv${editorName}").show();
+			}
+			
+			function hide${editorName}(){
+				$("#selDiv${editorName}").hide();
+			}
+			
+			function select${editorName}(key,value){
+				$("#id${field.name}").attr("value",value);
+				$("#id${field.name}2").attr("value",key);
+				hide${editorName}();
+			}
+			
+			function setBG(t){
+				t.style.background='#4444bb';
+				t.style.color='#fff';
+			}
+			
+				function setBG2(t){
+				t.style.background='#fff';
+				t.style.color='#000';
+			}
+		</script>
+		
+	#elseif(${field.editorStyle}=='EnumSelectEdit')
+		<select name='${field.name}' style="width:${field.editorWidth};" \#if ($dc.readonly)readonly  disabled \#end>
+			<option value=""></option>
+			\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+					<option value="${entry.key}" \#if (${data.value} == ${entry.key}) selected \#end>
+						${entry.value}
+					</option>
+			\#end
+		</select>
+		
+	##弹出窗口选择
+	#elseif(${field.editorStyle}=='EnumPopEdit')
+		<input type="hidden" name="${field.name}" value='${D}!data.value'/>
+			\#set($hasData='false')
+			\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+				\#if (${entry.key}==$data.value)
+					<input type="text" size="6" value="${entry.value}" id="${field.name}2" readonly/>
+					\#set($hasData='true')
+				\#end
+			\#end		
+			
+			\#if($hasData=='false')
+				<input type="text" size="6" id="${field.name}2" readonly/>
+			\#end
+			
+		<input class="toggle" type="button" value="选择" name="QUERY_${editorName}" id="QUERY_${editorName}"  style="cursor:pointer;color:blue"></input>
+		
+		<div id="QUERY_FORM_${editorName}" style="display:none">
+			<div id="layer1_handle" style="cursor:move;" align="right">
+				&nbsp;
+			</div>
+			<div><img src="/console/shared/images/close.gif" align="right" id="close_${editorName}" style="cursor:pointer;position:relative;top:-20px; "> 	</div>	
+		
+		<fieldset class="selPan">
+		<legend>请选择</legend>
+			\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+				&nbsp;&nbsp;<a href="javascript:void(0);" onclick="setValue${field.name}('$entry.key','$entry.value')">$entry.value</a><br/>
+			\#end	
+		</fieldset>
+		</div>
+		
+	<!-- 弹出窗口的控制 -->
+	<style type="text/css">	
+		#QUERY_FORM_${editorName}
+		{
+			position: absolute;
+			/*left:300px;
+			top:300px;*/
+			width:140px;
+			background-color:#fcfbf3;
+			border: 1px solid #000;
+			z-index: 50;
+			filter:progid:dximagetransform.microsoft.shadow(color=#378702,direction=135,strength=6);
+		}
+		#layer1_handle
+		{
+			background-color:#cae1b9;
+			padding:2px;
+			text-align:center;
+			font-weight:bold;
+			color: #FFFFFF;
+			vertical-align:middle;
+		}
+		
+		.selPan{
+			margin:3px;
+		}
+	</style>
+	
+	<script defer>
+		$(document).ready(function()
+		{
+			$('#QUERY_FORM_${editorName}').Draggable(
+					{
+						zIndex: 	20,
+						ghosting:	false,
+						opacity: 	0.7,
+						handle:	'#layer1_handle'
+					}
+				);	
+						
+			$("#QUERY_FORM_${editorName}").hide();
+			$('#QUERY_${editorName}').click(function(e)
+			{
+			//$("#QUERY_FORM_${editorName}").css({top:e.screenY,left:e.screenX});
+				$("#QUERY_FORM_${editorName}").show();
+			});
+			
+			$('#close_${editorName}').click(function()
+			{
+				$("#QUERY_FORM_${editorName}").hide();
+			});
+		});
+		
+		function setValue${field.name}(entryKey,entryValue){
+			document.getElementsByName('${field.name}')[0].value = entryKey;
+			document.getElementById('${field.name}2').value = entryValue;
+		}
+	</script>
+	
+	##单选框
+	#else
+	\#foreach ($entry in ${D}field.typeDriver.options.entrySet())
+	<input type="radio" style="border:0px" name="${field.name}" value="${entry.key}" \#if(${data.value} == ${entry.key}) checked \#end   \#if ($dc.readonly)readonly  disabled \#end> ${entry.value}
+	\#end
+	#end
+	</span>
+<input type="hidden" name="fieldName" value="${field.name}" />
+<input type="hidden" name="style" value="${field.editorStyle}"/>
+</div>

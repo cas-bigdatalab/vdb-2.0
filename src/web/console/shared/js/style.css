@@ -1,0 +1,367 @@
+.hintError
+{
+    FONT-SIZE: 9pt;
+	COLOR: #880000;	
+}
+.hintOk
+{
+    FONT-SIZE: 9pt;
+	COLOR: #000088;	
+}
+.hintInfo
+{
+    FONT-SIZE: 9pt;
+	COLOR: #008800;	
+}
+BODY.udbBody
+{
+    FONT-SIZE: 9pt;
+}
+BODY.dialogFace
+{
+    FONT-SIZE: 9pt;
+	BACKGROUND-COLOR: #ffffff;
+}
+.heading02
+{
+	font-family: "黑体";
+	font-size: 20px;
+	line-height: 36px;
+	color: #000000;
+	font-weight: bold;
+}
+PRE
+{
+    PADDING-RIGHT: 5pt;
+    PADDING-LEFT: 5pt;
+    PADDING-BOTTOM: 5pt;
+    FONT: 9pt "Courier New", Courier, mono;
+    WIDTH: 100%;
+    COLOR: #EEEEEE;
+    PADDING-TOP: 5pt;
+    WHITE-SPACE: pre;
+    BACKGROUND-COLOR: #448800;
+}
+.help
+{
+    CURSOR: help;
+}
+TABLE
+{
+	font-size: 10.5pt;
+}
+body
+{
+	font-size: 10.5pt;
+	background-color: #333333;
+}
+TABLE.table1
+{
+	border-collapse: collapse;
+	border-color: #816f44;
+}
+TABLE.table1 TD
+{
+	border-color: #000443;
+}
+TABLE.table1 TR.header
+{
+	BACKGROUND-COLOR: #ece6cd;
+	font-weight: bold;
+	font-family: "宋体";
+}
+TABLE TR.tr1
+{
+	font-weight: bold;
+}
+TABLE.table1 TR.bg0
+{
+	BACKGROUND-COLOR: #fcfbf3;
+	color: #333333;
+	font-family: "宋体";
+}
+TABLE.table1 TR.bg1
+{
+	BACKGROUND-COLOR: #fcfbf3;
+	color: #333333;
+	font-family: "宋体";
+}
+TABLE.table1 TD.bg2
+{
+	text-decoration: none;
+}
+TABLE.table1 TR.checked
+{
+	BACKGROUND-COLOR: #E6E6F7;
+	text-decoration: italic;
+}
+TABLE.table1 TR.mouseover
+{
+	BACKGROUND-COLOR: #FFFFEC;
+}
+TABLE.table3
+{
+	border-collapse: collapse;
+	border-color: #000443;
+}
+TABLE.table3 TD
+{
+	border-color: #000443;
+}
+table.line
+{
+    border-left: 1 solid #000000;
+    border-top: 1 solid #000000;
+}
+table.line TD
+{
+	border-right: 1 solid #000000;
+	border-bottom: 1 solid #000000;
+}
+TABLE.calendar
+{
+	BACKGROUND-COLOR: buttonface;
+}
+.back
+{
+    FONT-SIZE: 16px;
+    CURSOR: hand
+}
+.full
+{
+    WIDTH: 90%
+}
+.BigFont
+{
+    FONT-SIZE: 10.5pt
+}
+SELECT.smallSel
+{
+    FONT-SIZE: 10.5pt;
+    COLOR: #000080;
+    FONT-FAMILY: "宋体";
+    BACKGROUND-COLOR: white
+}
+.flatbutton
+{
+    BORDER-RIGHT: #333333 1px solid;
+    PADDING-RIGHT: 1px;
+    BORDER-TOP: #333333 1px solid;
+    PADDING-LEFT: 1px;
+    FONT-SIZE: 10.5pt;
+    BACKGROUND: #ffffff;
+    PADDING-BOTTOM: 1px;
+    BORDER-LEFT: #333333 1px solid;
+    CURSOR: hand;
+    COLOR: #333333;
+    PADDING-TOP: 1px;
+    BORDER-BOTTOM: #333333 1px solid;
+    FONT-FAMILY: "宋体";
+    HEIGHT: 18px
+}
+.navPoint
+{
+    FONT-SIZE: 10.5pt;
+    CURSOR: hand;
+    COLOR: blue;
+    FONT-FAMILY: Webdings;
+    BACKGROUND-COLOR: #f1f1f1
+}
+.dropshadow
+{
+    FILTER: DropShadow(Color=#000000, OffX=1, OffY=1, Positive=1);
+    COLOR: #ffffff
+}
+.dropshadow1
+{
+    FILTER: DropShadow(Color=#FFFFFF, OffX=1, OffY=1, Positive=1);
+    COLOR: #000000
+}
+.glow
+{
+    FILTER: Glow(Color=gray, Strength=2)
+}
+.alpha
+{
+    FILTER: Alpha(Opacity=100, FinishOpacity=20,style=2, StartX=0, StartY=0, FinishX=100, FinishY=20);
+    COLOR: #ffffff
+}
+.flipv
+{
+    FILTER: FlipV
+}
+.title
+{
+	font-family: "楷体_gb2312";
+	font-size: 18pt;
+	line-height: 36px;
+	color: #000000;
+	font-weight: bold;
+}
+.tab-right
+{
+	font-size: 13px;
+	color: #000000;
+}
+.tit02
+{
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: #7CBDDC;
+	text-align: center;
+	letter-spacing: 6px;
+}
+.tab1
+{
+	border-right: #89cdff 1px solid;
+	padding-right: 2px;
+	border-top: #89cdff 1px solid;
+	padding-left: 2px;
+	padding-bottom: 2px;
+	margin: 1px;
+	border-left: #89cdff 1px solid;
+	padding-top: 2px;
+	border-bottom: #89cdff 1px solid;
+	border-collapse: collapse;
+}
+TABLE.tabs_header_active
+{
+	border-right: 2px outset;
+	table-layout: fixed;
+	border-top: 2px outset;
+	font-size: 10.5pt;
+	border-left: 2px outset;
+	height: 24pt;
+	background-color: #e0dfe3;
+}
+TABLE.tabs_header_inactive
+{
+	border-right: 2px outset;
+	table-layout: fixed;
+	border-top: 2px outset;
+	font-size: 10.5pt;
+	border-left: 2px outset;
+	height: 20pt;
+	background-color: #c0c0c0;
+}
+TABLE.tabs_header_active TD
+{
+	font-weight:bold;
+}
+TABLE.tabs_pages
+{
+	border-right: 2px outset;
+	border-left: 2px outset;
+	border-bottom: 2px outset;
+	background-color: #e0dfe3;
+}
+TABLE.tabs_pages TD.page
+{
+	border-right: 2px groove;
+	padding-right: 4px;
+	border-top: 2px groove;
+	padding-left: 4px;
+	padding-bottom: 4px;
+	border-left: 2px groove;
+	padding-top: 4px;
+	border-bottom: 2px groove;
+	background-color: #e0dfe3;
+}
+fieldset.query
+{
+	padding: 20px;
+}
+fieldset.fieldset1
+{
+	padding: 20px;
+	border-color: green;
+}
+fieldset.fieldset2
+{
+	padding: 20px;
+}
+.searchForm
+{
+	position: absolute;
+	left:300px;
+	top:350px;
+	width:500px;
+	background-color:#fcfbf3;
+	border: 1px solid #000;
+	z-index: 50;
+	filter:progid:dximagetransform.microsoft.shadow(color=#378702,direction=135,strength=6);
+}
+.searchHandle
+{
+	background-color:#cae1b9;
+	padding:2px;
+	vertical-align:middle;
+}
+#content
+{ 
+	 position:absolute; 
+	 top:0; 
+	 left:0;
+	 width:expression(body.clientWidth); 
+	 height:expression(body.clientHeight); 
+	 background:#666;
+	 filter:ALPHA(opacity=20);
+	 -moz-opacity:0.2;  
+	 z-index:1; 
+	 visibility:hidden
+}
+.STYLE1 {
+	font-size: 12px;
+	font-weight: bold;
+}
+.STYLE3 {
+	color: #999999;
+	margin-top: 48px;
+	margin-left: 102px;
+	font-variant: normal;
+	line-height: normal;
+	font-size: 12px;
+}
+.f12_3939 {	FONT-SIZE: 12px; COLOR: #393939; LINE-HEIGHT: 18px
+}
+.f12_3939 {	FONT-SIZE: 12px; COLOR: #393939; LINE-HEIGHT: 18px
+}
+.f14_ffff {	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LINE-HEIGHT: 18px
+}
+.f14_ffff {	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; LINE-HEIGHT: 18px
+}
+.STYLE4 {
+	color: #666666;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 32px;
+	padding-left: 10px;
+}
+.STYLE6 {
+	font-size: 12px;
+	color: #5b5b5b;
+	line-height: 30px;
+	padding-left: 10px;
+}
+.STYLE5 {
+	color: #333333;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 60px;
+	padding-left: 10px;
+}
+A.list:link {
+	FONT-SIZE: 13px; COLOR: #003366; LINE-HEIGHT: 120%; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A.list:visited {
+	FONT-SIZE: 13px; COLOR: #003366; LINE-HEIGHT: 120%; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A.list:active {
+	FONT-SIZE: 13px; COLOR: #cc0033; LINE-HEIGHT: 120%; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A.list:hover {
+	FONT-SIZE: 13px; COLOR: #cc0033; LINE-HEIGHT: 120%; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}	

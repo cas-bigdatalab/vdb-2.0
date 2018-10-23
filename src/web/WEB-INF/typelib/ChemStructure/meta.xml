@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.typelib.FieldType">
+		<property name="fieldClass"
+			value="vdb.mydb.typelib.type.VdbChemStructureType" />
+		<property name="sortable" value="false" />
+		<property name="title" value="化学结构" />
+		<property name="extra">
+			<map>
+				<entry key="viewUrl">
+					<value>http://visualdata.csdb.cn/marvin/app/applets/view.jsp</value>
+				</entry>
+				<entry key="editUrl">
+					<value>http://visualdata.csdb.cn/marvin/app/applets/edit.jsp</value>
+				</entry>	
+				<entry key="transferUrl">
+					<value>http://visualdata.csdb.cn/marvin/app/applets/transfer.html</value>
+				</entry>
+			</map>
+		</property>
+		<property name="defaultQueryerStyleName" value="like" />
+		<property name="order" value="9000" />
+		<property name="queryerStyles">
+			<list>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="like" />
+					<property name="title" value="包含(like)" />
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="notLike" />
+					<property name="title" value="不包含" />
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="eq" />
+					<property name="title" value="是(=)" />
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="ne" />
+					<property name="title" value="不是(!=)" />
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="isNull" />
+					<property name="title" value="为空" />
+					<property name="unaryExpr" value="true" />
+				</bean>
+				<bean class="vdb.mydb.typelib.Style">
+					<property name="name" value="notNull" />
+					<property name="title" value="不为空" />
+					<property name="unaryExpr" value="true" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

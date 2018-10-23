@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="browne"  text="浏览模式" />
+	<item type="button"	id="editor" text="编辑模式"  />
+	<item id="new"   type="button"   img="new.gif"  imgdis="new_dis.gif"  text="新增"  />
+	<item id="new1"   type="button"   img="new.gif"  imgdis="new_dis.gif"  text="弹出新增"  />
+	<item id="save"   type="button"   img="save.gif"  imgdis="save_dis.gif"  text="保存"  />
+	<item id="delete"   type="button"   img="delete.gif"  imgdis="cut_dis.gif"  text="删除"  />
+	<item id="sep2"   type="separator"/>
+	<item id="copy"   type="button"   img="copy.gif"  imgdis="copy_dis.gif"  text="复制"  />
+	<item id="paste"  type="button"   img="paste.gif" imgdis="paste_dis.gif" text="粘贴" />
+	<item id="sep3"   type="separator"/>
+	<item id="undo"    type="button"   img="undo.gif"   imgdis="undo_dis.gif"   text="撤消"   />
+	<item id="redo"   type="button"   img="redo.gif"  imgdis="redo_dis.gif"  text="恢复"  />
+	<item id="text1" type="text" text="    "/>
+	<item id="query"   type="button"    text="高级查询"  />
+</toolbar>

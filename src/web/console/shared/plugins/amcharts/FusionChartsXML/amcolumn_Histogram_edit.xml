@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <font>Tahoma</font>
+  <background>
+    <alpha>100</alpha>
+    <border_alpha>25</border_alpha>
+  </background>
+  <plot_area>
+    <margins>
+      <left>35</left>
+      <right>21</right>
+      <top>25</top>
+      <bottom>60</bottom>
+    </margins>
+  </plot_area>
+  <grid>
+    <category>
+      <alpha>5</alpha>
+    </category>
+    <value>
+      <alpha>5</alpha>
+    </value>
+  </grid>
+  <axes>
+    <category>
+      <width>1</width>
+    </category>
+    <value>
+      <width>1</width>
+    </value>
+  </axes>
+  <values>
+    <category>
+      <text_size>11</text_size>
+      <frequency>2</frequency>
+    </category>
+    <value>
+      <min>5</min>
+      <max>0</max>
+      <skip_last>1</skip_last>
+    </value>
+  </values>
+  <legend>
+    <enabled>0</enabled>
+  </legend>
+  <column>
+    <width>50</width>
+    <spacing>0</spacing>
+    <alpha>90</alpha>
+    <corner_radius_top>10</corner_radius_top>
+    <balloon_text>{series}: {value}</balloon_text>
+    <data_labels_position>inside</data_labels_position>
+    <data_labels_always_on>1</data_labels_always_on>
+    <grow_time>1</grow_time>
+    <grow_effect>regular</grow_effect>
+    <sequenced_grow>1</sequenced_grow>
+  </column>
+  <graphs>
+    <graph gid="0">
+      <title>Visits</title>
+      <balloon_text>{series}: {value}</balloon_text>
+    </graph>
+  </graphs>
+  <labels>
+    <label lid="0">
+      <y>25</y>
+      <align>center</align>
+    </label>
+  </labels>
+  <guides>
+    <guide gid="1" />
+  </guides>
+</settings>
+

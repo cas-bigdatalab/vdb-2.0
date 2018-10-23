@@ -1,0 +1,43 @@
+﻿#saveAs("crossQuery.vpage")
+\#usingLayout("${pageroot}/layout.vpage")
+\#set($pageSize=$domain.defaultPageSize)
+\#invoke("vdb.mydb.vtl.action.CrossQueryAction")
+<div align="center">
+<div style="height:20"></div>
+<div style="width:968px" align="center">
+<p align="left">在<font color="red">$domain.title</font>中查询包含<font color="red">$keywords</font>的内容：</p>
+\#if ($pageViewer.beans.size() == 0)
+<center>
+  <div style="width:968px" align="left"> <br>
+    <p><font color="\#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+\#else
+	\#foreach ($hit in ${D}pageViewer.beans)
+<table align="center" width="968px" border="0" cellpadding="1">
+  <tr class="header">
+    <td><a href="${pageroot}/showItem.vpage?id=$hit.entity.uri/${hit.beanId}" target="_blank"><font color="red">$hit.title</font></a></td>
+  </tr>
+  <tr class="header">
+    <td align="left" style="font-size:8pt">
+    <font color="green" face="Tahoma"><i>来源：$hit.dataSet.title $hit.entity.title</i>
+    <i>收录时间：${D}tool.formatDate($hit.indexTime, "yyyy-M-d HH:mm:ss")</i>
+    </font>
+    </td>
+  </tr>
+  <tr class="header">
+    <td align="left"><font color="black">${D}formater.trimToLimit($hit.text, 500)</td>
+  </tr>
+</table>
+<br>
+    \#end
+	\#if (${D}pageViewer.pageCount > 1)
+<center>
+    <div style="width:968px">
+     \#parse("/console/shared/pageViewer1.vpage")
+    </div>
+</center>
+	\#end
+\#end
+</div>
+</div>

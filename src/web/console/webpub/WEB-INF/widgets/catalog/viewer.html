@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="/widgets/$widget.name/res/menu.css">
+<script language="javascript" src="/widgets/$widget.name/res/menu.js"></script>
+<div id="body">
+<!-- 树开始-->
+<ul id="menu">
+#set($fold = $widget.props.fold)
+#selectView($view, $domain, 'listDataSets')
+#foreach($dataset in $view.items)
+<li class="L1"><a href="javascript:c('$dataset.uri');" #if($fold == "all"||($fold == "first"&&$velocityCount==1)) class="active" #end id="$dataset.uri"><span> &nbsp; $dataset.title</span></a></li>
+<ul id="${dataset.uri}d" #if($fold == "all"||($fold == "first"&&$velocityCount==1)) class="active" #else style="display:none;" #end>
+	#selectView($view, $dataset, 'listEntities')
+		#foreach($item in $view.items)
+		#if($item.isQuery())
+		<li class="L22"><a href="javascript:a('${engine.webpub}/showQuery.vpage?uri=$item.uri','$item.uri');" id="$item.uri"><span><img src="/widgets/$widget.name/res/images/ico/2.gif" align="absMiddle"/> $item.title</span></a></li>
+		#else
+		<li class="L22"><a href="javascript:a('${engine.webpub}/showEntity.vpage?uri=$item.uri','$item.uri');" id="$item.uri"><span><img src="/widgets/$widget.name/res/images/ico/2.gif" align="absMiddle"/> $item.title</span></a></li>
+		#end
+		#end
+</ul>
+#end
+</ul>
+</div>
+#if($isViewMode)
+<div id="cbottom"></div>
+#end
+<script language="javascript" src="/console/shared/js/cookie.js"></script>
+<script language="JavaScript">
+var cur_id="";
+var flag=0,sflag=0;
+var selectedid = getCookie("selectedid");
+if(selectedid!=null&&selectedid!="")
+{
+	var datasetUri = selectedid.substring(0,selectedid.lastIndexOf("."));
+	document.getElementById(datasetUri).className = "active";
+	
+	document.getElementById(datasetUri+"d").className = "active";
+	document.getElementById(datasetUri+"d").style.display = '';
+	
+	set_current(selectedid);
+}
+</script>

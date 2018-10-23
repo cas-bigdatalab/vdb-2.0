@@ -1,0 +1,55 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:22-->
+
+##定义一个指向ygzx.projects的实体对象
+#set($entity = $tool.getEntity('ygzx.projects'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151b9552cf90039" fieldUri="ygzx.projects.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按id排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> id</b>#if ('ygzx.projects.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151b9552cf9003a" fieldUri="ygzx.projects.name" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按项目名称排序" ><b> 项目名称</b>#if ('ygzx.projects.name' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151b9552cfa003c" fieldUri="ygzx.projects.desc" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按项目描述排序" ><b> 项目描述</b>#if ('ygzx.projects.desc' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151b9552cfa003d" fieldUri="ygzx.projects.manager" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按项目经理排序" ><b> 项目经理</b>#if ('ygzx.projects.manager' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151b9552cfb0042" fieldUri="ygzx.projects.category" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按类别排序" ><b> 类别</b>#if ('ygzx.projects.category' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('name').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('desc').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('manager').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('category').format('%s')
+&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

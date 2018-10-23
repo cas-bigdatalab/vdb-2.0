@@ -1,0 +1,31 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($dataset = $catalog.fromUri('cn.csdb.vdb.bookstore'))
+#if(!$dataset)
+本演示页面将使用cn.csdb.vdb.bookstore数据集作为例子，请确认该数据集存在。
+#else
+欢迎使用数据集“$dataset.title”，本页面主要演示如下功能：
+<ul>
+	<li><a href="simple.vpage">演示简单VTL的用法</a></li>
+	<li><a href="usingLayout.vpage">演示布局模板的用法</a></li>
+	<li><a href="tool.vpage">演示工具tool的用法</a></li>
+	<li><a href="macro.vpage">演示宏macro的用法</a></li>
+	<li><a href="invoke.vpage">演示invoke的用法</a></li>
+</ul>
+<ul>
+	<li><a href="catalog.vpage">演示目录对象的引用</a></li>
+	<li><a href="bean.vpage">演示bean对象的引用</a></li>
+</ul>
+<ul>
+	<li><a href="customQuery.vpage">演示条件查询的用法</a></li>
+	<li><a href="queryFromSql.vpage">演示SQL查询的用法</a></li>
+	<li><a href="beanList.vpage">演示bean列表的用法</a></li>
+</ul>
+<ul>
+	<li><a href="jsQuery.vpage">演示javascript查询控件的用法</a></li>
+</ul>
+<ul>
+	<li><a href="service.vpage">演示各种http service接口的用法</a></li>
+</ul>
+<p>
+#end
+</font></p>

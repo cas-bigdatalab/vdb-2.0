@@ -1,0 +1,13 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+<html>
+<table border="1" width="56%" id="table1" height="358">
+	<tr>
+		<td style="background-color: #ECE9D8">$body
+</td>
+	</tr>
+	<tr>
+		<td height="49">
+		<p align="center">Powered by VisualDB 1.2!</td>
+	</tr>
+</table>
+</html>

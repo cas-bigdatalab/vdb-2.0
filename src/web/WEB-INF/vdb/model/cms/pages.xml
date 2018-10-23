@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pages> 
+  <entity uri="cms.servicecase"> 
+    <pageType type="listItems"> 
+      <page> 
+        <name>listItems[cms.servicecase]</name>  
+        <title>服务案例-列表页面</title>  
+        <style/>  
+        <entityUri>cms.servicecase</entityUri>  
+        <isDefault>true</isDefault>  
+        <type>listItems</type>  
+        <pageSize>8</pageSize>  
+        <grantFilter/>  
+        <orderFields> 
+          <orderField> 
+            <fieldUri>cms.servicecase.id</fieldUri>  
+            <order>desc</order> 
+          </orderField> 
+        </orderFields>  
+        <viewFields> 
+          <viewField> 
+            <fieldUri>cms.servicecase.pic</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.title</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.description</fieldUri> 
+          </viewField> 
+        </viewFields> 
+      </page> 
+    </pageType>  
+    <pageType type="showItem"> 
+      <page> 
+        <name>showItem[cms.servicecase]</name>  
+        <title>服务案例-显示页面</title>  
+        <style/>  
+        <entityUri>cms.servicecase</entityUri>  
+        <isDefault>true</isDefault>  
+        <isDisplay>true</isDisplay>  
+        <type>showItem</type>  
+        <viewFields> 
+          <viewField> 
+            <fieldUri>cms.servicecase.id</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.pic</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.title</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.description</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.source</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.userunit</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.type</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.serviceunit</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.content</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.usedatabase</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.tools</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.servicetime</fieldUri> 
+          </viewField>  
+          <viewField> 
+            <fieldUri>cms.servicecase.effect</fieldUri> 
+          </viewField> 
+        </viewFields> 
+      </page> 
+    </pageType> 
+  </entity>  
+  <entity uri="cms.dbinfo">
+    <pageType type="showItem"><page> <entityUri>cms.dbinfo</entityUri> <hideCollectionFieldTitle>true</hideCollectionFieldTitle> <isDefault>true</isDefault> <isDisplay>true</isDisplay> <name>showItem[cms.dbinfo]</name> <style></style> <title>数据库介绍-显示页面</title> <type>showItem</type> <viewFields> <viewField> <fieldUri>cms.dbinfo.id</fieldUri> </viewField> <viewField> <fieldUri>cms.dbinfo.detail</fieldUri> </viewField> <viewField> <fieldUri>cms.dbinfo.pic</fieldUri> </viewField> </viewFields> </page></pageType>
+  </entity>
+</pages>

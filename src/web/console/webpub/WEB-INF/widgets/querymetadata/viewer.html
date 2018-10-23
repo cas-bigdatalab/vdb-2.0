@@ -1,0 +1,11 @@
+#set($site = $domain.name)
+#set($seqid=$calendar.time)
+#set($sid=$seq.id)
+<div id="querymetadata_out_${seqid}${sid}" align="center"></div>
+<script type="text/javascript">
+	jQuery.getScript("http://rsr.csdb.cn/querymetadata.jsp?site=$site", function()
+	{		
+		$('#querymetadata_out_${seqid}${sid}').html(showWidget_querymetadata());
+	});
+
+</script>

@@ -1,0 +1,7 @@
+<div id="E_$field.id">	
+	#if ($field.editorStyle=="DateTimeCtrl")
+		<input name="${field.name}" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" readOnly value="${data.dateFormat('yyyy-MM-dd HH:mm:ss')}"/>
+	#else
+		<input name="${field.name}" type="text" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readOnly value="${data.dateFormat('yyyy-MM-dd')}"/>
+	#end
+</div>

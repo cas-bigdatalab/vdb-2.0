@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="customPageLocator" class="vdb.mydb.web.CompositePageLocator">
+		<property name="usingCache" value="${version.release}"/>
+		<property name="locators">
+			<list>
+				<bean class="vdb.mydb.web.RegexpUrlLocator">
+					<property name="pattern" value="${webpub.rootPath}/(.*)"/>
+					<property name="target" value="/cms/$1"/>
+				</bean>
+				<bean class="vdb.mydb.web.RegexpUrlLocator">
+					<property name="pattern" value="(.*)(/[^/]+)"/>
+					<property name="target" value="/myweb$1$2"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+ 
+	<bean id="customResourceLoader" class="vdb.mydb.web.CustomResourceLoader">
+		<property name="pageLocator" ref="customPageLocator" />
+	</bean>
+	
+	<bean class="vdb.mydb.jsp.UrlMappings">
+		<property name="handlers">
+			<list>
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="1005"/>
+					<property name="value">
+						<bean class="vdb.mydb.web.PageForward">
+							<property name="pattern" value="/.*" />
+							<property name="pageLocator" ref="customPageLocator" />
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>	
+</beans>

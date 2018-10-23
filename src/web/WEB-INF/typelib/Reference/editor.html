@@ -1,0 +1,85 @@
+<div id="E_$field.id">	
+	#set($seqid0 = $seq.id)
+	#set($editorName='E_'+$seqid0)
+	\#set(${D}field = ${D}{catalog.fromUri('$field.uri')})
+	\#if(!$rid)
+	\#set($keyValue=$data.value)
+	\#else
+	\#set($keyValue=$rid)
+	\#end 
+	
+	##弹出窗口
+	\#if(${D}field.typeDriver.optionsSize>50)
+	<input type="hidden" id="$editorName"  value="$field.relationKey.target.uri/$keyValue">
+		<span>
+			<span id="sp_$editorName" style="display:-moz-inline-box;display:inline-block;border-style: inset; border-width: 1px;padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px;width:150px;height:21px">
+			\#foreach ($thisBean in ${D}field.typeDriver.options) 
+			\#set( $temp = "${thisBean.itemId}" ) 
+			\#set( $indexof = $temp.indexOf("/") )   
+			\#set( $indexof = $indexof +1 )    
+			\#if($temp.substring($indexof) == ${data.value}||($rid && $rid == $temp.substring($indexof)))
+			${thisBean.title.title}
+			\#end
+			\#end
+			</span>
+			\#if($dc.readonly==false)
+				<input alt="选择$field.title" type="button" style="width:22px;background:url('/console/shared/images/link.gif') no-repeat;" onclick="updateRef('$field.uri','$editorName','$field.relationKey.target.uri',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));"></input>
+				###<button alt="选择$field.title" onclick="updateRef('$field.uri','$editorName','$field.relationKey.target.uri',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));"><img src='/console/shared/images/link.gif' border=0 align=absbottom></button>
+			\#end
+		</span> 
+	<input type="hidden" name="fieldName" value="${field.name}" />
+	<input type="hidden" name="style" value="input"/>
+	\#else
+	#if($field.editorStyle == 'RefPopup') 
+		<input type="hidden" id="$editorName"  value="$field.relationKey.target.uri/$keyValue">
+		<span> 
+			<span id="sp_$editorName" style="display:-moz-inline-box;display:inline-block;border-style: inset; border-width: 1px;padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px;width:150px;height:21px">
+			\#foreach ($thisBean in ${D}field.typeDriver.options) 
+			\#set( $temp = "${thisBean.itemId}" ) 
+			\#set( $indexof = $temp.indexOf("/") )   
+			\#set( $indexof = $indexof +1 )    
+			\#if($temp.substring($indexof) == ${data.value}||($rid && $rid == $temp.substring($indexof)))
+			${thisBean.title.title}
+			\#end
+			\#end
+			</span>
+			\#if($dc.readonly==false)
+				<input alt="选择$field.title" type="button" style="width:22px;background:url('/console/shared/images/link.gif') no-repeat;" onclick="updateRef('$field.uri','$editorName','$field.relationKey.target.uri',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));"></input>
+				###<button alt="选择$field.title" onclick="updateRef('$field.uri','$editorName','$field.relationKey.target.uri',event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop)));"><img src='/console/shared/images/link.gif' border=0 align=absbottom></button>
+			\#end
+		</span> 
+		
+	##单选按钮
+	#elseif($field.editorStyle == 'RefRadios')
+		<span id="$editorName"> 
+		 	\#if($dc.readonly==false)
+			 	\#foreach ($thisBean in ${D}field.typeDriver.options) 
+				 	<input type="radio" style="border:0px" name="$field.name" value="${thisBean.itemId}" \#set( $temp = "${thisBean.itemId}" ) \#set( $indexof = $temp.indexOf("/") )   \#set( $indexof = $indexof +1 )    \#if($temp.substring($indexof) == ${data.value}||($rid && $rid == $temp.substring($indexof))) checked \#end> 
+				 	${thisBean.title.title}
+				 	\#if(${D}velocityCount%5==0)
+				 		<br>
+				 	\#end
+				\#end
+		 	\#else
+		 		<input type="radio" style="border:0px" name="$field.name" value="${data.value}" checked > ${data.value}
+		 	\#end
+		</span>
+	##下拉菜单
+	#else
+	 	\#if($dc.readonly==false)
+	 		<select id="$editorName" style="${editorStyle}"> 
+	 			<option value="null"></option>
+		 	\#foreach ($thisBean in ${D}field.typeDriver.options) 
+			 	<option value="${thisBean.itemId}" \#set( $temp = "${thisBean.itemId}" ) \#set( $indexof = $temp.indexOf("/") )   \#set( $indexof = $indexof +1 )    \#if($temp.substring($indexof) == ${data.value}||($rid && $rid == $temp.substring($indexof))) selected \#end> ${thisBean.title.title}</option>
+			\#end
+			</select>
+	 	\#else
+	 		<input type="text"  id="$editorName" name="$field.name" value="${data.value}" readOnly> 
+	 	\#end
+		
+	#end
+	<input type="hidden" name="fieldName" value="${field.name}" />
+	<input type="hidden" name="style" value="${field.editorStyle}"/>
+	\#end
+	
+</div>

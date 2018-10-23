@@ -1,0 +1,17 @@
+<div id="E_$field.id">
+#if($field.typeDriver.optionsSize<50)	
+<select id="$editorName" style="${editorStyle}">
+	#foreach ($thisBean in $field.typeDriver.options)
+	#set($temp = "${thisBean.itemId}") 
+	#set( $indexof = $temp.indexOf("/") )   
+	#set( $indexof = $indexof +1 )  
+	<option value="$temp.substring($indexof)">
+		${thisBean.title.title}
+	</option>
+	#end
+</select>
+#else
+<input name="$editorName" id="$editorName" value="">
+#end
+<input type="hidden" name="type" value="${field.typeName}">
+</div>

@@ -1,0 +1,82 @@
+	#set($originalWidget=$widgetFactory.getWidget($param.widget))
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/style.css">
+<link rel="stylesheet" type="text/css" href="js/listWidgets.css">
+<script src="js/updateWidget.js"></script>
+
+<title>组件复制</title>
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+<script>
+     function onSubmit()
+     {
+     	var form1 = document.getElementById("form1");
+     	
+     	var enName = document.getElementById("enName").value;
+     	var chName = document.getElementById("chName").value;
+     	
+     	if(!checkEnglishName(enName))
+     		return;
+     	if(!checkName(chName))
+     		return;
+     	  	
+     	form1.submit();
+     	//parent.document.location.href = parent.document.location.href;
+		//parent.dhxWins.window("w1").close();
+		
+	 }
+	 function checkName(v)
+	 {
+	 	if(v=="")
+	 	{
+	 		alert("输入字符不允许为空！");
+	 		//$('#p_caption').focus();
+	 		return false;
+	 	}
+	 	return true;
+	 }
+	 
+	 function checkEnglishName(v)
+	 {
+	 	if(!checkName(v))
+	 		return false;
+	 	var reg = /^[a-zA-Z0-9]+$/g;
+		if(v.match(reg)==null)
+		{
+			alert("输入的组件名包含中文或非法字符，组件名只能为英文字母加数字组成");
+			return false;
+		}
+		return true;
+	 }
+	 
+</script>
+</head>
+<body  style="font-size:12px;background-color:#f7f9fa;" >
+<form name="form1" id="form1" method="post" action="doCopyWidget.vpage" >
+
+<fieldset>
+	  <ol>
+	    <li>
+	      <label for="enName">组件英文名称:<em>*</em></label>
+	      <input name="enName" id="enName" value="copyof$originalWidget.name"/>
+	      <input type="hidden" name="widget" value="$originalWidget.name">
+	    </li>
+	    <br>
+	    <li>
+	      <label for="chName">组件中文名称:<em>*</em></label>
+	      <input name="chName" id="chName" value="$originalWidget.title复件"/>
+	    </li>
+	    <br>
+	  </ol>
+
+</fieldset>
+<br><br>
+<button type="button" id="buttonSave" onclick="onSubmit();"><img src='/console/shared/images/save.gif' border=0 align=absbottom>保存内容</button>
+
+</form>
+</body>
+</html>

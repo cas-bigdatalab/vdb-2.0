@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="init();"   xmlns:coverflow="com.dougmccune.coverflow.*"
+ xmlns:containers="com.dougmccune.containers.*" >
+	<mx:backgroundImage>@Embed(source='D:/work/vdb906/WebRoot/console/catalog/images/right_bg.jpg')</mx:backgroundImage>
+	
+<mx:Script>
+<![CDATA[
+	import mx.controls.TextArea;
+		import mx.rpc.events.FaultEvent;
+		import mx.rpc.events.ResultEvent;
+		import mx.collections.ArrayCollection; 
+		import mx.controls.Alert;
+		import mx.events.DataGridEvent;
+		import mx.events.DataGridEventReason;
+		import mx.managers.PopUpManager; 
+		
+		import mx.containers.Panel;
+        import mx.events.FlexEvent;
+        import mx.controls.Alert;
+        
+        [Bindable]
+        var count:int=0;
+        
+        var xValue:Number;
+        
+         public function setTitle(i:String):void
+        {
+        	dataset=i;
+        }
+            
+            
+            
+		public function mousedown(event :MouseEvent):void
+		{
+			xValue= event.localX;
+		}
+		
+		public function mouseup(event :MouseEvent):void
+		{
+		
+			if(xValue<event.localX)
+			{
+				if(coverflow.selectedIndex > 0)
+				coverflow.selectedIndex --;
+					
+			}
+			
+			if(xValue>event.localX)
+			{
+				if(coverflow.selectedIndex < count -1)
+				coverflow.selectedIndex ++;
+					
+			}
+		}
+				
+		[Bindable]
+  		public var ftpRepository:ArrayCollection = new ArrayCollection();
+  		
+  		[Bindable]
+  		public var localRepository:ArrayCollection = new ArrayCollection();
+  		
+  		[Bindable]
+  		public var apacheRepository:ArrayCollection = new ArrayCollection();
+  		
+  		[Bindable]
+  		public var webdavRepository:ArrayCollection = new ArrayCollection();
+  		
+  		private var addLocalWin:localWin;
+		private var addFtpWin:ftpWin;
+		private var addApacheWin:apacheWin;
+		private var addWebdavWin:webdavWin;
+		
+		public var allRepository:ArrayCollection = new ArrayCollection();
+		public var dataSets:ArrayCollection = new ArrayCollection();
+		
+		private var ds:String = "cms";
+	
+		public function set dataset(value:String)
+		{
+		    ds = value;
+		    loadRepositories();
+		    
+		    //this.dispatchEvent(new Event("reload"));
+		}
+		public function get dataset():String
+		{
+		    return ds;
+		}
+		
+		public function loadRepositories():void
+		{
+			rs.getAllRepositories(dataset);
+			rs.getLocalRepositories(dataset);
+			rs.getFtpRepositories(dataset);
+			rs.getApacheRepositories(dataset);
+			rs.getWebdavRepositories(dataset);
+			
+		}
+
+  		
+		public function init():void
+		{
+
+			rs.getDataSets();
+			loadRepositories();
+			addLocalWin = new localWin();
+		    addLocalWin.addEventListener("savelocal", savelocal);
+		     
+			addFtpWin = new ftpWin();
+			addFtpWin.addEventListener("saveftp",saveftp);
+			
+			addApacheWin = new apacheWin();
+		    addApacheWin.addEventListener("saveapache", saveapache);
+		     
+			addWebdavWin = new webdavWin();
+			addWebdavWin.addEventListener("savewebdav",savewebdav);
+			//Alert.show(this.parameters.name);
+		}
+		
+		public function popLocalWin():void
+		{
+			 PopUpManager.addPopUp(addLocalWin, this, true);   
+		 	 PopUpManager.centerPopUp(addLocalWin);   
+		  	 addLocalWin.localName.text = "";   
+			 addLocalWin.path.text = "";   
+		}
+		
+		public function popFtpWin():void
+		{
+			 PopUpManager.addPopUp(addFtpWin, this, true);   
+		 	 PopUpManager.centerPopUp(addFtpWin);  
+		  	 addFtpWin.ftpName.text = "";   
+			 addFtpWin.hostname.text = "";   
+			 addFtpWin.port.text = "21";   
+			 addFtpWin.username.text = "";   
+			 addFtpWin.password.text = "";   
+			 addFtpWin.path.text = "";   
+		}
+		
+		public function popApacheWin():void
+		{
+			 PopUpManager.addPopUp(addApacheWin, this, true);   
+		 	 PopUpManager.centerPopUp(addApacheWin);   
+		  	 addApacheWin.apacheName.text = "";   
+			 addApacheWin.path.text = "";   
+		}
+		
+		public function popWebdavWin():void
+		{
+			 PopUpManager.addPopUp(addWebdavWin, this, true);   
+		 	 PopUpManager.centerPopUp(addWebdavWin);  
+		  	 addWebdavWin.webdavName.text = "";   
+			 addWebdavWin.username.text = "";   
+			 addWebdavWin.password.text = "";   
+			 addWebdavWin.path.text = "";   
+		}
+		
+		public function checkName(name:String):Boolean
+		{
+			for(var i:int=0;i<allRepository.length;i++)
+			{
+				if(allRepository.getItemAt(i).name==name)
+					return false;
+			}
+			return true;
+		}
+		public function savelocal(e:Event):void
+		{
+			var name:String = addLocalWin.localName.text;
+			var path:String = addLocalWin.path.text;
+			if(name=="")
+			{
+				Alert.show("存储位置名称不能为空！");
+				return;
+			}
+			else if(!checkName(name))
+			{
+				Alert.show("存储位置名称已存在！");
+				return;
+			}
+			else 
+			{
+				rs.addLocalRepository(dataset,name,path);
+				PopUpManager.removePopUp(addLocalWin);
+			}
+		}
+		
+		public function saveapache(e:Event):void
+		{
+			var name:String = addApacheWin.apacheName.text;
+			var path:String = addApacheWin.path.text;
+			if(name=="")
+			{
+				Alert.show("存储位置名称不能为空！");
+				return;
+			}
+			else if(!checkName(name))
+			{
+				Alert.show("存储位置名称已存在！");
+				return;
+			}
+			else 
+			{
+				rs.addApacheRepository(dataset,name,path);
+				PopUpManager.removePopUp(addApacheWin);
+			}
+		}
+		
+		public function saveftp(e:Event):void
+		{
+			var name:String = addFtpWin.ftpName.text;
+			var hostname:String = addFtpWin.hostname.text;
+			var port:String = addFtpWin.port.text;
+			var username:String = addFtpWin.username.text;
+			var password:String = addFtpWin.password.text;
+			var path:String = addFtpWin.path.text;
+			if(name=="")
+			{
+				Alert.show("存储位置名称不能为空！");
+				return;
+			}
+			else if(!checkName(name))
+			{
+				Alert.show("存储位置名称已存在！");
+				return;
+			}
+			else 
+			{
+				rs.addFtpRepository(dataset,name,hostname,port,username,password,path);
+				PopUpManager.removePopUp(addFtpWin);
+			}
+		}
+		
+		public function savewebdav(e:Event):void
+		{
+			var name:String = addWebdavWin.webdavName.text;
+			var username:String = addWebdavWin.username.text;
+			var password:String = addWebdavWin.password.text;
+			var path:String = addWebdavWin.path.text;
+			if(name=="")
+			{
+				Alert.show("存储位置名称不能为空！");
+				return;
+			}
+			else if(!checkName(name))
+			{
+				Alert.show("存储位置名称已存在！");
+				return;
+			}
+			else 
+			{
+				rs.addWebdavRepository(dataset,name,path,username,password);
+				PopUpManager.removePopUp(addWebdavWin);
+			}
+		}
+
+		public function allResult(event:ResultEvent):void
+		{
+			allRepository = event.result as ArrayCollection;
+ 		}
+ 		
+ 		public function dataSetsResult(event:ResultEvent):void
+		{
+			dataSets = event.result as ArrayCollection;
+			
+			for(var i:int=0;i<dataSets.length;i++)
+			{
+				var panel:Panel = new Panel();
+				panel.title=dataSets[i].title;
+				panel.id = dataSets[i].uri;
+				panel.addEventListener(MouseEvent.CLICK,function(e:MouseEvent){
+					setTitle(e.target.id);
+					}
+				);
+			
+				panel.height=120;
+				panel.width=160;
+				
+				var textArea :TextArea = new TextArea();
+				textArea.height=80;
+				textArea.width=120;
+				textArea.setStyle("borderStyle","none");
+				textArea.editable=false;
+				//textArea.htmlText = dataSets[i].description;
+				textArea.text=dataSets[i].title;
+				textArea.addEventListener(MouseEvent.CLICK,function(e:MouseEvent){
+					setTitle(e.target.parent.parent.id);
+					}
+				);
+				panel.addChild(textArea);
+	 			coverflow.addChild(panel);
+	 			count++;
+	 		}
+ 		}
+ 		
+ 		public function localResult(event:ResultEvent):void
+		{
+			localRepository = event.result as ArrayCollection;
+ 		}
+ 		
+ 		public function ftpResult(event:ResultEvent):void
+		{
+			ftpRepository = event.result as ArrayCollection;
+ 		}
+ 		
+ 		public function apacheResult(event:ResultEvent):void
+		{
+			apacheRepository = event.result as ArrayCollection;
+ 		}
+ 		
+ 		public function webdavResult(event:ResultEvent):void
+		{
+			webdavRepository = event.result as ArrayCollection;
+ 		}
+		
+		public function faultHandler(event:FaultEvent):void
+		{
+			Alert.show(event.message.toString());
+		}
+		
+		public function deleteFtpItem():void
+		{
+			if(ftpDataGrid.selectedIndex==-1)
+			{
+				Alert.show("请选择要删除的ftp存储位置！");
+			}
+			else
+			{
+				rs.deleteRepository(dataset,ftpDataGrid.selectedItem.name);
+			}
+		}
+		
+		public function deleteLocalItem():void
+		{
+			if(localDataGrid.selectedIndex==-1)
+			{
+				Alert.show("请选择要删除的服务器本地文件存储位置！");
+			}
+			else
+			{
+				rs.deleteRepository(dataset,localDataGrid.selectedItem.name);
+			}
+		}
+		
+		public function deleteApacheItem():void
+		{
+			if(apacheDataGrid.selectedIndex==-1)
+			{
+				Alert.show("请选择要删除的apache存储位置！");
+			}
+			else
+			{
+				rs.deleteRepository(dataset,apacheDataGrid.selectedItem.name);
+			}
+		}
+		
+		public function deleteWebdavItem():void
+		{
+			if(webdavDataGrid.selectedIndex==-1)
+			{
+				Alert.show("请选择要删除的webdav文件存储位置！");
+			}
+			else
+			{
+				rs.deleteRepository(dataset,webdavDataGrid.selectedItem.name);
+			}
+		}
+		
+		private function updateFtpRepository(event:DataGridEvent):void
+		{
+			if (event.reason == DataGridEventReason.CANCELLED) 
+				return; 
+			
+            var dsColumnIndex:Number = event.columnIndex;
+            var col:DataGridColumn = ftpDataGrid.columns[dsColumnIndex];
+            
+            var newValue:String = ftpDataGrid.itemEditorInstance[col.editorDataField];
+            var dsFieldName:String = event.dataField;
+            
+            var o :Object= ftpDataGrid.editedItemRenderer.data;
+            
+            if (newValue == o[dsFieldName])
+            	return;
+            	
+            o[dsFieldName] = newValue;
+            
+			rs.updateFtpRepository(dataset,o.name,o.hostname,o.port,o.username,o.password,o.path);
+		}
+		
+		private function updateLocalRepository(event:DataGridEvent):void
+		{
+			if (event.reason == DataGridEventReason.CANCELLED) 
+				return; 
+			
+            var dsColumnIndex:Number = event.columnIndex;
+            var col:DataGridColumn = localDataGrid.columns[dsColumnIndex];
+            
+            var newValue:String = localDataGrid.itemEditorInstance[col.editorDataField];
+            var dsFieldName:String = event.dataField;
+            
+            var o :Object= localDataGrid.editedItemRenderer.data;
+            
+            if (newValue == o[dsFieldName])
+            	return;
+            o[dsFieldName] = newValue;
+
+			rs.updateLocalRepository(dataset,o.name,o.path);
+		}
+		
+		private function updateWebdavRepository(event:DataGridEvent):void
+		{
+			if (event.reason == DataGridEventReason.CANCELLED) 
+				return; 
+			
+            var dsColumnIndex:Number = event.columnIndex;
+            var col:DataGridColumn = webdavDataGrid.columns[dsColumnIndex];
+            
+            var newValue:String = webdavDataGrid.itemEditorInstance[col.editorDataField];
+            var dsFieldName:String = event.dataField;
+            
+            var o :Object= webdavDataGrid.editedItemRenderer.data;
+            
+            if (newValue == o[dsFieldName])
+            	return;
+            	
+            o[dsFieldName] = newValue;
+            
+			rs.updateWebdavRepository(dataset,o.name,o.path,o.username,o.password);
+		}
+		
+		private function updateApacheRepository(event:DataGridEvent):void
+		{
+			if (event.reason == DataGridEventReason.CANCELLED) 
+				return; 
+			
+            var dsColumnIndex:Number = event.columnIndex;
+            var col:DataGridColumn = apacheDataGrid.columns[dsColumnIndex];
+            
+            var newValue:String = apacheDataGrid.itemEditorInstance[col.editorDataField];
+            var dsFieldName:String = event.dataField;
+            
+            var o :Object= apacheDataGrid.editedItemRenderer.data;
+            
+            if (newValue == o[dsFieldName])
+            	return;
+            o[dsFieldName] = newValue;
+
+			rs.updateApacheRepository(dataset,o.name,o.path);
+		}
+		
+		public function changeResult(event:ResultEvent):void
+		{
+			loadRepositories();
+ 		}
+	]]>
+    </mx:Script>
+    
+    <mx:Style>
+        Panel {
+           borderColor: #99CDEE;
+           borderAlpha: 1;
+           borderThickness: 1;
+           borderThicknessLeft: 1;
+           borderThicknessTop: 0;
+           borderThicknessBottom: 1;
+           borderThicknessRight: 1;
+           roundedBottomCorners: false;
+           cornerRadius: 5;
+           headerColors: #b5e6f3, #81b3e6;
+           dropShadowEnabled: false;
+           titleStyleName: "mypanelTitle";
+           vertical-align:middle;
+           horizontal-align:center;
+        }
+        
+        .mypanelTitle {
+           letterSpacing: 1;
+           color: #333333;
+           fontSize: 12;
+           fontWeight: bold;
+        }
+    </mx:Style>
+    
+	<mx:Style source="style/Aquabak/Aqua.css" />
+	
+	<mx:RemoteObject id="rs" destination="rs" >
+		<mx:method name="getLocalRepositories" result="localResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="getDataSets" result="dataSetsResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="getFtpRepositories" result="ftpResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="getApacheRepositories" result="apacheResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="getWebdavRepositories" result="webdavResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="deleteRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="addFtpRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="addLocalRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="addApacheRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="addWebdavRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="updateFtpRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="updateLocalRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="updateApacheRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="updateWebdavRepository" result="changeResult(event)" fault="faultHandler(event)"/>
+		<mx:method name="getAllRepositories" result="allResult(event)" fault="faultHandler(event)"/>
+	</mx:RemoteObject>
+	
+	<mx:TabNavigator x="141" y="203" width="743" height="398" backgroundColor="#EAF0FC">
+		<mx:Canvas id="c2" label="本地文件" width="766" height="359" x = "0" y = "0" visible="false" >
+			<mx:DataGrid id="localDataGrid" dataProvider="{localRepository}" x="38" y="35" width="664" height="214"  editable="true"  itemEditEnd="updateLocalRepository(event);" sortableColumns="true">
+				<mx:columns>
+					<mx:DataGridColumn headerText="名称" dataField="name" editable="false"/>
+					<mx:DataGridColumn headerText="路径" dataField="path" editable="true"/>
+				</mx:columns>
+			</mx:DataGrid>
+		
+			<mx:Button id="deletebutton" click="deleteLocalItem();"  label="删除" width="65" height="28"  x="406" y="308"/>
+			<mx:Button  label="添加"   enabled="true" x="274" y="308" width="65" height="28" click="popLocalWin();"/>
+		</mx:Canvas>
+
+		<mx:Canvas id="c1" label="Ftp文件" width="760" height="414" x="0" y = "0" visible="false">
+			<mx:DataGrid id="ftpDataGrid" dataProvider="{ftpRepository}" x="38" y="35" width="664" height="214" editable="true" itemEditEnd="updateFtpRepository(event);" sortableColumns="true" >
+				<mx:columns>
+					<mx:DataGridColumn headerText="名称" dataField="name" editable="false"/>
+					<mx:DataGridColumn headerText="主机名" dataField="hostname" editable="true"/>
+					<mx:DataGridColumn headerText="端口" dataField="port" editable="true"/>
+					<mx:DataGridColumn headerText="用户名" dataField="username" editable="true"/>
+					<mx:DataGridColumn headerText="密码" dataField="password" editable="true"/>
+					<mx:DataGridColumn headerText="路径" dataField="path" editable="true"/>
+				</mx:columns>
+			</mx:DataGrid>
+		<mx:Button   label="添加" x="274" y="308" width="65" height="28" click="popFtpWin();"/>
+		<mx:Button id="deleteftpbutton" x="406" y="308" label="删除" click="deleteFtpItem();" width="65" height="28"/>
+		</mx:Canvas>
+		
+		<mx:Canvas id="c3" label="apache文件" width="766" height="421" x = "0" y = "0" visible="false" >
+			<mx:DataGrid id="apacheDataGrid" dataProvider="{apacheRepository}" x="38" y="35" width="664" height="214"  editable="true"  itemEditEnd="updateApacheRepository(event);" sortableColumns="true">
+				<mx:columns>
+					<mx:DataGridColumn headerText="名称" dataField="name" editable="false"/>
+					<mx:DataGridColumn headerText="路径" dataField="path" editable="true"/>
+				</mx:columns>
+			</mx:DataGrid>
+		
+			<mx:Button id="deleteApachebutton" click="deleteApacheItem();"  label="删除" width="65" height="28"  x="406" y="308"/>
+			<mx:Button  label="添加"   enabled="true" x="274" y="308" width="65" height="28" click="popApacheWin();"/>
+		</mx:Canvas>
+
+		<mx:Canvas id="c4" label="webdav文件" width="744" height="414" x="0" y = "0" visible="false">
+			<mx:DataGrid id="webdavDataGrid" dataProvider="{webdavRepository}" x="38" y="35" width="664" height="214" editable="true" itemEditEnd="updateWebdavRepository(event);" sortableColumns="true" >
+				<mx:columns>
+					<mx:DataGridColumn headerText="名称" dataField="name" editable="false"/>
+					<mx:DataGridColumn headerText="路径" dataField="path" editable="true"/>
+					<mx:DataGridColumn headerText="用户名" dataField="username" editable="true"/>
+					<mx:DataGridColumn headerText="密码" dataField="password" editable="true"/>
+				</mx:columns>
+			</mx:DataGrid>
+		<mx:Button   label="添加" x="274" y="308" width="65" height="28" click="popWebdavWin();"/>
+		<mx:Button id="deletewebdavbutton" x="406" y="308" label="删除" click="deleteWebdavItem();" width="65" height="28"/>
+		</mx:Canvas>
+	</mx:TabNavigator> 
+	<mx:VBox id="box" verticalGap="0" height="177" width="754" maxWidth="600" maxHeight="300"  x="141" y="11" borderColor="#8E1313">
+	    
+	    <containers:CoverFlowContainer id="coverflow" width="743" height="147" 
+	        horizontalGap="40" borderStyle="solid" 
+	        segments="{count}" reflectionEnabled="true" mouseDown="mousedown(event);" mouseUp="mouseup(event);" borderColor="#8E1313">
+	    
+	        
+	    </containers:CoverFlowContainer>
+	    
+	    <mx:HScrollBar id="scrollbar" width="744" pageSize="1" maxScrollPosition="{count-1}"
+	        scrollPosition="{coverflow.selectedIndex}" 
+	        scroll="coverflow.selectedIndex = Math.round(scrollbar.scrollPosition)"  height="0"/>
+	        
+	</mx:VBox>
+</mx:Application>

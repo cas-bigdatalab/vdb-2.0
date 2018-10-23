@@ -1,0 +1,61 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:22-->
+
+##定义一个指向ygzx.one2one的实体对象
+#set($entity = $tool.getEntity('ygzx.one2one'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8cd8c280014" fieldUri="ygzx.one2one.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按id排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> id</b>#if ('ygzx.one2one.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180021" fieldUri="ygzx.one2one.inputdate" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按收入日期排序" ><b> 收入日期</b>#if ('ygzx.one2one.inputdate' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180023" fieldUri="ygzx.one2one.consumer" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按受资助人排序" ><b> 受资助人</b>#if ('ygzx.one2one.consumer' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180024" fieldUri="ygzx.one2one.inputmoney" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按收入金额排序" ><b> 收入金额</b>#if ('ygzx.one2one.inputmoney' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180025" fieldUri="ygzx.one2one.outputdate" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按支付日期排序" ><b> 支付日期</b>#if ('ygzx.one2one.outputdate' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180026" fieldUri="ygzx.one2one.outputmoney" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按支付金额排序" ><b> 支付金额</b>#if ('ygzx.one2one.outputmoney' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="ff80808151c89ef80151c8d26f180027" fieldUri="ygzx.one2one.provider" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按资助人排序" ><b> 资助人</b>#if ('ygzx.one2one.provider' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿	$!bean.get('inputdate').dateFormat('yyyy年MM月dd日')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('consumer').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('inputmoney').format("%f")
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿	$!bean.get('outputdate').dateFormat('yyyy年MM月dd日')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('outputmoney').format("%f")
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('provider').format('%s')
+&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

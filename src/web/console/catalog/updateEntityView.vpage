@@ -1,0 +1,120 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+
+#set($meta=$catalog.fromId($param.entityId))
+
+<font color="red">
+	#set($title=${meta.title}+"的视图")
+</font>
+
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/jsoCtrl.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+
+<form id="form1" name="form1"  method="post" action="doUpdateEntityView.vpage?mid=${meta.id}&count=${manager.viewTypeManager.entityViewTypes.size()}" onsubmit="submitItems(this,${manager.viewTypeManager.entityViewTypes.size()})">
+<div align="center" style="border:1px solid white">
+<script language="javascript" src="js/viewEdit.js"></script>
+#set($p = 0)
+#foreach ($viewType in $manager.viewTypeManager.entityViewTypes)
+	#set($p = $p+1)
+	<fieldset style="background:#F6F9FE;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;width:90%" width="90%">
+		<legend>
+			${viewType.title}
+		</legend>
+		<input name="ids${p}" id="ids${p}" type="hidden">
+		<input name="viewTypeName${p}" type="hidden" value="${viewType.name}"/>
+		<table width="90%" border="0">
+			<tr>
+				<td style="border:0px">
+					<div contentEditable=true style="width:200;min-Height:300;_height:300px;border-style: inset; border-width: 2px;background:#fff; background-image:url(./images/wall1.gif)" id="metaList${p}">
+					</div>
+				</td>
+				<td style="border:0px">
+					<input type="button" value="添加所有" onclick="addAll(${p})">
+					<input type="button" value="全部清空" onclick="removeAll(${p})">
+					<br><br>
+					<div>
+						
+						#set($q = 1)
+							
+						#foreach ($field in $meta.fields)
+							<button type="button" gif="/typelib/$field.typeName/res/logo.gif" title="${field.title}" mid="${field.id}" onclick="insertMeta2('${p}','${q}',this)"><img src="/typelib/$field.typeName/res/logo.gif" align="absbottom">
+								${field.title}
+							</button><br>
+							<input type="hidden" id="${p}_${q}gif" value="/typelib/$field.typeName/res/logo.gif"/>
+
+							#set($q = $q+1)
+						#end
+					</div>
+					<br/>
+					<br/>
+
+					<img src="images/arrow_left.png" width="15" height="15">设置成和
+					<select onchange="copy(${p},this.value)">
+						
+						#set($q = 0)
+						<option value="0">
+							---请选择---
+						</option>
+						#foreach ($viewType1 in $manager.viewTypeManager.entityViewTypes)
+							#set($q = $q+1)
+							#if ($viewType.name!=$viewType1.name )
+								<option value="${q}">${viewType1.title}</option>
+							#end
+						#end
+					</select>一样
+					<br/>
+					<br/>
+					<img src="images/arrow_right.png"  width="15" height="15">让
+					<select onchange="copy(this.value,${p})">
+						#set($q = 0)
+						<option value="0">
+							---请选择---
+						</option>
+						#foreach ($viewType1 in $manager.viewTypeManager.entityViewTypes)
+							#set($q = $q+1)
+							#if ($viewType.name!=$viewType1.name)
+								<option value="${q}">
+									${viewType1.title}
+								</option>
+							#end
+						#end
+					</select>也设置成这样
+				</td>
+			</tr>
+		</table>
+		<br>
+	</fieldset>
+	<br/>
+#end
+
+<div id="options" style="display:none;">
+	#foreach ($field in $meta.fields)
+		<button gif="/typelib/${field.typeName}/res/logo.gif" title="${field.title}" mid="${field.id}">
+			<img src="/typelib/${field.typeName}/res/logo.gif" align="absbottom">${field.title}
+		</button><br>
+	#end
+</div>
+
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="submitItems(this,${manager.viewTypeManager.entityViewTypes.size()});document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();window.location.reload();">重新填写</a></div>
+        </div>
+</div>
+
+<script>
+$(document).ready(function(){
+ var p =0;
+		#foreach ($viewType in $manager.viewTypeManager.entityViewTypes)
+			p = p + 1;
+			#foreach ($meta in $meta.ex.getView($viewType.name).items)
+				#if ($meta.title != "")
+					initItem('/typelib/${meta.typeName}/res/logo.gif', '${meta.id}', '${meta.title}',p);
+				#end
+			#end
+		#end
+});
+</script>
+</div>
+</form>

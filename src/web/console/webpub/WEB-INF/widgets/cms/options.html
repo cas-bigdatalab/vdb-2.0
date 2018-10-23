@@ -1,0 +1,24 @@
+#set($select = $daTool.initSelect("p_type","${widget.props.type}",$daTool.execute("cms", "select * from newstype"),"type","type"))
+<li>
+<label for="p_type">选择栏目</label>
+${select}
+</li>
+<li>
+<br>
+<label for="p_count">显示数量</label>
+<input type="text" name="p_count" id="p_count" value="${widget.props.count}" onblur="check();" onchange="check();"/>
+</li>
+<li>
+	<label for="p_marquee">是否滚动:</label>
+	<label style="width:65px;"> <input   type="radio"   name="p_marquee"  #if($widget.props.marquee=="true") checked #end   value="true">是   </label>
+	<label style="width:65px;"> <input   type="radio"   name="p_marquee"	#if($widget.props.marquee!="true") checked #end	 value="false">否</label>
+</li>
+<script>
+function check()
+{
+	if(document.getElementById('p_count').value==""||document.getElementById('p_count').value<1)
+	{
+		document.getElementById('p_count').value = '4';
+	}
+}
+</script>

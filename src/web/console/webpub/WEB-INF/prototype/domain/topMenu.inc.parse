@@ -1,0 +1,10 @@
+#saveAs("topMenu.inc")
+<table height=24 cellspacing=0 cellpadding=0 width=100% border=0>
+  <tbody>
+    <tr>
+      <td height=24 align="center">
+		 #renderWidget("horizontal", true)     
+      </td>
+    </tr>
+  </tbody>
+</table>

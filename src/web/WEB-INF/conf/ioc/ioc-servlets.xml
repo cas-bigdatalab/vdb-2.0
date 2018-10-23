@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<!-- *.vpage -->
+	<bean id="vspRenderServlet" class="vdb.mydb.jsp.VspRenderServlet">
+		<property name="errorPage" value="/console/shared/error.vpage" />
+	</bean>
+
+	<bean class="vdb.mydb.jsp.UrlMappings">
+		<property name="handlers">
+			<list>
+				<!-- vdb httpservice -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2000"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/service" />
+							<property name="target">
+								<bean class="vdb.service.httpservice.HttpServiceServlet">
+									<property name="innerErrorXmlPath" value="console/services/http/errors/innerError.xml" />
+									<property name="unkonwnVerbXmlPath" value="console/services/http/errors/unknownVerb.xml" />
+									<property name="badRequestXmlPath" value="console/services/http/errors/badRequest.xml" />
+									<property name="httpServicePath" value="console/services/http/" />
+								</bean>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- fckeditor -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2000"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/console/shared/plugins/fckeditor/editor/filemanager/connectors/.*" />
+							<property name="target">
+								<bean class="net.fckeditor.connector.ConnectorServlet"/>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- flex messagebroker -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2000"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/messagebroker/.*" />
+							<property name="target">
+								<bean class="flex.messaging.MessageBrokerServlet"/>
+							</property>
+							<property name="params">
+								<map>
+									<entry key="services.configuration.file" value="/WEB-INF/flex/services-config.xml"/>
+								</map>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- action -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2001"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value=".*\.action" />
+							<property name="target">
+								<bean class="vdb.mydb.jsp.ActionServlet"/>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- files -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2002"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/files/.*" />
+							<property name="target">
+								<bean class="vdb.mydb.jsp.FileServlet"/>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2003"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value=".*\.vpage" />
+							<property name="target" ref="vspRenderServlet"/>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- *.vsp -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2004"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value=".*\.vsp" />
+							<property name="target" ref="vspRenderServlet"/>
+						</bean>
+					</property>
+				</bean>
+				
+				<!-- download -->
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2005"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/doDownload.do" />
+							<property name="target">
+								<bean class="vdb.mydb.util.DoExcelOutServlet"/>
+							</property>
+						</bean>
+					</property>
+				</bean>
+				
+				<bean class="vdb.mydb.util.OrderedEntry">
+					<property name="order" value="2005"/>
+					<property name="value">
+						<bean class="vdb.mydb.jsp.ServletHandler">
+							<property name="pattern" value="/doDownloadSql.do" />
+							<property name="target">
+								<bean class="vdb.mydb.util.DoExcelOutServletSql"/>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

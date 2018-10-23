@@ -1,0 +1,33 @@
+#define($showLoginForm)
+  <form action="${request.contextPath}/j_spring_security_check" method="post" name="j_spring_security_check">
+  	<table width="100%" style="font-size:12px;">
+  		<tr>
+  			<td style="padding-left:15px;">
+  				用户名：<input type="text" style="width:60%" name="j_username">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td  style="padding-left:15px;">
+  				密 &nbsp;码：<input type="password" style="width:60%" name="j_password">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td align="right"  style="padding-right:15px;">
+  				<input type="submit" value="登 录"/>
+  				<a href="/console/shared/register.htm" target="_top">用户注册</a>
+  			</td>
+  		</tr>
+  	</table>
+  </form>
+#end
+#if($isViewMode)
+\#if(${D}auth.user)
+<p align="center" style="font-size:12px;">欢迎你，${D}{auth.user.username}！</p>
+<p align="right" style="font-size:12px;padding-bottom:5px;"><a href="/console/editor" target="_blank">[数据管理]</a>
+	<a href="/console/shared/logout.jsp">[退出身份]</a>&nbsp;&nbsp;</p>
+\#else
+$showLoginForm
+\#end
+#else
+$showLoginForm
+#end

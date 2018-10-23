@@ -1,0 +1,66 @@
+<link rel="stylesheet" type="text/css" href="/widgets/$widget.name/res/style.css" />
+#set($query = $tool.createQueryFromSql('cms.news', "select * from news where flag = 'y'"))
+#nul($query.orderBy('cms.news.addtime','desc'))
+#if("all" != ${widget.props.type})
+	#set($query = $tool.createQueryFromSql('cms.news', "select * from news where type = '${widget.props.type}' and flag = 'y'"))
+#end
+#set($pageIndex = 1)
+#set($pageViewer = $tool.createPageViewer($query, $pageIndex, ${widget.props.count}))
+#if($pageViewer.beans.size()>0)
+<div id="featured" >
+		<ul class="ui-tabs-nav">
+			#set($li = 1)
+			#foreach ($bean in $pageViewer.beans)
+			#set ($id = $bean.getId().jdbcObject)
+				#if($bean.get('pic').files)
+					#foreach ($file in $bean.get('pic').files)
+						 <li #if($li == 1)class="ui-tabs-nav-item ui-tabs-selected"#else class="ui-tabs-nav-item" #end id="nav-fragment-$li"><a href="#fragment-$li"><img src="$file.servletPath" alt=""  width="80px" height="55px" /><span>$!bean.get('title').format('%s')</span></a></li>
+					#end
+				#end
+				#set($li =$li + 1)
+			#end
+	    </ul>
+
+		#set($li = 1)
+			#foreach ($bean in $pageViewer.beans)
+			#set ($id = $bean.getId().jdbcObject)
+				#if($bean.get('pic').files)
+					#foreach ($file in $bean.get('pic').files)
+						 
+						 <div id="fragment-$li" #if($li == 1)class="ui-tabs-panel"#else class="ui-tabs-panel ui-tabs-hide" #end  style="">
+							<img src="$file.servletPath" alt="" width="250px" height="200px" />
+							 <div class="info" >
+								<h2>
+									<a href="${engine.webpub}/showItem.vpage?id=cms.news/${id}" >
+										#if($!bean.get('title').format('%s').length() > 16)
+											$!bean.get('title').format('%s').substring(0,16)..
+										#else
+											$!bean.get('title').format('%s')
+										#end
+									</a>
+								</h2>
+								<p>#if($!bean.get('content').format('%s').length() > 55)
+										$!bean.get('content').format('%s').substring(0,55)... <a href="${engine.webpub}/showItem.vpage?id=cms.news/${id}" >详细</a>
+									#else
+										$!bean.get('content').format('%s')
+									#end
+								</p>
+							 </div>
+					    </div>
+					#end
+				#end
+				#set($li =$li + 1)
+			#end
+	
+</div>
+#if($isViewMode==true)
+<script defer>
+$.getScript("/console/shared/js/jquery-1.3.2.min.js", function(){
+  	$.getScript("/console/shared/js/jquery-ui.min.js", function(){$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 4000, true);
+	});
+});
+</script>
+#end
+#else
+暂时没有图片新闻！
+#end

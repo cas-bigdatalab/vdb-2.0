@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="rpcServicesInOne"
+		class="vdb.mydb.rpc.service.DataFetchServiceImpl" />
+
+	<bean id="vdbEngineServer"
+		class="vdb.mydb.engine.VdbEngineServer">
+		<property name="port" value="4444" />
+		<property name="rpcServices">
+			<bean class="vdb.mydb.engine.RPCServices">
+				<property name="baseUrl" value="/vdbrpc" />
+				<property name="servicesMapping">
+					<map>
+						<entry
+							key="vdb.mydb.rpc.service.DataFetchService"
+							value-ref="rpcServicesInOne" />
+						<entry
+							key="vdb.mydb.rpc.service.JobExecutorService">
+							<bean
+								class="vdb.mydb.rpc.service.JobExecutorServiceImpl" />
+						</entry>
+						<entry
+							key="vdb.mydb.rpc.service.JdbcDataFetchService"
+							value-ref="rpcServicesInOne" />
+						<entry
+							key="vdb.mydb.rpc.service.FileFetchService"
+							value-ref="rpcServicesInOne" />
+						<entry
+							key="vdb.mydb.rpc.service.BeanFetchService"
+							value-ref="rpcServicesInOne" />
+						<entry
+							key="vdb.mydb.rpc.service.DataSetModelService"
+							value-ref="rpcServicesInOne" />
+					</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

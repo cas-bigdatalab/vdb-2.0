@@ -1,0 +1,35 @@
+﻿<!--created by VdbPublisher at 2010-04-01 09:31:12-->
+
+##定义一个指向cms.news的实体对象
+#set($entity = $tool.getEntity('cms.faq'))
+
+#if ($pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+
+<br><br>
+	#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.getId().jdbcObject)
+		#set ($flag = $velocityCount%2)
+
+<b><font color="blue">·问题：</font>$!bean.get('question').format('%s') </b><br>
+ &nbsp;&nbsp;<font color="blue"><B>回答：</B></font>$!bean.get('answer').format('%s') 
+
+	<br><br>	      
+	#end
+
+
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("../pageViewer.vpage")
+    </div>
+
+</center>
+	#end
+#end

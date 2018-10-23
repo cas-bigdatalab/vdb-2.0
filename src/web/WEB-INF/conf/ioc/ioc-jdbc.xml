@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="jdbcProducts" class="vdb.mydb.types.JdbcProducts">
+		<property name="products">
+			<list>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="mysql"/>
+					<property name="title" value="MySQL数据库"/>
+					<property name="url" value="jdbc:mysql://$host:$port/$databaseName"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="driver" value="com.mysql.jdbc.Driver"/>
+					<property name="defaultPort" value="3306"/>
+					<property name="properties">
+						<map>
+							<entry key="useUnicode" value="true"/>
+							<entry key="characterEncoding" value="gbk"/>
+							<entry key="connectionCollation" value="gbk_chinese_ci"/>
+							<entry key="connectTimeout" value="10000"/>
+						</map>
+					</property>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="oracle"/>
+					<property name="title" value="Oracle数据库"/>
+					<property name="defaultPort" value="1521"/>
+					<property name="databaseNameLabel" value="实例名"/>
+					<property name="url" value="jdbc:oracle:thin:@$host:$port:$databaseName"/>
+					<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="mssql"/>
+					<property name="title" value="SQLServer数据库"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="defaultPort" value="1433"/>
+					<property name="url" value="jdbc:jtds:sqlserver://$host:$port/$databaseName"/>
+					<property name="driver" value="net.sourceforge.jtds.jdbc.Driver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="access"/>
+					<property name="title" value="Microsoft Access数据库"/>
+					<property name="databaseNameLabel" value="Access文件(.mdb)路径"/>
+					<property name="url" value="jdbc:odbc:driver={Microsoft Access Driver (*.mdb)};DBQ=$databaseName"/>
+					<property name="driver" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+				</bean>
+				<!--
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="excel"/>
+					<property name="title" value="Excel表格"/>
+					<property name="databaseNameLabel" value="Excel文件(.xls)路径"/>
+					<property name="url" value="jdbc:odbc:driver={Microsoft Excel Driver (*.xls)};DBQ=$databaseName"/>
+					<property name="driver" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+				</bean>
+				-->
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="odbc"/>
+					<property name="title" value="ODBC数据源"/>
+					<property name="databaseNameLabel" value="数据源名"/>
+					<property name="url" value="jdbc:odbc:$databaseName"/>
+					<property name="driver" value="sun.jdbc.odbc.JdbcOdbcDriver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="hsqldb"/>
+					<property name="title" value="HSQLDB数据库"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="url" value="dbc:hsqldb:hsql://$host:$port/$databaseName"/>
+					<property name="driver" value="org.hsqldb.jdbcDriver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="hsqldb.local"/>
+					<property name="title" value="HSQLDB本地数据库"/>
+					<property name="databaseNameLabel" value="数据库文件路径"/>
+					<property name="url" value="jdbc:hsqldb:$databaseName"/>
+					<property name="driver" value="org.hsqldb.jdbcDriver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="postgresql"/>
+					<property name="title" value="PostgreSQL数据库"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="url" value="jdbc:postgresql://$host:$port/$databaseName"/>
+					<property name="defaultPort" value="5432"/>
+					<property name="driver" value="org.postgresql.Driver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="derby"/>
+					<property name="title" value="derby数据库"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="url" value="jdbc:derby://$host:$port/$databaseName"/>
+					<property name="driver" value="org.apache.derby.jdbc.ClientDriver"/>
+				</bean>
+				<bean class="vdb.mydb.types.JdbcProduct">
+					<property name="name" value="derby"/>
+					<property name="title" value="derby本地数据库"/>
+					<property name="databaseNameLabel" value="数据库名"/>
+					<property name="url" value="jdbc:derby:$databaseName"/>
+					<property name="driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+				</bean>
+			</list>
+		</property>
+	</bean>		
+</beans>

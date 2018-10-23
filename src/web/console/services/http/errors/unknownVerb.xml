@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>402</code>
+		<message>不可识别的verb</message>
+	</head>
+	<body>
+	</body>
+</response>

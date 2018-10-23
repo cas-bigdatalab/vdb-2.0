@@ -1,0 +1,78 @@
+﻿#set($error = $param.error)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>$productName Login</title>
+		<link href="/console/shared/js/login.css" rel="stylesheet" type="text/css" />
+		<script language="javascript">
+			if(document.addEventListener){
+				document.addEventListener( "keydown",keyDown,true);
+			}else{
+				document.attachEvent( "onkeydown",keyDown);
+			}
+			
+			function keyDown(e){
+				var browser = navigator.appName;
+				var code = 0;
+				if(browser == "Microsoft Internet Explorer")
+				{
+					code = window.event.keyCode;
+				}
+				else
+				{
+					code = e.which;
+				}
+				if(code==13){
+					document.getElementById('j_spring_security_check').submit()
+				}
+			}
+		</script>
+	</head>
+	<body>
+	<form action="${request.contextPath}/j_spring_security_check"
+			method="post" name="j_spring_security_check" id="j_spring_security_check">	
+	<div class="login01_bg_div">
+   	<div class="login02_bg_div">
+       	  <div class="login_div">
+           	<div class="login_tatle_div"><img src="images/Log_tatle.jpg" height="21" width="75" /></div>
+              <table cellpadding="0" cellspacing="0" border="0">
+               	  <tr>
+                   	  <td height="30" colspan="2" class="login_zi02">
+	                   	  	#if("1" == $error)
+								$requestLocale.message("vdb.login.error1")									
+							#elseif("2" == $error)
+								#nul($session.invalidate())
+								$requestLocale.message("vdb.login.error2")
+							#elseif("3" == $error)
+								$requestLocale.message("vdb.login.error3")
+							#else
+								<font face="Arial">$requestLocale.message("vdb.login.prompt", $domain.title)</font>
+							#end
+					  </td>
+                  </tr>
+               	  <tr>
+                   	  <td width="65" height="30" class="login_zi">$requestLocale.message("vdb.login.username"):</td>
+                      <td width="205" height="30"><input type="text" style="width:140px" name="j_username"></td>
+                  </tr>
+                  <tr>
+                   	  <td height="30" class="login_zi">$requestLocale.message("vdb.login.password"):</td>
+                      <td height="30"><input type="password" style="width:140px" name="j_password"></td>
+                  </tr>
+                    <tr>
+                   	  <td height="30" class="login_zi"></td>
+                      <td height="30" width="250px">
+                       	  <div class="login01_ico"><a href="#" onclick="return document.getElementById('j_spring_security_check').submit();">$requestLocale.message("vdb.login.button.login")</a></div>
+                          <div class="login01_ico"><a href="#" onclick="return document.getElementById('j_spring_security_check').reset();">$requestLocale.message("vdb.login.button.reset")</a></div>
+                          <div class="login01_ico"><a href="/console/shared/register.htm" onclick="return document.getElementById('j_spring_security_check').submit();">注 册</a></div>
+                          <input type="hidden" name="j_uri"
+										value="$request.contextPath/console/">
+                      </td>
+                  </tr>
+              </table>
+            </div>
+         </div>
+         <div class="login03_bg_div"></div>
+     </div>
+	 </form>	
+	 </body>
+</html>

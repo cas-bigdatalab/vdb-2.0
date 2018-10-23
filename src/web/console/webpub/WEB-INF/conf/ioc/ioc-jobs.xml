@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 建索引 -->
+				<bean
+					class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="jobDetail">
+						<bean
+							class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+							<property name="targetObject">
+								<bean class="vdb.mydb.job.IndexerJob" />
+							</property>
+							<property name="targetMethod"
+								value="execute" />
+						</bean>
+					</property>
+					<!--每天00:30启动-->
+					<property name="cronExpression"
+						value="0 30 0 * * ?" />
+				</bean>
+
+				<!-- 日志入库 -->
+				<!--每隔2秒钟执行一次-->
+				<!--
+				<bean
+					class="org.springframework.scheduling.quartz.CronTriggerBean">
+					<property name="jobDetail">
+						<bean
+							class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+							<property name="targetObject">
+								<bean class="vdb.log.job.LogJob" />
+							</property>
+							<property name="targetMethod"
+								value="execute" />
+						</bean>
+					</property>
+					<property name="cronExpression"
+						value="0/10 * * * * ?" />
+				</bean>
+				-->
+			</list>
+		</property>
+	</bean>
+</beans>

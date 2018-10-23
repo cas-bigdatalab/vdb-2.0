@@ -1,0 +1,10 @@
+#if($field.linkStyle=='mailUrl')
+<img src="/console/shared/images/mail.gif" align="absbottom"><a href="mailto:${D}!bean.get('${field.name}').format('%s')" target='${field.answerStyle}'>${D}!bean.get('${field.name}').format('%s')</a>
+#elseif($field.linkStyle=='webUrl')
+<img src="/console/shared/images/www.gif" align="absbottom"><a href="${D}!bean.get('${field.name}').format('%s')" target='${field.answerStyle}'>${D}!bean.get('${field.name}').format('%s')</a>
+#elseif($field.linkStyle=='ftpUrl')
+<img src="/console/shared/images/ftp.gif" align="absbottom"><a href="${D}!bean.get('${field.name}').format('%s')" target='${field.answerStyle}'>${D}!bean.get('${field.name}').format('%s')</a>
+#else
+<img src="${D}!bean.get('${field.name}').format('%s')" 
+	#if(${field.imageWidth}!="") width="${field.imageWidth}"  #end #if(${field.imageHeight}!="") height="${field.imageHeight}" #end/>
+#end

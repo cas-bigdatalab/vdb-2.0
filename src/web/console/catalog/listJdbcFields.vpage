@@ -1,0 +1,11 @@
+﻿#set($dataSet = ${catalog.fromId($param.dsid)})
+#set($jdbcTable = ${dataSet.ex.jdbcDatabase.getTable($param.table)})
+
+<select name="${param.name}" style= "margin-left:-3px;margin-top:-2px;height:30px" >
+	<option value="">------------------------</option>
+	#foreach ($jdbcAttribute in $jdbcTable.columns)
+		<option value="${jdbcAttribute.columnName}" #if ($param.selected==$jdbcAttribute.columnName) selected #end >
+			${jdbcAttribute.columnName}
+		</option>
+	#end
+</select>

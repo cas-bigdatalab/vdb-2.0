@@ -1,0 +1,10 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#saveAs("showItem.vpage")
+\#set($${D}itemid = ${D}tool.createItemId(${D}{param.id}))
+\#nul(${D}param.set("id", ${D}itemid.id))
+\#set(${D}entity = ${D}tool.getEntity(${D}itemid.entityUri))
+\#set(${D}page = ${D}auth.getGrantedPageByTypeAndRes(${D}auth.userName, "showItem", ${D}entity.id))
+\#set(${D}bean = ${D}tool.getBean(${D}entity.uri, ${D}itemid.id))
+\#usingLayout("${D}{pageroot}/layout.vpage")
+\#set(${D}title = ${D}bean.title)
+#layoutWidgets("showItem")

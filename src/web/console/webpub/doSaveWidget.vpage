@@ -1,0 +1,12 @@
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#invoke("vdb.mydb.widget.vsp.DoSaveWidget")
+<body>
+</body>
+<script>
+	#if($param.reload == "true")
+		 	parent.layoutWidget('$widget.name');
+	#end
+	parent.dhxWins.window('w1').close();
+</script>

@@ -1,0 +1,189 @@
+﻿#usingLayout('/console/webpub/template1.vpage')
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+$request.setAttribute("pictype", "bg")
+#invoke("vdb.webpub.background.DoGetBackgroundInfo")
+#invoke("vdb.webpub.background.DoGetPics")
+<html>
+<head>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.js"></script>  
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgridcell.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/skins/dhtmlxlayout_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/toolbar/skins/dhtmlxtoolbar_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/toolbar/dhtmlxtoolbar.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.css" />
+<script language="JavaScript" type="text/javascript" src="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/dhtmlxcolorpicker.css"/>
+</script> <script src="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/dhtmlxcolorpicker.js"></script> 
+<script  src="js/customize.js"></script>
+<script  src="js/pic.js"></script>
+<link rel="STYLESHEET" type="text/css" href="js/pic.css"/>
+<link rel="stylesheet" type="text/css" href="js/picManager.css">
+</head>
+<body  style="font-size:12px;background-color:#f7f9fa;">
+<fieldset>
+  <legend>背景图片管理</legend>
+  <br>
+  <table>
+  <tr>
+  <td width="100%;">
+  			<DIV class=s-t style="width:100%;text-align:center">
+				<H4 class=diet>背景图片库选择</H4>
+			</DIV>
+			<DIV class=s-c  style="width:100%">
+				<DIV style="width:100%">
+					<DIV style="width:100%;text-align:center">
+						<P class="p1"><img id="dailyImage" src="$!props.get('fileName')" style="width:90%;height:120px;border:1px solid gray;padding:4px;"></P>
+					</DIV>
+					<div style="width:100%;text-align:center;padding-top:20px;">  
+						<img src="/console/shared/images/upload.gif" border=0/>&nbsp;&nbsp;<a href="javascript:upload('bg');"  style="color:red;"><strong>上传图片</strong></a>
+      				</div>
+				</DIV>
+			</DIV>
+  </td>
+  <td padding-right="20px;">
+  <DIV class=right>
+  		<DIV class=slide-pic id=slidePic>
+				<A class=gray id=prev hideFocus href="javascript:;">前移</A> 
+				<DIV class=pic-container>
+					<UL id="imgUL">
+					  #foreach($file in $fileNames)
+					  <LI #if($!props.get('fileName')=="/userfiles/bg/${file}") class=cur  #else class="" #end>
+					  <P><IMG src="/userfiles/bg/${file}"></P>
+					  #end
+					</UL>
+				</DIV>
+				 <A id=next hideFocus href="javascript:;">后移</A>
+		</DIV>
+	</DIV>
+  </td>
+  </tr>
+  </table>
+<hr style="border-top:1px dashed red;height:1px;"> 
+
+<div style="text-align:center;">
+<p style="padding-top:10px;padding-left:5px;"><H4 class=diet>背景图片来源选择</H4></p>
+<form name="form1" method="post" action="doSaveBackground.vpage"  onsubmit="return onSubmit(this);" >
+<p style="padding-top:10px;text-align:center;">
+<div style="width:100%;text-align:left;line-height:20px;padding-bottom:10px;padding-left:100px;" >
+	<input type="hidden" name="picType" value="bg">
+	<input type="hidden" id="fileName" name="fileName">
+	<input type="radio" name="picRes" #if($!props.get("picRes")=="upload") checked #end value="upload"> 使用图片库中选中图片  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;背景图片区域外颜色选择&nbsp;<input type="text" imagepath="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/imgs/" id="colorPicker" name="colorPicker" value='$!props.get("colorPicker")'><br>
+	<input type="radio" name="picRes" #if($!props.get("picRes")=="color") checked #end value="color"> 使用纯背景色  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;背景色选择&nbsp;<input type="text" imagepath="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/imgs/" id="colorPickerAll" name="colorPickerAll" value='$!props.get("colorPickerAll")'><br>
+	<input type="radio" name="picRes" #if($!props.get("picRes")=="myweb") checked #end value="myweb"> 选择myweb替换图片 <br>
+	<input type="radio" name="picRes" #if($!props.get("picRes")=="default") checked #end value="default"> 选择默认图片 <br>
+	
+</div>
+</p>
+<button type="submit" id="buttonSave"><img src='/console/shared/images/save.gif' border=0 align=absbottom>保存</button>
+</form>
+
+</div>			
+</fieldset>
+<script> 
+     
+ function onSubmit(form)
+ {
+   	$('#fileName').val($('#dailyImage').attr("src"));
+ 	return true;
+ }
+ 
+
+jQuery(function(){
+	if (!$('#slidePic')[0]) 
+		return;
+	var i = 0, p = $('#slidePic ul'), pList = $('#slidePic ul li'), len = pList.length;
+	var elePrev = $('#prev'), eleNext = $('#next');
+	var w = 60, num = 3;
+	p.css('width',w*len);
+	if (len <= num) 
+	eleNext.addClass('gray');
+
+	function prev(){
+		p = $('#slidePic ul');
+		pList = $('#slidePic ul li');
+		len = pList.length;
+		if (elePrev.hasClass('gray')) {
+		//alert('已经是第一张了');
+		return;
+		}
+		p.animate({
+		marginTop:-(--i) * w
+		},500);
+		if (i < len - num) {
+		eleNext.removeClass('gray');
+		}
+		if (i == 0) {
+		elePrev.addClass('gray');
+		}
+	}
+
+
+	function next(){
+		p = $('#slidePic ul');
+		pList = $('#slidePic ul li');
+		len = pList.length;
+		if (eleNext.hasClass('gray')) {
+		//alert('已经是最后一张了');
+		return;
+		}
+		//p.css('margin-left',-(++i) * w);
+		p.animate({
+		marginTop:-(++i) * w
+		},500);
+		if (i != 0) {
+		elePrev.removeClass('gray');
+		}
+		if (i == len - num) {
+		eleNext.addClass('gray');
+		}
+	}
+
+
+	elePrev.bind('click',prev);
+	eleNext.bind('click',next);
+
+	pList.each(function(n,v){
+		$(this).click(function(){
+		
+		$('#slidePic ul li.cur').removeClass('cur');
+		$(this).addClass('cur');
+		show(n);
+		}).mouseover(function(){
+		$(this).addClass('hover');
+		}).mouseout(function(){
+		$(this).removeClass('hover');
+		})
+	});
+
+	
+});
+
+var myCP1=new dhtmlXColorPickerInput('colorPicker');
+myCP1.setImagePath("/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/imgs/");
+myCP1.init();
+#if($props.get("colorPicker"))
+myCP1.qO('$props.get("colorPicker")');
+#end
+
+var myCP2=new dhtmlXColorPickerInput('colorPickerAll');
+myCP2.setImagePath("/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/imgs/");
+myCP2.init();
+#if($props.get("colorPickerAll"))
+myCP2.qO('$props.get("colorPickerAll")');
+#end
+
+</SCRIPT>
+</body>
+</html>

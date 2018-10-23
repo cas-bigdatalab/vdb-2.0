@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="widgetFactory" class="vdb.mydb.widget.WidgetFactory">
+		<property name="widgetDir" value="./console/webpub/WEB-INF/widgets"/>
+	</bean>
+	
+	<bean id="pagesManager"  class="vdb.metacat.fs.page.PagesManager" />
+
+	<bean id="widgetLayoutDAO" class="vdb.mydb.widget.WidgetLayoutDAO">
+		<property name="layoutPatternManager" ref="layoutPatternManager"/>
+	</bean>
+
+	<bean id="vdbPublisher" class="vdb.webpub.VdbPublisher">
+		<property name="publishLogFile" value="./WEB-INF/vdb/publish.log"/>
+		<property name="webpub" value="${webpub.rootPath}"/>
+		<property name="prototypeDir" value="./console/webpub/WEB-INF/prototype"/>
+	</bean>
+	
+	<bean id="themeManager" class="vdb.mydb.theme.ThemeManager">
+		<property name="themesDir" value="./console/webpub/WEB-INF/themes"/>
+		<property name="defaultThemeName" value="classic"/>
+	</bean>
+
+</beans>

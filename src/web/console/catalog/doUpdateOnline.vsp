@@ -1,0 +1,6 @@
+﻿#invoke("vdb.mydb.vsp.DoUpdateOnline")
+#if($exception)
+更新失败！$!exception.message
+#else
+成功更新至2.0.$version.revision！强烈建议您重新启动web服务器！
+#end

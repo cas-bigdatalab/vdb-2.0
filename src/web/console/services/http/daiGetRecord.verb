@@ -1,0 +1,39 @@
+#if(!$param.uri)
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($uri = $param.uri)
+#set($entityUri = $uriTool.getEntityUri($uri))
+#set($id = $uriTool.getId($uri))
+#set($entity = $tool.getEntity($entityUri))
+#set($bean = $tool.getBean($entity,$id))
+#selectView($view, $entity, 'indexEntity')
+#set($fields=$view.items)
+#if(!$bean ||!$view )
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<record>
+			<url>${request.scheme}://${request.serverName}:${request.serverPort}/page/showItem.vpage?id=$!uri</url>
+			<title>$!bean.title.title</title>
+			<fields>
+				#foreach($field in $fields)
+ 					<field>
+ 						<uri>$!field.uri</uri>
+ 						<name>$!field.name</name>
+ 						<title>$!field.title</title>
+ 						<type>$!field.type.name</type>
+						$!bean.get($field)
+					</field>
+				#end				
+			</fields>
+		</record>	
+	</body>
+</response>
+#end
+#end

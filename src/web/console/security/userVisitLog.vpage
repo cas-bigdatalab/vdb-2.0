@@ -1,0 +1,81 @@
+﻿<link rel="stylesheet" type="text/css" href="/console/shared/js/style.css">
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<cript type="text/javascript" src="/console/shared/js/interface.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js"></script>
+
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/check.js"></script>
+<script language="JavaScript" src="/console/shared/js/ui.js"></script>
+#set($datasetId = $param.datasetId)
+#set($username = $param.username)
+#set($page = $param.page)
+#set($pageSize = '10')
+
+<!-- BEGIN 访问历史 -->
+
+#invoke("vdb.log.servlet.UserVisitAction")
+
+<div align="center" width="80%">
+<fieldset class='query' style="padding:10px; margin:10px;align="center";width:90%;">
+	<legend><a onclick= $("#visitLogDetail$datasetId").toggle(); style="cursor:default">&gt;&gt;&nbsp;$username访问了$pageViewer.recordCount次该数据集</a></legend>
+	<p/>
+	<!-- 查看记录列表详细信息，将随着visitLogCount的点击而展开/合上 -->
+	<div id="visitLogDetail$datasetId" > 
+		#if ($pageViewer.records.size() == 0)
+			<center>
+			  <div style="width:80%" align="left"> <br>
+			    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+			  </div>
+			</center>
+		#else
+			#foreach ($record in $pageViewer.records)
+			
+				#if($record.OPERATION == 'update')
+					#set($operation = '修改了该数据集的记录')
+				#elseif($record.OPERATION == 'insert')
+					#set($operation = '添加了该数据集的记录')
+				#elseif($record.OPERATION == 'delete')
+					#set($operation = '删除了该数据集的记录')
+				#elseif($record.OPERATION == 'showEntity')
+					#set($operation = '查看了该数据集的表')
+				#elseif($record.OPERATION == 'showBean')
+					#set($operation = '查看了该数据集的记录')
+				#else
+					#set($operation = '查询了该数据集的记录')
+				#end
+			
+				<div align='left'><font color='blue'><li>
+	 			<I>$record.USER_NAME</I> 于 <I>$record.OP_TIME</I> 于 <I>$record.IP</I>$operation<br>
+	 			</li></font></div>
+			#end
+			
+			#if ($pageViewer.pageCount > 1)
+				<br>
+				<center>
+				    <div style="width:80%">
+				      <div align="right">${pageViewer.footerBar1}</div>
+				    </div>
+				    <div style="width:80%">
+				      <div align="right">${pageViewer.footerBar2}</div>
+				    </div>
+				</center>
+			#end
+		#end
+	</div>
+</fieldset>
+</div>
+<!-- END 查看历史 -->
+
+<script defer>
+ 	//查看记录的详细列表(分页)
+		function gotoUserVisit$datasetId(page){
+			loadHTML1("/console/security/userVisitLog.vpage", 
+			"datasetId=$datasetId" + "&username=$username" +"&page=" + page , 
+			$("#visitInner_$datasetId")[0]);
+			$("#visitInner_$datasetId").show;
+	  }
+</script>
+
+
+

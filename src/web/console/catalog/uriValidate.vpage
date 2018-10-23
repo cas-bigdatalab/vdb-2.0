@@ -1,0 +1,5 @@
+﻿#if (${catalog.fromUri(${param.uri})})
+	1
+#else
+	0
+#end

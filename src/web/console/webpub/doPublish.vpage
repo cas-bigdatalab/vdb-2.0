@@ -1,0 +1,73 @@
+﻿<script language="javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery.progressbar.min.js"></script>
+<link type="text/css" rel="Stylesheet" href="/console/shared/js/progressbar.css"/>
+#usingLayout('/console/webpub/_result.vpage')
+#set($title="发布数据集")
+<div id="success" style="display: none">
+发布成功!	<br/>
+<div style="margin-top:10px;">		
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="publish.vpage"><img src="/console/shared/images/goto.gif" border="none"/>重新发布</a><br/>
+		<a href="/" target="_blank"><img src="/console/shared/images/goto.gif" border="none"/>在新窗口查看网站首页</a><br/>
+	</div>
+</div>
+</div>
+#invoke("vdb.webpub.vsp.StartPublish")
+<div id="container">
+	<span class="progressBar" height="20px" id="spaceused1"></span>
+	<div id="prompt" style="height:50px;"></div>
+	<div>已用<span id="elapse" style="width:20px;color:red"></span>s，估计还剩<span id="leftTime" style="width:20px;color:red"></span>s</div>
+</div>
+<script>
+	$('#spaceused1').progressBar(0,
+		{
+			boxImage		: '/console/shared/images/progressbar.gif',
+			barImage		: 
+			{
+				0:  '/console/shared/images/progressbg_red.gif',
+				30: '/console/shared/images/progressbg_orange.gif',
+				70: '/console/shared/images/progressbg_green.gif'
+			}
+		}
+	);
+
+	var handle = 0;
+		
+	function showPublishProgress()
+	{
+		jQuery.ajax(
+		{
+			type: "POST",
+			url:"publishProcess.vpage",
+			success:function(data)
+				{
+				 	var result = data.split("|");
+				 	var pos = parseInt(result[0]);
+				 	var max = parseInt(result[1]);
+				 	
+	  				if(pos == max)
+	  				{
+						clearInterval(handle);
+						$('#container').hide();
+						$('#success').show();
+						
+						return;
+					}  
+	
+				 	var elapse = parseInt(result[2]);
+				 	var leftTime = parseInt(result[3]);
+				 	var prompt = result[4];
+				 	
+				 	var percentage = pos * 100.0 / max;
+	  				$('#spaceused1').progressBar(percentage);
+	  				$('#prompt').text(prompt);
+	
+					$('#elapse').text("" + Math.floor(elapse / 100) / 10);
+					$('#leftTime').text("" + Math.floor(leftTime / 100) / 10);
+		 		}
+		});
+	}
+	
+	handle = setInterval("showPublishProgress()", 10);
+</script>

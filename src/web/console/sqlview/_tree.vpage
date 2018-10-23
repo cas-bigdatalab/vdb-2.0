@@ -1,0 +1,23 @@
+#set($ds = ${catalog.fromId(${param.dsid})})
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="0" >
+	#if ($ds.ex.jdbcSource)
+		<item   text='$ds.title' id='dataset@$ds.uri'>
+		#set($tables = $ds.ex.getJdbcDatabase().getTables())
+		#foreach($obj in $tables)
+			#set($ttxt = $obj.tableName) ## + "(" + $obj.tableName + ")")
+			#set($tid = $obj.tableName + "@" + $ds.uri + "@" + $obj.uri)
+			<item   text='$ttxt' id='$tid'>
+				#foreach ($field in $obj.columns)
+					#set($ftxt = $field.columnName + "[" + $field.getTypeName() + "(" + $field.columnSize + ")]")
+					#set($fid = $field.columnName + "@" + $ds.uri)
+					<item   text='$ftxt' id='$fid'/>
+				#end
+			</item>
+		#end
+		</item>
+	#else
+		<item text="Sorry, can not load dataset[$ds.title]!">
+		</item>
+	#end
+</tree>

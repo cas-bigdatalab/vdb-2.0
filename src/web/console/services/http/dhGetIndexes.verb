@@ -1,0 +1,36 @@
+#if(!$param.uri )
+#parse("/console/services/http/errors/badRequest.xml")
+#else
+#set($query = $tool.createQuery($param.uri))
+#set($queryExcutor = $tool.execute($query))
+#if($param.beginIndex)
+#set($beginIndex = $number.toNumber('integer', $param.beginIndex).intValue())
+#else
+#set($beginIndex = 1)
+#end
+#if($param.size)
+#set($size = $number.toNumber('integer',$param.size).intValue())
+#else
+#set($size = $number.toNumber('integer',$queryExcutor.size()).intValue())
+#end
+#if(!$queryExcutor ||!$beginIndex || !$size)
+#parse("/console/services/http/errors/innerError.xml")
+#else
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<items>
+			<totalSize>$!queryExcutor.size()</totalSize>
+			<nextIndex>$param.uri/$math.add($beginIndex,$size)</nextIndex>
+ 			#foreach($item in $!queryExcutor.list($beginIndex,$size))
+				<item>$!item.itemId</item>
+ 			#end
+		</items>
+	</body>
+</response>
+#end
+#end

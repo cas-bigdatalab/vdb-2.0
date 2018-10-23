@@ -1,0 +1,51 @@
+TABLE.list TD.header
+{
+    FONT-SIZE: 9pt;
+    BACKGROUND-IMAGE: url(../images/backgrad.gif);
+}
+
+TABLE.list2
+{
+	border-collapse: collapse;
+	border-color: #816f44;
+}
+TABLE.list2 TD
+{
+	border-color: #000443;
+}
+TABLE.list2 TR.header
+{
+	BACKGROUND-COLOR: #ece6cd;
+	font-weight: bold;
+	font-family: "宋体";
+}
+TABLE.list2 TR.bg0
+{
+	BACKGROUND-COLOR: #ece6c0;
+	color: #333333;
+	font-family: "宋体";
+}
+TABLE.list2 TR.bg1
+{
+	BACKGROUND-COLOR: #fcfbf3;
+	color: #333333;
+	font-family: "宋体";
+}
+TABLE.list2 TR.bg2
+{
+	BACKGROUND-COLOR: #dcdedc;
+	color: #333333;
+	font-family: "宋体";
+}
+TABLE.list2 TD.bg2
+{
+	text-decoration: none;
+	height: 25px;
+}
+TABLE.list2 TD.header
+{
+	height: 30px;
+	BACKGROUND-COLOR: #ece6cd;
+	font-weight: bold;
+	font-family: "宋体";
+}

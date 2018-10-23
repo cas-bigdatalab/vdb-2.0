@@ -1,0 +1,29 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_columnName" value="${meta.columnName}"><input type="text" size="35" value="${meta.columnName}" disabled></td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="DateCtrl"
+      		#if($!{field.editorStyle}==''||${field.editorStyle}=='DateCtrl'||(${field.editorStyle}!='DateCtrl'&&${field.editorStyle}!='DateTimeCtrl')) checked #end>日期控件
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="DateTimeCtrl"
+      		#if(${field.editorStyle}=='DateTimeCtrl') checked #end>日期时间控件
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="DateLabel"
+      		#if($!{field.viewerStyle}==''||${field.viewerStyle}=='DateLabel'
+      			||(${field.viewerStyle}!='DateLabel'&&${field.veiwerStyle}!='DateTimeLabel')) checked #end>日期输出
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="DateTimeLabel"
+      	#if(${field.viewerStyle}=='DateTimeLabel') checked #end>日期时间输出
+      </td>
+    </tr>
+</table>
+<script $ifDefer>
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+</script>

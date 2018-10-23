@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<bean id="engine" class="vdb.mydb.engine.VdbEngine">
+		<property name="poolXml" value="./WEB-INF/conf/pool.xml" />
+		<property name="cacheXml" value="./WEB-INF/conf/ehcache.xml" />
+		<property name="vdbRootDir" value="./WEB-INF/vdb" />
+		<property name="productVersion" value="1.3.2(20100430)" />
+
+		<property name="modelsDir" value="./WEB-INF/vdb/model" />
+		<property name="metaDefaults" ref="metaDefaults" />
+
+		<property name="responseEncoding" value="utf-8" />
+		<property name="usingDaoCache" value="true" />
+		<property name="locale" value="zh_CN" />
+		<!--
+		<property name="locale" value="en" />
+		-->
+		<!--
+		<property name="engineServer" ref="vdbEngineServer" />
+		-->
+	</bean>
+
+	<bean id="contextInjections"
+		class="vdb.mydb.context.VspContextInjections" />
+
+	<bean id="velocityEngine" class="vdb.mydb.vtl.VtlEngine">
+		<property name="velocityProperties"
+			value="./WEB-INF/conf/velocity.properties" />
+		<property name="toolsDir" value="./WEB-INF/conf/tools" />
+		<property name="macrosDir" value="./WEB-INF/conf/macros" />
+		<property name="moduleManager" ref="moduleManager" />
+		<property name="contextInjections" ref="contextInjections" />
+		<!-- user defined resource loader -->
+		<property name="customResourceLoader"
+			ref="customResourceLoader" />
+	</bean>
+
+	<bean id="typeManager" class="vdb.mydb.types.TypeManager">
+		<property name="typesDir" value="./WEB-INF/typelib" />
+	</bean>
+
+	<bean id="httpServiceVerbManager"
+		class="vdb.service.httpservice.HttpServiceVerbManager">
+		<property name="verbsDir" value="./console/services/http" />
+	</bean>
+
+	<bean id="pagesManager" class="vdb.metacat.fs.page.PagesManager" />
+
+	<bean id="chartsManager" class="vdb.metacat.fs.page.ChartsManager" />
+</beans>

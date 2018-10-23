@@ -1,0 +1,135 @@
+﻿#invoke("vdb.mydb.jsp.action.editor.DoSetSection")
+<HTML>
+<head>
+<style>
+.btn_mouseout {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+} 
+.btn_mouseover {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#D7E7FA); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+}
+.btn_mousedown
+{
+ BORDER-RIGHT: #FFE400 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #FFE400 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #FFE400 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #FFE400 1px solid
+} 
+.btn_mouseup {
+ BORDER-RIGHT: #2C59AA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #2C59AA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5); BORDER-LEFT: #2C59AA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #2C59AA 1px solid
+} 
+.editbox{
+     background: #ffffff;border: 1px solid #b7b7b7;color: #003366;cursor: text;font-family: "arial";font-size: 9pt;height: 20px;padding: 1px; 
+}
+</style>
+<script language="javascript" src="/console/shared/js/selectOption.js"	></script>
+<script type="text/javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script>
+function add(val)
+{
+	var obj = document.getElementById('dept_cd_b');
+	if(val==1)
+	{
+		if(isNaN(document.getElementById('start').value)||isNaN(document.getElementById('end').value))
+		{
+			alert("请设置为数值！");
+			return false;
+		}
+		if(parseInt(document.getElementById('start').value)>=parseInt(document.getElementById('end').value))
+		{
+			alert("起始值大于或等于结束值！");
+			return false;
+		}
+	}
+	if(document.getElementById('start').value=="")
+	{
+		alert("请设置起始值！");
+		document.getElementById('start').focus();
+		return false;
+	}
+	if(document.getElementById('end').value=="")
+	{
+		alert("请设置终止值！");
+		document.getElementById('end').focus();
+		return false;
+	}
+	
+	var newOpt = document.createElement("OPTION");
+	newOpt.value = document.getElementById('start').value + " ------ " + document.getElementById('end').value;
+	newOpt.text = document.getElementById('start').value + " ------ " + document.getElementById('end').value;
+	obj.options.add(newOpt);
+}
+
+function submitForm()
+{
+	var form = document.getElementById('setSectionForm');
+	var sectionStr = "";
+	for(var i=0;i<form.dept_cd_b.options.length;i++) 
+	{
+		sectionStr = sectionStr + ";" + form.dept_cd_b.options[i].value;
+	}
+	var isSector = true;
+	form.sections.value = sectionStr.substr(1,sectionStr.length);
+	for (i=0; i<form.isSector.length; i++)
+	{
+	   if (form.isSector[i].checked)
+	    {
+	        isSector = form.isSector[i].value;
+	        break;         
+	    }
+	}
+
+	if(isSector=="true"&&form.dept_cd_b.options.length==0)
+	{
+		alert("请设置分段区间！");
+		return false;
+	}
+	form.submit();
+}
+</script>
+</head>
+<BODY>
+<div  style="border: #B5CDE4 1px solid;height:40px;line-height:40px"  align="center">  &nbsp;min: $txts.get(1)  |  max: $txts.get(0)</div>
+<br>
+<form id="setSectionForm" method="post" action="setSection.vpage">
+	<div  style="border: #B5CDE4 1px solid;height:260" > 
+		<table width="100%" align="center">
+		<tr width="100%" height="100%" align="center">
+		<td width="45%" align="center" valign="top">
+			<br><br>
+			<input type="radio" name="isSector" #if ($isSector&&$isSector==true) checked #end  value="true"> 采用分段统计&nbsp;
+			<input type="radio" name="isSector" #if (!$isSector) checked #end value="false"> 采用整体统计<br><br>
+			起始：<input type="text" id="start" class="editbox" #if ($isDate)onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly #end size="15">  <br><br>
+			终止：<input id="end" type="text" class="editbox" #if ($isDate)onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly #end size="15">  <br><br><br>
+			<input type="button" class=btn_mouseout onclick="add(#if ($isNum)1 #else 2 #end);" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" onmousedown="this.className='btn_mousedown'"  onmouseup="this.className='btn_mouseup'" value="添 加">  </input>&nbsp;&nbsp;
+			<input type="button" class=btn_mouseout onclick="deleteSel(document.getElementById('dept_cd_b'));" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" onmousedown="this.className='btn_mousedown'"  onmouseup="this.className='btn_mouseup'" value="删 除">  </input>&nbsp;&nbsp;
+			<input type="button" class=btn_mouseout onclick="deleteAll(document.getElementById('dept_cd_b'));" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" onmousedown="this.className='btn_mousedown'"  onmouseup="this.className='btn_mouseup'" value="全删除">  </input>
+		</td>
+		<td width="10%" align="center" height="260">
+			<table cellspacing="0" cellpadding="0" width="1" height="260" bgcolor="#C0C0C0"><tr><td></td></tr></table> 
+		</td>
+		<td  width="45%" align="left" valign="top">
+			<br><br>分段区间:<br><br>
+			<span style="border:1px solid white; position:absolute;overflow:hidden">     
+		 		<select id="dept_cd_b" name="dept_cd_b" multiple style="margin:-2px;width=250px" size="8">
+		 			#foreach($sList in $sectionList)
+		 				#if ($sList != "")
+							<option value="$sList">$sList</option>
+						#end
+					#end
+				</select>
+			</span>   
+			<input type="hidden" name="entity" value="$entityStr" >
+			<input type="hidden" name="field" value="$fieldStr" >
+			<input type="hidden" name="sections" id="sections" >
+		</td>
+		</tr>
+		</table>
+	</div>		
+	<br>
+	<div  style="border: #B5CDE4 0px solid;height:30px;"  align="center">
+		<br>
+		<input type="button" class=btn_mouseout  onclick="submitForm();" onmouseover="this.className='btn_mouseover'" onmouseout="this.className='btn_mouseout'" onmousedown="this.className='btn_mousedown'"  onmouseup="this.className='btn_mouseup'" value="&nbsp;设&nbsp; 置&nbsp;">  </input>
+		<br>
+		<br>
+	</div>
+</form>
+</BODY>
+</HTML>

@@ -1,0 +1,162 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="属性")
+
+#invoke("vdb.mydb.jsp.action.catalog.UpdateField")
+
+#set ($oldUri="${table.uri}.$!{meta.name}")
+
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+
+<script language="javascript" src="js/catalog.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<script language="javascript">
+	$(function()
+	{
+		$("#form1").validate({
+			submitHandler: function(form){
+				form.submit();
+			},
+			rules: {
+				P_name: {remote: "updateFieldCheck.vpage?oldUri="+encodeURI("$!{oldUri}")+"&uri=${table.uri}.", required:true}
+			},
+			messages: {
+				P_name: "URI不能为空！或者您已经在现有属性信息使用了此URI！"
+			}
+		});	
+	});
+</script>
+<form id="form1" name="form1" action="doUpdateField.vpage?mid=${meta.id}&tid=${table.id}&isNew=$!{isNew}" method="post">
+	<div align="center" style="border:1px solid white">
+	<table width="90%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td class="table_bg" style="border-top:#91c0fe 1px solid;">uri</td>
+			<td style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">
+			<div style="float:left;">${table.uri}.<input type="text" name="P_name" size="19" id="P_name" value="$!{meta.name}" #if($!{isNew}!="true") readonly #end></div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="table_bg">字段标题 </td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="text" name="P_title" size="41" value="$!{meta.title}"></td>
+		</tr>
+		
+		<tr>
+			<td class="table_bg">提示文字 </td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea name="P_hint" cols="40" rows="4">$!{meta.hint}</textarea>
+			</td>
+		</tr>
+		
+		#if ($meta)
+			<tr>
+				<td class="table_bg">元数据项注册ID</td>
+				<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">${meta.id}</td>
+			</tr>
+			
+			<tr>
+				<td class="table_bg">元数据项注册时间 </td>
+				<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">${meta.lastModified}</td>
+			</tr>
+			
+			#if ($meta.fieldType.readonly)
+				#set($Read-only = "只读")
+			#else
+				#set($Read-only = "可编辑")
+			#end
+			
+			<tr>
+				<td class="table_bg">只读属性 </td>
+				<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				$Read-only
+				</td>
+			</tr>
+			
+			#if ($meta.fieldType.sortable)
+				#set($Sort = "可排序")
+			#else
+				#set($Sort = "不可排序")
+			#end
+			
+			<tr>
+				<td class="table_bg">排序属性 </td>
+				<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">$Sort</td>
+			</tr>
+			
+			<tr>
+				<td class="table_bg">空值属性</td>
+				<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+					#set($identifier = ${table.identifier})
+					#if ($identifier&&$identifier.field==$meta)
+					<input type="radio" style="border:0px" name="P_nullable" value="false" checked / >不可为空
+					#else
+					<input type="radio" style="border:0px" name="P_nullable" value="true" #if ($meta.nullable!=false) checked #end/ >可为空
+					<input type="radio" style="border:0px" name="P_nullable" value="false" #if ($meta.nullable==false) checked #end/ >不可为空
+					#end
+				</td>
+			</tr>
+		#end
+		
+		<tr>
+			<td class="table_bg">字段类型</td>
+			<td width="80%" style="padding-left:15px;padding-top:2px;padding-bottom:4px;">
+				#if($meta.typeName!="Collection" and $meta.typeName!="Reference")
+				<fieldset style="padding: 10pt;width:95%">
+					<legend>
+						列字段类型
+					</legend>
+					#foreach ($type in $manager.typeManager.fieldTypes)
+						#if (!$type.advanced)
+							<span style="width:120pt;">
+								<input type="radio" style="border:0px" name="P_type" value="${type.name}" onclick="javascript:refreshStyles(this.form, this.value)"#if($type.name==$meta.typeName) checked #end >
+								<img src="/typelib/$type.name/res/logo.gif" width="16" height="16"> ${type.title}
+							</span>
+						#end
+					#end
+				</fieldset>
+				#end
+				<br>
+				#if($meta.typeName=="Collection" or $meta.typeName=="Reference")
+				<fieldset style="padding: 10pt;">
+					<legend>
+						高级类型
+					</legend>
+					#foreach ($type in $manager.typeManager.fieldTypes)
+						#if ($type.advanced and $type.name==$meta.typeName)
+							<span style="width:120pt;">
+								<input type="radio" style="border:0px" name="P_type" value="${type.name}" onclick="javascript:refreshStyles(this.form, this.value)"#if ($type.name==$meta.typeName) checked #end >
+								<img src="/typelib/$type.name/res/logo.gif" width="16" height="16"> ${type.title}
+							</span>
+						#end
+					#end
+				</fieldset>
+				#end
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="table_bg">缺省值</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><textarea name="P_defaultValue" cols="40" rows="4">$!{meta.defaultValue}</textarea></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" border="0" bgcolor="#F6F6F6"><span id="expandArea"></span></td>
+	</table>
+	</div>
+<br>
+<div align="center">
+<input type="hidden" name="columnSize" value="${meta.size}"/>
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+</div>
+</form>
+
+<script>
+	function refreshStyles(form, typeName){
+		if(typeName != ""){
+			loadHTML("expandClass.vpage", "tid=${table.id}&mid=${meta.id}&type="+typeName, document.all.expandArea);
+		}
+	}
+	refreshStyles(form1, "${meta.typeName}");
+</script>

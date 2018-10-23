@@ -1,0 +1,6 @@
+﻿#set($field = $tool.getField("$param.uri"))
+#set($entity = $field.getRelationKey().getTarget())
+#set($uri = $entity.uri)
+#set($rid=$param.rid)
+#set($page = $auth.getGrantedPageByTypeAndRes($auth.userName, "addItem", $entity.id))
+#parse("${pageroot}/view/${page.name}.vpage")

@@ -1,0 +1,4 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示工具tool的用法')
+<p>可以在vpage页面引用在/WEB-INF/toolbox.xml中定义到的工具对象，如：</p>
+<p>mail-box: $author</p>

@@ -1,0 +1,31 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示简单VTL的用法')
+
+#set($msg = "Hello, ViusalDB!")
+<p>
+$msg
+</p>
+
+#set($ns = [11..20])
+如下演示数值数组的用法：<br>
+<ul>
+#foreach($n in $ns)
+	<li>$n</li>
+#end
+</ul>
+
+#set($ss = ["laok", "olio", "bluejoe"])
+如下演示字符数组的用法：<br>
+<ul>
+#foreach($s in $ss)
+	<li>$s</li>
+#end
+</ul>
+
+#set($ms = {"male" : "男", "female" : "女"})
+如下演示map的用法：<br>
+<ul>
+#foreach($m in $ms.entrySet())
+	<li>$m.key=$m.value</li>
+#end
+</ul>

@@ -1,0 +1,15 @@
+#set($ds = ${domain.getDataSets()})
+
+<script>
+	dhtmlx.skin = "dhx_skyblue"
+</script>
+
+<div id="a_tabbar" class="dhtmlxTabBar" imgpath="/console/shared/plugins/dhtmlx/tabbar/imgs/" style="width: 550px; height: 500px;">
+	#foreach ($bean in $ds)
+	<div id="ds_$velocityCount" name="$bean.title" width="100px">
+		<input type="hidden" name="p_$bean.uri" id="p_$bean.uri" value="#if($widget.props.get(${bean.uri}))#xml($widget.props.get(${bean.uri})) #else #xml($bean.description) #end" />
+		<iframe frameborder="0" width=550 height=500 scrolling="no" src="/console/shared/plugins/fckeditor/editor/fckeditor.html?InstanceName=p_$bean.uri&amp;Toolbar=Default" id="p_${bean.uri}___Frame">
+		</iframe>
+	</div>
+	#end
+</div>

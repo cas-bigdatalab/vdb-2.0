@@ -1,0 +1,19 @@
+${D}!bean.get('${field.name}').lon, ${D}!bean.get('${field.name}').lat, ${D}!bean.get('${field.name}').alt
+<iframe onload="Javascript:SetWinHeight(this)" style="width:500;height:400" scrolling="no"  frameBorder=0 src=$!{field.type.extra.get("viewUrl")}?param=[{"lon":${D}!bean.get('${field.name}').lat,"lat":${D}!bean.get('${field.name}').lon,"grade":14}]  ></iframe>
+
+<script type="text/javascript">
+function SetWinHeight(obj)
+{
+	var win=obj;
+	if (document.getElementById)
+	{
+		if (win && !window.opera)
+		{
+		   if (win.contentDocument && win.contentDocument.body.offsetHeight) 
+				win.style.height = win.contentDocument.body.offsetHeight;
+		   else if(win.Document && win.Document.body.scrollHeight)
+				win.style.height = win.Document.body.scrollHeight;
+		}
+	}
+}
+</script>

@@ -1,0 +1,7 @@
+#invoke("vdb.mydb.jsp.action.editor.DoGridUpdate")
+$response.setContentType("text/xml; charset=UTF-8")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+$response.getWriter().println("$data")
+$response.getWriter().flush()
+

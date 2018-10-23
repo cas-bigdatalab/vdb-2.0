@@ -1,0 +1,111 @@
+#if($param.widgetlib)
+	#set($selectedWidget=$widgetFactory.getWidget($param.widgetlib))
+#end
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/style.css">
+<link rel="stylesheet" type="text/css" href="js/listWidgets.css">
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree1.js"></script>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree_xw.js"></script>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree_ed.js"></script>
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar.css">
+<script  src="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar.js"></script>
+<script  src="/console/shared/plugins/dhtmlx/tabbar/dhtmlxtabbar_start.js"></script>
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/dhtmlxcolorpicker.css"/>
+<script src="/console/shared/plugins/dhtmlx/dhtmlxcolorpicker/dhtmlxcolorpicker.js"></script>
+<script src="js/updateWidget.js"></script>
+
+<title>组件管理器</title>
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+<script>
+     function onSubmit(form)
+     {
+	   	if(checkTitle())
+     	{
+	 		try
+	 		{
+	 			aah();
+	 		}
+	 		catch(e) 
+	 		{
+	 		}
+     		return true;
+     	}
+     	else{
+     		return false;
+     	}
+		
+	 }
+	 function checkTitle()
+	 {
+	 	if($('#p_caption').val()=="")
+	 	{
+	 		alert("组件窗口标题不允许为空！");
+	 		$('#p_caption').focus();
+	 		return false;
+	 	}
+	 	return true;
+	 }
+</script>
+</head>
+<body  style="font-size:12px;background-color:#f7f9fa;" >
+<form name="form1" method="post" action="doSaveWidget.vpage" onsubmit="return onSubmit(this);" >
+
+#set($widget = $selectedWidget)
+#if($selectedWidget)
+<input type="hidden" name="name" value="$selectedWidget.name">
+<input type="hidden" name="reload" value="$!param.reload">
+<fieldset>
+	  <ol>
+	    <li>
+	     	<label for="title">组件名称:</label>$selectedWidget.name
+	     	<hr style="border:1 dashed red;height:1px" >	     	
+	    </li>
+	    <li>
+	      <label for="title">组件窗口标题:<em>*</em></label>
+	      <input name="p_caption" id="p_caption" value="#if($selectedWidget.props.caption)$selectedWidget.props.caption#else$selectedWidget.title#end"/>
+	    </li>
+	    <br>
+	    <li>
+	      <label for="p_headerDisplay">是否显示头部:</label>
+	     	#set($flag = true)
+			#if($selectedWidget.name=='horizontal')
+			   	#set($flag = false)
+			#end
+			#if($flag)
+		     <label style="width:65px;"> <input   type="radio"   name="p_headerDisplay"
+			     #if(!$selectedWidget.props.headerDisplay || $selectedWidget.props.headerDisplay != "false")
+					checked
+				 #end
+		     value="true">是   </label>
+		    #end
+	         <label style="width:65px;"> <input   type="radio"   name="p_headerDisplay"
+				 #if($selectedWidget.props.headerDisplay && $selectedWidget.props.headerDisplay == "false")
+					checked
+				 #end
+	 		 value="false">否</label>
+
+	    </li>
+	     <br> <br>
+	  </ol>
+	#if($widgetTool.existsFile($widget, "options.html"))
+	  <ol>
+			#parse("/console/webpub/WEB-INF/widgets/$selectedWidget.name/options.html")
+	  </ol>
+	#end
+	<br>
+</fieldset>
+<br><br>
+<button type="submit" id="buttonSave"><img src='/console/shared/images/save.gif' border=0 align=absbottom>保存内容</button>
+#end
+</form>
+</body>
+</html>

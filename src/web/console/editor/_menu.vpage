@@ -1,0 +1,11 @@
+#set($view = $domain.ex.getView("editDataSets").items)
+$response.setContentType("text/xml")
+<?xml version='1.0' encoding='UTF-8'?>
+<tree id='0' >
+#foreach($ds in $view)
+	#if (!$auth.userIsGranted($auth.userName, "edit_dataset", $ds.id, "forbidden"))
+	<item child='1'  text='$ds.title' id='directory@$ds.id'>
+	</item>
+	#end
+#end
+</tree>

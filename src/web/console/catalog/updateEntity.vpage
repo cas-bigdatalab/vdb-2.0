@@ -1,0 +1,190 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="实体属性")
+
+#if (!$param.id)
+	#set($dataset=${catalog.fromId(${param.dsid})})
+	#set($meta=${dataset.ex.createEntityFromTable(${param.tn})})
+	#set($isNew="true")
+#else
+	#set($meta=$catalog.fromId($param.id))
+	#set($isNew="false")
+#end
+
+#set ($oldUri="${meta.dataSet.uri}.${meta.name}")
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<script language="javascript">
+	$(function()
+	{
+		$("#form1").validate({
+			submitHandler: function(form){
+				form.submit();
+			},
+			rules: {
+				P_name: {remote: "updateEntityCheck.vpage?oldUri=${oldUri}&uri=${meta.dataSet.uri}.", required:true}
+			},
+			messages: {
+				P_name: "不能为空！或者uri已经存在"
+			}
+		});	
+	});
+</script>
+
+<form id="form1" name="form1" action="doUpdateEntity.vpage?mid=${meta.id}&dsid=${meta.dataSet.id}&isNew=${isNew}" method="post">
+	<div align="center" style="border:1px solid white">
+	<table width="80%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td  class="table_bg" style="border-top:#91c0fe 1px solid;">
+				表名
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">
+				<input type="text" name="P_tableName" size="35"
+					value="${meta.tableName}" class="disabled" readonly>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				uri
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+			<div style="float:left;">	${meta.dataSet.uri}.
+				<input type="text" id="P_name"  name="P_name" size="10" value="${meta.name}" #if ($isNew=="false")readonly#end></div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				标题
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="text" name="P_title" size="35" value="${meta.title}">
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				元数据项注册ID
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				${meta.id}
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				元数据项注册时间
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				${meta.lastModified}
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				描述信息
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<textarea name="P_description" rows="8" cols="50">$!{meta.description}</textarea>
+			</td>
+		</tr>
+		#if ($param.id)
+		<tr>
+			<td class="table_bg">
+				标题字段
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="titleField">
+					<option value="" selected></option>
+					#foreach ($field in $meta.fields)
+					<option value="${field.id}" #if ($field==$meta.titleField)
+						selected #end>
+						${field.title}(${field.name})
+					</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				录入员字段
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="editorField">
+					<option value="" selected></option>
+					#foreach ($field in $meta.fields)
+					<option value="${field.id}" #if ($field==$meta.editorField)
+						selected #end>
+						${field.title}(${field.name})
+					</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				用户组字段
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="groupField">
+					<option value="" selected></option>
+					#foreach ($field in $meta.fields)
+					<option value="${field.id}" #if ($field==$meta.groupField)
+						selected #end>
+						${field.title}(${field.name})
+					</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				更新时间字段
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="timeStampField">
+					<option value="" selected></option>
+					#foreach ($field in $meta.fields)
+					<option value="${field.id}" #if ($field==$meta.timeStampField)
+						selected #end>
+						${field.title}(${field.name})
+					</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				默认排序字段
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="orderField">
+					<option value="" selected></option>
+					#foreach ($field in $meta.fields)
+					<option value="${field.id}" #if ($field==$meta.orderField)
+						selected #end>
+						${field.title}(${field.name})
+					</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				排序方式
+			</td>
+			<td width="70%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="radio" style="border:0px" name="P_order" value="asc"
+					#if ("asc"==$meta.order) checked  #end />
+				升序
+				<input type="radio" style="border:0px" name="P_order" value="desc"
+					#if ("asc"!=$meta.order) checked  #end />
+				降序
+			</td>
+		</tr>
+		#end
+	</table>
+	</div>
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+</div>
+</form>

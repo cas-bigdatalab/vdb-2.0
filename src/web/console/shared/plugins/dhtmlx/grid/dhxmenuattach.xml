@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<menu>
+		<item id="delete" text="删除" />
+		<item id="detail" text="编辑数据" />
+		<item id="file_sep_2" type="separator"/>
+</menu>

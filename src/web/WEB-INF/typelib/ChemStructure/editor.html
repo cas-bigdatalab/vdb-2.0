@@ -1,0 +1,15 @@
+<div id="E_$field.id">	
+	<input name="${field.name}" id="${field.name}"
+		value="${data.value}" style="width:200"  type="hidden"  \#if($dc.readonly)readonly class="disabled"\#end>
+	<iframe style="width:$!{field.editorWidth};height:$!{field.editorHeight}" frameBorder=0  name="F_$field.id" id="F_$field.id" src=""></iframe>
+	<input type="hidden" name="frameName" value="F_$field.id">
+	<input type="hidden" name="transferUrl" value='$!{field.type.extra.get("transferUrl")}'>
+	<input type="hidden" name="type" value="$field.typeName">
+	<input type="hidden" name="fieldName" value="$field.name">
+	<script>
+		var val="${data.value}";	
+		var url=location.href;
+		url=url.substring(0,url.lastIndexOf("/"));
+		document.getElementById("F_$field.id").src='$!{field.type.extra.get("editUrl")}?param='+'[{"width":"$!{field.editorWidth}","height":"$!{field.editorHeight}","div":"$field.id","smi":"'+val+'","url":"'+url+'"}]';
+	</script>
+</div>

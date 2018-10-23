@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>200</code>
+		<message>调用成功</message>
+	</head>
+	<body>
+		<sysInfo>
+         	<version>1.0</version>
+            <language>VisualDB 2.0</language>
+            <supportedVerbs>dhGetDatabaseList,dhGetDatabaseSchema,dhGetIndexes,dhGetIndexModifications,daiGetRecord,uiGetRecord,daiQuery,daiEntityQuery,uiQuery,daiGetFile,dhGetCatalog,(default),sysDatabaseStatistic,sysDatabaseStatistic2,sysGetEntityList,sysStatus</supportedVerbs>
+ 			<startupTime>$date.format($!manager.startupTime)</startupTime>
+			<contactName></contactName>
+			<telephone></telephone>
+			<email></email>
+		</sysInfo>
+	</body>
+</response>

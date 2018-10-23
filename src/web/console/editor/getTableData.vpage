@@ -1,0 +1,17 @@
+#set($entity=${catalog.fromUri(${param.entity})})
+#if($param.whereFilter)
+#set($jsoQuery = $tool.parseJsoQuery($param.whereFilter,"true"))
+#set($whereFilter=$jsoQuery.whereFilter)
+#if($param.start and $param.start==1)
+$loggerTool.logAccess(null,null,$entity,'query',$whereFilter,null,false)
+#end
+#else
+#if($param.start and $param.start==1)
+$loggerTool.logAccess(null,null,$entity,'showEntityBack',$whereFilter,null,false)
+#end
+#end
+#invoke("vdb.mydb.jsp.action.editor.DoGetTableData")
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+${data}

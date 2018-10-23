@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean class="vdb.mydb.widget.WidgetLayout">
+		<property name="layout" value="l121" />
+		<property name="columns">
+			<map>
+				<entry key="column1">
+					<list>
+						<value>staticTree</value>
+						<value>contactInfo</value>
+					</list>
+				</entry>
+				<entry key="column3">
+					<list>
+						<value>login</value>
+						<value>copyofcontactInfo</value>
+						<value>date</value>
+						<value>link</value>
+					</list>
+				</entry>
+				<entry key="column2">
+					<list>
+						<value>dbintro</value>
+						<value>photo</value>
+						<value>cms</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>
+

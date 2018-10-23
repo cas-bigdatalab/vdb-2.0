@@ -1,0 +1,13 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoUpdatePrimaryKey")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改主键信息")
+<script>
+top.setItemText('Entity@${entityID}@${datasetID}','Identifier@${entityID}','主键');
+</script>
+修改主键成功！<br/>
+<div style="margin-top:10px;">	
+	您可以：<br/>
+	<div style="margin-left:50px;">
+		<a href="updateIdentifier.vpage?id=${param.id}"><img src="/console/shared/images/goto.gif" border="none"/>重新修改主键</a>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="column" img="column.gif"   text="柱状图" />
+	<item type="button"	id="line" img="line.gif"  text="曲线图"  />
+	<item type="button"	id="ballon" img="line.gif"  text="散列分布图"  />
+	<item id="pie"   type="button"  img="pie.gif"  text="饼图"  />
+	<item id="sep3"   type="separator"/>
+	<item id="section"   type="button" text="分段设置"  />
+	<item id="close"   type="button" text="关闭"  />
+</toolbar>

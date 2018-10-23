@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$productName</title>
+<link href="shared/js/index.css" rel="stylesheet" type="text/css" />
+</head>
+#set($modules=$moduleManager.retrieveVisibleModules())
+<body onload="document.getElementById('description').innerHTML='<div>${modules.get(0).title}简介</div>${modules.get(0).description}';">
+	<div class="div_main">
+    	<div id="description" class="div_text">
+        </div>
+        <div class="div_button">
+        #foreach($module in $modules)
+        	<a href='$module.name' target='_blank'><img src="shared/images/${module.name}01.jpg" width="122" height="133" 
+        		onmousemove="document.getElementById('description').innerHTML='<div>${module.title}简介</div>${module.description}';this.src='shared/images/${module.name}02.jpg'" onmouseout="this.src='shared/images/${module.name}01.jpg'" /></a>
+        #end
+        </div>
+        <div class="clear"></div>
+        <div class="div_shadow">
+        	#foreach($module in $modules)
+        		<img src="shared/images/${module.name}03.jpg" height="57" width="122" />
+        	#end
+        </div>
+        <div class="div_foot">$requestLocale.message("vdb.copyright")</div>
+        <div class="div_footright"></div>
+        
+</div>
+    
+</body>
+</html>

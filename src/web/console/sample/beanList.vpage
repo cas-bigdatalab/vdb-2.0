@@ -1,0 +1,34 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示bean列表的用法')
+
+#set($ids=[1, 2, 3, 4, 5])
+#set($beans = $tool.createBeanList('cn.csdb.vdb.bookstore.book'))
+#foreach($id in $ids)
+	$beans.add($id)
+#end
+
+##设定查询结果的操作菜单，二次开发可以自定义
+##单项菜单
+#define($itemMenu)
+	<a href='/showBean(cn.csdb.vdb.bookstore.book).vpage?id=${id}' target='_blank'>详细</a>
+#end
+
+##所有项菜单
+#define($gridMenu)
+#end
+
+#set($pageIndex = 1)
+#set($pageSize = 20)
+
+####################################################################
+<p>
+当前查询页：$pageIndex</p>
+<p>
+每页记录数：$pageSize</p>
+####################################################################
+
+##创建PageViewer对象
+#set($pageViewer = $pager.create($beans, $pageIndex, $pageSize))
+
+##显示PageViewer对象
+#parse("${pageroot}/listBeans[cn.csdb.vdb.bookstore.book].vpage")

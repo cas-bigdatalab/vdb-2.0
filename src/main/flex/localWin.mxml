@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="服务本地文件存储位置" layout="absolute" width="400" height="300" fontSize="14" showCloseButton="true" close="close();" borderColor="#6C8EF0" backgroundColor="#DEE8EF">
+	<mx:Metadata>
+	[Event(name="Savelocal")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+		import mx.managers.PopUpManager;
+		import mx.controls.Alert;
+		//import 
+		
+		public	var file:FileReference;
+		
+		public function save():void
+		{
+			this.dispatchEvent(new Event("savelocal"));
+		}
+		public function close():void
+		{
+			PopUpManager.removePopUp(this);
+		}
+		
+		private function fileSelectedHandler(evt:Event):void
+        {
+            //evt.target.
+            var str:String = file.name;
+            Alert.show(str+":str");
+            var arrs:Array = str.split("/");
+            var path:String;
+            path=arrs[0];
+            for(var i:int = 1; i<arrs.length-1;i++ )
+            {
+            	path +="/";
+            	path +=arrs[i];
+            }
+            var name:String = arrs[i];
+        }
+
+	]]>
+</mx:Script>
+	<mx:Label text="名称 :" x="32" y="35" fontSize="14"/>  
+	<mx:TextInput id="localName" width="237" x="84" y="33"/>  
+	<mx:Label  text="路径 :"  y="86" x="33" fontSize="14"/>  
+	<mx:TextInput id="path" width="237" x="84" y="84" />    
+	<mx:Button label="取消" click="close();" x="201" y="172"/>  
+	<mx:Button label="保存" click="save();" x="116" y="172" width="63"/> 
+	
+</mx:TitleWindow>

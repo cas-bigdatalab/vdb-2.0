@@ -1,0 +1,54 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:21-->
+
+##定义一个指向cms.servicecase的实体对象
+#set($entity = $tool.getEntity('cms.servicecase'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2b14188c012b141ae09c000f" fieldUri="cms.servicecase.pic" orderAsc="${jsoQuery.orderAsc}"  style="color:#888888" title="不支持排序" ><b> 图片</b>#if ('cms.servicecase.pic' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2aea91f9012aea94d56b0011" fieldUri="cms.servicecase.title" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按名称排序" ><b> 名称</b>#if ('cms.servicecase.title' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="1f628d2d2aea91f9012aea95457f0013" fieldUri="cms.servicecase.description" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按支撑项目描述排序" ><b> 支撑项目描述</b>#if ('cms.servicecase.description' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">#foreach ($file in $!bean.get('pic').files)
+#set($fileUrl = $file.servletPath)
+<a target="_blank" href="$fileUrl">
+	<img src="$fileUrl"  alt="${file.title}[${file.fileSize}字节][${file.imageWidth}*${file.imageHeight}像素]"
+			width="200"		 height="200"  border=0>
+		</a><br>
+#end&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('title').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('description').format('%s')
+&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

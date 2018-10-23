@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean class="vdb.mydb.typelib.FieldType">
+		<property name="fieldClass" value="vdb.gps.GpsLocationType"/>
+		<property name="sortable" value="false"/>
+		<property name="order" value="10000"/>
+		<property name="title" value="GPS位置类型"/>
+		<property name="extra">
+			<map>
+				<entry key="viewUrl">
+					<value>http://visualdata.csdb.cn/google-map/view.jsp</value>
+				</entry>
+				<entry key="editUrl">
+					<value>http://visualdata.csdb.cn/google-map/edit.jsp</value>
+				</entry>	
+				<entry key="transferUrl">
+					<value>http://visualdata.csdb.cn/google-map/transfer.html</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

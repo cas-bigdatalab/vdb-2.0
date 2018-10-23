@@ -1,0 +1,5 @@
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+#invoke("vdb.mydb.widget.vsp.DoSaveLayout")
+保存成功

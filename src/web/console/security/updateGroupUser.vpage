@@ -1,0 +1,79 @@
+﻿<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<script language="javascript" src="/console/optionMove.js"
+	defer>
+</script>
+<script>
+	function form1_onsubmit(form) {
+		var userValues="";
+		for(var i=0;i<form.dept_cd_b.options.length;i++) {
+			userValues=userValues+";&@"+form.dept_cd_b.options[i].value;
+		}
+
+		form.userValues.value=userValues.substr(3,userValues.length);
+		return true;
+	}
+</script>
+
+<form onSubmit="return form1_onsubmit(this);" id="userForm" method="post" action="DoUpdateGroupUser.action">
+	<div>
+		<table align="left" border="1" width="590" border="1" cellpadding="6" class="table1 dataset">
+			<tr class="bg0">
+				<td colspan="2" style="padding-left:82px;" class="tb1">
+					用户组名： $auth.getGroup(${param.gid}).get("GROUPNAME")
+					<input type="hidden" name="T1" value="${param.gid}">
+				</td>
+			</tr>
+			<tr class="bg0">
+				<td colspan="2" style="padding-left:80px;" class="tb1">
+					<table width="200" height="30" border="0px" style="padding-left:80px;" cellpadding="4" cellspacing="0">
+						<tr class="bg0">
+							<td>
+								所有用户列表：
+								<br>
+								<br>
+								<select id="dept_cd_a" name="dept_cd_a" multiple style="color:blue;margin:-2px; width:150px" size="8">
+									#foreach ($user in $auth.usersList)
+										<option value="${user.get('USERID')}">
+											${user.get("USERID")}
+										</option>
+									#end
+								</select>
+							</td>
+							<td>
+								<br>
+								<br>
+								<input type="button" value="全添加" class="btn_mouseout" onclick="addAll(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));">
+								<br>
+								<input type="button" value="添  加" class="btn_mouseout" onclick="moveAtoBsel(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));">
+								<br>
+								<input type="button" value="删  除" class="btn_mouseout" onclick="deleteSel(document.getElementById('dept_cd_b'));">
+								<br>
+								<input type="button" value="全删除" class="btn_mouseout" onclick="deleteAll(document.getElementById('dept_cd_b'));">
+							</td>
+							<td>
+								组内用户：
+								<br>
+								<br>
+								<select id="dept_cd_b" name="dept_cd_b" multiple style="color:blue;margin:-2px; width:150px" size="8">
+									#foreach ($user in $auth.getUsersOfGroup($param.gid))
+										<option value="${user.get('USERID')}">
+											${user.get("USERID")}
+										</option>
+									#end
+								</select>
+								<input type="hidden" name="userValues">
+							</td>
+						</tr>
+					</table>
+					<div style="padding-left:160px;padding-top:10px;">
+						<br>
+							<input type="Submit" value=" 保 存 " name="B1" class="btn_mouseout">
+						<br>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>

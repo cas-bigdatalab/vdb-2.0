@@ -1,0 +1,5 @@
+#invoke("vdb.mydb.jsp.action.editor.DoGetTableChildData")
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+${data}

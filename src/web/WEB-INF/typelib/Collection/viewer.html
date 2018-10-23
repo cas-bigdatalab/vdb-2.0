@@ -1,0 +1,49 @@
+#set ($fk = $field.foreignKey)
+#set ($thatUri = $fk.target.uri)
+\#set ($seqid = ${dollar}seq.id)
+
+#if($field.viewerStyle == 'CollectionLabel') 
+	#if($field.queryStyle == 'on')
+	<div class="search02_title_div">高级搜索<a href="#" onclick="toggleQueryImg('queryFormImg${seqid}');$('#QueryForm${seqid}')[0].jsoQueryForm.toggle();"><img id="queryFormImg${seqid}" src="images/ico_jiaohao02.jpg" height="13" width="13" style="margin-left:5px;"></a></div> 
+	<div class="search02_contents_div"><div id="QueryForm${seqid}" class="QueryForm" style="display:none;background:url(../images/contents_bg.jpg) #fff repeat-x 50% top;"></div></div><div style="height:20"></div>
+	#end
+	<div id="DataGrid${seqid}" class="DataGrid"></div>
+	<script>
+		//定义一个查询对象
+		var jsoQuery${seqid} = new CollectionQuery('${field.uri}', '${bean.id.jdbcObject}');
+		#if ($field.pageStyle=='on')
+			 jsoQuery${seqid}.pageSize = ${domain.defaultPageSize};
+		#else
+			jsoQuery${seqid}.pageSize  = -1;
+		#end
+		
+		//定义一个数据网格
+		var jsoDataGrid${seqid} = new DataGrid(jsoQuery${seqid}, $('#DataGrid${seqid}')[0]);
+		jsoDataGrid${seqid}.refresh();
+		
+		//定义一个查询框
+		#if($field.queryStyle == 'on')
+		var jsoQueryForm${seqid} = new QueryForm(jsoQuery${seqid}, '${fk.target.uri}', $('#QueryForm${seqid}')[0],new function()
+			{
+				this.onsubmit = function()
+				{
+					jsoDataGrid${seqid}.refresh();
+				}
+			}
+		);
+		#end
+	</script>
+#else
+	\#if(${D}!bean.get('${field.name}').listAll().size() < 50)
+		\#foreach($thatBean in ${D}!bean.get('${field.name}').listAll())
+			<a href="${engine.webpub}/showItem.vpage?id=$thatBean.itemId.text" target="_self"><U>$thatBean.title.title</U></a>
+		\#end
+	\#else
+		\#foreach($thatBean in ${D}!bean.get('${field.name}').listAll().subList(0,49))
+			<a href="${engine.webpub}/showItem.vpage?id=$thatBean.itemId.text"  target="_self"><U>$thatBean.title.title</U></a>
+		\#end
+		\#if(${D}!bean.get('${field.name}').listAll())
+		......
+		\#end
+	\#end
+#end

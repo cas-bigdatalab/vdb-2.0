@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/*
+ * body标记样式定义
+ * @overlay body
+ * @desc	全局的字体颜色、背景色和文本对齐设置
+ */
+body{
+	color: #000;
+	background: #fff;
+	text-align: left;
+}
+
+/*
+ * 将具有默认margin和padding的标记置零
+ * @overlay *
+ * @desc	所有标记的margin、padding都在使用时具体定义
+ */
+*{
+	margin:0;
+	padding:0;
+}
+
+/*
+ * 定义图片边框
+ * @overlay img
+ * @desc	当图片作为链接内容被填充时，会有默认边框出现，重定义掉
+ */
+img{
+	border:0 none;
+}
+
+/*
+ * 清除ul列表标记的样式
+ * @overlay ul, li
+ * @desc	ul列表更多的用在不需要列表前置符号的样式里
+ */
+ul, li{
+	list-style-type: none;
+}
+
+/*
+ * 定义默认的链接样式
+ * @overlay a
+ * @desc	仅仅是作为默认样式提供，可以在各自的实例中覆盖掉
+ */
+a:link, a:visited{
+	color: #0065FF;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+/*
+a:hover, a:active{
+	background-color:#FFFFAA;
+	color:#CC0000;
+}
+*/
+
+/* 清除溢出，浮动 */
+/* @group 清理元素 */
+
+	/*
+	 * 清理元素
+	 * @class hackbox
+	 * @desc	清理浮动元素
+	 */
+	.clearing{
+		border-top: 1px solid transparent !important;
+		clear: both;
+		visibility: hidden;
+	}
+	
+	/*
+	 * 不需要额外增加元素的清理浮动的类
+	 * @class 	wrapfix
+	 * @desc	使用:after伪类来实现浮动清理
+	 */
+	.wrapfix:after{
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+	
+		/* IE7 hack */
+		.wrapfix {display: inline-block;}
+		/* IE-mac, IE5, IE6 */
+		* html .wrapfix {height: 1%;}
+		.wrapfix {display: block;}
+
+/* @end */
+
+
+/* @group 隐藏元素 */
+
+	/*
+	 * 隐藏元素
+	 * @class invisible
+	 * @desc	visibility可以隐藏元素，但是还是会在布局中占位
+	 */
+	.invisible{
+		visibility: hidden;
+	}
+	
+	/*
+	 * 从页面布局上隐藏元素
+	 * @class hidden
+	 * @desc	从布局上隐藏元素
+	 */
+	.hidden{
+		display: none;
+	}
+
+/* @end */

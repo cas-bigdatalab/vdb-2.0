@@ -1,0 +1,131 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+\$response.setHeader("Pragma", "No-cache")
+\$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+\$response.setDateHeader("Expires", 0)
+#set($entity = ${catalog.fromUri($page.entityUri)})
+#saveAs("view/${page.name}.vpage")
+\#set(${D}entity = ${D}tool.getEntity('$entity.uri'))
+\#invoke("vdb.mydb.vtl.action.UpdateBeanForm")
+#set($fields=$page.editFields)
+\#set(${D}jsoFormBinder="form1")
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/grid/skins/dhtmlxgrid_dhx_skyblue1.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.css"/>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgrid.js"></script>  
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxgridcell.js"></script>
+<script src="/console/shared/plugins/dhtmlx/calendar/dhtmlxcalendar.js"></script> 
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_dhxcalendar.js"></script>
+<script src="/console/shared/plugins/dhtmlx/grid/excells/dhtmlxgrid_excell_cntr.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/layout/skins/dhtmlxlayout_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxlayout.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/toolbar/skins/dhtmlxtoolbar_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/toolbar/dhtmlxtoolbar.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.css" />
+<script language="JavaScript" type="text/javascript" src="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+
+<link rel="stylesheet" type="text/css" href="js/edit.css">
+<script language="JavaScript" src="/console/shared/js/check.js"></script>
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/editor/js/updateBean.js"  charset="utf-8"></script>
+<script language="javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/editor/js/editor.js"></script>
+<script language="javascript" src="/console/shared/js/editor.js"></script>
+<script language="javascript" src="/console/shared/js/firefox.js"></script>
+<script src="${engine.webpub}/js/editor.js" charset="UTF-8"></script>
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/jsoCtrl.js"></script>
+<script language="javascript" src="/console/shared/js/jquery.dimensions.js"></script>
+<script language="javascript" src="/console/shared/js/ui.mouse.js"></script>
+<script language="javascript" src="/console/shared/js/ui.resizable.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js" ></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js" ></script>
+\#parse("../editorsHead.inc")
+<title>编辑记录-$entity.title</title>
+</head>
+<body onload="onLoad();">
+\#if(!${D}auth.isIdGranted(${D}auth.userName, '$entity.id', "listItems", ${D}id))
+<div>您无权进行此操作！</div>
+\#else
+\#set (${D}jsoFields = "")
+<form name="form1" method="post" onclick="parent.formIsChanged = true;">
+<script>
+	var thisBeanForm = new Object();
+	thisBeanForm.tableId = '$entity.Id';
+	thisBeanForm.beanId = '${D}bean.getId().value';
+	thisBeanForm.roleId = '${D}!mfid';
+	thisBeanForm.parentBeanId = '${D}!fkv';
+	thisBeanForm.page = '$page.name';
+</script>
+	<div class="edit_div">
+    	<div class="table_div">
+        	<div class="edit_tips_div"><img src="images/tips.jpg" height="19" width="20" />温馨提示：*为必填</div>
+<table width="100%" border="0" cellpadding="6" align="center" class="edit_tips_table">
+#foreach ($editField in $fields)
+#set($field = ${catalog.fromUri($editField.fieldUri)})
+\#remove('dc')
+\#set(${D}dc=${dollar}ctxMap.get('$field.uri'))
+\#if(${D}dc && ${D}dc.visible)
+\#set(${D}data=${dollar}dc.data)
+   <tr>
+      <td align="right" valign="top">$field.title #if($field.isIdentifier()||($field.nullable&&$field.nullable=="false"))<font color="red">(*)</font>#end</td>
+      <td valign="top" width="70%">$canvas.edit($field)
+      #if($field.isIdentifier())
+     	 &nbsp;&nbsp;<span id="idExistSpan" style="display:none;"><font color="red">此数值已经存在</font></span><span id="idNotExistSpan" style="display:none;"><font color="green">此数值可以使用</font></span>
+      	 <script>
+      	 		document.getElementsByName('${field.name}')[0].readOnly = true;
+      	 </script>
+      #end
+      </td>
+    </tr>
+    
+	\#if(${D}jsoFields != "")
+		\#set (${D}jsoFields = ${dollar}jsoFields + " , ")
+	\#end
+	
+	\#set (${D}title = "")
+	#if(!$field.title||$field.title=="")
+		\#set (${D}title = "${field.name}")
+	#else
+		\#set (${D}title = "${field.title}")
+	#end
+			
+	\#set (${D}jsoField = "{'id' : '$field.id', 'name' : '$field.name', 'title' : '${D}title', 'type' : '$field.typeName'}")
+	\#set (${D}jsoFields = ${dollar}jsoFields + ${dollar}jsoField)
+\#end    
+#end    
+                <tr>
+                	<td width="10%"  height="25" align="right"></td>
+                	<td width="47%"  height="25" align="left">
+                      <div class="left_ico"><a href="javascript:void(0);" onclick="submitUpdateForm(this.form)">保存设置</a></div>
+         			  <div class="left_ico"> <a href="javascript:void(0);" onclick="document.location.href = document.location.href;">重新填写</a></div>
+                    </td>
+                </tr>
+  </table>
+          </div>
+    </div>
+</form>
+\#end
+</body>
+<script>
+thisBeanForm.fields = [${D}jsoFields];
+var eurl = '$entity.uri';
+function submitUpdateForm(form)
+{
+	submitForm(form);
+}
+</script>
+</html>

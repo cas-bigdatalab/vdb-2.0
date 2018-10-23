@@ -1,0 +1,12 @@
+﻿#set($entity=${catalog.fromUri(${param.entityUri})})
+﻿#set($ds=$entity.getDataSet())
+#set($pageName=${param.pageName})
+#if ($pageName =="0")
+	#if ($pagesTool.checkPageName(${param.name},${ds}))
+		true
+	#else
+		false
+	#end
+#else
+	true
+#end

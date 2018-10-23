@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="gb2312"?>
+<web-app>
+
+	<javac compiler='javac' encoding='utf-8' />
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.vpage</welcome-file>
+	</welcome-file-list>
+
+	<class-loader>
+		<compiling-loader source='./WEB-INF/src'
+			path='./WEB-INF/classes' />
+		<library-loader path='./WEB-INF/lib' />
+	</class-loader>
+	
+	<!-- http flex session attribute and binding listener support -->
+    <listener>
+        <listener-class>flex.messaging.HttpFlexSession</listener-class>
+    </listener>
+ 	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/conf/log4j.properties</param-value>
+	</context-param>
+ 	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>vdb</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	   
+    <!-- MessageBroker Servlet -->
+    <!-- 
+    <servlet>
+        <servlet-name>MessageBrokerServlet</servlet-name>
+        <servlet-class>flex.messaging.MessageBrokerServlet</servlet-class>
+        <init-param>
+            <param-name>services.configuration.file</param-name>
+            <param-value>/WEB-INF/flex/services-config.xml</param-value>
+       </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MessageBrokerServlet</servlet-name>
+        <url-pattern>/messagebroker/*</url-pattern>
+    </servlet-mapping>
+    -->
+     
+	<!--the only one servlet, keep this web.xml tiny, do NOT add others-->
+	<!-- 
+	<servlet>
+		<servlet-class>vdb.mydb.jsp.VdbEngineStarterServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>iocStartXml</param-name>
+			<param-value>./WEB-INF/conf/ioc-start.xml</param-value>
+		</init-param>
+	</servlet>
+ 	-->
+ 	<listener>
+	 	<listener-class>vdb.mydb.jsp.VdbEngineStarterListener</listener-class>
+		<init-param>
+			<param-name>iocStartXml</param-name>
+			<param-value>./WEB-INF/conf/ioc-start.xml</param-value>
+		</init-param>
+ 	</listener> 
+	<!--the only one filter, keep this web.xml tiny, do NOT add others-->
+	<filter>
+		<filter-name>vdbFilterChainProxy</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>vdbFilterChainProxy</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<!--
+			<dispatcher>INCLUDE</dispatcher>
+		-->
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+</web-app>

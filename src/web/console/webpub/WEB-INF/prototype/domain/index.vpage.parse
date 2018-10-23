@@ -1,0 +1,4 @@
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#saveAs("index.vpage")
+\#usingLayout("${pageroot}/layout.vpage")
+#layoutWidgets("index")

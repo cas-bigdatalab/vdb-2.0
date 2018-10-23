@@ -1,0 +1,186 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+
+#set($entity=$catalog.fromId($param.entityId))
+#set($dataSet=$catalog.fromId($param.dataSetId))
+#set($pageName=$param.pageName)
+#set($isDefault=$param.isDefault)
+#set($flag="false")
+#if(${pageName}!="0")
+	#if(${isDefault}=="true")
+		#set($oldPage=$pagesTool.getPageByName(${pageName},${entity.uri}))
+		#if(!$oldPage)
+			#set($oldPage=$pagesTool.getDefaultPageByType(${entity.getUri()},"updateItem"))
+			#set($flag="true")
+		#end
+	#else
+		#set($oldPage=$pagesTool.getPageByName(${pageName},${entity.uri}))
+	#end
+#end
+
+#set($title="实体 <font color='red'>${entity.title}</font> [后台修改页面] ")
+#if(${pageName}!="0")
+	#set($title=$title+"修改")
+#else
+	#set($title=$title+"定义")
+#end
+
+<link type="text/css" rel="stylesheet" href="/console/catalog/js/base/ui.all.css" />
+<link rel="stylesheet" href="/console/catalog/js/common.css" type="text/css" />
+<link type="text/css" href="/console/catalog/js/ui.multiselect.css" rel="stylesheet" />
+<script type="text/javascript" src="/console/catalog/js/plugins/localisation/jquery.localisation-min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/plugins/scrollTo/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/jquery-ui-1.8.custom.min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/ui.multiselect.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+
+<script type="text/javascript">
+$().ready(function()
+{
+#if($oldPage)
+$('#name').val('$!{oldPage.name}');
+$('#title').val('$!{oldPage.title}');
+$('#style').val('$!{oldPage.style}');
+#end
+}
+);
+
+$(function()
+{
+	$("#subForm").validate({
+		submitHandler: function(form){
+			form.submit();
+		},
+		rules: {
+			name: {remote: "pageUriValidate.vpage?pageName=$!{pageName}&entityUri=${entity.uri}", required:true}
+		},
+		messages: {
+			name: "页面不能为空！或者您已经在此数据集使用了此页面名称！"
+		}
+	});	
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+  $(".multiselect").multiselect();
+  $(".multiselect").multiselect({sortable: false, searchable: false});
+});
+
+function addefs(){
+	var fieldVal="";
+	var fa=$('#selectedfileds').find("option:selected");
+	for(var i=0; i<fa.length;i++){ 
+		fieldVal=fieldVal+fa[i].value+";";
+	}
+	$('#efs').val(fieldVal);
+}
+function submitWay(){
+	addefs();
+	var pageName='${pageName}';
+	var flag ='${flag}';
+	var from=document.getElementById("subForm");
+	if(pageName!=0 && flag=="false"){
+	   	//修改操作
+		from.action="updateUpdateItems.vpage?eui=${entity.uri}&isDefault=$isDefault";
+	}else{
+	   	//新增操作
+	    from.action="doUpdateItems.vpage?eui=${entity.uri}&isDefault=$isDefault";
+	}
+}	
+</script>
+<body>
+
+    <form id="subForm" method="post">
+    <table class="PMTable" width="90%" style="border:0px solid black">
+    <tr>
+     	<td width="70%" style="border-right:0px solid black">
+			修改页面名称：<input type="text" name="name" id="name" size="35" #if(${pageName}!="0") readonly #end >
+    	</td>
+    </tr>
+    <tr>
+     	<td width="70%" style="border-right:0px solid black">
+			修改页面标题：<input type="text" name="title" id="title" size="35" >
+    	</td>
+    </tr>
+    <tr>
+    <td style="border-right:0px solid black">
+          选择编辑字段：
+    </td>
+    </tr>
+    <tr>
+    	<td style="border-right:0px solid black">
+      	<select id="selectedfileds" class="multiselect" multiple="multiple" name="selectedfileds" >
+			#foreach ($editField in ${oldPage.editFields})
+      			#foreach ($field in $entity.fields)
+      				#if(${field.uri}==${editField.fieldUri})
+      					<option value="${field.uri}" selected>
+							${field.title}(${field.name})
+						</option>
+						#break
+					#end
+				#end
+			#end      	
+      	
+        	#foreach ($field in $entity.fields)
+        		#set($flag="false")
+        		#foreach ($editField in ${oldPage.editFields})
+        			#if(${field.uri}==${editField.fieldUri})
+        				#set($flag = "true")
+        				#break
+        			#end
+        		#end
+        		#if($flag!="true")
+					<option value="${field.uri}">
+						${field.title}(${field.name})
+					</option>
+				#end
+			#end
+         </select>
+      </td>
+    </tr>
+    <tr>
+    <td style="border-right:0px solid black">
+          编辑已选字段：
+    </td>
+    </tr>
+    <tr>
+    	<td style="border-right:0px solid black">
+      	<div id="selectedfiledsDiv">
+      		#foreach ($editField in ${oldPage.editFields})
+      		<div id="selectedfileds_${editField.field.uri}" style="display:none">
+	      		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:#91c0fe 1px solid;border-left:#91c0fe 1px solid;background:#fff;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;" >
+					<tr>
+	      				<td class="table01_bg">字段名称</td>
+	      				<td class="table01_bg">默认值</td>
+	      				<td class="table01_bg">只读属性</td>
+	      			</tr>
+	      			<tr>
+		      			<td>${editField.field.title}(${editField.field.name})</td>
+		      			<td><input type="text" id="defaultValue${editField.field.uri}" name="defaultValue${editField.field.uri}" value="$!{editField.defaultValue}"></td>
+		      			<td><input type="checkbox" name="read${editField.field.uri}" value="readonly" #if(${editField.isReadonly()}) checked #end>只读</td>
+	      			</tr>
+	      		</table>
+      		</div>
+	      	#end
+      	</div>
+      </td>
+    </tr>
+    <tr>
+       <td style="border:0px">
+    	<input type="hidden" name="type" id="type" value="updateItem"/>
+    	<input type="hidden" name="style" id="style" value=""/>
+    	<input type="hidden" name="efs" id="efs">
+       </td>
+    </tr>
+    </table>
+    <div align="center">
+			<div class="right_ico_div">
+	          <div class="left_ico"><a href="#" onclick="submitWay();document.getElementById('subForm').submit();">保存设置</a></div>
+	          <div class="left_ico"> <a href="#" onclick="document.getElementById('subForm').reset();">重新填写</a></div>
+	        </div>
+	</div>  
+    </form>  
+    
+</body> 

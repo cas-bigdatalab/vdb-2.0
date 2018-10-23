@@ -1,0 +1,24 @@
+<!--created by VdbPublisher at 2010-05-12 22:50:45-->
+#set($entity = $tool.getEntity('cms.commenddb'))
+#set($bean = $tool.getBean('cms.commenddb', $param.id))
+#usingLayout("/page/layout.vpage")
+#set($title='推荐数据库')
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js" ></script>
+
+<table align="center" width="90%" border="0" cellpadding="6" >
+	<tr >
+		<td align="center" style="border-bottom:1px dashed #D1D1D1;color:#000000;font-size:20px;font-weight:bold;line-height:28px;">$!bean.get('title').format('%s')</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="70%" style="padding-top:20px;line-height:20px;font-size:12px;">$!bean.get('detail').format('%s')</td>
+	</tr>
+	<tr>
+	<td style="padding-top:20px;color: #ff6000;font-size:12px;font-weight:bold">
+		共享声明：
+	</td>
+	</tr>
+	<tr>
+		<td align="left" valign="top" width="70%" style="line-height:20px;font-size:12px;">$!bean.get('announce').format('%s')</td>
+	</tr>
+</table>
+$loggerTool.logAccess(null,null,$entity,'showItem',null,$param.id,false)

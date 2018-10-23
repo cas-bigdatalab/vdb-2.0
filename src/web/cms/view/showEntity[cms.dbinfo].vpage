@@ -1,0 +1,22 @@
+#set($query = $tool.createQueryFromSql('cms.dbinfo', "select * from dbinfo"))
+#set($num = $formater.parseInt($param.num))
+#set($recordSize = $num + 1)
+#set($pageIndex = 1)
+#set($pageViewer = $tool.createPageViewer($query, $pageIndex, $recordSize))
+#if($pageViewer.beans.size() > $num)
+#set($bean = $pageViewer.beans.get($num))
+<table align="center" width="90%" border="0" cellpadding="6" >
+	<tr >
+		<td align="center" style="border-bottom:1px dashed #D1D1D1;color:#000000;font-size:20px;font-weight:bold;line-height:28px;">数据库介绍</td>
+	</tr>
+	
+	<tr >
+		<td align="center">&nbsp; </td>
+	</tr>
+		
+	<tr>
+		<td align="left" valign="top" width="70%" style="line-height:20px;font-size:12px;">$!bean.get('detail').format('%s')</td>
+	</tr>
+	
+</table>
+#end

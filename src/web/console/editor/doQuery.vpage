@@ -1,0 +1,112 @@
+﻿##创建query对象，二次开发可以自定义
+#set($jsoQuery = $tool.parseJsoQuery($param.query))
+#set($query = $tool.createQuery($jsoQuery))
+#nul($seq.id)
+##增加用户查询条件
+$tool.mergeQuery($query, $jsoQuery)
+
+##设定查询结果的操作菜单，二次开发可以自定义
+##单项菜单
+
+#define($itemMenu)
+    <span id="TITLE_$velocityCount" style="display:none">#set($field=$entity.titleField)$canvas.view($field)</span>
+	<div id="jsddm${id}" class="bg2$seqid" onMouseOver="$(this).find('ul').eq(0).css('visibility', 'visible');" onMouseOut="$(this).find('ul').eq(0).css('visibility', 'hidden');">
+	<div class="jsddm_li" ><a href="#" class="jsddm_li_a">编辑</a>
+		<ul class="jsddm_li_ul">
+			<div style="width:100px;background: #ece6cd;border:1px solid black;padding-top:4px;padding-bottom:4px">
+			<li class="jsddm_li_ul_li"  ><a class="jsddm_li_ul_li_a" href='/showItem.vpage?id=${id}' target='_blank' ><img src='/console/shared/images/www.gif' align=absbottom  border=0>查看该记录&nbsp;</a> </li>
+			<hr size=0> 
+			<li class="jsddm_li_ul_li"  ><a class="jsddm_li_ul_li_a" href=# onclick="updateRecord('${entity.uri}', '${id}');"><img src='/console/shared/images/update.gif' align=absbottom  border=0>修改该记录&nbsp;</a> </li>
+			#if (${entity.NeedAudit}&&${entity.NeedAudit}=="y")
+			<hr size=0> 
+			<li class="jsddm_li_ul_li"  ><a class="jsddm_li_ul_li_a" href=# onclick="auditRecord('${entity.uri}', '${id}');"><img src='/console/shared/images/update.gif' align=absbottom  border=0>审核该记录&nbsp;</a> </li>
+			#end
+			<hr size=0> 
+			<li class="jsddm_li_ul_li" ><a href="#" onclick="deleteRecord('${entity.id}', '${id}');" class="jsddm_li_ul_li_a"><img src='/console/shared/images/delete.gif' align=absbottom  border=0>删除该记录&nbsp;</a></li>
+			<hr size=0> 
+			<li class="jsddm_li_ul_li" ><a href="#" class="jsddm_li_ul_li_a" name="visitLogButton" id="visitLogButton" style="cursor:pointer" onclick="visitLog('${entity.id}','${id}')"><img src='/console/shared/images/submit_n.gif' align=absbottom border=0>查看更新历史</a></li>
+			</div>
+		</ul>
+	</div>
+#end
+
+##所有项菜单
+#define($gridMenu)
+  <p>
+	<input type="checkbox" onclick="checkRecords(this);">全选
+	#if ($auth.isUserInRole("ROLE_ADMIN")||$auth.ugIsGranted($auth.username,"ROLE_CREATOR",$entity.id,"all"))
+	<img src='/console/shared/images/xinzeng.gif' border=0 style="cursor:pointer" align=absbottom onclick="insertRecord('${entity.uri}');">
+	<img id="excelImportButton" style="cursor:pointer" src='/console/shared/images/daoru.gif' border=0 align=absbottom>
+	<img onclick='exportRecords(1,"");' style="cursor:pointer" src='/console/shared/images/muban.gif'  border=0 align=absbottom>
+	#end
+	#if ($auth.isUserInRole("ROLE_ADMIN")||$auth.ugIsGranted($auth.username,"ROLE_EDITOR",$entity.id,"%"))
+	<img id="exportSel" src='/console/shared/images/suoxuan.gif' style="cursor:pointer" border=0 align=absbottom>
+	#end
+	#if ($auth.isUserInRole("ROLE_ADMIN")||$auth.ugIsGranted($auth.username,"ROLE_EDITOR",$entity.id,"ALL_DATA"))
+	<img src='/console/shared/images/suoyou.gif' id="exportAll" style="cursor:pointer" border=0 align=absbottom>
+	#end
+	#if ($auth.isUserInRole("ROLE_ADMIN")||$auth.ugIsGranted($auth.username,"ROLE_EDITOR",$entity.id,"%"))
+	<img src='/console/shared/images/shanchu.gif' onclick='deleteRecords();' style="cursor:pointer"  border=0 align=absbottom>
+	#end
+  </p>
+#end
+
+##创建PageViewer对象
+#set($entity = $query.entity)
+#set($pageViewer = $pager.create($query, $jsoQuery.pageIndex, $jsoQuery.pageSize))
+
+<div id="importSetFrame" style="height:10px"></div>
+<div id="exportSetFrame" style="height:10px"></div>
+<script>
+	$('#excelImportButton').click(function()
+	{
+		if(""==$("#importSetFrame")[0].innerHTML)
+		{
+			loadHTML1("/console/editor/importSet.vpage", "entityUri=${entity.uri}", $("#importSetFrame")[0]);
+		}
+		else
+		{
+			$("#importSet").show();
+			document.getElementById("content").style.width=document.body.scrollWidth;
+			document.getElementById("content").style.height=document.body.scrollHeight;
+		  	document.getElementById("content").style.visibility='visible';
+		}
+	});
+
+	$('#exportSel').click(function()
+	{
+		if(checkRecordsResult())
+		{
+			if(""==$("#exportSetFrame")[0].innerHTML)
+			{
+				loadHTML1("/console/editor/exportSet.vpage", "entityUri=${entity.uri}&exportType=2", $("#exportSetFrame")[0]);
+			}
+			else
+			{	
+				exportType=2;
+				$("#exportSet").show();
+				document.getElementById("content").style.width=document.body.scrollWidth;
+				document.getElementById("content").style.height=document.body.scrollHeight;
+			  	document.getElementById("content").style.visibility='visible';
+			}
+		}
+	});
+	
+	$('#exportAll').click(function()
+	{
+		if(""==$("#exportSetFrame")[0].innerHTML)
+		{
+			loadHTML1("/console/editor/exportSet.vpage", "entityUri=${entity.uri}&exportType=3", $("#exportSetFrame")[0]);
+		}
+		else
+		{	
+			exportType=3;
+			$("#exportSet").show();
+			document.getElementById("content").style.width=document.body.scrollWidth;
+			document.getElementById("content").style.height=document.body.scrollHeight;
+		  	document.getElementById("content").style.visibility='visible';
+		}
+
+	});
+
+</script>

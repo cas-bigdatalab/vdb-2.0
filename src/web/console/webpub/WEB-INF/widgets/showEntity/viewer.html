@@ -1,0 +1,5 @@
+#if($QUERY_MODE)
+\#parse("view/showQuery[${query.uri}].vpage")
+#else
+\#parse("view/showEntity[${entity.uri}].vpage")
+#end

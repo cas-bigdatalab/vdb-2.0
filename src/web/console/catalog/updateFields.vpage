@@ -1,0 +1,102 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="批量描述属性")
+
+#set($meta1 = ${catalog.fromId(${param.tid})})
+#set($dataSet = ${catalog.fromId(${param.dsid})})
+#invoke("vdb.mydb.jsp.action.catalog.DoGetTypeNameAction")
+
+#set($fieldBean = $typeName)
+
+<form id="form1" action="doUpdateFields.vpage?tid=${meta1.id}&dsid=${param.dsid}" method = "POST">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:#91c0fe 1px solid;border-left:#91c0fe 1px solid;background:#fff;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;" >
+ 		<tr >
+			<td class="table01_bg">字段URI</td>
+			<td class="table01_bg">字段列名</td>
+			<td class="table01_bg" >字段标题</td>
+			<td class="table01_bg">字段类型</td>
+			<td class="table01_bg">字段长度</td>
+			<td class="table01_bg">缺省值</td>
+		</tr>
+		
+		#set($fieldBean.count=0)
+		
+		#foreach ($field in $meta1.fields)
+			#set($column = ${field.ex.jdbcColumn})
+			
+			#if ($column == $field.ex.jdbcColumn)
+				#set($count = $fieldBean.count)
+				#if(${field.fieldType.name}!="Collection" and ${field.fieldType.name}!="Reference" and ${field.fieldType.name}!="GpsLocation")
+				<tr #if($velocityCount % 2 ==1) bgcolor="#eff6fe" #end style="padding-left:10px;">
+					<td><input type="text" value="${field.name}" name="P_name${field.columnName}" size="6" readonly /></td>
+					<td>${field.columnName}</td>
+					<td><input type="text" value="${field.title}" name="P_title${field.columnName}" size="8"/></td>
+					<td>
+						<select name="P_type${field.columnName}" style="width:80px;">
+							#foreach ($type in $manager.typeManager.fieldTypes)
+								#if(${type.name}!="Collection" and ${type.name}!="Reference" and ${type.name}!="GpsLocation")
+								<option	value='${type.name}'
+									#if ($type.name==$field.fieldType.name)
+										selected
+									#end >
+									${type.title}
+								</option>
+								#end
+							#end
+						</select>
+					</td>
+					<td>
+						<input type="text" value="${field.size}" name="P_size${field.columnName}" size="8"/>
+					</td>
+					<td>
+						<input type="text" value="$!{field.defaultValue}" name="P_defaultValue${field.columnName}" size="8"/>
+					</td>
+				</tr>
+				#end
+			#end
+		#end
+		#foreach ($column in $meta1.ex.untitledColumns)
+			#set($count1 = $fieldBean.count)
+			<tr id="FIELDS_ROW_$count1">
+				#set($fieldBean.tid = ${meta1.id})
+				#set($fieldBean.type = ${column.typeName})
+				#set($fieldBean.name = ${column.columnName})
+				
+				<td><input type="text" value="${fieldBean.name}" name="N_name${column.columnName}" size="6"/></td>
+				<td>
+					<input type="hidden" value="${column.columnName}" name="N_columnName${column.columnName}"/>${column.columnName}
+				</td>
+				<td><input type="text" value="${column.columnName}" name="N_title${column.columnName}" size="8"/></td>
+				<td>
+					#set($typeName = $meta1.getDataClassNameFromJdbcType($formater.parseInt("$column.getDataType()")))
+					<select name="N_type${column.columnName}" style="width:80px;">
+					#foreach ($type in $manager.typeManager.fieldTypes)
+						<option	value='${type.name}'
+							#if ($type.name==$typeName)
+								selected
+							#end >
+							${type.title}
+						</option>
+					#end
+					</select>
+				</td>
+				<td>
+					<input type="text" value="${column.columnSize}" name="N_size${column.columnName}" size="8"/>
+				</td>
+				<td><input type="text" value="" name="N_defaultValue${column.columnName}" size="8"/></td>
+			</tr>
+		#end
+		</jsp:useBean>
+	</table>
+	<br>
+	<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+	</div>
+	<p align="left">
+		说明：<br>
+		1.所有字段uri均以：<font color="red">${meta1.uri}.</font> 开头；<br/>
+		2.此处所描述的字段不包括集合类型、引用类型和GPS类型。
+	</p>
+</form>

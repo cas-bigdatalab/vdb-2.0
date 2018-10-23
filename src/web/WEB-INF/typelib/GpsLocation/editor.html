@@ -1,0 +1,19 @@
+<div id="E_$field.id">	
+#set($lonid='E_'+$seq.id)
+<input  type="hidden" name="${field.lonColumn}" id="$lonid" value="${data.lon}" style="width:60pt">
+#set($latid='E_'+$seq.id)
+ <input type="hidden" name="${field.latColumn}" id="$latid" value="${data.lat}" style="width:60pt">
+#set($altid='E_'+$seq.id)
+<input type="hidden" name="${field.altColumn}" id="$altid" value="${data.alt}" style="width:60pt">
+<iframe style="width:480;height:450" scrolling="no"  frameBorder=0  name="F_$field.id" id="F_$field.id" src=""></iframe>
+<input type="hidden" name="transferUrl" value='$!{field.type.extra.get("transferUrl")}'>
+<input type="hidden" name="type" value="$field.typeName">
+<input type="hidden" name="fieldName" value="$field.name">
+<input type="hidden" name="frameName" value="F_$field.id">
+	<script>
+		var val="${data.value}";	
+		var url=location.href;
+		url=url.substring(0,url.lastIndexOf("/"));
+		document.getElementById("F_$field.id").src='$!{field.type.extra.get("editUrl")}?param='+'[{"lon":${data.lat},"lat":${data.lon},"alt":${data.alt},"grade":14,"div":"$field.id",'+'"url":"'+url+'"}]';
+	</script>
+</div>

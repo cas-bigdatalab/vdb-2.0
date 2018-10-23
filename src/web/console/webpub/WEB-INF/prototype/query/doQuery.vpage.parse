@@ -1,0 +1,65 @@
+﻿<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+#saveAs("view/doQuery[${query.uri}].vpage")
+
+${H}set(${D}jsoQuery = ${D}tool.parseJsoQuery(${D}param.query))
+
+#if($query.isSqlQuery())
+
+	#set($sql=${query.sql})
+	#set($flag=true)
+	#if($sql.endsWith(";"))
+		#set($len=$sql.trim().length() - 1)
+		#set($sql=$sql.substring(0,$len))
+	#end
+	
+	#if($sql.indexOf("where") < 0)
+		#set($flag=false)
+	#end
+\#set(${D}page = ${D}auth.getGrantedPageByTypeAndRes(${D}auth.userName, "listItems", '$query.id'))
+\#set(${D}filter=${D}auth.mergeFilter(${D}page.grantFilter,'$query.entity.id'))
+\#if(${D}filter)
+##创建query对象
+#if($flag)
+${H}set(${D}query = ${D}tool.createQueryFromSql('$query.entity.uri', "$sql and (${D}filter)"))
+#else
+${H}set(${D}query = ${D}tool.createQueryFromSql('$query.entity.uri', "$sql where (${D}filter)"))
+#end
+\#else
+${H}set(${D}query = ${D}tool.createQueryFromSql('$query.entity.uri', "$sql"))
+\#end
+	
+##request参数
+${H}foreach(${D}name in ${D}jsoQuery.variables.keySet())
+${H}nul(${D}query.bindVariable(${D}name, ${D}jsoQuery.variables.get(${D}name)))
+${H}end
+
+##后期绑定一些变量
+##nul(${D}query.bindVariable('var', param.var))
+#else
+${H}set(${D}query = ${D}tool.createQuery('$query.entity.uri'))
+#foreach($text in $$query.oql.split("\\n"))
+\#nul($query.oql)
+#end
+#end
+${H}#增加用户查询条件
+${D}tool.mergeQuery(${D}query, ${D}jsoQuery)
+
+#[[
+
+##设定查询结果的操作菜单
+##单项菜单
+#define($itemMenu)
+	<a href='${pageroot}/showItem.vpage?id=${entity.uri}/${id}' target='_blank'>详细</a>
+#end
+
+##所有项菜单
+#define($gridMenu)
+#end
+
+##创建PageViewer对象
+#set($entity = $query.entity)
+#set($pageViewer = $pager.create($query, $jsoQuery.pageIndex, $jsoQuery.pageSize))
+##显示PageViewer对象
+#parse("${pageroot}/view/listItems[${entity.uri}].vpage")
+
+]]#

@@ -1,0 +1,121 @@
+<settings>
+	<font>Garamond</font>
+	<text_size>15</text_size>
+	<text_color>FFFFFF</text_color>
+	<redraw>1</redraw>
+	<background>
+		<alpha>100</alpha>
+		<border_alpha>20</border_alpha>
+	</background>
+	<plot_area>
+		<color>000000</color>
+		<alpha>6</alpha>
+		<border_alpha>6</border_alpha>
+		<margins>
+			<left>50</left>
+			<right>50</right>
+		</margins>
+	</plot_area>
+	<grid>
+		<category>
+			<color>FFFFFF</color>
+			<alpha>100</alpha>
+			<dashed>1</dashed>
+		</category>
+		<value>
+			<color>FFFFFF</color>
+			<alpha>100</alpha>
+			<dashed>1</dashed>
+		</value>
+	</grid>
+	<axes>
+		<category>
+			<width>1</width>
+			<alpha>20</alpha>
+		</category>
+		<value>
+			<width>1</width>
+			<alpha>20</alpha>
+		</value>
+	</axes>
+	<values>
+		<category>
+			<color>000000</color>
+			<text_size>13</text_size>
+		</category>
+		<value>
+			<color>000000</color>
+			<min>0</min>
+		</value>
+	</values>
+	<balloon>
+		<text_color>000000</text_color>
+		<text_size>13</text_size>
+	</balloon>
+	<legend>
+		<x>0</x>
+		<y>20</y>
+		<color>000000</color>
+		<text_color>000000</text_color>
+		<spacing>5</spacing>
+	</legend>
+	<column>
+		<type>3d column</type>
+		<width>20</width>
+		<spacing>0</spacing>
+		<hover_brightness>-25</hover_brightness>
+		<balloon_text>{series} ({title}) : {value}</balloon_text>
+		<grow_time>2</grow_time>
+		<sequenced_grow>1</sequenced_grow>
+	</column>
+	<depth>20</depth>
+	<angle>35</angle>
+	<line>
+		<balloon_text>{value}</balloon_text>
+		<data_labels>{value}</data_labels>
+	</line>
+	<graphs>
+		<graph gid="0">
+			<title>第一次</title>
+		</graph>
+		<graph gid="1">
+			<title>第二次</title>
+		</graph>
+		<graph gid="2">
+			<title>第三次</title>
+		</graph>
+		<graph gid="3">
+			<title>第四次</title>
+		</graph>
+		<graph gid="4">
+			<title>第五次</title>
+		</graph>
+	</graphs>
+	<labels>
+		<label lid="0">
+			<y>25</y>
+			<text_size>18</text_size>
+			<align>center</align>
+		</label>
+		<label lid="1">
+			<y>25</y>
+			<text_size>18</text_size>
+			<align>center</align>
+		</label>
+		<label lid="2">
+			<y>25</y>
+			<text_size>18</text_size>
+			<align>center</align>
+		</label>
+		<label lid="3">
+			<y>25</y>
+			<text_size>18</text_size>
+			<align>center</align>
+		</label>
+		<label lid="4">
+			<y>25</y>
+			<text_size>18</text_size>
+			<align>center</align>
+		</label>
+	</labels>
+</settings>

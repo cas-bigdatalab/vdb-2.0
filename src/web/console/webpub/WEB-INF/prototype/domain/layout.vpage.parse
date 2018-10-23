@@ -1,0 +1,24 @@
+#saveAs("layout.vpage")
+<!--created by VdbPublisher at $date.get('yyyy-MM-dd HH:mm:ss')-->
+$request.setAttribute("pictype", "bg")
+#set($theme = $themeTool.theme)
+
+#invoke("vdb.webpub.background.DoGetBackgroundInfo")
+<html xmlns="http://www.w3.org/1999/xhtml">
+\#parse("head.vpage")
+<body style="font-size:12px;" 
+#if($!props.get("picRes")=="upload") style="background:url($!props.get('fileName')) repeat-x center top $!props.get('colorPicker');" 
+#elseif($!props.get("picRes")=="color") style="background:$!props.get('colorPickerAll');" 
+#elseif($!props.get("picRes")=="myweb") class="bg"
+#end>
+<div id="pageTop" style="width:970px;margin:auto;text-align:left">
+\#parse("top.vpage")
+</div>
+<div class="bj1"  style="width:970px;">
+$body
+</div>
+<div id="pageBottom" style="width:970px;margin:auto;text-align:left">
+\#parse("bottom.vpage")
+</div>
+</body>
+</html>

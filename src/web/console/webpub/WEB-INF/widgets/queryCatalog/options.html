@@ -1,0 +1,254 @@
+#set($ds = ${domain.getDataSets()})
+<table>
+	<tr>
+		<td colspan="2">
+			<input type="hidden" id="p_navtree" name="p_navtree">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="treeboxbox_tree_5" style="width:200px;height:300px;background-color:#f5f5f5;border:1px solid Silver;;overflow:auto;"></div>
+
+		</td>
+		<td>
+			<input type="button" value="[增加静态节点]" onclick="showItem('staticNode');"/>
+			<input type="button" value="[增加数据集节点]" onclick="showItem('dataset');"/>
+			<input type="button" value="[增加动态节点]" onclick="showItem('ternary');"/>
+			<input type="button" value="[删除选中节点]" onclick="tree5.deleteItem(tree5.ah());$('#opt_ternary').hide();$('#opt_dataset').hide();$('#opt_staticNode').hide();"/>
+			<!-- 
+			<a href="#" onclick="addItem(tree5.ah(),(new Date()).valueOf(),'New item');">[增加静态节点]</a>&nbsp;&nbsp;
+			<a href="#" onclick="addItem(tree5.ah(),'dataset','数据集目录节点');">[增加数据集节点]</a>&nbsp;&nbsp;
+			<a href="#" onclick="addItem(tree5.ah(),'ternary','动态树节点');">[增加动态节点]</a>&nbsp;&nbsp;
+			
+			<br/><br/>
+			<a href="#" onclick="tree5.deleteItem(tree5.ah());">[删除选中节点]</a>&nbsp;&nbsp;
+			<a href="#" onclick="aah();">[资源同步]</a>
+			 -->
+			<br/><br/>
+			<div id="opt_staticNode" style="width:320px;height:300px;display:none;">
+				文本:&nbsp;&nbsp; <input id="linkText"/><br>
+				地址:&nbsp;&nbsp; <input id="linkUrl"/><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:red'><font color='#FF0000'>*节点为目录或者纯文本节点，不填写地址项</font></span><br><br>
+				<input type="button" onclick="addStaticNode(tree5.ah());" value="确定"/>&nbsp;&nbsp;
+				<input id="s_newfirst" type="button" onclick="addStaticNode(0);" value="保存为一级节点"/>
+			</div>
+			<div id="opt_dataset" style="width:250px;height:200px;display:none">
+				选择数据集:
+				<select id="p_dataseturi" name="p_dataseturi">
+					<option value="all">全部数据集</option>
+					#foreach ($bean in $ds)
+						<option value="$bean.uri">$bean.title</option>
+					#end
+				</select>
+				<br><input type="button" onclick='addDatasetNode(tree5.ah());' value="确定"/>
+				&nbsp;&nbsp;
+				<input id="d_newfirst" type="button" onclick="addDatasetNode(0);" value="保存为一级节点"/>
+			</div>
+			<div id="opt_ternary" style="width:350px;height:200px;display:none">
+				选择数据来源:
+					<select id="p_ternarytype" name="p_ternarytype" onchange="bbh();">
+						<option value="sql">SQL</option>
+						<option value="text">文本</option>
+					</select>
+				<br/>
+				<div id="bb_div" style="display:">
+				选择数据集:
+				<select id="p_ternaryuri" name="p_ternaryuri">
+					#foreach ($bean in $ds)
+						<option value="$bean.uri">$bean.title</option>
+					#end
+				</select>
+				</div>
+				<textarea id="p_query" name="p_query" rows="4" cols="55"></textarea>
+				<br>*此功能将数据库表中查询或者直接输入的三元组组装成树, 三元组格式为[id,text,parentId],第一级节点的parentId约定为0(0号ID节点已存在), 如果树节点需要链接, 在三元组中text项将链接文本和地址用|分开<br>
+				*从数据库表中查出的三元组树例：select id,text,pid from treeTable<br>
+				*文本输入三元组树例：1,首页|/,0;2,数据编辑|/console/editor,0<br>
+				<br><input type="button" onclick='addTernaryNode(tree5.ah());' value="确定"/>
+				&nbsp;&nbsp;
+				<input id="t_newfirst" type="button" onclick="addTernaryNode(0);" value="保存为一级节点"/>
+			</div>
+		</td>
+	</tr>
+
+</table>
+<script>
+	var flag = "new";
+	var tree5 = new C("treeboxbox_tree_5", "100%", "100%", 0);
+	tree5.setSkin('dhx_skyblue');
+	tree5.setImagePath("/console/shared/plugins/dhtmlx/tree/imgs/");
+	//tree5.enableItemEditor(true);
+	tree5.enableDragAndDrop(true);
+
+	#if(${widget.props.navtree} != "")
+		tree5.loadXMLString("${widget.props.navtree}");
+	#end
+
+	tree5.attachEvent("onDragIn",function(dId,lId,id,sObject,tObject){//禁止拖拽
+		if(lId.indexOf("dataset")>=0 || lId.indexOf("ternary")>=0){
+			return false;
+		}else{
+			return true;
+		}
+	});
+
+	tree5.ck(function (id)
+	{
+		var nodeText = tree5.getItemText(id);
+		if(id.indexOf('static')>=0)
+		{
+			var llist = tree5.getItemText(id).split('|');
+			$("#linkText").val(llist[0]);
+			var urltxt = llist[1];
+			if(urltxt == null)
+				urltxt = '';
+			$("#linkUrl").val(urltxt);
+			showItem('staticNode');
+			$('#s_newfirst').hide();
+		}
+
+		if(id.indexOf('dataset')>=0)
+		{
+			//alert(id);
+			var txtlist = nodeText.split('^');
+			$("#p_dataseturi").get(0).value  =  txtlist[0];
+			showItem('dataset');
+			$('#d_newfirst').hide();
+		}
+		if(id.indexOf('ternary')>=0)
+		{
+			var txtlist = nodeText.split('^');
+			$("#p_ternarytype").get(0).value  =  txtlist[0];
+			//alert(txtlist[0]);
+			if(txtlist[0] == 'text')
+			{
+				$('#bb_div').hide();
+			}else
+			{
+				$('#bb_div').show();
+			}
+			
+			$("#p_ternaryuri").get(0).value  =  txtlist[1];
+			$("#p_query").val(txtlist[3]);
+			showItem('ternary');
+			$('#t_newfirst').hide();
+		}
+		flag = "update";
+		//alert(tree5.getItemText(id));
+	});
+
+	function addStaticNode(parentid)
+	{
+		//alert($('#linkUrl').val().length);
+		//alert(flag);
+		if($('#linkText').val().length == 0)
+		{
+			alert("树形节点文本不能为空");
+			return;
+		}
+		if(flag=="new")
+		{
+			if($('#linkUrl').val().length == 0)
+				addItem(parentid,'leaf.gif','staticNode'+(new Date()).valueOf(),$('#linkText').val());
+			else
+				addItem(parentid,'leaf.gif','staticNode'+(new Date()).valueOf(),$('#linkText').val()+"|"+$('#linkUrl').val());
+		}else if(flag=="update")
+		{
+			if($('#linkUrl').val().length == 0)
+				tree5.setItemText(parentid,$('#linkText').val());
+			else
+				tree5.setItemText(parentid,$('#linkText').val()+"|"+$('#linkUrl').val());
+		}
+		$('#opt_staticNode').hide();
+		
+	}
+	function addDatasetNode(parentid)
+	{
+		//alert($('#p_dataseturi option:selected').text());
+		if(flag=="new")
+		{
+			addItem(parentid,'model.gif','dataset_'+$('#p_dataseturi').val(),$('#p_dataseturi option:selected').val() +"^"+ $('#p_dataseturi option:selected').text());
+		}else if(flag=="update")
+		{
+			//var parent = tree5.getParentId(parentid);
+			//tree5.deleteItem(parentid);
+			tree5.setItemText(parentid,$('#p_dataseturi option:selected').val() +"^"+ $('#p_dataseturi option:selected').text());
+			//addItem(parent,'dataset_'+$('#p_dataseturi').val(),$('#p_dataseturi option:selected').text());
+		}
+		$('#opt_dataset').hide();
+	}
+	function addTernaryNode(parentid)
+	{
+		//alert($('#linkText').val());
+		if($('#p_query').val().length == 0)
+		{
+			alert("动态树数据来源不能为空");
+			return;
+		}
+		if(flag=="new")
+		{
+			if($('#p_ternarytype option:selected').val()=='sql')
+				addItem(parentid,'table1.gif','ternary_'+$('#p_ternaryuri').val(),$('#p_ternarytype option:selected').val() +"^"+ $('#p_ternaryuri option:selected').val() +"^"+ $('#p_ternaryuri option:selected').text()+"^"+$('#p_query').val());
+			else
+				addItem(parentid,'table1.gif','ternary_'+$('#p_ternaryuri').val(),$('#p_ternarytype option:selected').val() +"^" +"^"+ "^"+$('#p_query').val());
+		}else if(flag=="update")
+		{
+			if($('#p_ternarytype option:selected').val()=='sql')
+				tree5.setItemText(parentid,$('#p_ternarytype option:selected').val() +"^"+ $('#p_ternaryuri option:selected').val() +"^"+ $('#p_ternaryuri option:selected').text()+"^"+$('#p_query').val());
+			else
+				tree5.setItemText(parentid,$('#p_ternarytype option:selected').val() +"^" +"^"+ "^"+$('#p_query').val());
+		}
+		$('#opt_ternary').hide();
+	}
+	function addItem(pId,imageUrl,id,text){//增加静态item
+		if(pId!=0&&pId.indexOf("dataset")>=0){//dataset
+			alert("默认节点，不能增加子节点!");
+		}else if(pId!=0&&pId.indexOf("ternary")>=0){//三元组tree
+			alert("默认节点，不能增加子节点!");
+		}else{//静态tree
+			tree5.cH(pId||0,id,text,null,imageUrl);
+		}
+	}
+			
+	function showItem(id){//增加静态item
+	/*	if("dataset" == pId){//dataset
+			alert("默认节点，不能增加子节点!");
+		}else if("ternary" == pId){//三元组tree
+			alert("默认节点，不能增加子节点!");
+		}else{//静态tree
+			tree5.cH(pId||0,id,text);
+		}*/
+		//显示隐藏层
+		if("staticNode" == id){
+			$('#opt_ternary').hide();
+			$('#opt_dataset').hide();
+			$('#opt_staticNode').show();
+			$('#s_newfirst').show();
+		}else if("dataset" == id){
+			$('#opt_ternary').hide();
+			$('#opt_staticNode').hide();
+			$('#opt_dataset').show();
+			$('#d_newfirst').show();
+		}else if("ternary" == id){
+			$('#opt_dataset').hide();
+			$('#opt_staticNode').hide();
+			$('#opt_ternary').show();
+			$('#t_newfirst').show();
+		}
+		flag = 'new';
+	}
+
+	function aah() {
+		var out = tree5.kJ();
+		out = out.replace(/\"/g,"'");
+		$('#p_navtree').val(out);
+	}
+
+	function bbh(){
+		if($('#p_ternarytype').val() == "sql"){
+			$('#bb_div').show();
+		}else{
+			$('#bb_div').hide();
+		}
+	}
+
+</script>

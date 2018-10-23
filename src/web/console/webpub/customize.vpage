@@ -1,0 +1,139 @@
+﻿#usingLayout('/console/webpub/template1.vpage')
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+<html>
+
+<head>
+#set($layoutName = $param.layoutName)
+#set($layouts = $widgetTool.layoutPatternManager.layoutPatterns)
+#set($widgetLayout = $widgetTool.widgetLayoutDAO.loadWidgetLayout($layoutName))
+
+<LINK rel=stylesheet type=text/css href="js/common.css" />
+<LINK id="cssfile" rel=stylesheet type=text/css href="/console/webpub/js/themecss.vsp?themeName=${themeTool.theme.name}" />
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+
+<script src="/console/shared/plugins/dhtmlx/grid/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+<script src="/console/shared/js/jquery-1.3.2.min.js" type="text/javascript"></script>
+<script src="/console/shared/js/imgpreview.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/popbaseball.js"></script>
+<script src="/console/shared/js/widget.js" type="text/javascript"></script>
+<script  src="js/customize.js"></script>
+
+<script language="javascript" src="/console/shared/plugins/amcharts/js/FusionCharts.js"></script>
+<script language="javascript" src="/console/shared/plugins/amcharts/js/currentCharts.js"></script>
+<script language="javascript" src="/console/shared/plugins/amcharts/js/swfobject.js"></script>
+<link rel="StyleSheet" href="/console/shared/plugins/amcharts/css/style.css" type="text/css" />
+<link rel="StyleSheetFie" href="/console/shared/plugins/amcharts/css/styleFie.css" type="text/css" />
+</head>
+<script>
+	var layoutSel = "$widgetLayout.layoutPattern.name";
+	var widgetLayout = "$param.layoutName";
+</script>
+<body style="width:100%;text-align:center;font-size:12px;" onload="onLoad();">
+<div id="Tab1" style="width:970px;margin-top:-16px;" align="center">
+<div class="Menubox">
+<ul>
+ <li id="one1" onclick="setTab('one',1,3);" >风格设置</li>
+ <li id="one2" onclick="setTab('one',2,3);" >布局设置</li>
+ <li id="one3" onclick="setTab('one',3,3);">添加组件</li>
+</ul>
+
+<input style="float:left;margin-left:150px;margin-top:2px;" type="button" value="保存页面" onclick="saveProfile();"/>
+<input style="float:left;margin-left:15px;margin-top:2px;" type="button" id="closeSetBotton" value="页面预览" onclick="closeSet();"/>
+<input style="float:left;margin-left:15px;margin-top:2px;display:none;" id="openSetBotton" type="button" value="打开设置" onclick="openSet();"/>
+</div>
+<div id="Contentbox" class="Contentbox">
+ <div id="con_one_1" >
+ <div id="topSetting" class="topSetting">
+	<div id="loadingover" class="topSettingBlk">
+		<div class="settingConn">
+			<div style="DISPLAY: block" id="styleSetting" class="styleSetting">
+				<div style="DISPLAY: block" id="stylesetting_8_tab" class="styleSelector">
+					#parse("listThemes.vpage")
+				</div>
+			</div>
+		</div>
+	</div>
+</div></div>
+ <div id="con_one_2" style="display:none">
+<div id="topSetting" class="topSetting">
+	<div id="loadingover" class="topSettingBlk">
+		<div class="settingConn">
+			<div style="DISPLAY: block" id="formsetSetting" class="formsetSetting">
+				<p class="readme1">选择一个你喜欢的版式吧~</p>
+					#parse("listLayouts.vpage")
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+ <div id="con_one_3" style="display:none">
+<div id="topSetting" class="topSetting">
+	<div id="loadingover" class="topSettingBlk">
+		<div class="settingConn">
+			<div style="DISPLAY: block" id="moduleSetting" class="moduleSetting">
+				<div style="DISPLAY: block" id="moduleSetting_1_tab" class="moduleSeltor">
+				<form id='thisform'>
+					<ul>
+						#foreach ($widget in $widgetFactory.widgets)
+							#set($flag = true)
+							#if($widget.name=='horizontal')
+							   	#set($flag = false)
+							#end
+							#if($widget.name=='showItem'||$widget.name=='showEntity')
+							   	#set($flag = false)
+							#end
+							
+							#if($flag)
+							#if($widget.selectable)
+								<li class="checked">
+								<input id="select_$widget.name" onclick="loadColumn('$widget.name','column1',this,'$widgetLayout.layoutPattern.name');" 
+								#if($widgetMap.get($widget.name) ) 
+									checked 
+								#end 
+								type="checkbox"><label for="select_$widget.name">$widget.title</label></li>
+	     					#end
+	     					#end
+	     				#end
+					</ul>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<hr style="width:970px;height:2px;border-width:1;color:gray;background-color:gray" />
+
+<div id="pageTop" style="width:970px;margin:auto;text-align:left;display:none;">
+#renderWidget("top", true)     
+<table height=24 cellspacing=0 cellpadding=0 width=100% border=0>
+  <tbody>
+    <tr>
+      <td height=24 align="center">
+		 #renderWidget("topMenu", true)     
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+#set($isViewMode = false)
+#parse("layoutWidgets.vpage")
+
+<div id="pageBottom" style="width:970px;margin:auto;text-align:center;display:none;">
+#renderWidget("bottom", true)     
+</div>
+<script>
+setTab('one',1,3);
+</script>
+</body>
+</html>

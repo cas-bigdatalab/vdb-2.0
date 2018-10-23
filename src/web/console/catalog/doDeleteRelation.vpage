@@ -1,0 +1,9 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.DoDeleteRelation")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="修改实体信息")
+
+<script>
+top.deleteItem('RelationList@${dsid}','$tempId');
+</script>
+
+已保存！

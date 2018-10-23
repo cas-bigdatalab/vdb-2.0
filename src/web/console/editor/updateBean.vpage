@@ -1,0 +1,152 @@
+#selectView($view, $entity, 'updateBean')
+#set($entity = $tool.getEntity('$entity.uri'))
+#invoke("vdb.mydb.vtl.action.UpdateBeanForm")
+#set($fields=$view.items)
+#set($rid=$param.rid)
+#set($jsoFormBinder="form1")
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcommon.js"></script>
+<script src="/console/shared/plugins/dhtmlx/layout/dhtmlxcontainer.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.css"/>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/windows/skins/dhtmlxwindows_dhx_skyblue.css"/>
+<script src="/console/shared/plugins/dhtmlx/windows/dhtmlxwindows.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.css" />
+<script language="JavaScript" type="text/javascript" src="/console/shared/plugins/dhtmlx/vault/dhtmlxvault.js"></script>
+<link rel="STYLESHEET" type="text/css" href="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.css"/>
+<script src="/console/shared/plugins/dhtmlx/tree/dhtmlxtree.js"></script>
+<link rel="stylesheet" type="text/css" href="/console/shared/js/style.css">
+<script language="JavaScript" src="/console/shared/js/check.js"></script>
+<script language="javascript" src="/console/shared/js/json.js"></script>
+<script language="javascript" src="/console/editor/js/updateBean.js"  charset="utf-8"></script>
+<script language="javascript" src="/console/shared/plugins/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/console/shared/js/query.js"></script>
+<script language="javascript" src="/console/shared/js/editor.js"></script>
+<script src="${pageroot}/js/editor.js" charset="UTF-8"></script>
+<script language="javascript" src="/console/shared/js/ui.js"></script>
+<script language="javascript" src="/console/shared/js/jsoCtrl.js"></script>
+<script language="javascript" src="/console/shared/js/jquery.dimensions.js"></script>
+<script language="javascript" src="/console/shared/js/ui.mouse.js"></script>
+<script language="javascript" src="/console/shared/js/ui.resizable.js"></script>
+<script type="text/javascript" src="/console/shared/js/interface.js" ></script>
+<script type="text/javascript" src="/console/shared/js/jquery.form.js" ></script>
+<script type="text/javascript" src="/console/shared/js/linkageSelect.js" ></script>
+
+<script language="javascript" src="/console/shared/js/ckeditor/ckeditor.js"></script>
+
+<title>编辑记录-$entity.title</title>
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+</head>
+<body  style="background-color:#f7f9fa;" >
+#if (!$isGranted)
+<div>您无权进行此操作！</div>
+#end
+#if ($isGranted)
+
+<script>
+	var thisBeanForm = new Object();
+	thisBeanForm.tableId = '$entity.Id';
+
+#if (!$isNewRecord)
+	thisBeanForm.beanId = '$bean.getId().value';
+	thisBeanForm.roleId = '$!mfid';
+	thisBeanForm.parentBeanId = '$!fkv';
+	thisBeanForm.oper = '$!oper';
+#end	
+</script>
+<form name="form1" method="post">
+<table width="98%" cellpadding="6" align="center" class="table3">
+#set ($jsoFields = "")
+#set($userView=$auth.getUserView($auth.username, "${entity.id}", "ROLE_EDITOR"))
+#if (!$userView)
+#set($userView=$auth.getUserGroupView($auth.username, "${entity.id}", "ROLE_EDITOR"))
+#end
+#foreach ($field in $fields)
+
+#remove('dc')
+#set($dc = $ctxMap.get($field.uri))
+#set($flag=0)
+#if ($userView)
+	#foreach ($item in $userView.items)
+		#if ($item == "${field.uri}")
+	    		#set($flag=1)
+	    #end
+	#end
+#end
+
+	#if ($dc && $dc.visible)
+		#if (!$userView||!$userView.items||($userView&&$userView.items&&$flag==1))
+			#set($data=$dc.data)
+			<tr #if ($field.fieldType.name=="Collection") style="display:none" #end>
+		      <td align="right" valign="top">$field.title </td>
+		      <td valign="top" width="80%">
+				<!--${field.title}-->
+					#set ($ef = "/WEB-INF/typelib/" + $field.typeName + "/editor.html")
+					#parse($ef)
+		      </td>
+		    </tr>
+		
+			#if($jsoFields != "")
+				#set ($jsoFields = $jsoFields + " , ")
+			#end
+			
+			#set ($jsoField = "{'id' : '$field.id', 'name' : '$field.name', 'title' : '$field.title', 'type' : '$field.typeName'}")
+			#set ($jsoFields = $jsoFields + $jsoField)
+  		#end  
+  		#if ($userView&&$userView.items&&$flag==0)
+  		#set($data=$dc.data)
+  			<tr style="display:none">
+		      <td align="right" valign="top">$field.title </td>
+		      <td valign="top" width="80%">
+				<!--${field.title}-->
+					#set ($ef = "/WEB-INF/typelib/" + $field.typeName + "/editor.html")
+					#parse($ef)
+		      </td>
+		    </tr>
+		    #if($jsoFields != "")
+				#set ($jsoFields = $jsoFields + " , ")
+			#end
+			
+			#set ($jsoField = "{'id' : '$field.id', 'name' : '$field.name', 'title' : '$field.title', 'type' : '$field.typeName'}")
+			#set ($jsoFields = $jsoFields + $jsoField)
+  			<tr >
+		      <td align="right" valign="top">$field.title </td>
+		      <td valign="top" width="80%" >
+				$canvas.view2($field,$bean)
+		      </td>
+		    </tr>
+  		#end
+	#end	
+#end
+  </table>
+  <p align="center">
+  	<input type="hidden" name="oper" id="oper" value="${oper}">
+    <button type="button" id="buttonSave" onclick="submitFor(this.form)"><img src='/console/shared/images/save.gif' border=0 align=absbottom>保存内容</button>
+    &nbsp;
+    <button type="reset"><img src='/console/shared/images/redo.gif' border=0 align=absbottom>重新输入</button>
+  </p><br><br>
+</form>
+<input type="hidden" id="newId"/>
+#end
+
+</body>
+<script>
+thisBeanForm.fields = [$jsoFields];
+var eurl = '$entity.uri';
+function updateNewRecord(uri)
+{
+	var id=document.getElementById("newId").value;
+	updateRecord(uri,id);
+	window.close();
+}
+function submitFor(form)
+{
+	submitForm(form);
+}
+
+</script>
+</html>

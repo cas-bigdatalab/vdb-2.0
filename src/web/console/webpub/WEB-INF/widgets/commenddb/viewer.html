@@ -1,0 +1,40 @@
+#set($query = $tool.createQueryFromSql('cms.commenddb', "select * from commenddb"))
+#set($pageIndex = 1)
+#set($pageViewer = $tool.createPageViewer($query, $pageIndex, 10))
+#if($pageViewer.beans.size()>0)
+#foreach ($bean in $pageViewer.beans)
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="121" height="84" align="center" valign="middle">
+    	#if($bean.get('pic').files)<div style="border: 1px solid #bebebe;padding: 1px;"><img src="$bean.get('pic').files.get(0).servletPath"  width="119" height="82"/></div>#end
+	</td>
+    <td width="354" align="left" style="padding-left:10px;"><table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="17"><img src="/widgets/$widget.name/res/images/shy_13.gif" width="9" height="5"></td>
+          <td style="font-weight: bold;color: #3c73b5;font-size:12px">$!bean.get('title').format('%s')</td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0"  style="margin:0px 0 0px 0;font-size:12px;line-height:18px;">
+        <tr>
+          <td valign="top"  style="padding:5px;">
+			#if($!bean.get('detail').format('%s').replaceFirst("<p>","").length() > 70)
+				$!bean.get('detail').format('%s').replaceFirst("<p>","").substring(0,70)...
+			#else										
+	       	$!bean.get('detail').format('%s').replaceFirst("<p>","")
+	       	#end<a href="${pageroot}/showItem.vpage?id=$bean.uri" style="color: #EC0002;">[详细]</a>
+		  </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="left" valign="top" style="color: #ff6000;font-size:12px"><a href="$!bean.get('metadata').format('%s')" style="color: #ff6000;font-size:12px">元数据</a> <span style="color: #ff6000;font-size:12px">|</span> <a href="${pageroot}/showItem.vpage?id=$bean.uri" style="color: #ff6000;font-size:12px">共享声明</a> <span style="color: #ff6000;font-size:12px">|</span> <a href="$!bean.get('access').format('%s')" style="color: #ff6000;font-size:12px">访问此库</a></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td height="27" colspan="2" background="/widgets/$widget.name/res/images/shy_72.gif"></td>
+  </tr>
+</table>
+#end
+#end
+

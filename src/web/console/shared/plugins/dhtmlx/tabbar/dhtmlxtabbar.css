@@ -1,0 +1,183 @@
+.dhx_tabbar_zone {
+	Z-INDEX: 1; OVERFLOW: hidden; WIDTH: 100%; POSITION: relative; HEIGHT: 100%
+}
+.dhx_tabbar_zoneB {
+	Z-INDEX: 1; OVERFLOW: hidden; WIDTH: 100%; POSITION: relative; HEIGHT: 100%
+}
+.dhx_tabbar_zoneV {
+	Z-INDEX: 1; OVERFLOW: hidden; WIDTH: 100%; POSITION: relative; HEIGHT: 100%
+}
+.dhx_tabbar_zoneVB {
+	Z-INDEX: 1; OVERFLOW: hidden; WIDTH: 100%; POSITION: relative; HEIGHT: 100%
+}
+.dhx_tablist_line {
+	OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 1px; BACKGROUND-COLOR: #91a7b4
+}
+.dhx_tabbar_row {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 100%
+}
+.dhx_tablist_zone {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 100%
+}
+.dhx_tabcontent_zone {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 100%
+}
+.dhx_tab_element {
+	OVERFLOW: hidden; WIDTH: 100%; POSITION: absolute; HEIGHT: 100%
+}
+.dhx_tablist_zone {
+	Z-INDEX: 3; OVERFLOW: hidden
+}
+.dhx_tabcontent_zone {
+	BORDER-RIGHT: #91a7b4 1px solid; BORDER-TOP: #91a7b4 1px solid; Z-INDEX: 2; BORDER-LEFT: #91a7b4 1px solid; BORDER-BOTTOM: #91a7b4 1px solid
+}
+.dhx_tabbar_zone_top .dhx_tab_element {
+	PADDING-TOP: 3px
+}
+.dhx_tab_element {
+	FONT-SIZE: 8pt; CURSOR: pointer; FONT-FAMILY: Tahoma; BACKGROUND-COLOR: white; TEXT-ALIGN: center
+}
+.dhx_tabbar_zoneV .dhx_tab_element {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; TEXT-ALIGN: left
+}
+.dhx_tabbar_zoneVB .dhx_tab_element {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; TEXT-ALIGN: right
+}
+.dhx_tab_element DIV {
+	OVERFLOW: hidden; WIDTH: 40px; POSITION: absolute; HEIGHT: 40px
+}
+.dhx_tab_element SPAN {
+	Z-INDEX: 10; POSITION: relative
+}
+.dhx_tabbar_zone_dhx_blue .dhx_tablist_line {
+	BACKGROUND-COLOR: #c2d5dc
+}
+.dhx_tabbar_zone_dhx_blue .dhx_tabcontent_zone {
+	BORDER-LEFT-COLOR: #d2e3ea; BORDER-BOTTOM-COLOR: #d2e3ea; BORDER-TOP-COLOR: #d2e3ea; BORDER-RIGHT-COLOR: #d2e3ea
+}
+.dhx_tabbar_zone_dhx_blue .dhx_tab_element {
+	COLOR: #006699
+}
+.dhx_tab_element_active {
+	FONT-WEIGHT: bold
+}
+.dhx_tabbar_zone_dark_blue .dhx_tab_element {
+	COLOR: white
+}
+.dhx_tabbar_zone_dhx_black .dhx_tab_element {
+	COLOR: white
+}
+.dhx_tabbar_zone_dhx_black .dhx_tablist_line {
+	BACKGROUND-COLOR: #626262
+}
+.dhx_tabbar_zone_dhx_black .dhx_tabcontent_zone {
+	BORDER-LEFT-COLOR: #333333; BORDER-BOTTOM-COLOR: #333333; BORDER-TOP-COLOR: #333333; BORDER-RIGHT-COLOR: #333333
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_row {
+	BORDER-RIGHT: #b6cbdd 1px solid; BACKGROUND-IMAGE: url(./imgs/dhx_skyblue/bg_top.png); BORDER-LEFT: #b6cbdd 1px solid
+}
+.dhx_tabbar_zone_dhx_blue .dhx_tabbar_row {
+	BACKGROUND-COLOR: #d2e3ea
+}
+.dhx_tabbar_zone_dhx_black .dhx_tabbar_row {
+	BACKGROUND-COLOR: black
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineA {
+	BORDER-RIGHT: #a4bed4 1px solid; Z-INDEX: 999; LEFT: 0px; OVERFLOW: hidden; BORDER-LEFT: #a4bed4 1px solid; WIDTH: 1px; POSITION: absolute; HEIGHT: 3px; BACKGROUND-COLOR: white
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineB {
+	Z-INDEX: 999; LEFT: 2px; OVERFLOW: hidden; WIDTH: 100px; POSITION: absolute; HEIGHT: 3px; BACKGROUND-COLOR: #d0e5ff
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineC {
+	BORDER-RIGHT: #a4bed4 1px solid; Z-INDEX: 999; RIGHT: 0px; OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 21px; BACKGROUND-COLOR: white
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineD {
+	Z-INDEX: 999; LEFT: 1px; OVERFLOW: hidden; WIDTH: 1px; POSITION: absolute; HEIGHT: 21px; BACKGROUND-COLOR: white
+}
+.dhx_tabbar_zone_top .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineD {
+	TOP: 1px
+}
+.dhx_tabbar_zone_top .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineC {
+	TOP: 1px
+}
+.dhx_tabbar_zone_bottom .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineD {
+	BOTTOM: 1px
+}
+.dhx_tabbar_zone_bottom .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineC {
+	BOTTOM: 1px
+}
+.dhx_tabbar_zone_bottom .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_row {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(./imgs/dhx_skyblue/bg_bottom.png)
+}
+.dhx_tabbar_zone_bottom .dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 1px; BORDER-RIGHT-WIDTH: 1px
+}
+.dhx_tabbar_zone_bottom .dhx_tab_element SPAN {
+	DISPLAY: block; PADDING-TOP: 5px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineB {
+	LEFT: auto; WIDTH: 3px; TOP: 2px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineA {
+	BORDER-RIGHT: #a4bed4 0px solid; BORDER-TOP: #a4bed4 1px solid; BORDER-LEFT: #a4bed4 0px solid; WIDTH: 3px; BORDER-BOTTOM: #a4bed4 1px solid
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineD {
+	BORDER-RIGHT: #a4bed4 0px solid; BORDER-TOP: #a4bed4 0px solid; RIGHT: auto; LEFT: 1px; BORDER-LEFT: #a4bed4 0px solid; WIDTH: 21px; BOTTOM: 0px; BORDER-BOTTOM: #a4bed4 1px solid; HEIGHT: 1px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineC {
+	RIGHT: auto; LEFT: 1px; WIDTH: 21px; TOP: 1px; HEIGHT: 1px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_row {
+	BORDER-RIGHT: #b6cbdd 0px solid; BORDER-TOP: #b6cbdd 1px solid; BACKGROUND-IMAGE: url(./imgs/dhx_skyblue/bg_left.png); BORDER-LEFT: #b6cbdd 0px solid; BORDER-BOTTOM: #b6cbdd 1px solid
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; WIDTH: 2px; BORDER-RIGHT-WIDTH: 0px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element {
+	PADDING-TOP: 0px
+}
+.dhx_tabbar_zone_left .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element SPAN {
+	DISPLAY: block; PADDING-TOP: 5px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineA {
+	BORDER-RIGHT: #a4bed4 0px solid; BORDER-TOP: #a4bed4 1px solid; LEFT: auto; BORDER-LEFT: #a4bed4 0px solid; WIDTH: 3px; BORDER-BOTTOM: #a4bed4 1px solid
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineB {
+	LEFT: auto; WIDTH: 3px; TOP: 2px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineD {
+	BORDER-RIGHT: #a4bed4 0px solid; BORDER-TOP: #a4bed4 0px solid; RIGHT: 1px; LEFT: auto; BORDER-LEFT: #a4bed4 0px solid; WIDTH: 21px; BOTTOM: 0px; BORDER-BOTTOM: #a4bed4 1px solid; HEIGHT: 1px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_lineC {
+	RIGHT: 0px; LEFT: auto; WIDTH: 21px; TOP: 1px; HEIGHT: 1px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tabbar_row {
+	BORDER-RIGHT: #b6cbdd 0px solid; BACKGROUND-POSITION: right 50%; BORDER-TOP: #b6cbdd 1px solid; BACKGROUND-IMAGE: url(./imgs/dhx_skyblue/bg_right.png); BORDER-LEFT: #b6cbdd 0px solid; BORDER-BOTTOM: #b6cbdd 1px solid
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 1px; WIDTH: 2px; BORDER-RIGHT-WIDTH: 1px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element {
+	PADDING-TOP: 0px
+}
+.dhx_tabbar_zone_right .dhx_tabbar_zone_dhx_skyblue .dhx_tab_element SPAN {
+	DISPLAY: block; PADDING-TOP: 5px
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tablist_line {
+	BORDER-RIGHT: #a4bed4 1px solid; BORDER-TOP: #a4bed4 1px solid; BORDER-LEFT: #a4bed4 0px solid; BORDER-BOTTOM: #a4bed4 0px solid; HEIGHT: 3px; BACKGROUND-COLOR: white
+}
+.dhx_tabbar_zone_dhx_skyblue .dhx_tabcontent_zone {
+	BORDER-LEFT-COLOR: #a4bed4; BORDER-BOTTOM-COLOR: #a4bed4; BORDER-TOP-COLOR: #a4bed4; BORDER-RIGHT-COLOR: #a4bed4
+}
+DIV.dhxcont_main_content {
+	LEFT: 0px; OVERFLOW: hidden; POSITION: relative; TOP: 0px
+}
+DIV.dhxcont_content_blocker {
+	Z-INDEX: 1; BACKGROUND: #ffffff; FILTER: alpha(opacity=0); LEFT: 0px; WIDTH: 101%; POSITION: absolute; TOP: 0px; HEIGHT: 101%; -moz-opacity: 0; opacity: 0; -moz-user-select: none
+}
+DIV.dhxcont_sb_container {
+	POSITION: relative; HEIGHT: 24px
+}
+DIV.dhxcont_sb_container DIV.dhxcont_statusbar {
+	BORDER-RIGHT: #a4bed4 1px solid; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 11px; BACKGROUND-IMAGE: url(./imgs/dhx_skyblue/dhxlayout_bg_sb.gif); PADDING-BOTTOM: 0px; VERTICAL-ALIGN: middle; OVERFLOW: hidden; BORDER-LEFT: #a4bed4 1px solid; WIDTH: auto; COLOR: #000000; BORDER-TOP-STYLE: none; LINE-HEIGHT: 22px; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: Tahoma; WHITE-SPACE: nowrap; POSITION: relative; TOP: 2px; HEIGHT: 22px; BORDER-BOTTOM-STYLE: none
+}

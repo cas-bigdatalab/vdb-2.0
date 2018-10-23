@@ -1,0 +1,4 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#set($title='本页面演示布局模板的用法')
+<p>本页面演示布局模板的用法，本页面采用了customLayout.vpage作为模板。</p>
+<p>采用指令${H}usingLayout即可。</p>

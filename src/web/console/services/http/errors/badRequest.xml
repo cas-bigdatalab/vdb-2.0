@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+	<head>
+		<code>400</code>
+		<message>请求格式错误，请输入请求参数</message>
+	</head>
+	<body>
+	</body>
+</response>

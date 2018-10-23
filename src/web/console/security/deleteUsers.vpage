@@ -1,0 +1,11 @@
+﻿#invoke("vdb.mydb.jsp.action.DoDeleteUser")
+#if ($sucess)
+	<script>
+			alert('删除成功！');
+			top.groupsOnClick("all");
+	</script>
+#else
+	<script>
+			alert('删除失败！#if($info) \n\n $info #end');
+	</script>
+#end

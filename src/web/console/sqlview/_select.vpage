@@ -1,0 +1,7 @@
+<xml>
+<select id="select_ds">
+#foreach ($dataset in $manager.domain.dataSets)
+	<option value="$dataset.id" uri="dataset@$dataset.uri" >$dataset.title</option>
+#end
+</select>
+</xml>

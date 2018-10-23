@@ -1,0 +1,50 @@
+<table width="100%" align="left" class="table2" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="table_bg">绑定列</td>
+      <td width="80%" style="padding-left:12px;"><input type="hidden" name="P_columnName" value="${meta.columnName}"><input type="text" size="35" value="${meta.columnName}" disabled></td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="StringEdit" 
+			#if($!{field.editorStyle}==''||${field.editorStyle}=='StringEdit'||
+			(${field.editorStyle}!='StringEdit'&&${field.editorStyle}!='TextAreaEdit'&&${field.editorStyle}!='PassEdit')) checked #end>单行文本框
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="TextAreaEdit"
+      	  #if(${field.editorStyle}=='TextAreaEdit') checked #end>多行文本框
+      	<input type="radio" style="border:0px" name="P_editorStyle" value="PassEdit"
+      	#if(${field.editorStyle}=='PassEdit') checked #end>密码输入框
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">编辑框尺寸</td>
+      <td width="80%" style="padding-left:12px;">
+      	宽度：<input type="text" size="6" name="P_editorWidth" value="$!{field.editorWidth}">pt
+      	高度：<input type="text" size="6" name="P_editorHeight" value="$!{field.editorHeight}">pt
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">显示风格</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="StringLabel"
+      	#if($!{field.viewerStyle}==''||${field.viewerStyle}=='StringLabel'||
+			(${field.viewerStyle}!='PassLabel'&&${field.viewerStyle}!='StringLabel'&&${field.viewerStyle}!='HtmlLabel')) checked #end>文本标签
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="PassLabel"
+      	 #if(${field.viewerStyle}=='PassLabel') checked #end>密码显示
+      	<input type="radio" style="border:0px" name="P_viewerStyle" value="HtmlLabel"
+      	 #if(${field.viewerStyle}=='HtmlLabel') checked #end>HTML显示
+      </td>
+    </tr>
+    <tr>
+      <td class="table_bg">标签模式</td>
+      <td width="80%" style="padding-left:12px;">
+      	<input type="radio" style="border:0px" name="P_viewerPattern" value="%s" onclick="P_viewerPattern.value=this.value"
+      	#if($!{field.viewerPattern}==''||${field.viewerPattern}=='%s'||
+			(${field.viewerPattern}!='%s'&&${field.viewerPattern}!='%2$s')) checked #end>原始文本
+      </td>
+    </tr>
+</table>
+<script $ifDefer>
+	checkRadioOptions(form1.elements("P_editorStyle"), "$!{field.editorStyle}");
+	checkRadioOptions(form1.elements("P_viewerStyle"), "$!{field.viewerStyle}");
+	checkRadioOptions(form1.elements("P_viewerPattern"), "$!{field.viewerPattern}");
+</script>

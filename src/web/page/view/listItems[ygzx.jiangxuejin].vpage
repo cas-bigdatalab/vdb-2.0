@@ -1,0 +1,52 @@
+<!--created by VdbPublisher at 2016-03-29 22:12:22-->
+
+##定义一个指向ygzx.jiangxuejin的实体对象
+#set($entity = $tool.getEntity('ygzx.jiangxuejin'))
+
+#if (!$pageViewer||$pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<div class="search02_contents02_div">
+	<div class="search02_contents02_top">
+    	<div class="contents02_left">数据显示列表</div>
+    </div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px;">
+		<tr>
+		      					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d015181cd4d34001a" fieldUri="ygzx.jiangxuejin.id" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按id排序" ><b><img src="/console/shared/images/key.gif" align="absbottom"> id</b>#if ('ygzx.jiangxuejin.id' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151ab057b05002b" fieldUri="ygzx.jiangxuejin.name" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按发放批次排序" ><b> 发放批次</b>#if ('ygzx.jiangxuejin.name' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d015181cd4d34001b" fieldUri="ygzx.jiangxuejin.sum" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按发放金额排序" ><b> 发放金额</b>#if ('ygzx.jiangxuejin.sum' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  					<td align="center" class="contents02_table_bg" fieldId="8a80602a5105a41d0151ab0a04c40032" fieldUri="ygzx.jiangxuejin.pdate" orderAsc="${jsoQuery.orderAsc}"  onclick="setOrderBy(this)" style="cursor:hand" title="按发放日期排序" ><b> 发放日期</b>#if ('ygzx.jiangxuejin.pdate' == $jsoQuery.orderField)<img src="/console/shared/images/${jsoQuery.orderAsc}.gif" align="absbottom" width="13">#end</td>
+			  		   	  <td align="center" class="contents02_table_bg">&nbsp;</td>
+		</tr>
+		#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.id.value)
+		<tr id="DATAGRID_ROW">
+						    <td  style="padding-left:6px;align:left">$!bean.get('id').format('%d')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿$!bean.get('name').format('%s')
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">$!bean.get('sum').format('%f')元
+&nbsp;&nbsp;</td>
+						    <td  style="padding-left:6px;align:left">﻿	$!bean.get('pdate').dateFormat('yyyy年MM月dd日')
+&nbsp;&nbsp;</td>
+							<td align="center" valign="top"><div class="ico_03" style="width:50px;">$itemMenu</div></td>
+		</tr>
+		#end
+	</table>
+</div>
+
+$gridMenu
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		#parse("/console/shared/pageViewer.vpage")
+    </div>
+</center>
+	#end
+#end

@@ -1,0 +1,5 @@
+﻿#invoke("vdb.mydb.jsp.action.catalog.UpdateAddItem")
+#usingLayout('/console/catalog/_result.vpage')
+#set($title="编辑新增页面")
+
+编辑新增页面成功！

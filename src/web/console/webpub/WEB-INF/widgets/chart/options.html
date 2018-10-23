@@ -1,0 +1,46 @@
+#set($ds = ${domain.getDataSets()})
+<li>
+	<label for="p_uri">数据集:</label>
+	<select id="p_uri" name="p_uri" onchange="uri_change();">
+		<option value="isnotdataset">-----请选择</option>
+		#foreach ($bean in $ds)
+			#if(${widget.props.uri} == $bean.uri)
+				<option value="$bean.uri" selected>$bean.title</option>
+			#else
+			<option value="$bean.uri">$bean.title</option>
+			#end
+		#end
+	</select>
+</li>
+
+<label for="p_uri">查询方案:</label>
+<div id="chart_project">
+#if(${widget.props.proname} != "")
+	$chartsTool.initSelect(${widget.props.uri},${widget.props.proname})
+#end
+</div>
+<script>
+
+	function uri_change(){
+		if($('#p_proname').val() == "undefined"){
+			$('#chart_project').html("");
+			alert("请选择查询方案！");
+			$("#buttonSave").attr("disabled", true);
+			return;
+		}
+
+		var url = "/widgets/chart/res/charts.vpage?uri=" + $('#p_uri').val() + "&name=" + $('#p_proname').val();
+		jQuery.get(url,function(data){
+			$('#chart_project').html(data);
+			if(data.indexOf("<select")>-1)
+			{
+				$("#buttonSave").attr("disabled", false);
+			}
+			else
+			{
+				alert("请选择查询方案！");
+				$("#buttonSave").attr("disabled", true);
+			}
+		});
+	}
+</script>

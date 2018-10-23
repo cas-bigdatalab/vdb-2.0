@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="gbk"?>
+<dataset>
+	<version>1.2.1</version>
+	<version>1.2.1</version>
+	<uri>ygzx</uri>
+	<title>阳光助学库</title>
+	<description />
+	<id>8a80602a508f9ce901509cdf437e000f</id>
+	<lastModified>2015-10-25 10:41:28</lastModified>
+	<repository>
+		<id>8a80602a508f9ce901509cdf577a0010</id>
+		<lastModified>2015-10-25 10:41:34</lastModified>
+		<databaseName>ygzx</databaseName>
+		<productVersion />
+		<loginTimeout>60</loginTimeout>
+		<userName>root</userName>
+		<host>localhost</host>
+		<port>3306</port>
+		<localFilePath>$dsRoot</localFilePath>
+		<productName>mysql</productName>
+		<userPass>1</userPass>
+	</repository>
+	<entity>
+		<id>8a80602a508f9ce901509ce10a250012</id>
+		<lastModified>2015-10-25 10:43:25</lastModified>
+		<tableName>persons</tableName>
+		<description />
+		<order>desc</order>
+		<name>persons</name>
+		<title>学生信息表</title>
+		<titleField>ygzx.persons.name</titleField>
+		<timeStampField>ygzx.persons.posttime</timeStampField>
+		<identifier>
+			<id>8a80602a508f9ce901509ce10a250013</id>
+			<lastModified>2015-10-25 10:43:25</lastModified>
+			<field>ygzx.persons.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5320014</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>10</size>
+			<nullable>false</nullable>
+			<viewerPattern>%d</viewerPattern>
+			<viewerStyle>LongLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>id</name>
+			<unitValue />
+			<defaultValue />
+			<title>序号</title>
+			<editorStyle>LongEdit</editorStyle>
+			<columnName>id</columnName>
+			<type>Long</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5320015</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>name</name>
+			<defaultValue />
+			<title>姓名</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>name</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5320016</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<editorHeight>21px</editorHeight>
+			<viewerPattern>%s</viewerPattern>
+			<size>10</size>
+			<optionStyle>normal</optionStyle>
+			<options>男=男,女=女</options>
+			<nullable>true</nullable>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>gender</name>
+			<defaultValue />
+			<editorStyle>EnumRadiosEdit</editorStyle>
+			<title>性别</title>
+			<columnName>gender</columnName>
+			<type>Enum</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5330017</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>class</name>
+			<defaultValue />
+			<title>班级</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>class</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5330018</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>address</name>
+			<defaultValue />
+			<title>家庭住址</title>
+			<editorStyle>TextAreaEdit</editorStyle>
+			<columnName>address</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e5330019</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>tel</name>
+			<defaultValue />
+			<editorStyle>StringEdit</editorStyle>
+			<title>联系电话</title>
+			<columnName>tel</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e533001a</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>reason</name>
+			<defaultValue />
+			<title>情况说明</title>
+			<editorStyle>TextAreaEdit</editorStyle>
+			<columnName>reason</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e533001b</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>supporter</name>
+			<defaultValue />
+			<editorStyle>StringEdit</editorStyle>
+			<title>资助人</title>
+			<columnName>supporter</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a508f9ce901509ce1e533001c</id>
+			<lastModified>2015-10-25 10:44:21</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>school</name>
+			<defaultValue />
+			<editorStyle>StringEdit</editorStyle>
+			<title>学校</title>
+			<columnName>school</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<size>19</size>
+			<hint />
+			<name>posttime</name>
+			<defaultValue />
+			<nullable>true</nullable>
+			<editorStyle>DateCtrl</editorStyle>
+			<title>更新时间</title>
+			<viewerStyle>DateLabel</viewerStyle>
+			<columnName>posttime</columnName>
+			<id>8a80602a50be1e000150be41f4d10009</id>
+			<lastModified>2015-10-31 22:16:45</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>city</name>
+			<defaultValue />
+			<title>城市</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>city</columnName>
+			<id>8a80602a5105a41d015181a6dc6c0009</id>
+			<lastModified>2015-12-08 20:52:55</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>age</name>
+			<defaultValue />
+			<title>年龄</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>age</columnName>
+			<id>8a80602a5105a41d015181a7116f000b</id>
+			<lastModified>2015-12-08 20:53:08</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>255</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>nationality</name>
+			<defaultValue />
+			<editorStyle>StringEdit</editorStyle>
+			<title>民族</title>
+			<columnName>nationality</columnName>
+			<id>8a80602a5105a41d015181a73fa8000d</id>
+			<lastModified>2015-12-08 20:53:20</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>bankid</name>
+			<defaultValue />
+			<title>银行账号</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>bankid</columnName>
+			<id>8a80602a5105a41d015181a77645000f</id>
+			<lastModified>2015-12-08 20:53:34</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>255</size>
+			<editorHeight />
+			<nullable>true</nullable>
+			<viewerPattern>%s</viewerPattern>
+			<viewerStyle>StringLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>contactor</name>
+			<defaultValue />
+			<title>联系人</title>
+			<editorStyle>StringEdit</editorStyle>
+			<columnName>contactor</columnName>
+			<id>8a80602a5105a41d015181a829e20011</id>
+			<lastModified>2015-12-08 20:54:20</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>255</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth />
+			<hint />
+			<name>memo</name>
+			<defaultValue />
+			<editorStyle>StringEdit</editorStyle>
+			<title>备注</title>
+			<columnName>memo</columnName>
+			<id>8a80602a5105a41d015181a853210013</id>
+			<lastModified>2015-12-08 20:54:30</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d015181aaeddc0015</id>
+			<lastModified>2015-12-08 20:57:21</lastModified>
+			<size>1</size>
+			<optionStyle>normal</optionStyle>
+			<options>0=已助,1=待助</options>
+			<nullable>true</nullable>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>tohelp</name>
+			<defaultValue />
+			<editorStyle>EnumRadiosEdit</editorStyle>
+			<title>资助状态</title>
+			<columnName>tohelp</columnName>
+			<type>Enum</type>
+		</field>
+	</entity>
+	<entity>
+		<name>jiangxuejin</name>
+		<title>奖学金发放</title>
+		<tableName>jiangxuejin</tableName>
+		<description />
+		<id>8a80602a5105a41d015181cc8c080018</id>
+		<lastModified>2015-12-08 21:34:04</lastModified>
+		<titleField>ygzx.jiangxuejin.id</titleField>
+		<identifier>
+			<id>8a80602a5105a41d015181cc8c090019</id>
+			<lastModified>2015-12-08 21:34:04</lastModified>
+			<field>ygzx.jiangxuejin.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<name>id</name>
+			<columnName>id</columnName>
+			<id>8a80602a5105a41d015181cd4d34001a</id>
+			<lastModified>2015-12-08 21:34:54</lastModified>
+			<size>10</size>
+			<title>id</title>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d015181cd4d34001b</id>
+			<lastModified>2015-12-08 21:34:54</lastModified>
+			<size>22</size>
+			<nullable>true</nullable>
+			<viewerPattern>%f</viewerPattern>
+			<viewerStyle>DoubleLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>sum</name>
+			<unitValue>元</unitValue>
+			<defaultValue />
+			<title>发放金额</title>
+			<editorStyle>DoubleEdit</editorStyle>
+			<columnName>sum</columnName>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>name</name>
+			<columnName>name</columnName>
+			<title>发放批次</title>
+			<size>255</size>
+			<id>8a80602a5105a41d0151ab057b05002b</id>
+			<lastModified>2015-12-16 21:40:41</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d0151ab057b05002c</id>
+			<lastModified>2015-12-16 21:40:41</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<imageHeight>300</imageHeight>
+			<imageWidth>400</imageWidth>
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<hint />
+			<name>photo</name>
+			<defaultValue />
+			<editorStyle>FilesEdit</editorStyle>
+			<title>照片</title>
+			<columnName>photo</columnName>
+			<type>Files</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d0151ab057b05002d</id>
+			<lastModified>2015-12-16 21:40:41</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<imageHeight>100</imageHeight>
+			<imageWidth>100</imageWidth>
+			<viewerStyle>FilesLabel</viewerStyle>
+			<hint />
+			<name>excel</name>
+			<defaultValue />
+			<editorStyle>FilesEdit</editorStyle>
+			<title>发放表</title>
+			<columnName>excel</columnName>
+			<type>Files</type>
+		</field>
+		<field>
+			<size>10</size>
+			<hint />
+			<name>pdate</name>
+			<defaultValue />
+			<nullable>true</nullable>
+			<editorStyle>DateCtrl</editorStyle>
+			<title>发放日期</title>
+			<viewerStyle>DateLabel</viewerStyle>
+			<columnName>pdate</columnName>
+			<id>8a80602a5105a41d0151ab0a04c40032</id>
+			<lastModified>2015-12-16 21:45:39</lastModified>
+			<type>Date</type>
+		</field>
+	</entity>
+	<entity>
+		<name>projects</name>
+		<title>项目</title>
+		<tableName>projects</tableName>
+		<description />
+		<id>8a80602a5105a41d0151b95357020037</id>
+		<lastModified>2015-12-19 16:20:25</lastModified>
+		<titleField>ygzx.projects.id</titleField>
+		<identifier>
+			<id>8a80602a5105a41d0151b95357020038</id>
+			<lastModified>2015-12-19 16:20:25</lastModified>
+			<field>ygzx.projects.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<name>id</name>
+			<columnName>id</columnName>
+			<title>id</title>
+			<size>10</size>
+			<id>8a80602a5105a41d0151b9552cf90039</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<name>name</name>
+			<columnName>name</columnName>
+			<title>项目名称</title>
+			<size>255</size>
+			<id>8a80602a5105a41d0151b9552cf9003a</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d0151b9552cf9003b</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<size>10</size>
+			<optionStyle>normal</optionStyle>
+			<options>1=待捐助,0=已捐助完成</options>
+			<nullable>true</nullable>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<editorWidth />
+			<hint />
+			<name>tojuanzhu</name>
+			<defaultValue />
+			<editorStyle>EnumRadiosEdit</editorStyle>
+			<title>捐助状态</title>
+			<columnName>tojuanzhu</columnName>
+			<type>Enum</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d0151b9552cfa003c</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<size>5000</size>
+			<editorHeight>50</editorHeight>
+			<nullable>true</nullable>
+			<viewerStyle>StringLabel</viewerStyle>
+			<viewerPattern>%s</viewerPattern>
+			<editorWidth>300</editorWidth>
+			<hint />
+			<name>desc</name>
+			<defaultValue />
+			<editorStyle>TextAreaEdit</editorStyle>
+			<title>项目描述</title>
+			<columnName>desc</columnName>
+			<type>String</type>
+		</field>
+		<field>
+			<name>manager</name>
+			<columnName>manager</columnName>
+			<title>项目经理</title>
+			<size>255</size>
+			<id>8a80602a5105a41d0151b9552cfa003d</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>needmoney</name>
+			<columnName>needmoney</columnName>
+			<title>所需款项</title>
+			<size>12</size>
+			<id>8a80602a5105a41d0151b9552cfa003e</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>gotmoney</name>
+			<columnName>gotmoney</columnName>
+			<title>已募集</title>
+			<size>12</size>
+			<id>8a80602a5105a41d0151b9552cfa003f</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>costmoney</name>
+			<columnName>costmoney</columnName>
+			<title>已支出</title>
+			<size>12</size>
+			<id>8a80602a5105a41d0151b9552cfa0040</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>category</name>
+			<columnName>category</columnName>
+			<title>类别</title>
+			<size>10</size>
+			<id>8a80602a5105a41d0151b9552cfb0042</id>
+			<lastModified>2015-12-19 16:22:25</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>8a80602a5105a41d0151b95706090045</id>
+			<lastModified>2015-12-19 16:24:26</lastModified>
+			<size>0</size>
+			<hint />
+			<name>leftmoney0</name>
+			<expr>${gotmoney.value-costmoney.value}</expr>
+			<defaultValue />
+			<nullable>true</nullable>
+			<title>剩余金额</title>
+			<viewerStyle>ExprLabel</viewerStyle>
+			<type>Expression</type>
+		</field>
+		<field>
+			<size>65535</size>
+			<nullable>true</nullable>
+			<editorHeight />
+			<editorWidth />
+			<hint />
+			<name>report</name>
+			<defaultValue />
+			<editorStyle>HtmlEdit</editorStyle>
+			<title>项目报告</title>
+			<columnName>report</columnName>
+			<id>8a80602a5105a41d0151bd29e6180047</id>
+			<lastModified>2015-12-20 10:13:38</lastModified>
+			<type>RichText</type>
+		</field>
+	</entity>
+	<entity>
+		<name>one2one</name>
+		<title>一对一基金</title>
+		<tableName>one2one</tableName>
+		<description />
+		<id>ff80808151c89ef80151c8cbd3e00012</id>
+		<lastModified>2015-12-22 16:26:20</lastModified>
+		<titleField>ygzx.one2one.id</titleField>
+		<identifier>
+			<id>ff80808151c89ef80151c8cbd3e10013</id>
+			<lastModified>2015-12-22 16:26:20</lastModified>
+			<field>ygzx.one2one.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<name>id</name>
+			<columnName>id</columnName>
+			<id>ff80808151c89ef80151c8cd8c280014</id>
+			<lastModified>2015-12-22 16:28:12</lastModified>
+			<nullable>false</nullable>
+			<size>10</size>
+			<title>id</title>
+			<type>Long</type>
+		</field>
+		<field>
+			<name>inputdate</name>
+			<columnName>inputdate</columnName>
+			<title>收入日期</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d26f180021</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<name>account</name>
+			<columnName>account</columnName>
+			<title>账户</title>
+			<size>255</size>
+			<id>ff80808151c89ef80151c8d26f180022</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>consumer</name>
+			<columnName>consumer</columnName>
+			<title>受资助人</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d26f180023</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>inputmoney</name>
+			<columnName>inputmoney</columnName>
+			<title>收入金额</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d26f180024</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>outputdate</name>
+			<columnName>outputdate</columnName>
+			<title>支付日期</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d26f180025</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<name>outputmoney</name>
+			<columnName>outputmoney</columnName>
+			<title>支付金额</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d26f180026</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>provider</name>
+			<columnName>provider</columnName>
+			<title>资助人</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d26f180027</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>leftmoney</name>
+			<columnName>leftmoney</columnName>
+			<title>结余</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d26f180028</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>memo</name>
+			<columnName>memo</columnName>
+			<title>备注</title>
+			<size>65535</size>
+			<id>ff80808151c89ef80151c8d26f180029</id>
+			<lastModified>2015-12-22 16:33:32</lastModified>
+			<type>String</type>
+		</field>
+	</entity>
+	<entity>
+		<name>iodetails</name>
+		<title>基金收支明细</title>
+		<tableName>iodetails</tableName>
+		<description />
+		<id>ff80808151c89ef80151c8ce5d6b001f</id>
+		<lastModified>2015-12-22 16:29:06</lastModified>
+		<titleField>ygzx.iodetails.id</titleField>
+		<identifier>
+			<id>ff80808151c89ef80151c8ce5d6b0020</id>
+			<lastModified>2015-12-22 16:29:06</lastModified>
+			<field>ygzx.iodetails.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<name>id</name>
+			<columnName>id</columnName>
+			<title>id</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d4538c002a</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<nullable>false</nullable>
+			<type>Long</type>
+		</field>
+		<field>
+			<name>iodate</name>
+			<columnName>iodate</columnName>
+			<title>日期</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d4538c002b</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<name>abstract</name>
+			<columnName>abstract</columnName>
+			<title>摘要</title>
+			<size>2000</size>
+			<id>ff80808151c89ef80151c8d4538c002c</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>inputmoney</name>
+			<columnName>inputmoney</columnName>
+			<title>收入</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d4538c002d</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>outputmoney</name>
+			<columnName>outputmoney</columnName>
+			<title>支出</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d4538c002e</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>leftmoney</name>
+			<columnName>leftmoney</columnName>
+			<title>余额</title>
+			<size>12</size>
+			<id>ff80808151c89ef80151c8d4538c002f</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<name>account</name>
+			<columnName>account</columnName>
+			<title>收入账户</title>
+			<size>255</size>
+			<id>ff80808151c89ef80151c8d4538c0030</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>fund</name>
+			<columnName>fund</columnName>
+			<title>对应基金</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d4538c0031</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>provider</name>
+			<columnName>provider</columnName>
+			<title>汇款人</title>
+			<size>10</size>
+			<id>ff80808151c89ef80151c8d4538c0032</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<name>paymethod</name>
+			<columnName>paymethod</columnName>
+			<title>汇款方式</title>
+			<size>255</size>
+			<id>ff80808151c89ef80151c8d4538c0033</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>ff80808151c89ef80151c8d4538c0034</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<size>255</size>
+			<nullable>true</nullable>
+			<imageHeight>100</imageHeight>
+			<imageWidth>100</imageWidth>
+			<viewerStyle>FilesLabel</viewerStyle>
+			<hint />
+			<name>docs</name>
+			<defaultValue />
+			<editorStyle>FilesEdit</editorStyle>
+			<title>财务票据</title>
+			<columnName>docs</columnName>
+			<type>Files</type>
+		</field>
+		<field>
+			<name>memo</name>
+			<columnName>memo</columnName>
+			<title>备注</title>
+			<size>65535</size>
+			<id>ff80808151c89ef80151c8d4538c0035</id>
+			<lastModified>2015-12-22 16:35:36</lastModified>
+			<type>String</type>
+		</field>
+	</entity>
+	<query>
+		<name>tohelp</name>
+		<entity>ygzx.persons</entity>
+		<title>待助学生</title>
+		<description />
+		<sql>select * from persons where tohelp='1'</sql>
+		<id>8a80602a5105a41d0151ab09955b0030</id>
+		<lastModified>2015-12-16 21:45:10</lastModified>
+	</query>
+	<query>
+		<id>ff80808151c89ef80151c8aa33ae000b</id>
+		<lastModified>2015-12-22 15:49:36</lastModified>
+		<name>helped</name>
+		<entity>ygzx.persons</entity>
+		<title>已助学生</title>
+		<description>已助学生列表</description>
+		<sql>select * from persons where tohelp='0'</sql>
+	</query>
+	<query>
+		<name>inactiveprojects</name>
+		<entity>ygzx.projects</entity>
+		<title>捐助中项目</title>
+		<description />
+		<sql>select * from projects where tojuanzhu='1'</sql>
+		<id>ff80808151c89ef80151c8aed284000d</id>
+		<lastModified>2015-12-22 15:54:39</lastModified>
+	</query>
+	<query>
+		<id>ff80808151c89ef80151c8b004c2000f</id>
+		<lastModified>2015-12-22 15:55:57</lastModified>
+		<name>reportedprojects</name>
+		<entity>ygzx.projects</entity>
+		<title>项目报告</title>
+		<description />
+		<sql>select * from projects where tojuanzhu='0' and length(report)&gt;10</sql>
+	</query>
+	<view>
+		<name>queryEntity</name>
+		<id>8a80602a508f9ce901509ce2d257001d</id>
+		<lastModified>2015-10-25 10:45:22</lastModified>
+		<source>ygzx.persons</source>
+		<item>
+			<source>ygzx.persons.name</source>
+		</item>
+		<item>
+			<source>ygzx.persons.gender</source>
+		</item>
+		<item>
+			<source>ygzx.persons.class</source>
+		</item>
+		<item>
+			<source>ygzx.persons.address</source>
+		</item>
+		<item>
+			<source>ygzx.persons.tel</source>
+		</item>
+		<item>
+			<source>ygzx.persons.reason</source>
+		</item>
+		<item>
+			<source>ygzx.persons.supporter</source>
+		</item>
+		<item>
+			<source>ygzx.persons.school</source>
+		</item>
+	</view>
+	<view>
+		<name>indexEntity</name>
+		<id>8a80602a508f9ce901509ce2d258001e</id>
+		<lastModified>2015-10-25 10:45:22</lastModified>
+		<source>ygzx.persons</source>
+		<item>
+			<source>ygzx.persons.name</source>
+		</item>
+		<item>
+			<source>ygzx.persons.class</source>
+		</item>
+		<item>
+			<source>ygzx.persons.address</source>
+		</item>
+		<item>
+			<source>ygzx.persons.tel</source>
+		</item>
+		<item>
+			<source>ygzx.persons.reason</source>
+		</item>
+		<item>
+			<source>ygzx.persons.supporter</source>
+		</item>
+		<item>
+			<source>ygzx.persons.school</source>
+		</item>
+	</view>
+</dataset>
+

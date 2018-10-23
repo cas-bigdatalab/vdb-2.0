@@ -1,0 +1,8 @@
+﻿#usingLayout("/console/sample/layout.vpage")
+#invoke("vdb.mydb.sample.ViewSourceAction")
+<p>$param.page的源代码：</p>
+<div style="border: 2px dashed #3366FF; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">
+<pre>
+$tool.encodeXml($source, false)
+</pre>
+</div>

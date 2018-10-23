@@ -1,0 +1,41 @@
+<!--created by VdbPublisher at 2010-04-01 09:31:12-->
+
+##定义一个指向cms.news的实体对象
+#set($entity = $tool.getEntity('cms.news'))
+
+#if ($pageViewer.beans.size() == 0)
+<center>
+  <div style="width:100%" align="left"> <br>
+    <p><font color="#cccccc">[当前还没有任何记录...]</font></p>
+  </div>
+</center>
+#else
+
+<table width="606" cellspacing="0" cellpadding="0" border="0" style="padding-top:20px">
+<tbody>
+<tr>
+<td valign="top" style="padding-left: 2px;line-height:25px; font-size:14px; color:#787878;font-family:宋体">
+
+	#foreach ($bean in $pageViewer.beans)
+		#set ($id = $bean.getId().jdbcObject)
+		#set ($flag = $velocityCount%2)
+
+·[$!bean.get('addtime').dateFormat('yyyy-MM-dd')]&nbsp;<a style="word-spacing:2px;text-decoration: none;"
+href='${pageroot}/showItem.vpage?id=$bean.uri' target='_blank'>$!bean.get('title').format('%s')    
+</a>
+	<br/>	      
+	#end
+</td>
+</tr>
+</tbody>
+</table>
+</p>
+	#if ($pageViewer.pageCount > 1)
+<center>
+    <div style="width:100%">
+		     #parse("/console/shared/pageViewer.vpage")
+    </div>
+
+</center>
+	#end
+#end

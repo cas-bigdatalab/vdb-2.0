@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item id="save"   type="button" img=""  text="&lt;font color='blue'&gt; &lt;B&gt; 保存 &lt;/B&gt; &lt;/font&gt;"  title="保存"/>
+	<item id="close"   type="button" img=""  text="&lt;font color='blue'&gt; &lt;B&gt; 关闭 &lt;/B&gt; &lt;/font&gt;"  title="关闭"/>
+</toolbar>

@@ -1,0 +1,89 @@
+<table>
+	<tr>
+		<td>
+			<div id="treeboxbox_tree_6" style="width:200px;height:250px;background-color:#f5f5f5;border:1px solid Silver;;overflow:auto;"></div>
+			<input type="hidden" id="p_tree" name="p_tree" value=""/>
+		</td>
+		<td>
+			<input type="button" value="[增加节点]" onclick="$('#opt_staticNode').show();flag = 'new';$('#s_newfirst').show();"/>&nbsp;&nbsp;
+			<input type="button" value="[删除节点]" onclick="tree6.deleteItem(tree6.ah());$('#opt_staticNode').hide()"/>
+						<br/><br/>
+			<div id="opt_staticNode" style="width:320px;height:200px;display:none;">
+				文本:&nbsp;&nbsp; <input id="linkText"/><br>
+				地址:&nbsp;&nbsp; <input id="linkUrl"/><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style='color:red'><font color='#FF0000'>*节点为目录或者纯文本节点，不填写地址项</font></span><br><br>
+				<input type="button" onclick="addStaticNode(tree6.ah());" value="确定"/>
+								<input id="s_newfirst" type="button" onclick="addStaticNode(0);" value="保存为一级节点"/>
+			</div>
+		</td>
+	</tr>
+</table>
+<script>
+	var flag = "new";
+	if($('#treeboxbox_tree_6').html() == ''){
+		var tree6 = new C("treeboxbox_tree_6", "100%", "100%", 0);
+		tree6.setSkin('dhx_skyblue');
+		tree6.setImagePath("/console/shared/plugins/dhtmlx/tree/imgs/");
+		tree6.enableDragAndDrop(true);
+		//tree6.enableItemEditor(true);
+		tree6.enableSmartXMLParsing(true);
+
+		#if(${widget.props.tree} != "")
+			tree6.loadXMLString("${widget.props.tree}");
+		#end
+
+		
+	}
+	function aah() {
+		var out = tree6.kJ();
+		out = out.replace(/\"/g,"'");
+		$('#p_tree').val(out);
+	}
+
+	tree6.ck(function (id)
+	{
+		var nodeText = tree6.getItemText(id);
+		//if(id.indexOf('static')>=0)
+		//{
+			var llist = tree6.getItemText(id).split('|');
+			$("#linkText").val(llist[0]);
+			var urltxt = llist[1];
+			if(urltxt == null)
+				urltxt = '';
+			$("#linkUrl").val(urltxt);
+			$('#opt_staticNode').show();
+			$('#s_newfirst').hide();
+		//}
+		flag = "update";
+	});
+	function addStaticNode(parentid)
+	{
+		
+		if($('#linkText').val().length == 0)
+		{
+			alert("请输入节点文本的值!");
+			$('#linkText').focus();
+			return false;
+		}
+		if(flag=="new")
+		{
+			if($('#linkUrl').val().length == 0)
+				addItem(parentid||0,'leaf.gif','staticNode'+(new Date()).valueOf(),$('#linkText').val());
+			else
+				addItem(parentid||0,'leaf.gif','staticNode'+(new Date()).valueOf(),$('#linkText').val()+"|"+$('#linkUrl').val());
+		}else if(flag=="update")
+		{
+			if($('#linkUrl').val().length == 0)
+				tree6.setItemText(parentid||0,$('#linkText').val());
+			else
+				tree6.setItemText(parentid||0,$('#linkText').val()+"|"+$('#linkUrl').val());
+		}
+		$('#opt_staticNode').hide();
+		
+	}
+
+	function addItem(pId,imageUrl,id,text){//增加静态item
+		tree6.cH(pId||0,id,text,null,imageUrl);
+	}
+	
+</script>

@@ -1,0 +1,249 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+
+#set($entity=$catalog.fromId($param.entityId))
+#set($dataSet=$catalog.fromId($param.dataSetId))
+#set($pageName=$param.pageName)
+#set($isDefault=$param.isDefault)
+#set($flag="false")
+#if(${pageName}!="0")
+	#if(${isDefault}=="true")
+		#set($oldPage=$pagesTool.getPageByName(${pageName},${entity.uri}))
+		#if(!$oldPage)
+			#set($oldPage=$pagesTool.getDefaultPageByType(${entity.getUri()},"listItems"))
+			#set($flag="true")
+		#end
+	#else
+		#set($oldPage=$pagesTool.getPageByName(${pageName},${entity.uri}))
+	#end
+#end
+
+#set($title="实体 <font color='red'>${entity.title}</font> [前台列表页面] ")
+#if(${pageName}!="0")
+	#set($title=$title+"修改")
+#else
+	#set($title=$title+"定义")
+#end
+
+<script language="javascript" src="js/catalog.js"></script>
+<link type="text/css" rel="stylesheet" href="/console/catalog/js/base/ui.all.css" />
+<link rel="stylesheet" type="text/css" href="/console/shared/js/cmxform.css">
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+<link rel="stylesheet" href="/console/catalog/js/common.css" type="text/css" />
+<link type="text/css" href="/console/catalog/js/ui.multiselect.css" rel="stylesheet" />
+<script type="text/javascript" src="/console/catalog/js/plugins/localisation/jquery.localisation-min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/plugins/scrollTo/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/jquery-ui-1.8.custom.min.js"></script>
+<script type="text/javascript" src="/console/catalog/js/ui.multiselect.js"></script>
+<script language="JavaScript" src="/console/shared/js/jquery.validate.js"></script>
+
+<script type="text/javascript">
+$().ready(function()
+{
+#if($oldPage)
+$('#name').val('$!{oldPage.name}');
+$('#title').val('$!{oldPage.title}');
+if('$!{oldPage.pageSize}'!=0)
+{
+	$('#pageSize').val('$!{oldPage.pageSize}');
+}
+else
+{
+	$('#pageSize').val('${domain.defaultPageSize}');
+}
+$('#style').val('$!{oldPage.style}');
+$('#grantFilter').val("$!{oldPage.grantFilter}");
+#end
+}
+);
+
+$(function()
+{
+	$("#subForm").validate({
+		submitHandler: function(form){
+			form.submit();
+		},
+		rules: {
+			name: {remote: "pageUriValidate.vpage?pageName=$!{pageName}&entityUri=${entity.uri}", required:true}
+		},
+		messages: {
+			name: "页面不能为空！或者您已经在此数据集使用了此页面名称！"
+		}
+	});	
+});
+</script>
+
+<script type="text/javascript">
+$(function(){
+  $(".multiselect").multiselect();
+  $(".multiselect").multiselect({sortable: false, searchable: false});
+});	
+	function addsfs(){
+		var fieldVal="";
+		var fa=$('#viewfileds').find("option:selected");
+		for(var i=0; i<fa.length;i++){ 
+			fieldVal=fieldVal+fa[i].value+";";
+		}
+		$('#sfs').val(fieldVal);
+	}
+	function addofs(){
+		var fieldVal="";
+		var fa=$('#orderfileds').find("option:selected");
+		for(var i=0; i<fa.length;i++){ 
+			fieldVal=fieldVal+fa[i].value+";";
+		}
+		$('#ofs').val(fieldVal);
+	}
+	function submitWay(){
+		addsfs();
+		addofs();
+		var pageName='${pageName}';
+		var flag ='${flag}';
+		var from=document.getElementById("subForm");
+		if(pageName!="0" && flag=="false"){
+			//修改操作
+			from.action="updateListItems.vpage?eui=${entity.uri}&isDefault=$isDefault";
+		}else{
+			//新增操作
+			from.action="doListItems.vpage?eui=${entity.uri}&isDefault=$isDefault";
+	   }
+	}
+</script>
+
+<body>
+
+    <form id="subForm" method="post">
+    <table class="PMTable" width="90%" style="border:0px solid black">
+    <tr >
+     	<td width="70%" style="border-right:0px solid black" >
+			概览页面名称：<input type="text" name="name" id="name" size="35" #if(${pageName}!="0") readonly #end>
+    	</td>
+    </tr>
+    <tr>
+     	<td width="70%" style="border-right:0px solid black">
+			概览页面标题：<input type="text" name="title" id="title" size="35"  >
+    	</td>
+    </tr>
+     <tr>
+     	<td width="70%" style="border-right:0px solid black">
+			每页显示记录数：<input type="text" name="pageSize" id="pageSize" size="35"  value="${domain.defaultPageSize}">
+    	</td>
+    </tr>
+    <tr>
+    <td style="border:0px solid black">
+          选择显示字段：
+    </td>
+    </tr>
+    <tr>
+    	<td style="border-right:0px solid black">
+      	<select id="viewfileds" class="multiselect" multiple="multiple" name="viewfileds" >
+      		#foreach ($viewField in ${oldPage.viewFields})
+      			#foreach ($field in $entity.fields)
+      				#if(${field.uri}==${viewField.fieldUri})
+      					<option value="${field.uri}" selected>
+							${field.title}(${field.name})
+						</option>
+						#break
+					#end
+				#end
+			#end
+      	
+        	#foreach ($field in $entity.fields)
+        		#set($flag="false")
+        		#foreach ($viewField in ${oldPage.viewFields})
+        			#if(${field.uri}==${viewField.fieldUri})
+        				#set($flag = "true")
+        				#break
+        			#end
+        		#end
+        		#if($flag!="true")
+					<option value="${field.uri}">
+						${field.title}(${field.name})
+					</option>
+				#end
+			#end
+         </select>
+      </td>
+    </tr>
+     <tr>
+     	<td width="70%" style="border-right:0px solid black">
+			过滤条件：<input type="text" name="grantFilter" id="grantFilter" size="125"  >
+    	</td>
+    </tr>
+    <tr>
+    <td style="border:0px solid black">
+          选择排序字段：
+    </td>
+    </tr>
+    <tr>
+    	<td style="border-right:0px solid black">
+      	<select id="orderfileds" class="multiselect" multiple="multiple" name="orderfileds" >
+      		#foreach ($orderField in ${oldPage.orderFields})
+      			#foreach ($field in $entity.fields)
+      				#if(${field.uri}==${orderField.fieldUri})
+      					<option value="${field.uri}" selected>
+							${field.title}(${field.name})
+						</option>
+						#break
+					#end
+				#end
+			#end
+      	
+        	#foreach ($field in $entity.fields)
+        		#if(${field.fieldType.sortable})
+					#set($flag="false")
+	        		#foreach ($orderField in ${oldPage.orderFields})
+	        			#if(${field.uri}==${orderField.fieldUri})
+	        				#set($flag = "true")
+	        				#break
+	        			#end
+	        		#end
+	        		#if($flag!="true")
+						<option value="${field.uri}">
+							${field.title}(${field.name})
+						</option>
+					#end
+				#end	
+			#end
+         </select>
+      </td>
+    </tr>
+    <tr>
+    	<td style="border:0px solid black">
+      	<div id="orderfiledsDiv">
+      		#foreach ($orderField in ${oldPage.orderFields})
+      		<div id="orderfileds_${orderField.field.uri}" style="display:none">
+      			编辑排序字段：<br><br>
+      			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-top:#91c0fe 1px solid;border-left:#91c0fe 1px solid;background:#fff;filter: alpha(opacity=95); -moz-opacity:0.95;opacity:0.95;" >
+					<tr>
+      					<td class="table01_bg" width="150px">字段名称</td>
+      					<td class="table01_bg">排序方式</td>
+      				</tr>
+      				<tr>
+      					<td>${orderField.field.title}(${orderField.field.name})</td>
+      					<td><input type="radio" style="border:0px" name="sort${orderField.field.uri}" value="asc" #if(${orderField.order}=="asc") checked #end>升序(asc) &nbsp;<input type="radio" style="border:0px" name="sort${orderField.field.uri}" value="desc" #if(${orderField.order}=="desc") checked #end>降序(desc)</td>
+      				</tr>
+      			</table>
+      		</div>
+      		#end
+      	</div>
+      </td>
+    </tr>
+    
+    <tr>
+       <td style="border:0px solid black">
+     	<input type="hidden" name="type" id="type" value="listItems"/>
+    	<input type="hidden" name="style" id="style" value=""/>
+    	<input type="hidden" name="sfs" id="sfs">
+    	<input type="hidden" name="ofs" id="ofs">
+       </td>
+    </tr>
+    </table>  
+	<div align="center">
+			<div class="right_ico_div">
+	          <div class="left_ico"><a href="#" onclick="submitWay();document.getElementById('subForm').submit();">保存设置</a></div>
+	          <div class="left_ico"> <a href="#" onclick="document.getElementById('subForm').reset();">重新填写</a></div>
+	        </div>
+	</div>
+    </form> 
+</body> 

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<toolbar>
+	<item type="button"	id="groupsAddUser" text="添加用户组" />
+	<item type="button"	id="groupsSetUser" text="设置用户组" />
+	<item type="button"	id="groupsUpdate" text="修改" />
+	<item type="button"	id="groupsDelete" text="删除" />
+	<item type="button"	id="groupsAuthorization" text="授权" />
+</toolbar>

@@ -1,0 +1,311 @@
+﻿<script language="JavaScript" src="/console/shared/js/jquery-1.3.2.min.js"></script>
+#set($entityUri = $param.entityUri)
+#set($exportType = $param.exportType)
+#set($ids = $param.ids)
+#set($entity = $tool.getEntity($entityUri))
+<fieldset class="query" style="position:relative;width:420px">
+<legend>导出记录设定</legend>
+<table width="200" height="200" border="0px" style="font-size:9pt"  cellpadding="4" cellspacing="0">
+	<tr>
+	<td colspan="4">
+	 	 请选择导出类型：	<input type="radio" name="radiobutton" value="0" checked="true" /> excel
+		<input type="radio" name="radiobutton" value="2" /> word
+		<input type="radio" name="radiobutton" value="4" /> pdf
+	</td>
+	<tr>
+	<tr>
+	<td>
+		可选项列表：  <br><br>
+		<select id="dept_cd_a" name="dept_cd_a" multiple size="12" style="color:blue;margin:-2px; width:150px">
+			#foreach($field in $entity.fields)
+			<option value="${field.title}">${field.title}($field.name)</option>
+			#end
+		</select>
+	</td>
+	<td>
+		<input type="button" value="全添加"  onclick="javascript:addAll(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));"><br>
+		<br> <input type="button" value="添 加"  onclick="javascript:moveAtoBsel(document.getElementById('dept_cd_a'),document.getElementById('dept_cd_b'));"><br>
+		<br>  <input type="button" value="删 除" onclick="javascript:deleteSel(document.getElementById('dept_cd_b'));"><br>
+		<br><input type="button" value="全删除" onclick="javascript:deleteAll(document.getElementById('dept_cd_b'));">
+	</td>
+	<td>
+		导出项列表：<br><br>
+		<select id="dept_cd_b" name="dept_cd_b" multiple style="color:blue;margin:-2px; width:150px" size="12">
+		#foreach($field in $entity.fields)
+		<option value="${field.title}">${field.title}($field.name)</option>
+		#end
+		</select>
+	</td>
+	<td>
+		<INPUT TYPE="button" NAME="up;" value="上移" onClick="javascript:movetoup();">
+		<BR>
+		<INPUT TYPE="button" NAME="down" value="下移" onclick="javascript:movetodown();">
+	</td>
+	</tr>
+</table>
+
+<p align="center">
+	<input type="button" value="确认导出" id="exportRecords" onClick="javascript:exportRecordsSet();">
+</p>
+<form name="exportDataForm" id="exportDataForm" target="iftarget" method="post"> 
+	<input type="hidden" name="tid" id="tid"> 
+	<input type="hidden" name="id" id="id"> 
+	<input type="hidden" name="exportType" id="exportType"> 
+	<input type="hidden" name="exportItem" id="exportItem"> 
+	<input type="hidden" name="whereFilter" id="whereFilter"> 
+	<input type="hidden" name="ttitle" id="ttitle"> 
+</form>
+</fieldset>
+
+<script defer>
+function exportRecordsSet()
+{
+		var exportType=$exportType;
+		var exportItem="";
+		var obj=document.getElementById("dept_cd_b");
+		for(i=0;i<obj.options.length;i++)
+		{
+			exportItem=exportItem+obj.options[i].value+";";
+		}
+		if(exportItem.length>0)
+			exportItem=exportItem.substring(0,exportItem.length-1);
+			
+		var x=document.getElementsByName("radiobutton"); 
+		for(var i=0;i<x.length;i++) 
+		{ 
+			if(x[i].checked==true) 
+			{ 
+				exportType=exportType+parseInt(x[i].value);
+			} 
+		} 
+		exportRecords(exportType,exportItem);
+}
+	
+function addAll(objA,objB)
+{
+	 var newOpt;
+	 var i=objA.options.length;
+	 while(i>0)
+	 {
+		  newOpt= new Option(objA.options[objA.options.length-i].text,objA.options[objA.options.length-i].value);
+		  objB.options.add(newOpt);
+		  i--;
+	 }
+}
+
+function deleteAll(objA)
+{
+	var newOpt;
+	var i=objA.options.length;
+	objA.options.length=0;
+}
+
+
+function moveAtoBsel(objA,objB)
+{
+	 for(i=0;i<objA.options.length;i++)
+	 {
+		 if(objA.options[i].selected==true)
+		 {
+			 newOpt= new Option(objA.options[i].text,objA.options[i].value);
+			 objB.options.add(newOpt);
+		 }
+	 }
+ return true;
+}
+
+
+function deleteSel(objA)
+{
+	for(i=0;i<objA.options.length;i++)
+	{
+		if(objA.options[i].selected==true)
+		{
+			objA.options[objA.selectedIndex] = null ; 
+			i--;
+		}
+	}
+ return true;
+}
+
+function   movetoup()   
+{   
+   oSourceSel=document.getElementById("dept_cd_b");
+   var   arrSelValue   =   new   Array();   
+   var   arrSelText   =   new   Array();   
+   var   arrValueTextRelation   =   new   Array();   
+   var   index   =   0;
+   var   tmpValue="";
+   var   tmpText="";
+   var   flag = false;
+   if(oSourceSel.options.length!=0)
+    {
+    for(var   i=0;   i<oSourceSel.options.length;   i++)   
+    {   
+	     arrSelValue[i]   =   oSourceSel.options[i].value;   
+	     arrSelText[i]    =   oSourceSel.options[i].text;  
+	     if(oSourceSel.options[i].selected) { index  =i; flag= true; }  
+    }  
+    if(!flag)
+    {
+    	alert("没有选择要移动的项，请选择！");
+    	return ;
+    } 
+   if(index>0)
+   {
+		tmpValue=oSourceSel.options[index-1].value;
+		tmpText=oSourceSel.options[index-1].text;
+		arrSelValue[index-1]   =   arrSelValue[index] 
+		arrSelText[index-1]    =   arrSelText[index]
+		arrSelValue[index]     = tmpValue
+		arrSelText[index]      = tmpText
+   }
+    for(var   i=arrSelText.length-1;i>=0;i--)       
+    {   
+    	oSourceSel.remove(i);  
+    } 
+   
+    for(var   i=0;   i<arrSelText.length;   i++)       
+    {   
+		var   oOption   =   document.createElement("option");   
+		oOption.text   =   arrSelText[i];   
+		oOption.value   =   arrSelValue[i];   
+		oSourceSel.options.add(oOption);   
+    } 
+    if(index>0)
+    {
+		oSourceSel.options[index-1].selected=true;
+    }
+    else
+    {
+    	oSourceSel.options[0].selected=true;
+    }
+ }
+}
+  
+function movetodown()   
+{   
+	oSourceSel=document.getElementById("dept_cd_b");
+	var   arrSelValue   =   new   Array();   
+	var   arrSelText   =   new   Array();   
+	var   arrValueTextRelation   =   new   Array();   
+	var   index   =   0;
+	var   tmpValue="";
+	var   tmpText="";
+	var   flag = false;
+    if(oSourceSel.options.length!=0)
+    {
+     for(var   i=0;   i<oSourceSel.options.length;   i++)   
+     {   
+		arrSelValue[i]   =   oSourceSel.options[i].value;   
+		arrSelText[i]    =   oSourceSel.options[i].text;  
+		if(oSourceSel.options[i].selected) 
+		{ 
+			index  =i; 
+			flag = true;
+		}   
+     }   
+     
+     if(!flag)
+    {
+    	alert("没有选择要移动的项，请选择！");
+    	return ;
+    } 
+
+	var len=oSourceSel.options.length;
+	if(index<len-1)
+	{
+		tmpValue=oSourceSel.options[index+1].value;
+		tmpText=oSourceSel.options[index+1].text;
+		arrSelValue[index+1]   =   arrSelValue[index] 
+		arrSelText[index+1]    =   arrSelText[index]
+		arrSelValue[index]     = tmpValue
+		arrSelText[index]      = tmpText
+    }
+
+     for(var   i=arrSelText.length-1;i>=0;i--)       
+     {   
+     	oSourceSel.remove(i);  
+     } 
+
+     for(var   i=0;   i<arrSelText.length;   i++)       
+     {   
+	     var   oOption   =   document.createElement("option");   
+	     oOption.text   =   arrSelText[i];   
+	     oOption.value   =   arrSelValue[i];   
+	     oSourceSel.options.add(oOption);   
+     } 
+     if(index<len-1)
+     {
+    	oSourceSel.options[index+1].selected=true;
+     }
+     else
+     {
+     	oSourceSel.options[len-1].selected=true;
+     }
+
+  }
+}   
+function exportRecords(exportType,exportItem)
+{
+	// select excel
+	
+	$("#exportType").val(exportType); 
+	$("#exportItem").val(exportItem);
+	
+	if(exportType==2)
+	{	
+		$("#tid").val("${entity.uri}"); 
+		$("#id").val("${ids}"); 
+		document.getElementById("exportDataForm").action="/doDownload.do";
+		//window.open("/doDownload.do?tid=${entity.uri}&id=${ids}&exportType=2&exportItem="+encodeURI(encodeURI(exportItem)),"iftarget");
+	}
+	
+	// all excel
+	if(exportType==3)
+	{
+		$("#tid").val("${entity.uri}");
+		$("#whereFilter").val("$param.whereFilter");
+		document.getElementById("exportDataForm").action="/doDownload.do";
+
+		//window.open("/doDownload.do?tid=${entity.uri}&exportType=3&exportItem="+encodeURI(encodeURI(exportItem))+"&whereFilter=$param.whereFilter" ,"iftarget");
+	}
+	
+	if(exportType==4)
+	{
+		$("#tid").val("${entity.id}"); 
+		$("#id").val("${ids}");
+		$("#ttitle").val("${entity.title}");
+		document.getElementById("exportDataForm").action="exportWord.jsp";
+		//window.open("exportWord.jsp?tid=${entity.id}&id=${ids}&ttitle=${entity.title}&exportType="+exportType+"&exportItem="+encodeURI(encodeURI(exportItem)),"iftarget");
+	}
+	
+	if(exportType==5)
+	{
+		$("#tid").val("${entity.id}"); 
+		$("#id").val("");
+		$("#ttitle").val("${entity.title}");
+		document.getElementById("exportDataForm").action="exportWord.jsp";
+		//window.open("exportWord.jsp?tid=${entity.id}&id=" + "" + "&ttitle=${entity.title}&exportType="+exportType+"&exportItem="+encodeURI(encodeURI(exportItem)),"iftarget");
+	}
+	
+	if(exportType==6)
+	{
+		$("#tid").val("${entity.id}"); 
+		$("#id").val("${ids}");
+		$("#ttitle").val("${entity.title}");
+		document.getElementById("exportDataForm").action="exportPdf.jsp";
+		//window.open("exportPdf.jsp?tid=${entity.id}&id=${ids}&ttitle=${entity.title}&exportType="+exportType+"&exportItem="+encodeURI(encodeURI(exportItem)),"iftarget");
+	}
+	
+	if(exportType==7)
+	{
+		$("#tid").val("${entity.id}"); 
+		$("#id").val("");
+		$("#ttitle").val("${entity.title}");
+		document.getElementById("exportDataForm").action="exportPdf.jsp";
+		//window.open("exportPdf.jsp?tid=${entity.id}&id=" + "" + "&ttitle=${entity.title}&exportType="+exportType+"&exportItem="+encodeURI(encodeURI(exportItem)),"iftarget");
+	}
+	document.getElementById("exportDataForm").submit();
+}
+</script>

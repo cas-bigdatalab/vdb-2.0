@@ -1,0 +1,5 @@
+﻿#invoke("vdb.report.velocity.action.GetDataSetAccessAction")
+$response.setHeader("Pragma", "No-cache")
+$response.setHeader("Cache-Control", "no-cache,must-revalidate")
+$response.setDateHeader("Expires", 0)
+${setAccessSelectGrid}

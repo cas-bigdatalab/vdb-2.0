@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:coverflow="com.dougmccune.coverflow.*"
+    layout="vertical" horizontalAlign="center" verticalAlign="middle"
+    viewSourceURL="srcview/index.html" xmlns:containers="com.dougmccune.containers.*" applicationComplete="init();" >
+    <mx:Script>
+        <![CDATA[
+        	import mx.containers.Panel;
+            import mx.events.FlexEvent;
+            import mx.controls.Alert;
+            
+            [Bindable]
+            var count:int=0;
+            
+            var xValue:Number;
+            
+            public function test(i:String):void
+            {
+            	Alert.show(i);
+            }
+            
+            //var vbox:VBox = new VBox();
+
+	public function init():void
+		{
+			for(var i:int=0;i<15;i++)
+			{
+				var panel:Panel = new Panel();
+				panel.title="test"+i;
+				panel.addEventListener(MouseEvent.CLICK,function(e:MouseEvent){
+					test(e.target.title);
+					}
+				);
+			
+			panel.height=200;
+			panel.width=200;
+
+ 			coverflow.addChild(panel);
+ 			count++;
+ 		}
+ 		}
+
+
+public function mousedown(event :MouseEvent):void
+{
+	xValue= event.localX;
+}
+
+public function mouseup(event :MouseEvent):void
+{
+
+	if(xValue<event.localX)
+	{
+		if(coverflow.selectedIndex > 0)
+		coverflow.selectedIndex --;
+			
+	}
+	
+	if(xValue>event.localX)
+	{
+		if(coverflow.selectedIndex < count -1)
+		coverflow.selectedIndex ++;
+			
+	}
+}
+        ]]>
+    </mx:Script>
+    <mx:Style>
+        Panel {
+           borderColor: #99CDEE;
+           borderAlpha: 1;
+           borderThickness: 1;
+           borderThicknessLeft: 1;
+           borderThicknessTop: 0;
+           borderThicknessBottom: 1;
+           borderThicknessRight: 1;
+           roundedBottomCorners: false;
+           cornerRadius: 5;
+           headerColors: #b5e6f3, #81b3e6;
+           dropShadowEnabled: false;
+           titleStyleName: "mypanelTitle";
+           vertical-align:middle;
+           horizontal-align:center;
+        }
+        
+        .mypanelTitle {
+           letterSpacing: 1;
+           color: #333333;
+           fontSize: 12;
+           fontWeight: bold;
+        }
+    </mx:Style>
+    
+        
+        <mx:VBox id="box" verticalGap="0" height="100%" width="100%" maxWidth="600" maxHeight="300" >
+            
+            <containers:CoverFlowContainer id="coverflow" width="100%" height="100%" 
+                horizontalGap="40" borderStyle="inset" backgroundColor="#778EA1"
+                segments="{count}" reflectionEnabled="true" mouseDown="mousedown(event);" mouseUp="mouseup(event);">
+  
+                
+            </containers:CoverFlowContainer>
+            
+            <mx:HScrollBar id="scrollbar" width="100%" pageSize="1" maxScrollPosition="{count-1}"
+                scrollPosition="{coverflow.selectedIndex}" 
+                scroll="coverflow.selectedIndex = Math.round(scrollbar.scrollPosition)" />
+                
+        </mx:VBox>
+        
+    
+</mx:Application>

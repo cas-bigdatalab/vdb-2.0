@@ -1,0 +1,16 @@
+#set($id=$param.id)
+#if ($id || $id!="")
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="$id">
+#set($index = $id.indexOf("@") + 1)
+#set($id = $id.substring($index))
+#set($ds = $manager.catalog.fromId($id))
+#foreach ($object in $ds.getView("editEntities").items)
+#if ($object)
+	<item text="$object.title" id="$object.uri" child="0" >
+	</item>
+#end
+#end
+</tree>
+#end
+$response.setContentType("text/xml;charset=UTF-8")

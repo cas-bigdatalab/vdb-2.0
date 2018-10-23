@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<menu>
+		<item id="auth" text="授权" img="auth.gif" />
+		<item id="addGroup" text="添加子组" img="group.gif" />
+		<item id="addUser" text="添加用户" img="user.gif" />
+		<item id="edit" text="修改" img="edit.gif"/>
+		<item id="delete" text="删除" img="close.gif"/>
+</menu>

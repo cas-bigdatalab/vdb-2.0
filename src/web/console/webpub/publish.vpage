@@ -1,0 +1,42 @@
+﻿#usingLayout('/console/webpub/template1.vpage')
+#set($title="发布网站")
+
+	<div class="button_div">
+    	<div class="button01_div" style="padding-left:20px;">
+        	<div class="button01_left_div"></div>
+            <div class="button01_mid_div"><a href="#" onclick="deleteAlways();">清空发布页面(删除已发布页面)</a></div>
+            <div class="button01_right_div"></div>
+        </div>
+	</div>
+    <div class="clear"></div>
+        <div class="button_div">
+    	<div id="button01_div" style="padding-left:20px;">
+        	<div class="button01_left_div"></div>
+            <div class="button01_mid_div"><a href="#" onclick="publishAlways();">重新发布网站页面（强制覆盖所有已发布页面）</a></div>
+            <div class="button01_right_div"></div>
+        </div>
+    </div>
+
+
+<script>
+	function publishAlways()
+	{
+		if(confirm("真的要这么做吗？该操作将会覆盖那些发布出来的网页！！\r\n如果你曾经对这些文件进行过任何更改，则无法恢复！"))
+		{
+			location.href = "doPublish.vpage?alwaysOverwrite=true";
+		}
+
+		return false;
+	}
+
+	function deleteAlways()
+	{
+		if(confirm("真的要这么做吗？该操作将会删除所有发布出来的网页！！\r\n如果你曾经对这些文件进行过任何更改，则无法恢复！"))
+		{
+			location.href = "doDeletePublishFiles.vpage";
+		}
+
+		return false;
+	}
+
+</script>

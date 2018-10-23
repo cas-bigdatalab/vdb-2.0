@@ -1,0 +1,12 @@
+<ul style="padding:0px 150px;">
+	#set($li_id=0)
+	#set($count=$layouts.size())
+    #foreach ($each_layout in $layouts)
+	<li id="formsetting_$li_id"  #if ($each_layout.name==$widgetLayout.layoutPattern.name)class="selected"#end>
+	<div class="frame">
+		<a title="$each_layout.title" onclick="chgLayout('$each_layout.name');changeLiClass('formsetting_',$li_id,$count)" href="javascript:;">
+		<img class="thumb" alt="$each_layout.title" src="images/${each_layout.name}.png" width="60" height="50"></a></div>
+	<p>$each_layout.title</p></li>
+	#set($li_id=$li_id + 1)
+	#end
+</ul>

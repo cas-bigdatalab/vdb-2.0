@@ -1,0 +1,87 @@
+#macro(print $msg)
+$systemTool.out.println($msg)
+#end
+
+#macro(error $msg)
+$systemTool.err.println($msg)
+#end
+
+#macro(cell $msg)
+<table border="1"><tr><td>$msg</td></tr></table>
+#end
+
+#macro(xml $src)
+$tool.encodeXml($src, false)
+#end
+
+#macro(nul $var)
+#set($nul = $var)
+#end
+
+#macro(usingLayout $path)
+#set($VSP_TEMPLATE_LAYOUT = $path)
+#end
+
+#macro(selectNode $meta $uri)
+#set($meta=$tool.getNode($uri))
+#end
+
+#macro(selectEntity $meta $uri)
+#set($meta=$tool.getEntity($uri))
+#end
+
+#macro(selectField $meta $uri)
+#set($meta=$tool.getField($uri))
+#end
+
+#macro(selectDataSet $dataset $uri)
+#set($dataset=$tool.getDataSet($uri))
+#end
+
+#macro(selectBean $bean $uri $id)
+#set($bean=$tool.getBean($uri, $id))
+#end
+
+#macro(selectView $view $meta $viewName)
+#set($view=$meta.ex.getView($viewName))
+#end
+
+#macro(createQuery $query $entity)
+#set($query=$tool.createQuery($entity))
+#end
+
+#macro(createObject $var $className)
+#set($var = $tool.createObject($className))
+#end
+
+#macro(new $var $className)
+#set($var = $tool.createObject($className))
+#end
+
+#macro(saveAs $path)
+#set($VSP_PUBLISH_PATH=$path)
+#end
+
+#macro(remove $varName)
+$contextTool.remove($varName)
+#end
+
+#macro(invoke $var)
+$actionExecutor.execute($var)
+#end
+
+#macro(java $var)
+$actionExecutor.execute($var)
+#end
+
+#macro(jspinclude $var)
+$application.getRequestDispatcher($var).include($request, $response)
+#end
+
+#macro(jspforward $var)
+$application.getRequestDispatcher($var).forward($request, $response)
+#end
+
+#macro(log $entity $operation $param1 $param2 $param3)
+$logger.log($entity, $operation, $param1, $param2, $param3)
+#end

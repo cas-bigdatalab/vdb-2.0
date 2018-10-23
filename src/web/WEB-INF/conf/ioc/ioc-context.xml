@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+	<!-- yes! the spring ioc factory will invoke me after loading all beans -->
+	<bean class="vdb.mydb.job.VdbJobScheduler" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>WEB-INF/conf/messages/vdb</value>
+				<value>WEB-INF/conf/messages/vdb.shared</value>
+				<value>WEB-INF/conf/messages/vdb.webpub</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- inject objects into VSP context -->
+	<bean class="vdb.mydb.context.ApplicationContextExporter">
+		<property name="alias">
+			<map>
+				<entry key="engine" value="$engine" />
+				<entry key="appctx" value="$engine" />
+				<entry key="manager" value="$engine" />
+				<entry key="domain" value="$engine.domain" />
+				<entry key="catalog" value="$engine.catalog" />
+				<entry key="typeManager" value="$typeManager" />
+				<entry key="moduleManager" value="$moduleManager" />
+				<entry key="pageroot" value="${webpub.rootPath}" />
+			</map>
+		</property>
+		<property name="depends">
+			<list>
+				<ref bean="engine" />
+				<ref bean="typeManager" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="vdb.mydb.context.ContextAliasInjection">
+		<property name="alias">
+			<map>
+				<entry key="user" value="$context.request.userPrincipal" />
+			</map>
+		</property>
+	</bean>
+</beans>

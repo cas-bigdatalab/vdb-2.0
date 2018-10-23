@@ -1,0 +1,128 @@
+﻿#usingLayout('/console/catalog/template1.vpage')
+#set($title="连接属性")
+
+<script type="text/javascript" src="js/slidebar/myJSFrame.js"></script>
+<style type="text/css">
+	body {font-size:14px}
+	#abc{float:left;}
+	.slidebox { height:24px; width:213px; overflow:hidden; position:relative;}
+	.lineBox { padding:0 6px;}
+	.slidebox .line {background:url(js/slidebar/bg2.gif) repeat-x left bottom; width:100%; height:20px; cursor:pointer}
+	.slidebox .cursor { position:absolute; z-index:20; top:0px; left:0px; height:21px; width:11px;  overflow:hidden; background:url(js/slidebar/cursor.gif) no-repeat; cursor:pointer; filter:alpha(opacity=90); opacity:0.9}
+</style>
+<script type="text/javascript" src="js/slidebar/slidebar.js"></script>
+
+#set($dataSet = ${catalog.fromId($param.dsid)})
+
+#if (!$dataSet.getRepository())
+	#set($asd = $catalogBuilder.createRepository($manager.getCatalogContext(),$dataSet))
+	$manager.getCatalog().cacheIn($dataSet.getRepository())
+#else
+#end
+
+#set($meta = $dataSet.repository)
+
+<form name="form1" id="form1" action="doUpdateRepository.vpage?mid=${meta.id}&dsid=${dataSet.id}" method="post">
+	<div align="center" style="border:1px solid white">
+	<table width="90%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
+		<tr>
+			<td class="table_bg" style="border-top:#91c0fe 1px solid;">元数据项注册ID</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px;border-top:#91c0fe 1px solid;">$!{meta.id}</td>
+		</tr>
+		<tr>
+			<td class="table_bg">元数据项注册时间 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">$!{meta.lastModified}</td>
+		</tr>
+		<tr>
+			<td class="table_bg">数据库产品类型 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<select name="P_productName" onchange="onSelectProduct(this)">
+					#foreach ($product in $manager.jdbcProducts.products)
+						<option value="${product.name}" #if ($product.name==$meta.productName) selected #end port="$!{product.defaultPort}" databaseNameLabel="${product.databaseNameLabel}" requiresHostPort="${product.requiresHostPort()}">${product.title}
+						</option>
+					#end
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">数据库产品版本 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="text" name="P_productVersion" size="40" value="$!{meta.productVersion}">
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">
+				<span id="databaseNameLabel" style="color:red">数据库名</span>
+			</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<input type="text" name="P_databaseName" size="40" value="$!{meta.databaseName}">
+			</td>
+		</tr>
+		<span id="hostPortArea">
+			<tr>
+				<td class="table_bg">主机地址 </td>
+				<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="text" name="P_host" size="40" value="$!{meta.host}"></td>
+			</tr>
+			<tr>
+				<td class="table_bg">数据库服务端口 </td>
+				<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="text" name="P_port" size="40" value="$!{meta.port}"></td>
+			</tr>
+		</span>
+		<tr>
+			<td class="table_bg">用户名 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="text" name="P_userName" size="40" value="$!{meta.userName}"></td>
+		</tr>
+		<tr>
+			<td class="table_bg">密码 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="password" name="P_userPass" size="40" value="$!{meta.userPass}"></td>
+		</tr>
+		<tr>
+			<td class="table_bg">连接超时(秒)</td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px">
+				<div class="box">
+					<input type="text"  id="abc" size="2" value="$!{meta.loginTimeout}" disabled>
+					<input type="hidden" name="P_loginTimeout" id="abcd" size="2" value="${meta.loginTimeout}" >
+					<script type="text/javascript">
+						var t = new SlideBar();
+						t.maxValue = "59";
+						t.defaultValue = ${meta.loginTimeout} - 1;
+						t.onmoving = function(){
+						$f("abc").value = $f("abcd").value = this.title = Math.floor(this.value) + 1;
+						};
+						t.write();
+					</script>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="table_bg">数据集本地文件路径 </td>
+			<td width="80%" style="padding-left:12px;padding-top:2px;padding-bottom:2px"><input type="text" name="P_localFilePath" size="40" #if ($meta.localFilePath) value="${meta.localFilePath}" #else value="$dsRoot" #end>
+				<br><font color="blue">$dsRoot :</font> ${dataSet.dataSetXml.parentFile.canonicalPath}
+			</td>
+		</tr>
+	</table>
+	</div>
+<br>
+<div align="center">
+		<div class="right_ico_div">
+          <div class="left_ico"><a href="#" onclick="document.getElementById('form1').submit();">保存设置</a></div>
+          <div class="left_ico"> <a href="#" onclick="document.getElementById('form1').reset();">重新填写</a></div>
+        </div>
+</div>
+</form>
+
+<script>
+	function onSelectProduct(select) {
+		var option = select.options[select.selectedIndex];
+		//端口
+		var defaultPort = option.getAttribute("port");
+
+		//没有输入端口
+		//if(select.form.P_port.value == "" && defaultPort != "")
+			select.form.P_port.value = defaultPort;
+		//requiresHostPort
+		form1.P_host.disabled = form1.P_port.disabled = (option.getAttribute("requiresHostPort") == "true" ? false : true);
+		document.all.databaseNameLabel.innerHTML = option.getAttribute("databaseNameLabel");
+	}
+	onSelectProduct(form1.P_productName);
+</script>

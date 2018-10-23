@@ -1,0 +1,31 @@
+\#foreach ($file in ${D}!bean.get('${field.name}').files)
+#if($field.editorStyle == 'FilesEdit')
+\#set($fileUrl = $file.servletPath)
+#else
+\#set($fileUrl = $file.servletPath + "?type=localfiles")
+#end
+#if($field.viewerStyle=='ImagesLabel')
+<a target="_blank" href="${dollar}fileUrl">
+	<img src="${dollar}fileUrl"  alt="${file.title}[${file.fileSize}字节][${file.imageWidth}*${file.imageHeight}像素]"
+		#if ((${field.imageWidth}) && ("" != ${field.imageWidth}))	width="${field.imageWidth}"	#else width=100 #end	#if ((${field.imageHeight}) && ("" != ${field.imageHeight})) height="${field.imageHeight}" #else height=100	#end border=0>
+		</a><br>
+#elseif($field.viewerStyle=='MoviesLabel')	
+	\#if ($file.extension == ".wmv" || $file.extension == ".avi")
+		<object align=middle classid=clsid:22d6f312-b0f6-11d0-94ab-0080c74c7e95 class=object id=mediaplayer width=480 height=360>
+		<param name=autostart value=true>
+		<param name=showstatusbar value=-1>
+		<param name=filename value="${dollar}fileUrl">
+		<embed type=application/x-oleobject codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#version=5,1,52,701" flename=mp src="${dollar}fileUrl" width=480 height=360></embed>
+		</object>
+	\#elseif ($file.extension == ".flv")
+		<object type="application/x-shockwave-flash" data="/console/shared/flvplayer.swf?file=${dollar}fileUrl" width="480" height="360">
+	  	<param name="movie" value="/console/shared/flvplayer.swf?file=${dollar}fileUrl">
+	  	<param name="wmode" value="transparent" />
+		</object>
+	\#else
+		<embed src="${dollar}fileUrl" width=480 type=audio/x-pn-realaudio-plugin autostart=true controls=imagewindow,controlpanel,statusbar console=clip1></embed>
+	\#end
+#else
+	<a href="${dollar}fileUrl">${file.title}[${file.fileSize}]</a><br>
+#end	
+\#end

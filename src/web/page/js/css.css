@@ -1,0 +1,400 @@
+.wenzi1{font-weight: bold;color: #FFFFFF;}
+a.wenzi1:hover {color: #FCFF00;}
+.wenzi2{font-size:13px;color:#000000;}
+.wenzi3{color: #FFF;font-family: "����";}
+a.wenzi3:hover {color: #FFFF00;}
+/******************************************/
+
+
+html,body,dl,dt,dd {
+	margin: 0;
+	padding: 0;
+}
+body
+{
+	background: url(/themes/${theme.name}/res/images/bg.jpg) repeat-x center top #F4F8DD;
+	text-align: center;
+	font: normal normal normal 12px/1.5em Simsun, Arial, "Arial Unicode MS", Mingliu, Helvetica;
+	color: #777;
+	width: 970px;
+	word-break: break-all;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.bg
+{
+	background: url(/page/images/bg.jpg) repeat-x center top #F4F8DD;
+}
+
+.baseball {
+	border: solid 1px #eee;
+	margin-bottom: 5px;
+	background: #FFF;
+	overflow: hidden;
+	padding: 0 0px;
+	overflow: hidden;
+	zoom: 1;
+	width: 100%;
+	filter: alpha(opacity=100); /* IE */ ;
+	-moz-opacity:1;/* Moz + FF */;
+	opacity:1;
+}
+.baseball dt {
+	padding: 0 2px;
+	font-weight: bold;
+	color: #000;
+	font-size: 14px;
+	background: #69C;
+	height: 35px;
+	line-height: 35px;
+	background:url(${themeres}/images/shy_01.jpg);
+	
+}
+.baseball dt span {
+	float: left;
+	padding-left:25px;
+}
+.baseball dd {
+	padding: 5px;
+}
+#wrap {
+	width: 100%;
+	padding: 0 0 0 0;
+	border:1px solid #e7e7e7;
+	overflow: hidden;
+	zoom: 1;
+	
+	background:#F4F9DF;
+	
+	filter: alpha(opacity=100); /* IE */ ;
+	-moz-opacity:1;/* Moz + FF */;
+	opacity:1;
+}
+
+.table_l112_1,.table_l112_2,.table_l121_1,.table_l121_3,.table_l211_2,.table_l211_3,.table_l13_1,.table_l131_2
+{
+	border:0px;
+	border: 0px solid #8bd1f1;
+	margin-top: 10px;
+	width:230;
+	cellpadding:0;
+	cellspacing:0;
+}
+
+.table_l112_3,.table_l121_2,.table_l211_1
+{
+	border: 0px solid #8bd1f1;
+	margin-top: 10px;
+	width:470;
+	cellpadding:0;
+	cellspacing:0;
+}
+
+.table_l121_2_1
+{
+	border: 0px solid #8bd1f1;
+}
+
+.caption_l112_1,.caption_l112_2,.caption_l121_1,.caption_l121_3,.caption_l211_2,.caption_l211_3,.caption_l13_1,.caption_l131_2
+{
+	height:26;
+	background:url("${themeres}/images/shy_33.jpg");
+	color: white; 
+	font-size: 14px;
+	font-weight: bold;
+	padding-left:38px;
+	padding-top:5px;
+
+}
+
+.caption_l112_3,.caption_l121_2,.caption_l211_1
+{
+	height:33px;
+	background:url("${themeres}/images/shy_301.jpg");
+	color: #3b6b00; 
+	font-size: 14px;
+	font-weight: bold;
+	padding-top:9px;
+	padding-left:38px;
+}
+
+
+.content_l112_1,.content_l112_2,.content_l121_1,.content_l121_3,.content_l211_2,.content_l211_3,.content_l13_1,.content_l131_2
+{
+	background:#F4F9DF;
+}
+
+.content_l112_3,.content_l121_2,.content_l211_1
+{
+	padding:5;
+	background:#F4F9DF;
+}
+
+
+.table_l121_1_1
+{
+	border:0px;
+}
+
+.caption_l121_1
+{
+	height:30px;
+	padding-top:8px;
+	color: black;
+	background:url("${themeres}/images/shy_121.jpg");
+}
+
+.content_l121_1
+{
+	padding-top:18px;
+	background:url("${themeres}/images/shy_122.jpg") repeat-y ;
+}
+
+.bottom_l121_1
+{
+	background:url("${themeres}/images/shy_123.jpg");
+	height:16px;
+}
+
+.caption_l121_2
+{
+	height:33px;
+	padding-top:10px;
+	background:url("${themeres}/images/shy_311.jpg");
+}
+
+
+.content_l121_2
+{
+	padding-top:18px;
+	background:url("${themeres}/images/shy_3122.jpg") repeat-y ;
+}
+
+.bottom_l121_2
+{
+	background:url("${themeres}/images/shy_313.jpg");
+	height:10px;
+}
+
+.caption_l121_2_2
+{
+	height:33px;
+	padding-top:6px;
+	background:url("${themeres}/images/shy_301.jpg");
+}
+
+
+.content_l121_2_2
+{
+	padding-top:18px;
+	background:url("${themeres}/images/shy_302.jpg") repeat-y ;
+}
+
+.bottom_l121_2_2
+{
+	background:url("${themeres}/images/shy_303.jpg");
+	height:16px;
+}
+
+.caption_l121_3
+{
+	height:33px;
+	padding-top:11px;
+	color: #3b6b00;
+	padding-left:45px;
+	background:url("${themeres}/images/shy_421.jpg");
+}
+
+.content_l121_3
+{
+	padding-top:8px;
+	background:url("${themeres}/images/shy_422.jpg") repeat-y ;
+}
+
+.bottom_l121_3
+{
+	background:url("${themeres}/images/shy_423.jpg");
+	height:16px;
+}
+
+a:hover {text-decoration: none;color: #3D7000;}
+a {text-decoration: none;color: #000;}
+table {text-align:left;line-height: 16px;text-decoration: none;font-size:12px;}
+img{ border:0px;}
+
+.search { text-align:left;  tborder:0px;width:120px;height:22px;font-size:12px;padding:4px 0px 0 0px;margin:0px;background: #E0EAC9;border:1px solid #3F7601;color: #3C3C3C;}
+.Navigation {font-size: 14px;font-weight: bold;color: #E1FF7C;padding: 0 18px 0 18px;}
+a.Navigation:hover {color: #FFFF00;}
+
+
+
+#bottom_di{background: #FFF url(${themeres}/images/bottom_03.gif) repeat-x top;}
+.bottom_zi{color: #545454;line-height: 20px; padding:9px 0 0 0;}
+/* ================================================================ 
+This copyright notice must be kept untouched in the stylesheet at 
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.stunicholls.com/menu/pro_drop_2.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+
+#nav {
+	/*top:2px;*//*to make men lower*/
+	
+	padding:0; margin:0; list-style:none; 
+	height:53px;/* 38px*/ 
+	background:#fff url(three_0.gif) repeat-x; position:relative; 
+	z-index:500; font-family:arial, verdana, sans-serif;}
+
+#nav li.top {
+	
+	display:block; 
+	float:left; 
+	height:53px;
+	}
+
+#nav li a.top_link {
+	display:block; 
+	float:left; 
+	height:53px; /*old value is 35px*/
+	line-height:50px; 
+
+	color:#fff; /*font color old value is #ccc*/
+	text-decoration:none; 
+	font-size:14px;/*top font-size old value is 12*/ 
+	font-weight:bold; 
+	padding:0 0px 0 3px; /* old value is :0 0 0 12*/ */
+	cursor:pointer;
+	background: url(${themeres}/images/three_0.gif);}
+
+#nav li a.top_link span {
+	float:left; 
+	display:block; 
+	padding:0 12px 0 12px; 
+	height:53px; /*old value is 35px*/
+	background: url(${themeres}/images/three_0.gif) right top no-repeat;}
+
+#nav li a.top_link span.down {
+	float:left; 
+	display:block; 
+	padding:0 16px 0 8px; /**/
+	height:53px; /*old value is 35px*/
+	background: url(${themeres}/images/three_0a.gif) no-repeat right top;}
+
+#nav li:hover a.top_link {
+	color:#ffff00; /*old value is #fff*/
+	background: url(${themeres}/images/three_1.gif) no-repeat;
+	}
+#nav li:hover a.top_link span {
+	background:url(${themeres}/images/three_1.gif) no-repeat right top;
+	}
+#nav li:hover a.top_link span.down {
+	background:url(${themeres}/images/three_1a.gif) no-repeat right top;
+	}
+
+/* Default list styling */
+
+#nav li:hover {position:relative; z-index:200;}
+
+/* the ul with child nodes  */
+#nav li:hover ul.sub
+{
+	left:1px;/*left position old value is 1*/ 
+	top:46px; /*distance between top and sub menu*/
+	background: #427500; 
+	padding:3px; border:1px solid #5c731e; 
+	white-space:nowrap; 
+	width:120px; /*sub menu width old value is 90*/
+	width:120px;/*didnt set atribute _width in pre version*/
+	height:auto; z-index:300;}
+#nav li:hover ul.sub li
+{
+	display:block; 
+	height:20px; 
+	position:relative; 
+	float:left; 
+	width:120px; /*sub menu width old value is 90*/
+	width:120px;/*didnt set atribute _width in pre version*/
+	font-weight:normal;}
+#nav li:hover ul.sub li a
+{
+	/*background:#6a812c;*/ 
+	display:block; 
+	font-size:12px;/* fist sub menu front-size*/ 
+	height:18px; 
+	width:120px; /*sub menu width old value is 88*/
+	width:120px;/*didnt set atribute _width in pre version*/
+	line-height:18px; 
+	text-indent:5px; 
+	color:#fff; 
+	text-decoration:none;
+	/*border:1px solid #427500;*/}
+#nav li ul.sub li a.fly
+{
+	/*background:#6a812c;*/ 
+	color:#fff; 
+	url(${themeres}/images/arrow.gif) 100px 6px no-repeat;
+	/*old value is url(${themeres}/images/arrow.gif) 80px 6px no-repeat*/
+	}
+#nav li:hover ul.sub li a:hover 
+{
+	color:#ffff00;
+	background:#6a812c;/*old value is #6a812c*/
+	border-color:#fff;
+	}
+#nav li:hover ul.sub li a.fly:hover
+{
+	color:#ffff000;
+	background:#6a812c  url(${themeres}/images/arrow_over.gif) 100px 6px no-repeat;
+	 /*old value is #6a812c url(${themeres}/images/arrow_over.gif) 80px 6px no-repeat*/
+	}
+
+
+/* the ul without child nodes  */
+#nav li:hover li:hover ul,
+#nav li:hover li:hover li:hover ul,
+#nav li:hover li:hover li:hover li:hover ul,
+#nav li:hover li:hover li:hover li:hover li:hover ul
+{
+	text-align:left;
+	left:118px; /*sub ul position TBC old value is 90px*/
+	top:-4px; 
+	background: #427500; /*old value is #bbd37e*/
+	padding:3px; border:1px solid #5c731e; 
+	white-space:nowrap; 
+	width:120px; /*old value is 90*/
+	z-index:400; 
+	height:auto;}
+
+#nav ul, 
+#nav li:hover ul ul,
+#nav li:hover li:hover ul ul,
+#nav li:hover li:hover li:hover ul ul,
+#nav li:hover li:hover li:hover li:hover ul ul
+{
+	text-align:left;
+	position:absolute; 
+	left:-9999px; top:-9999px; width:0; 
+	height:0; margin:0; padding:0; list-style:none;}
+
+#nav li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover li:hover a.fly,
+#nav li:hover li:hover li:hover li:hover li:hover a.fly
+{
+	background:#6a812c url(${themeres}/images/arrow_over.gif) 100px 6px no-repeat; 
+	color:#ffff00; 
+	border-color:#fff;} 
+
+#nav li:hover li:hover li a.fly,
+#nav li:hover li:hover li:hover li a.fly,
+#nav li:hover li:hover li:hover li:hover li a.fly
+{
+	background:#6a812c url(${themeres}/images/arrow.gif) 100px 6px no-repeat;
+	color:#ffff00;/*#000*/ 
+	border-color:#bbd37e;
+	} 
