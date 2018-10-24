@@ -29,11 +29,11 @@ $request.setAttribute("pictype", "top")
 		  <tr align="left">
             <td height="5" colspan="9"></td>
           </tr>
-		  --><!--
+		  -->
           <tr align="left">
             <td width="10" align="left"><img src="$pageroot/images/top_03.gif"></td>
             <td width="29" align="center"><img src="$pageroot/images/top_01.gif" width="17" height="12"></td>
-            <td width="36" align="left"></td>
+            <td width="36" align="left"><a href="/console/shared/login.vpage" class="wenzi1">登录</a></td>
             <td width="10"><img src="$pageroot/images/top_03.gif"></td>
             <td width="29" align="center"><img src="$pageroot/images/top_02.gif" width="18" height="13"></td>
             <td width="36"><a href="#" class="wenzi1">注册</a></td>
@@ -41,7 +41,6 @@ $request.setAttribute("pictype", "top")
             <td width="97" align="left"><a href="http://www.csdb.cn" target="_blank" class="wenzi1">科学数据库门户</a></td>
             <td width="2" align="right"><img src="$pageroot/images/top_03.gif"></td>
           </tr>
--->
       </table>
       <table border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -94,7 +93,6 @@ $request.setAttribute("pictype", "top")
 </table>
 
 <!--第二张照片-->
-<!--
 <table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td height="139"></td>
@@ -104,7 +102,6 @@ $request.setAttribute("pictype", "top")
       <td height="1" bgcolor="#FFFFFF"></td>
     </tr>
 </table>
--->
 </div>
 <div style="display:none">
 <form action="/page/crossQuery.vpage" method="get" name="form1" style="width:120px;height:0px;">

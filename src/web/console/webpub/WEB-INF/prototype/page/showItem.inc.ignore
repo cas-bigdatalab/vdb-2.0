@@ -14,18 +14,10 @@
 				#foreach ($viewField in $fields)
 					#set($field = ${catalog.fromUri($viewField.fieldUri)})
 					\#if ($page.display||(!${D}bean.get("$field.name").empty))
-					==== $page.hideCollectionFieldTitle
-					==== $viewField.field.isCollection()
-					\#if ($page.hideCollectionFieldTitle&&$viewField.field.isCollection())
-					<tr>
-						<td  width="683" colspan="2" height="30"  class="search03_td">$canvas.view($field)&nbsp;</td>
-					</tr>
-					\#else
 					<tr>
 						<td  width="143" height="30"  class="search03_td">${field.title}</td>
 						<td #if($velocityCount % 2 == 1) class="search03_td_bg" #end  width="539" style="padding:6px;" >$canvas.view($field)&nbsp;</td>
-					</tr>					
-					\#end
+					</tr>
 					\#end
 				#end
               </table>

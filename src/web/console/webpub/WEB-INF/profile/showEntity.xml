@@ -8,8 +8,8 @@
 			<map>
 				<entry key="column1">
 					<list>
-						<value>staticTree</value>
-						<value>contactInfo</value>
+						<value>catalog</value>
+						<value>consult</value>
 					</list>
 				</entry>
 				<entry key="column2">

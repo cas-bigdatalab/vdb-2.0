@@ -6,15 +6,15 @@
 		<property name="layout" value="l13" />
 		<property name="columns">
 			<map>
-				<entry key="column1">
-					<list>
-						<value>staticTree</value>
-						<value>contactInfo</value>
-					</list>
-				</entry>
 				<entry key="column2">
 					<list>
 						<value>showItem</value>
+					</list>
+				</entry>
+				<entry key="column1">
+					<list>
+						<value>catalog</value>
+						<value>consult</value>
 					</list>
 				</entry>
 			</map>

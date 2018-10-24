@@ -23,8 +23,7 @@
 #if($isViewMode)
 \#if(${D}auth.user)
 <p align="center" style="font-size:12px;">欢迎你，${D}{auth.user.username}！</p>
-<p align="right" style="font-size:12px;padding-bottom:5px;"><a href="/console/editor" target="_blank">[数据管理]</a>
-	<a href="/console/shared/logout.jsp">[退出身份]</a>&nbsp;&nbsp;</p>
+<p align="right" style="font-size:12px;padding-bottom:5px;"><a href="/console/shared/logout.jsp">[注销本次登录]</a>&nbsp;&nbsp;</p>
 \#else
 $showLoginForm
 \#end

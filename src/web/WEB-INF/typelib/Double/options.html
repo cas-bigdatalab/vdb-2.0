@@ -24,10 +24,10 @@
     <tr>
       <td class="table_bg">标签模式</td>
       <td width="80%" style="padding-left:12px;">
-      	<input type="radio" style="border:0px" value="%f" onclick="P_viewerPattern.value=this.value"
+      	<input type="radio" style="border:0px" name="P_viewerPattern" value="%f" onclick="P_viewerPattern.value=this.value"
       		#if(${field.viewerPattern}=='%f'||$!{field.viewerPattern}==''||
       		 (${field.viewerPattern}!='%f'&&${field.viewerPattern}!='%e')) checked #end>正常表示
-      	<input type="radio" style="border:0px" value="%e" onclick="P_viewerPattern.value=this.value"
+      	<input type="radio" style="border:0px" name="P_viewerPattern" value="%e" onclick="P_viewerPattern.value=this.value"
       		#if(${field.viewerPattern}=='%e') checked #end>科学计数法
       	<input type="text" size="38" name="P_viewerPattern" value='$!{field.viewerPattern}'>
       </td>

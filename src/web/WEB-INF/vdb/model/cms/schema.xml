@@ -22,11 +22,11 @@
 		<id>4028818d27b49c5b0127b4a4ca3b0025</id>
 		<lastModified>2010-03-31 22:34:10</lastModified>
 		<tableName>NEWS</tableName>
+		<name>news</name>
 		<description />
 		<order>desc</order>
-		<name>news</name>
-		<title>文稿库</title>
-		<titleField>cms.news.title</titleField>
+		<title>新闻</title>
+		<titleField>cms.news.id</titleField>
 		<editorField>cms.news.creator</editorField>
 		<orderField>cms.news.addtime</orderField>
 		<timeStampField>cms.news.addtime</timeStampField>
@@ -202,13 +202,12 @@
 		</field>
 	</entity>
 	<entity>
+		<name>newstype</name>
+		<tableName>NEWSTYPE</tableName>
+		<title>新闻类型</title>
+		<description />
 		<id>1f628d0627b6e1fa0127b6e612a70022</id>
 		<lastModified>2010-04-01 09:04:43</lastModified>
-		<tableName>NEWSTYPE</tableName>
-		<description />
-		<order>desc</order>
-		<name>newstype</name>
-		<title>文稿类型</title>
 		<titleField>cms.newstype.id</titleField>
 		<identifier>
 			<id>1f628d0627b6e1fa0127b6e612a70023</id>

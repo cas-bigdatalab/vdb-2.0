@@ -24,8 +24,6 @@
 				</bean>
 
 				<!-- 日志入库 -->
-				<!--每隔2秒钟执行一次-->
-				<!--
 				<bean
 					class="org.springframework.scheduling.quartz.CronTriggerBean">
 					<property name="jobDetail">
@@ -38,10 +36,10 @@
 								value="execute" />
 						</bean>
 					</property>
+					<!--每隔2秒钟执行一次-->
 					<property name="cronExpression"
 						value="0/10 * * * * ?" />
 				</bean>
-				-->
 			</list>
 		</property>
 	</bean>

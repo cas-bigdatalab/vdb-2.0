@@ -104,15 +104,10 @@ $(function(){
 			细览页面标题：<input type="text" name="title" id="title" size="35" >
     	</td>
     </tr>
-     <tr>
-     	<td width="70%" style="border-right:0px solid black" >
-			字段值为空时是否显示：<input type="checkbox" name="isDisplay" #if($oldPage) value="$oldPage.display" #else value="true" #end  style="border:0px"   #if(!$oldPage||$oldPage.display)checked #end>显示
-    	</td>
-    </tr>
     
      <tr>
      	<td width="70%" style="border-right:0px solid black" >
-			隐藏集合字段名：<input type="checkbox" name="hideCollectionFieldTitle" #if($oldPage) value="$oldPage.hideCollectionFieldTitle" #else value="true" #end  style="border:0px"   #if(!$oldPage||$oldPage.hideCollectionFieldTitle)checked #end>隐藏
+			字段值为空时是否显示：<input type="checkbox" name="isDisplay" #if($oldPage) value="$oldPage.display" #else value="true" #end  style="border:0px"   #if(!$oldPage||$oldPage.display)checked #end>显示
     	</td>
     </tr>
     

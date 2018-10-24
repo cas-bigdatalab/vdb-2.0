@@ -1,3 +1,0 @@
-﻿<%
-	pageContext.forward("index.vpage");
-%>

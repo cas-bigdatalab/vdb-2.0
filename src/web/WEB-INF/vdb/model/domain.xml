@@ -7,12 +7,12 @@
 	<chemLibPath>../public/lib</chemLibPath>
 	<display>false</display>
 	<serverUrl>http://localhost:8080</serverUrl>
-	<keyWords>阳光助学群</keyWords>
+	<theme>lake</theme>
+	<keyWords>VisualDB</keyWords>
 	<name>cn.csdb.soil</name>
-	<title>阳光助学群</title>
-	<description>阳光助学群成立于2007年，现有群友350人，来自各个国家和地区，长期资助西部困难师生400人，建校3所，设立奖学金数个，发起西部教师培训项目，并完成了其他一系列慈善助学专项。我们的目标：做口碑最好的慈善组织。</description>
-	<defaultPageSize>20</defaultPageSize>
+	<title>数据管理与共享平台</title>
+	<description>VisualDB是一套基于Web实现关系型数据库可视化的数据录入、更新、发布以及安全控制的工具集，为建库人员提供了完整的数据库建设方案。建库人员通过简单的配置和选择，无需编写代码，即可完成对数据库的内容发布，提供数据的检索和浏览服务。同时，VisualDB为数据应用开发人员提供可配置的应用模块，为二次开发提供了数据访问接口。利用VisualDB管理的数据集，可以自动成为分布式数据集中的一个数据节点，实现VisualDB管理的数据集之间的自由访问和共享。</description>
+	<defaultPageSize>8</defaultPageSize>
 	<serviceUri>http://localhost:8080</serviceUri>
-	<theme>fresh</theme>
 </domain>
 

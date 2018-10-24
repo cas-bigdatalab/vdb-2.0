@@ -10,7 +10,9 @@
 	.slidebox .cursor { position:absolute; z-index:20; top:0px; left:0px; height:21px; width:11px;  overflow:hidden; background:url(/console/shared/plugins/slidebar/cursor.gif) no-repeat; cursor:pointer; filter:alpha(opacity=90); opacity:0.9}
 	</style>
 <script type="text/javascript" src="/console/shared/plugins/slidebar/slidebar.js"></script>
-
+#if($appctx.versionService.enabled)
+<p align="right" style="height:15px"><a href="updateOnline.vsp">在线更新</a></p>
+#end
 <form action="doUpdateDomain.vpage" method="post" name="form1" id="form1" >
 	 <table width="80%" border="0" cellspacing="0" cellpadding="0" style="background:#fff;filter: alpha(opacity=90); -moz-opacity:0.9;opacity:0.9;" >
 		<tr>

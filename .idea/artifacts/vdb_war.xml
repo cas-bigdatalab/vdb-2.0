@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="vdb war">
+    <output-path>$PROJECT_DIR$/out/artifacts/vdb_war</output-path>
+    <root id="archive" name="vdb war.war">
+      <element id="artifact" artifact-name="vdb" />
+    </root>
+  </artifact>
+</component>

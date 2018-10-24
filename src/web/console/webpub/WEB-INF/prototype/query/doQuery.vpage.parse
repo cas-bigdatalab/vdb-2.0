@@ -40,9 +40,9 @@ ${H}set(${D}query = ${D}tool.createQuery('$query.entity.uri'))
 #foreach($text in $$query.oql.split("\\n"))
 \#nul($query.oql)
 #end
-#end
-${H}#增加用户查询条件
+##增加用户查询条件
 ${D}tool.mergeQuery(${D}query, ${D}jsoQuery)
+#end
 
 #[[
 

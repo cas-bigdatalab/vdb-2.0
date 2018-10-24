@@ -3,10 +3,8 @@
 \#set ($seqid = ${dollar}seq.id)
 
 #if($field.viewerStyle == 'CollectionLabel') 
-	#if($field.queryStyle == 'on')
 	<div class="search02_title_div">高级搜索<a href="#" onclick="toggleQueryImg('queryFormImg${seqid}');$('#QueryForm${seqid}')[0].jsoQueryForm.toggle();"><img id="queryFormImg${seqid}" src="images/ico_jiaohao02.jpg" height="13" width="13" style="margin-left:5px;"></a></div> 
-	<div class="search02_contents_div"><div id="QueryForm${seqid}" class="QueryForm" style="display:none;background:url(../images/contents_bg.jpg) #fff repeat-x 50% top;"></div></div><div style="height:20"></div>
-	#end
+	#if($field.queryStyle == 'on')<div class="search02_contents_div"><div id="QueryForm${seqid}" class="QueryForm" style="display:none;background:url(../images/contents_bg.jpg) #fff repeat-x 50% top;"></div></div><div style="height:20"></div> #end
 	<div id="DataGrid${seqid}" class="DataGrid"></div>
 	<script>
 		//定义一个查询对象

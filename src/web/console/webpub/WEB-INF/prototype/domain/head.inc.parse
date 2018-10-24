@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="/favicon.ico"/>
-<title>\#if($title)$title\#else\$domain.title\#end</title>
+<title>科学数据库-\#if($title)$title\#else\$domain.title\#end</title>
 <script language="javascript" src="/console/shared/js/ui.js"></script>
 <script language="javascript" src="/console/shared/js/editor.js"></script>
 <script language="javascript" src="/console/shared/js/firefox.js"></script>

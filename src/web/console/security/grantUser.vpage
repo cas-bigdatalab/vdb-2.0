@@ -102,11 +102,6 @@ $(document).ready(function() {
 			<tr>
 				<td colspan="2" align="center" class="bg2">
 					<b>${dataset.title}</b>
-					<input type="checkbox" name="edit_dataset_${dataset.id}" value="forbidden"
-					#if ($auth.userIsGranted($param.uid, "edit_dataset", $dataset.id, "forbidden"))
-					checked
-					#end
-					>禁止编辑
 				</td>
 			</tr>
 			
@@ -143,7 +138,6 @@ $(document).ready(function() {
 										${page.title}
 									</option>
 									#end
-									<option value="forbidden">------------</option>											
 								#end
 							</select>
 						</td>
