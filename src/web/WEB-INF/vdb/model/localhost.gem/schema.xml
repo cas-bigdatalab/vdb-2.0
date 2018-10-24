@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="gbk"?>
+<dataset>
+	<version>1.2.1</version>
+	<version>1.2.1</version>
+	<uri>localhost.gem</uri>
+	<title>全球经济监测项目</title>
+	<description>&lt;p&gt;全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目全球经济监测项目&lt;/p&gt;</description>
+	<id>1f628d0728b3b4e20128b3b5da010004</id>
+	<lastModified>2010-05-20 11:15:59</lastModified>
+	<repository>
+		<id>1f628d0728b3b4e20128b3b5e4ee0005</id>
+		<lastModified>2010-05-20 11:16:01</lastModified>
+		<localFilePath>$dsRoot</localFilePath>
+		<databaseName>$dsRoot/data/db</databaseName>
+		<productVersion />
+		<productName>derby</productName>
+		<userPass>gem</userPass>
+		<loginTimeout>60</loginTimeout>
+		<userName>gem</userName>
+	</repository>
+	<entity>
+		<id>1f628d0728b3b8a70128b3b915460005</id>
+		<lastModified>2010-05-20 11:19:30</lastModified>
+		<tableName>INDICATORBASICINFO</tableName>
+		<name>indicatorbasicinfo</name>
+		<description />
+		<order>desc</order>
+		<title>指标基本信息</title>
+		<titleField>localhost.gem.indicatorbasicinfo.indicatorcnname</titleField>
+		<editorField>localhost.gem.indicatorbasicinfo.creater</editorField>
+		<groupField>localhost.gem.indicatorbasicinfo.gcode</groupField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3b915460006</id>
+			<lastModified>2010-05-20 11:19:30</lastModified>
+			<field>localhost.gem.indicatorbasicinfo.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<columnName>ID</columnName>
+			<viewerPattern />
+			<hint />
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3ba05820008</id>
+			<lastModified>2010-05-20 11:20:32</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorcode</name>
+			<hint />
+			<columnName>INDICATORCODE</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>指标代码</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3ba4ad8000a</id>
+			<lastModified>2010-05-20 11:20:50</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorcnname</name>
+			<hint />
+			<columnName>INDICATORCNNAME</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>指标中文名</title>
+			<editorWidth>300</editorWidth>
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3baab48000c</id>
+			<lastModified>2010-05-20 11:21:14</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<editorHeight />
+			<editorWidth>300</editorWidth>
+			<id>1f628d0728b3b8a70128b3bb81d2000f</id>
+			<lastModified>2010-05-20 11:22:09</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<imageHeight>100</imageHeight>
+			<name>departmentid</name>
+			<columnName>DEPARTMENTID</columnName>
+			<hint />
+			<viewerStyle>ImagesLabel</viewerStyle>
+			<title>样图</title>
+			<imageWidth>100</imageWidth>
+			<editorStyle>FilesEdit</editorStyle>
+			<type>Files</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3bc2fb50011</id>
+			<lastModified>2010-05-20 11:22:54</lastModified>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>iscomplexindicator</name>
+			<hint />
+			<columnName>ISCOMPLEXINDICATOR</columnName>
+			<optionStyle>normal</optionStyle>
+			<options>是=是,否=否</options>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<title>是否复合指标</title>
+			<editorWidth />
+			<editorStyle>EnumSelectEdit</editorStyle>
+			<type>Enum</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3bc7b930014</id>
+			<lastModified>2010-05-20 11:23:13</lastModified>
+			<size>2000</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatormemo</name>
+			<hint />
+			<columnName>INDICATORMEMO</columnName>
+			<editorHeight>500</editorHeight>
+			<title>描述</title>
+			<editorWidth />
+			<editorStyle>HtmlEdit</editorStyle>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>doc</name>
+			<imageHeight>100</imageHeight>
+			<hint />
+			<columnName>DOC</columnName>
+			<viewerStyle>FilesLabel</viewerStyle>
+			<title>附件</title>
+			<imageWidth>100</imageWidth>
+			<editorStyle>FilesEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3bd5b640017</id>
+			<lastModified>2010-05-20 11:24:10</lastModified>
+			<type>Files</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>creater</name>
+			<hint />
+			<columnName>CREATER</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>录入员</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3bd84680019</id>
+			<lastModified>2010-05-20 11:24:21</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>gcode</name>
+			<hint />
+			<columnName>GCODE</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>Gcode</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3bd9764001b</id>
+			<lastModified>2010-05-20 11:24:26</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3dcd7e10058</id>
+			<lastModified>2010-05-20 11:58:34</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorgroupid</name>
+			<hint />
+			<columnName>INDICATORGROUPID</columnName>
+			<optionStyle>sql</optionStyle>
+			<options>select indicatorgroupcode,IndicatorGroupName from IndicatorGroup order by indicatorgroupcode</options>
+			<editorHeight>300</editorHeight>
+			<title>指标组</title>
+			<editorWidth>200</editorWidth>
+			<type>Tree</type>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>regioninfoRID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3dac1e10056</foreignKey>
+			<title>地区</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e548e30069</id>
+			<lastModified>2010-05-20 12:07:47</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3dac1e10056</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatorquarterbaseINDICATORID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e274b5005a</foreignKey>
+			<title>季度指标</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e564d8006b</id>
+			<lastModified>2010-05-20 12:07:54</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3e274b5005a</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatordataintegrationinfoINDICATORID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e2c093005d</foreignKey>
+			<title>指标数据整合信息</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e5787f006d</id>
+			<lastModified>2010-05-20 12:07:59</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3e2c093005d</relationKey>
+		</field>
+	</entity>
+	<entity>
+		<title>指标数据整合信息</title>
+		<name>indicatordataintegrationinfo</name>
+		<tableName>INDICATORDATAINTEGRATIONINFO</tableName>
+		<description />
+		<id>1f628d0728b3b8a70128b3be5fa5001d</id>
+		<lastModified>2010-05-20 11:25:17</lastModified>
+		<titleField>localhost.gem.indicatordataintegrationinfo.id</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3be5fa5001e</id>
+			<lastModified>2010-05-20 11:25:17</lastModified>
+			<field>localhost.gem.indicatordataintegrationinfo.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3be760c0020</id>
+			<lastModified>2010-05-20 11:25:23</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>52</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>frequency</name>
+			<hint />
+			<viewerPattern />
+			<columnName>FREQUENCY</columnName>
+			<viewerStyle>DoubleLabel</viewerStyle>
+			<title>频率</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>DoubleEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3beee2a0022</id>
+			<lastModified>2010-05-20 11:25:54</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3e601d3006f</id>
+			<lastModified>2010-05-20 12:08:35</lastModified>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorbasicinfoINDICATORID</name>
+			<columnName>INDICATORID</columnName>
+			<hint />
+			<foreignKey>1f628d0728b3b8a70128b3e2c093005e</foreignKey>
+			<viewerStyle>RefLabel</viewerStyle>
+			<title>指标基本信息</title>
+			<editorStyle>RefPopup</editorStyle>
+			<type>Reference</type>
+			<relationKey>1f628d0728b3b8a70128b3e2c093005e</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatordatatypesINDICATORDATATYPEID</name>
+			<hint />
+			<columnName>INDICATORDATATYPEID</columnName>
+			<viewerStyle>RefLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e3c06f0061</foreignKey>
+			<title>指标数据类型</title>
+			<editorStyle>RefSelect</editorStyle>
+			<id>1f628d0728b3b8a70128b3e6150d0071</id>
+			<lastModified>2010-05-20 12:08:39</lastModified>
+			<type>Reference</type>
+			<relationKey>1f628d0728b3b8a70128b3e3c06f0061</relationKey>
+		</field>
+	</entity>
+	<entity>
+		<id>1f628d0728b3b8a70128b3bfc5fc0024</id>
+		<lastModified>2010-05-20 11:26:49</lastModified>
+		<tableName>INDICATORDATATYPES</tableName>
+		<name>indicatordatatypes</name>
+		<description />
+		<order>desc</order>
+		<title>指标数据类型</title>
+		<titleField>localhost.gem.indicatordatatypes.datatypedisplayname</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3bfc5fc0025</id>
+			<lastModified>2010-05-20 11:26:49</lastModified>
+			<field>localhost.gem.indicatordatatypes.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3bfd7700027</id>
+			<lastModified>2010-05-20 11:26:53</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>datatypedisplayname</name>
+			<hint />
+			<columnName>DATATYPEDISPLAYNAME</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>类型名称</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3bffe610029</id>
+			<lastModified>2010-05-20 11:27:03</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>memo</name>
+			<hint />
+			<columnName>MEMO</columnName>
+			<editorHeight>200</editorHeight>
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>描述</title>
+			<editorWidth>400</editorWidth>
+			<editorStyle>TextAreaEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3c04ee2002b</id>
+			<lastModified>2010-05-20 11:27:24</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatordataintegrationinfoINDICATORDATATYPEID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e3c06f0060</foreignKey>
+			<title>指标数据整合信息</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e679840073</id>
+			<lastModified>2010-05-20 12:09:05</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3e3c06f0060</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatorquarterbaseINDICATORDATATYPEID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e4eab60066</foreignKey>
+			<title>季度指标</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e6854b0075</id>
+			<lastModified>2010-05-20 12:09:08</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3e4eab60066</relationKey>
+		</field>
+	</entity>
+	<entity>
+		<id>1f628d0728b3b8a70128b3c15baf002e</id>
+		<lastModified>2010-05-20 11:28:33</lastModified>
+		<tableName>INDICATORGROUP</tableName>
+		<name>indicatorgroup</name>
+		<description />
+		<order>desc</order>
+		<title>指标组</title>
+		<titleField>localhost.gem.indicatorgroup.indicatorgroupname</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3c15baf002f</id>
+			<lastModified>2010-05-20 11:28:33</lastModified>
+			<field>localhost.gem.indicatorgroup.indicatorgroupcode</field>
+		</identifier>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorgroupcode</name>
+			<hint />
+			<columnName>INDICATORGROUPCODE</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>代码</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3c18b990031</id>
+			<lastModified>2010-05-20 11:28:45</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorgroupname</name>
+			<hint />
+			<columnName>INDICATORGROUPNAME</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>组名称</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3c1b50a0033</id>
+			<lastModified>2010-05-20 11:28:56</lastModified>
+			<type>String</type>
+		</field>
+		<field>
+			<size>2000</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>memo</name>
+			<hint />
+			<columnName>MEMO</columnName>
+			<editorHeight>500</editorHeight>
+			<title>说明</title>
+			<editorWidth />
+			<editorStyle>HtmlEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3c1e7740035</id>
+			<lastModified>2010-05-20 11:29:08</lastModified>
+			<type>RichText</type>
+		</field>
+	</entity>
+	<entity>
+		<title>季度指标</title>
+		<name>indicatorquarterbase</name>
+		<tableName>INDICATORQUARTERBASE</tableName>
+		<description />
+		<id>1f628d0728b3b8a70128b3d6f9020037</id>
+		<lastModified>2010-05-20 11:52:09</lastModified>
+		<titleField>localhost.gem.indicatorquarterbase.id</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3d6f9020038</id>
+			<lastModified>2010-05-20 11:52:09</lastModified>
+			<field>localhost.gem.indicatorquarterbase.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3d70ce8003a</id>
+			<lastModified>2010-05-20 11:52:14</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatordate</name>
+			<columnName>INDICATORDATE</columnName>
+			<hint />
+			<viewerStyle>DateLabel</viewerStyle>
+			<title>日期</title>
+			<editorStyle>DateCtrl</editorStyle>
+			<id>1f628d0728b3b8a70128b3d74b39003c</id>
+			<lastModified>2010-05-20 11:52:30</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<size>52</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorvalue</name>
+			<hint />
+			<viewerPattern />
+			<columnName>INDICATORVALUE</columnName>
+			<viewerStyle>DoubleLabel</viewerStyle>
+			<title>Indicatorvalue</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>DoubleEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3d761fd003e</id>
+			<lastModified>2010-05-20 11:52:36</lastModified>
+			<type>Double</type>
+		</field>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>createdate</name>
+			<hint />
+			<columnName>CREATEDATE</columnName>
+			<viewerStyle>DateLabel</viewerStyle>
+			<title>Createdate</title>
+			<editorStyle>DateCtrl</editorStyle>
+			<id>1f628d0728b3b8a70128b3d791c80040</id>
+			<lastModified>2010-05-20 11:52:48</lastModified>
+			<type>Date</type>
+		</field>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>isoriginal</name>
+			<columnName>ISORIGINAL</columnName>
+			<hint />
+			<options>是=是,否=否</options>
+			<optionStyle>normal</optionStyle>
+			<viewerStyle>EnumLabel</viewerStyle>
+			<title>是否原始数据</title>
+			<editorWidth />
+			<editorStyle>EnumSelectEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3d83e050042</id>
+			<lastModified>2010-05-20 11:53:32</lastModified>
+			<type>Enum</type>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatorbasicinfoINDICATORID</name>
+			<hint />
+			<columnName>INDICATORID</columnName>
+			<viewerStyle>RefLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e274b5005b</foreignKey>
+			<title>指标基本信息</title>
+			<editorStyle>RefSelect</editorStyle>
+			<id>1f628d0728b3b8a70128b3e6b4790077</id>
+			<lastModified>2010-05-20 12:09:20</lastModified>
+			<type>Reference</type>
+			<relationKey>1f628d0728b3b8a70128b3e274b5005b</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>providerinfoPROVIDERID</name>
+			<hint />
+			<columnName>PROVIDERID</columnName>
+			<viewerStyle>RefLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e4583a0064</foreignKey>
+			<title>数据来源</title>
+			<editorStyle>RefSelect</editorStyle>
+			<id>1f628d0728b3b8a70128b3e6c6b90079</id>
+			<lastModified>2010-05-20 12:09:25</lastModified>
+			<type>Reference</type>
+			<relationKey>1f628d0728b3b8a70128b3e4583a0064</relationKey>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>indicatordatatypesINDICATORDATATYPEID</name>
+			<hint />
+			<columnName>INDICATORDATATYPEID</columnName>
+			<viewerStyle>RefLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e4eab60067</foreignKey>
+			<title>指标数据类型</title>
+			<editorStyle>RefSelect</editorStyle>
+			<id>1f628d0728b3b8a70128b3e6d8ea007b</id>
+			<lastModified>2010-05-20 12:09:30</lastModified>
+			<type>Reference</type>
+			<relationKey>1f628d0728b3b8a70128b3e4eab60067</relationKey>
+		</field>
+	</entity>
+	<entity>
+		<id>1f628d0728b3b8a70128b3d8c73a0044</id>
+		<lastModified>2010-05-20 11:54:08</lastModified>
+		<tableName>PROVIDERINFO</tableName>
+		<name>providerinfo</name>
+		<description />
+		<order>desc</order>
+		<title>数据来源</title>
+		<titleField>localhost.gem.providerinfo.providername</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3d8c73a0045</id>
+			<lastModified>2010-05-20 11:54:08</lastModified>
+			<field>localhost.gem.providerinfo.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3d8ddd00047</id>
+			<lastModified>2010-05-20 11:54:13</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3d8ff420049</id>
+			<lastModified>2010-05-20 11:54:22</lastModified>
+			<size>100</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>providername</name>
+			<hint />
+			<columnName>PROVIDERNAME</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>来源</title>
+			<editorWidth>300</editorWidth>
+			<editorStyle>StringEdit</editorStyle>
+			<type>String</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3d970f7004c</id>
+			<lastModified>2010-05-20 11:54:51</lastModified>
+			<viewerStyle>rot2d</viewerStyle>
+			<viewerWidth>100</viewerWidth>
+			<viewerHeight>100</viewerHeight>
+			<size>2000</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>memo</name>
+			<columnName>MEMO</columnName>
+			<hint />
+			<editorHeight>500</editorHeight>
+			<title>Memo</title>
+			<editorWidth>500</editorWidth>
+			<editorStyle>HtmlEdit</editorStyle>
+			<type>RichText</type>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatorquarterbasePROVIDERID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3e4583a0063</foreignKey>
+			<title>季度指标</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e76af8007d</id>
+			<lastModified>2010-05-20 12:10:07</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3e4583a0063</relationKey>
+		</field>
+	</entity>
+	<entity>
+		<id>1f628d0728b3b8a70128b3da0da5004e</id>
+		<lastModified>2010-05-20 11:55:31</lastModified>
+		<tableName>REGIONINFO</tableName>
+		<name>regioninfo</name>
+		<description />
+		<order>desc</order>
+		<title>地区</title>
+		<titleField>localhost.gem.regioninfo.regionname</titleField>
+		<identifier>
+			<id>1f628d0728b3b8a70128b3da0da5004f</id>
+			<lastModified>2010-05-20 11:55:31</lastModified>
+			<field>localhost.gem.regioninfo.id</field>
+			<idGenerator>autoinc</idGenerator>
+		</identifier>
+		<field>
+			<size>10</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>id</name>
+			<hint />
+			<viewerPattern />
+			<columnName>ID</columnName>
+			<viewerStyle>LongLabel</viewerStyle>
+			<title>Id</title>
+			<unitValue />
+			<editorWidth />
+			<editorStyle>LongEdit</editorStyle>
+			<id>1f628d0728b3b8a70128b3da21d90051</id>
+			<lastModified>2010-05-20 11:55:36</lastModified>
+			<type>Long</type>
+		</field>
+		<field>
+			<id>1f628d0728b3b8a70128b3da39c60053</id>
+			<lastModified>2010-05-20 11:55:42</lastModified>
+			<size>200</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<name>regionname</name>
+			<hint />
+			<columnName>REGIONNAME</columnName>
+			<editorHeight />
+			<viewerStyle>StringLabel</viewerStyle>
+			<title>地区</title>
+			<editorWidth />
+			<editorStyle>StringEdit</editorStyle>
+			<type>String</type>
+		</field>
+		<field>
+			<size>0</size>
+			<defaultValue />
+			<nullable>true</nullable>
+			<seprecateStyle>on</seprecateStyle>
+			<name>indicatorbasicinfoBID</name>
+			<hint />
+			<pageStyle>on</pageStyle>
+			<viewerStyle>TitleLabel</viewerStyle>
+			<foreignKey>1f628d0728b3b8a70128b3dac1e10055</foreignKey>
+			<title>指标基本信息</title>
+			<editorStyle>TitleEditor</editorStyle>
+			<queryStyle>on</queryStyle>
+			<id>1f628d0728b3b8a70128b3e7b196007f</id>
+			<lastModified>2010-05-20 12:10:25</lastModified>
+			<type>Collection</type>
+			<relationKey>1f628d0728b3b8a70128b3dac1e10055</relationKey>
+		</field>
+	</entity>
+	<query>
+		<entity>localhost.gem.indicatorbasicinfo</entity>
+		<title>复合指标</title>
+		<name>new</name>
+		<description />
+		<sql>select * from indicatorbasicinfo where iscomplexindicator = '是'</sql>
+		<id>4028818e28c064050128c0c8c944000c</id>
+		<lastModified>2010-05-23 00:11:43</lastModified>
+	</query>
+	<relation>
+		<id>1f628d0728b3b8a70128b3dac1c20054</id>
+		<assocTableName>LBR</assocTableName>
+		<lastModified>2010-05-20 11:56:17</lastModified>
+		<cardinality>m:n</cardinality>
+		<key>
+			<columnName>BID</columnName>
+			<id>1f628d0728b3b8a70128b3dac1e10055</id>
+			<lastModified>2010-05-20 11:56:17</lastModified>
+			<target>localhost.gem.indicatorbasicinfo</target>
+		</key>
+		<key>
+			<columnName>RID</columnName>
+			<id>1f628d0728b3b8a70128b3dac1e10056</id>
+			<lastModified>2010-05-20 11:56:17</lastModified>
+			<target>localhost.gem.regioninfo</target>
+		</key>
+	</relation>
+	<relation>
+		<id>1f628d0728b3b8a70128b3e274a50059</id>
+		<lastModified>2010-05-20 12:04:42</lastModified>
+		<cardinality>1:n</cardinality>
+		<key>
+			<id>1f628d0728b3b8a70128b3e274b5005a</id>
+			<lastModified>2010-05-20 12:04:42</lastModified>
+			<target>localhost.gem.indicatorquarterbase</target>
+		</key>
+		<key>
+			<columnName>INDICATORID</columnName>
+			<id>1f628d0728b3b8a70128b3e274b5005b</id>
+			<lastModified>2010-05-20 12:04:42</lastModified>
+			<target>localhost.gem.indicatorbasicinfo</target>
+		</key>
+	</relation>
+	<relation>
+		<id>1f628d0728b3b8a70128b3e2c093005c</id>
+		<lastModified>2010-05-20 12:05:01</lastModified>
+		<cardinality>1:n</cardinality>
+		<key>
+			<id>1f628d0728b3b8a70128b3e2c093005d</id>
+			<lastModified>2010-05-20 12:05:01</lastModified>
+			<target>localhost.gem.indicatordataintegrationinfo</target>
+		</key>
+		<key>
+			<columnName>INDICATORID</columnName>
+			<id>1f628d0728b3b8a70128b3e2c093005e</id>
+			<lastModified>2010-05-20 12:05:01</lastModified>
+			<target>localhost.gem.indicatorbasicinfo</target>
+		</key>
+	</relation>
+	<relation>
+		<id>1f628d0728b3b8a70128b3e3c04f005f</id>
+		<lastModified>2010-05-20 12:06:07</lastModified>
+		<cardinality>1:n</cardinality>
+		<key>
+			<id>1f628d0728b3b8a70128b3e3c06f0060</id>
+			<lastModified>2010-05-20 12:06:07</lastModified>
+			<target>localhost.gem.indicatordataintegrationinfo</target>
+		</key>
+		<key>
+			<columnName>INDICATORDATATYPEID</columnName>
+			<id>1f628d0728b3b8a70128b3e3c06f0061</id>
+			<lastModified>2010-05-20 12:06:07</lastModified>
+			<target>localhost.gem.indicatordatatypes</target>
+		</key>
+	</relation>
+	<relation>
+		<id>1f628d0728b3b8a70128b3e4580b0062</id>
+		<lastModified>2010-05-20 12:06:46</lastModified>
+		<cardinality>1:n</cardinality>
+		<key>
+			<id>1f628d0728b3b8a70128b3e4583a0063</id>
+			<lastModified>2010-05-20 12:06:46</lastModified>
+			<target>localhost.gem.indicatorquarterbase</target>
+		</key>
+		<key>
+			<columnName>PROVIDERID</columnName>
+			<id>1f628d0728b3b8a70128b3e4583a0064</id>
+			<lastModified>2010-05-20 12:06:46</lastModified>
+			<target>localhost.gem.providerinfo</target>
+		</key>
+	</relation>
+	<relation>
+		<id>1f628d0728b3b8a70128b3e4eab60065</id>
+		<lastModified>2010-05-20 12:07:23</lastModified>
+		<cardinality>1:n</cardinality>
+		<key>
+			<id>1f628d0728b3b8a70128b3e4eab60066</id>
+			<lastModified>2010-05-20 12:07:23</lastModified>
+			<target>localhost.gem.indicatorquarterbase</target>
+		</key>
+		<key>
+			<columnName>INDICATORDATATYPEID</columnName>
+			<id>1f628d0728b3b8a70128b3e4eab60067</id>
+			<lastModified>2010-05-20 12:07:23</lastModified>
+			<target>localhost.gem.indicatordatatypes</target>
+		</key>
+	</relation>
+	<view>
+		<name>listEntities</name>
+		<id>1f628d0728b3b8a70128b3e7f3910080</id>
+		<lastModified>2010-05-20 12:10:42</lastModified>
+		<source>localhost.gem</source>
+		<item>
+			<source>localhost.gem.indicatorbasicinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatordataintegrationinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatordatatypes</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatorgroup</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatorquarterbase</source>
+		</item>
+		<item>
+			<source>localhost.gem.providerinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.regioninfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.new</source>
+		</item>
+	</view>
+	<view>
+		<name>editEntities</name>
+		<id>1f628d0728b3b8a70128b3e7f3910081</id>
+		<lastModified>2010-05-20 12:10:42</lastModified>
+		<source>localhost.gem</source>
+		<item>
+			<source>localhost.gem.indicatorbasicinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatordataintegrationinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatordatatypes</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatorgroup</source>
+		</item>
+		<item>
+			<source>localhost.gem.indicatorquarterbase</source>
+		</item>
+		<item>
+			<source>localhost.gem.providerinfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.regioninfo</source>
+		</item>
+		<item>
+			<source>localhost.gem.new</source>
+		</item>
+	</view>
+</dataset>
+
