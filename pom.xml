@@ -387,6 +387,12 @@
             <artifactId>mail</artifactId>
             <version>1.4.5</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.oracle/classes12 -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>classes12</artifactId>
+            <version>10.2</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -397,6 +403,11 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>PlanetMirror</id>
+            <name>Planet Mirror</name>
+            <url>http://nexus.talanlabs.com/content/repositories/releases/</url>
         </repository>
     </repositories>
 </project>
